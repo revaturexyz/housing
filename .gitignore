@@ -1,0 +1,10 @@
+# alpine :: gitignore
+
+## rule :: macos
+.DS_Store
+
+## rule :: nodejs
+node_modules/
+
+## rule :: terraform
+.terraform/

@@ -1,0 +1,34 @@
+# alpine :: docker-compose
+
+networks:
+  locally:
+
+services:
+  src:
+    build:
+      args:
+        - NGINX_VERSION=alpine
+      context: ./src
+      dockerfile: ../.docker/dockerfile
+      labels:
+        - "xyz.alpine.maintainer=fred belotte"
+    dns:
+      - 1.1.1.1
+      - 1.0.0.1
+    healthcheck:
+      interval: 3m
+      retries: 3
+      start_period: 1m
+      test: ['CMD', 'curl', '-f', 'http://localhost']
+      timeout: 30s
+    image: alpine_src
+    labels:
+      - "xyz.alpine.maintainer=fred belotte"
+    networks:
+      - locally
+    ports:
+      - 9000:80
+      - 9001:443
+    restart: on-failure
+
+version: '3.7'

@@ -1,0 +1,11 @@
+# alpine :: markdownlint
+
+## rule :: sets maximum number of characters per line
+MD013:
+  code_block_line_length: 75
+  heading_line_length: 50
+  line_length: 100
+
+## rule :: allows non-sibling headings to be repeated
+MD024:
+  siblings_only: true

@@ -1,0 +1,25 @@
+# alpine :: prettierrc
+
+## rule :: prints spaces between brackets in object literals
+bracketSpacing: true
+
+## rule :: specifies the line length that the printer will wrap on
+printWidth: 75
+
+## rule :: prints semicolons at the ends of statements
+semi: true
+
+## rule :: uses single quotes instead of double quotes
+singeQuote: true
+
+## rule :: specifies the number of spaces per indentation-level
+tabWidth: 2
+
+## rule :: prints trailing commas wherever possible when multi-line
+trailingComma: es5
+
+## rule :: indents lines with tabs instead of spaces
+useTabs: false
+
+## rule :: includes parentheses around a sole arrow function parameter
+arrowParens: always

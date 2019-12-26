@@ -1,0 +1,10 @@
+# alpine :: dockerfile
+
+## note :: sets the build arguments
+ARG NGINX_VERSION=stable-alpine
+
+## note :: sets the deploy stage
+FROM nginx:${NGINX_VERSION} as deploy
+
+LABEL xyz.alpine.maintainer="fred belotte"
+COPY . /usr/share/nginx/html

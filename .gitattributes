@@ -1,0 +1,4 @@
+# alpine :: gitattribute
+
+## rule :: sets all files to be handled automatically by the operating system
+* text=auto
