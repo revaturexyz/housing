@@ -1,0 +1,30 @@
+.login-outer {
+  width: 100%;
+  text-align: center;
+  padding: 100px;
+  background-image: url("/assets/imgs/buildings-shape.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.login-inner {
+  width: 50%;
+  background-color: white;
+  opacity: 0.9;
+  margin-left: 25%;
+  margin-right: 25%;
+  padding: 50px;
+  border-radius: 5px;
+}
+
+.a-highlight {
+  cursor: pointer;
+  text-decoration-line: underline !important;
+  color: #fb752c !important;
+  font-variant: small-caps;
+}
+
+.account {
+  font-size: 20px;
+}
