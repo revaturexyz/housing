@@ -1,27 +1,22 @@
-# alpine :: docker-compose
+# housing :: docker-compose
 
 networks:
   locally:
 
 services:
-  src:
+  wwwroot:
     build:
       args:
         - NGINX_VERSION=alpine
-      context: ./src
+        - NODE_VERSION=alpine
+      context: ./wwwroot
       dockerfile: ../.docker/dockerfile
       labels:
         - "xyz.alpine.maintainer=fred belotte"
     dns:
       - 1.1.1.1
       - 1.0.0.1
-    healthcheck:
-      interval: 3m
-      retries: 3
-      start_period: 1m
-      test: ['CMD', 'curl', '-f', 'http://localhost']
-      timeout: 30s
-    image: alpine_src
+    image: housing
     labels:
       - "xyz.alpine.maintainer=fred belotte"
     networks:
