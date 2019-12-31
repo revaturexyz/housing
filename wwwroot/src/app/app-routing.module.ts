@@ -2,9 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { CoordinatorNotificationsComponent } from './coordinator-notifications/coordinator-notifications.component';
-import { AuthGuard } from './guards/auth.guard';
+// import { AuthGuard } from './guards/auth.guard';
 import { AssignTenantToRoomComponent } from './assign-tenant-to-room/assign-tenant-to-room.component';
-
 import { EditProviderComponent } from './edit-provider/edit-provider.component';
 import { ProviderStatusComponent } from './provider-status/provider-status.component';
 import { ManageComplexComponent } from './manage-complex/manage-complex.component';
@@ -20,10 +19,10 @@ const routes: Routes = [
   { path: 'search-tenant', component: SearchTenantComponent },
   { path: 'select-tenant/:id', component: SelectTenantComponent },
   { path: '', component: HomeComponent },
-  { path: 'coordinator-notifications', component: CoordinatorNotificationsComponent, canActivate: [AuthGuard] },
-  { path: 'edit-provider', component: EditProviderComponent, canActivate: [AuthGuard] },
-  { path: 'provider-status', component: ProviderStatusComponent, canActivate: [AuthGuard] },
-  { path: 'manage-complex', component: ManageComplexComponent, canActivate: [AuthGuard] },
+  { path: 'coordinator-notifications', component: CoordinatorNotificationsComponent },
+  { path: 'edit-provider', component: EditProviderComponent },
+  { path: 'provider-status', component: ProviderStatusComponent },
+  { path: 'manage-complex', component: ManageComplexComponent },
   { path: 'add-tenant', component: AddTenantComponent },
 ];
 
