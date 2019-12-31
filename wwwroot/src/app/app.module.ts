@@ -11,7 +11,7 @@ import { StickyNavModule } from 'ng2-sticky-nav';
 import {
   MatChipsModule, MatTableModule, MatDialogModule, MatPaginatorModule, MatFormFieldModule,
   MatSelectModule, MatSidenavModule, MatIconModule, MatButtonModule, MatDividerModule, MatListModule,
-  MatExpansionModule, MatInputModule
+  MatExpansionModule, MatInputModule, MatTabsModule, MatGridListModule
 } from '@angular/material';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { CdkTableModule } from '@angular/cdk/table';
@@ -37,6 +37,7 @@ import { ShowRoomComponent } from './manage-complex/show-room/show-room.componen
 import { AddComplexComponent } from './manage-complex/add-complex/add-complex.component';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { AddTenantComponent } from './add-tenant/add-tenant.component';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { AddTenantComponent } from './add-tenant/add-tenant.component';
     ShowRoomComponent,
     AddComplexComponent,
     AddRoomComponent,
-    AddTenantComponent
+    AddTenantComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
@@ -94,6 +96,8 @@ import { AddTenantComponent } from './add-tenant/add-tenant.component';
     MatInputModule,
     MatCheckboxModule,
     ScrollingModule,
+    MatTabsModule,
+    MatGridListModule,
   ],
   providers: [
     {

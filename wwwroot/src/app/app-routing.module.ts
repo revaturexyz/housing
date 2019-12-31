@@ -11,6 +11,7 @@ import { ManageComplexComponent } from './manage-complex/manage-complex.componen
 import { SearchTenantComponent } from './search-tenant/search-tenant.component';
 import { SelectTenantComponent } from './select-tenant/select-tenant.component';
 import { AddTenantComponent } from './add-tenant/add-tenant.component';
+import { AboutComponent } from './about/about.component';
 
 const routes: Routes = [
   // dev-assign-tenant-to-room
@@ -25,6 +26,7 @@ const routes: Routes = [
   { path: 'provider-status', component: ProviderStatusComponent, canActivate: [AuthGuard] },
   { path: 'manage-complex', component: ManageComplexComponent, canActivate: [AuthGuard] },
   { path: 'add-tenant', component: AddTenantComponent },
+  { path: 'about', component: AboutComponent },
 ];
 
 @NgModule({
