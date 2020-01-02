@@ -81,10 +81,11 @@ resource "azurerm_kubernetes_cluster" "aks" {
   name = var.aks_kubernetes_cluster["name"]
   resource_group_name = azurerm_resource_group.aks.name
   
-  default_node_pool {
-    name       = "default"
-    node_count = 1
-    vm_size    = "Standard_B2ms"
+  agent_pool_profile {
+    name = "default"
+    count = 1
+    vm_size = "Standard_B2ms"
+    os_type = "Linux"
   }
 
   service_principal {
