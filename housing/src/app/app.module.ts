@@ -13,6 +13,7 @@ import {
   MatSelectModule, MatSidenavModule, MatIconModule, MatButtonModule, MatDividerModule, MatListModule,
   MatExpansionModule, MatInputModule
 } from '@angular/material';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { CdkTableModule } from '@angular/cdk/table';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -94,6 +95,7 @@ import { AddTenantComponent } from './add-tenant/add-tenant.component';
     MatInputModule,
     MatCheckboxModule,
     ScrollingModule,
+    MDBBootstrapModule.forRoot()
   ],
   providers: [
     {
