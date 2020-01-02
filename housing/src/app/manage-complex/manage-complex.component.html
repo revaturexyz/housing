@@ -11,7 +11,7 @@
             <div id="current-complexes">
                 <h3 class="text-center text-white">Complexes</h3>
                 <ul>
-                    <li *ngFor="let complex of seededComplexes" (ngModelChange)="changeMode($event)">
+                    <li *ngFor="let complex of seededComplexes" [value]="complex">
                         <div class="p-2 m-2 text-center" style="border: solid black 1px; border-radius: 10px;">
                             <p class="m-0 p-0">{{complex.complexName}}</p>
                         </div>
@@ -37,7 +37,7 @@
             <h2>Please select a complex from the menu</h2>
             <mat-form-field appearance="outline" class="mr-3">
                 <mat-label>Add New Complex</mat-label>
-                <input matInput placeholder="Name Of Complex">
+                <input matInput (ngModel)="complex.complexName" placeholder="Name Of Complex">
             </mat-form-field>
             <button class="" (click)="changeMode('add-complex')"
                 style="padding: 8px 16px 8px 16px; border: solid black 1px;">+</button>
