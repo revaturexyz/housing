@@ -11,27 +11,63 @@ import {
 } from '@angular/common/http';
 import { AuthService } from './auth.service';
 import { Observable, throwError } from 'rxjs';
-import { mergeMap, catchError } from 'rxjs/operators';
+// import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/fromPromise';
+import 'rxjs/add/operator/mergeMap';
+// import { mergeMap, catchError } from 'rxjs/operators';
+import { OktaAuthService } from '@okta/okta-angular';
 
 @Injectable({
   providedIn: 'root'
 })
 export class InterceptorService implements HttpInterceptor {
 
-  constructor(private auth: AuthService) { }
+  // constructor(private auth: AuthService) { }
 
-  intercept(
-    req: HttpRequest<any>,
-    next: HttpHandler
-  ): Observable<HttpEvent<any>> {
-    return this.auth.getTokenSilently$().pipe(
-      mergeMap(token => {
-        const tokenReq = req.clone({
-          setHeaders: { Authorization: `Bearer ${token}` }
-        });
-        return next.handle(tokenReq);
-      }),
-      catchError(err => throwError(err))
-    );
+  // intercept(
+  //   req: HttpRequest<any>,
+  //   next: HttpHandler
+  // ): Observable<HttpEvent<any>> {
+  //   return this.auth.getTokenSilently$().pipe(
+  //     mergeMap(token => {
+  //       const tokenReq = req.clone({
+  //         setHeaders: { Authorization: `Bearer ${token}` }
+  //       });
+  //       return next.handle(tokenReq);
+  //     }),
+  //     catchError(err => throwError(err))
+  //   );
+  // }
+
+  constructor(private oktaAuth: OktaAuthService) {
   }
+
+  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    return this.isAuthenticated()
+      .mergeMap((isAuthenticated) => {
+        if (!isAuthenticated) {
+          return next.handle(request);
+        }
+
+        return this.getAccessToken()
+          .mergeMap((accessToken) => {
+            request = request.clone({
+              setHeaders: {
+                Authorization: `Bearer ${accessToken}`
+              }
+            });
+
+            return next.handle(request);
+          })
+      });
+  }
+
+  private isAuthenticated() : Observable<boolean> {
+    return Observable.fromPromise(this.oktaAuth.isAuthenticated());
+  }
+
+  private getAccessToken() : Observable<string> {
+    return Observable.fromPromise(this.oktaAuth.getAccessToken());
+  }
+
 }

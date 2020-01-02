@@ -47,7 +47,7 @@ const config = {
   clientId: '0oa2cmhpyke99m4ki357', // han's account
   // scope: 'openid profile email',
   pkce: true
-}
+};
 
 @NgModule({
   declarations: [
