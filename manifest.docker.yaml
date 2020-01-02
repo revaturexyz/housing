@@ -4,21 +4,17 @@ networks:
   locally:
 
 services:
-  wwwroot:
+  housing:
     build:
       args:
         - NGINX_VERSION=alpine
         - NODE_VERSION=alpine
-      context: ./wwwroot
+      context: ./housing
       dockerfile: ../.docker/dockerfile
-      labels:
-        - "xyz.alpine.maintainer=fred belotte"
     dns:
       - 1.1.1.1
       - 1.0.0.1
     image: housing
-    labels:
-      - "xyz.alpine.maintainer=fred belotte"
     networks:
       - locally
     ports:

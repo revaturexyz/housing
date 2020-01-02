@@ -20,7 +20,3 @@ variable "cloudflare_record" {
 variable "resource_group" {
   type = "map"
 }
-
-variable "terraform_backend" {
-  type = "map"
-}
