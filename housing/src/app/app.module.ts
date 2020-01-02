@@ -105,7 +105,7 @@ const config = {
     MatInputModule,
     MatCheckboxModule,
     ScrollingModule,
-    OktaAuthModule.initAuth(config),
+    // OktaAuthModule.initAuth(config),
   ],
   providers: [
     {

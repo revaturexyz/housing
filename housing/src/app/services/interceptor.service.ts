@@ -10,7 +10,6 @@ import {
   HttpInterceptor
 } from '@angular/common/http';
 import { Observable, throwError, from, } from 'rxjs';
-import 'rxjs/add/operator/mergeMap';
 import { mergeMap, catchError } from 'rxjs/operators';
 import { OktaAuthService } from '@okta/okta-angular';
 
