@@ -14,7 +14,7 @@ export class NavComponent implements OnInit {
   public role: string;
   public isAuthenticated: boolean;
 
-  constructor(private router: Router, public auth: AuthService, public user: UserService) {//, public oktaAuth: OktaAuthService) {
+  constructor(private router: Router, public auth: AuthService, public user: UserService) {
     user.Roles$.subscribe(res => this.role = res[0]);
 
     // get authentication state for immediate use
