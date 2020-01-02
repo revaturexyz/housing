@@ -37,17 +37,17 @@ import { ShowRoomComponent } from './manage-complex/show-room/show-room.componen
 import { AddComplexComponent } from './manage-complex/add-complex/add-complex.component';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { AddTenantComponent } from './add-tenant/add-tenant.component';
-import { OktaAuthModule } from '@okta/okta-angular';
+// import { OktaAuthModule } from '@okta/okta-angular';
 
-const config = {
-  // issuer: 'https://dev-837913.okta.com/oauth2/default',
-  issuer: 'https://dev-784743.okta.com/oauth2/default', // han's account
-  redirectUri: 'http://localhost:4200/implicit/callback', // port 4200 for default, 9000 for docker-compose, security's account at 8080
-  // clientId: '0oa2d72hlcH7CUgwf357',
-  clientId: '0oa2cmhpyke99m4ki357', // han's account
-  // scope: 'openid profile email',
-  pkce: true
-};
+// const config = {
+//   // issuer: 'https://dev-837913.okta.com/oauth2/default',
+//   issuer: 'https://dev-784743.okta.com/oauth2/default', // han's account
+//   redirectUri: 'http://localhost:4200/implicit/callback', // port 4200 for default, 9000 for docker-compose, security's account at 8080
+//   // clientId: '0oa2d72hlcH7CUgwf357',
+//   clientId: '0oa2cmhpyke99m4ki357', // han's account
+//   // scope: 'openid profile email',
+//   pkce: true
+// };
 
 @NgModule({
   declarations: [
