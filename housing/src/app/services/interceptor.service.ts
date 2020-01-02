@@ -43,11 +43,11 @@ export class InterceptorService implements HttpInterceptor {
     }));
   }
 
-  private isAuthenticated() : Observable<boolean> {
+  private isAuthenticated(): Observable<boolean> {
     return from(this.oktaAuth.isAuthenticated());
   }
 
-  private getAccessToken() : Observable<string> {
+  private getAccessToken(): Observable<string> {
     return from(this.oktaAuth.getAccessToken());
   }
 
