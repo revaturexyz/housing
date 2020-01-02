@@ -1,48 +1,86 @@
 .drawer {
-  width: auto;
-  height: 100%;
-  margin: 10px;
-  border: 1px solid #555;
-  padding: 0 15px;
-}
-
-@media (min-width: 768px) {
-  .h-md-100 {
-    height: 100vh;
+    width: auto;
+    height: 100%;
+    margin: 10px;
+    border: 1px solid #555;
+    padding: 0 15px;
   }
-}
+  
+  @media (min-width: 768px) {
+    .h-md-100 {
+      height: 100vh;
+    }
+  }
+  
+  .bg-orange {
+    background: #fb752c;
+  }
+  
+  .bg-body {
+    background-image: url("/assets/imgs/rec_hero_image.jpg");
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .div-drawer {
+    color: black;
+    background-color: white;
+    opacity: 0.85;
+    width: 80%;
+    overflow-y: auto;
+    height: auto;
+    padding: inherit;
+  }
+  
+  .add-complex-highlight {
+    cursor: pointer;
+    text-decoration-line: underline !important;
+    color: #fb752c !important;
+    font-variant: small-caps;
+  }
+  
+  .card-drawer {
+    width: 100%;
+  }
+  
+  #current-complexes {
+      width: 100%;
+      position: absolute;
+      bottom: 20px;
+      
+  }
+  
+  #current-complexes ul {
+      list-style: none;
+      padding: 20px;
+      background-color: white;
+      width: 80%;
+      min-height: 100%;
+      margin: auto;
+      border-radius: 10px;
+      min-height: 250px;
+  }
 
-.bg-orange {
-  background: #fb752c;
-}
+  #current-complexes ul div {
+      box-shadow: black 1px 2px 4px;
+  }
 
-.bg-body {
-  background-image: url("/assets/imgs/rec_hero_image.jpg");
-  background-position: center center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.div-drawer {
-  color: black;
-  background-color: white;
-  opacity: 0.85;
-  width: 80%;
-  overflow-y: auto;
-  height: 100%;
-  padding: inherit;
-}
-
-.add-complex-highlight {
-  cursor: pointer;
-  text-decoration-line: underline !important;
-  color: #fb752c !important;
-  font-variant: small-caps;
-}
-
-.card-drawer {
-  width: 100%;
-}
+  #current-complexes ul div:hover {
+      cursor: pointer;
+      background-color: rgb(242, 105, 37);
+      color: white;
+      box-shadow: none;
+  }
+  
+  #provider-name {
+      border: solid white 1px;
+      padding: 20px;
+      border-radius: 10px;
+  }
+  
+  
+  
