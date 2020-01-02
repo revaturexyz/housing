@@ -74,3 +74,26 @@ resource "cloudflare_record" "housingxyz" {
   type = "${var.cloudflare_record["type"]}"
   value = "${var.cloudflare_record["value"]}"
 }
+
+resource "azurerm_kubernetes_cluster" "aks" {
+  dns_prefix = var.aks_kubernetes_cluster["dns"]
+  location = azurerm_resource_group.aks.location
+  name = var.aks_kubernetes_cluster["name"]
+  resource_group_name = azurerm_resource_group.aks.name
+  
+  default_node_pool {
+    name       = "default"
+    node_count = 1
+    vm_size    = "Standard_B2ms"
+  }
+
+  service_principal {
+    client_id = var.aks_service_principal["id"]
+    client_secret = var.aks_service_principal["secret"]
+  }
+}
+
+resource "azurerm_resource_group" "aks" {
+  location = var.aks_resource_group["location"]
+  name = var.aks_resource_group["name"]
+}
