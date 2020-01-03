@@ -56,12 +56,7 @@ export class ManageComplexComponent implements OnInit {
   };
 
   public seededComplexes: Complex[] = [
-    // TestServiceData.dummyComplex,
-    // TestServiceData.dummyComplex2,
-    // TestServiceData.dummyComplex,
-    // TestServiceData.dummyComplex2
-    
-    
+    this.dummyComplex
   ];
 
   // mode selection =>
