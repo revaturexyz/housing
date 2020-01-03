@@ -4,7 +4,7 @@ import { MatPaginator, MatTableDataSource } from '@angular/material';
 import { Room } from '../../../interfaces/room';
 // import { TestServiceData } from 'src/app/services/static-test-data';
 import * as moment from 'moment';
-import { ManageComplexComponent } from '../manage-complex.component'
+import { ManageComplexComponent } from '../manage-complex.component';
 
 @Component({
   selector: 'dev-complex-details',
@@ -22,7 +22,7 @@ export class ComplexDetailsComponent implements OnInit {
   @Output() modeOutput: EventEmitter<string> = new EventEmitter<string>();
   // Decorator to output the targeted room
   @Output() targetRoomOutput: EventEmitter<Room> = new EventEmitter<Room>();
-  
+
   // seededRooms =>
   // testroom: Room = {
   //   roomId: 1,
@@ -37,7 +37,7 @@ export class ComplexDetailsComponent implements OnInit {
   //   apiRoomType: {typeId: 1,
   //     roomType: 'string'
   //   },
-  //   isOccupied: true, 
+  //   isOccupied: true,
   //   apiAmenity: [{
   //     amenityId: 2,
   //     amenity: "balcony",
@@ -68,7 +68,7 @@ export class ComplexDetailsComponent implements OnInit {
   //   apiRoomType: {typeId: 1,
   //     roomType: 'string'
   //   },
-  //   isOccupied: true, 
+  //   isOccupied: true,
   //   apiAmenity: [{
   //     amenityId: 2,
   //     amenity: "balcony",

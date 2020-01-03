@@ -6,7 +6,7 @@ import { Room } from 'src/interfaces/room';
 import { Amenity } from 'src/interfaces/amenity';
 import { Status } from 'src/interfaces/account/status';
 import { Address } from 'src/interfaces/address';
-import { Provider} from 'src/interfaces/account/provider'
+import { Provider} from 'src/interfaces/account/provider';
 
 @Component({
   selector: 'dev-manage-complex',
