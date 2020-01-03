@@ -13,9 +13,11 @@
   }
   
   .bg-orange {
-    background: #fb752c;
+    background-color: #484c55;
+    // opacity: .2;
+    border-right: solid rgb(242, 105, 37) 4px;
   }
-  
+
   .bg-body {
     background-image: url("/assets/imgs/rec_hero_image.jpg");
     background-position: center center;
@@ -43,15 +45,12 @@
     font-variant: small-caps;
   }
   
-  .card-drawer {
-    width: 100%;
-  }
+//   .card-drawer {
+//     width: 100%;
+//   }
   
   #current-complexes {
       width: 100%;
-      position: absolute;
-      bottom: 20px;
-      
   }
   
   #current-complexes ul {
@@ -65,21 +64,17 @@
       min-height: 250px;
   }
 
-  #current-complexes ul div {
-      box-shadow: black 1px 2px 4px;
+  #view-header {
+      background-color: #484c55;;
   }
 
-  #current-complexes ul div:hover {
-      cursor: pointer;
-      background-color: rgb(242, 105, 37);
-      color: white;
-      box-shadow: none;
+  mat-list-item {
+      border: solid black 1px;
+      border-radius: 6px;
   }
-  
-  #provider-name {
-      border: solid white 1px;
-      padding: 20px;
-      border-radius: 10px;
+
+  #add-btn:hover {
+    background-color: rgb(209, 206, 206);
   }
   
   

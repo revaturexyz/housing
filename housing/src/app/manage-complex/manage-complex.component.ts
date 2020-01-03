@@ -59,6 +59,9 @@ export class ManageComplexComponent implements OnInit {
         // TestServiceData.dummyComplex2,
         // TestServiceData.dummyComplex,
         // TestServiceData.dummyComplex2
+        this.dummyComplex,
+        this.dummyComplex,
+        this.dummyComplex,
         this.dummyComplex
     ];
 
@@ -95,5 +98,10 @@ export class ManageComplexComponent implements OnInit {
     changeTargetRoom(reqRoom: Room) {
         this.targetRoom = reqRoom;
     }
+
+    // complexControl: Complex;
+    // onSelect(complex:Complex): void {
+    //     this.complexControl = complex;
+    // }  
 
 }
