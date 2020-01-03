@@ -4,6 +4,7 @@ import { MatPaginator, MatTableDataSource } from '@angular/material';
 import { Room } from '../../../interfaces/room';
 // import { TestServiceData } from 'src/app/services/static-test-data';
 import * as moment from 'moment';
+import { ManageComplexComponent } from '../manage-complex.component'
 
 @Component({
   selector: 'dev-complex-details',
@@ -21,8 +22,70 @@ export class ComplexDetailsComponent implements OnInit {
   @Output() modeOutput: EventEmitter<string> = new EventEmitter<string>();
   // Decorator to output the targeted room
   @Output() targetRoomOutput: EventEmitter<Room> = new EventEmitter<Room>();
+  
   // seededRooms =>
-  // import dummy room data
+  // testroom: Room = {
+  //   roomId: 1,
+  //   apiAddress: {addressId: 1,
+  //     streetAddress: 'string',
+  //     city: 'c',
+  //     state: 'state',
+  //     zipcode: '12345'
+  //   },
+  //   roomNumber: '1221',
+  //   numberOfBeds: 4,
+  //   apiRoomType: {typeId: 1,
+  //     roomType: 'string'
+  //   },
+  //   isOccupied: true, 
+  //   apiAmenity: [{
+  //     amenityId: 2,
+  //     amenity: "balcony",
+  //     isSelected: true
+  //   },
+  //   { amenityId: 3,
+  //     amenity: "stove",
+  //     isSelected: true
+  //   }],
+  //   startDate: new Date(),
+  //   endDate: new Date(),
+  //   apiComplex: null,
+  //   gender: {genderId: 1,
+  //     genderType: 'male'
+  //   }
+  // };
+
+  // testroom2: Room = {
+  //   roomId: 1,
+  //   apiAddress: {addressId: 1,
+  //     streetAddress: 'string',
+  //     city: 'c',
+  //     state: 'state',
+  //     zipcode: '12345'
+  //   },
+  //   roomNumber: '1221',
+  //   numberOfBeds: 4,
+  //   apiRoomType: {typeId: 1,
+  //     roomType: 'string'
+  //   },
+  //   isOccupied: true, 
+  //   apiAmenity: [{
+  //     amenityId: 2,
+  //     amenity: "balcony",
+  //     isSelected: true
+  //   },
+  //   { amenityId: 3,
+  //     amenity: "stove",
+  //     isSelected: true
+  //   }],
+  //   startDate: new Date(),
+  //   endDate: new Date(),
+  //   apiComplex: null,
+  //   gender: {genderId: 1,
+  //     genderType: 'male'
+  //   }
+  // };
+
   public seededRooms: Room[] = [
     // TestServiceData.room,
     // TestServiceData.room2
@@ -30,7 +93,8 @@ export class ComplexDetailsComponent implements OnInit {
   // id's for columns on material table
   displayedColumns = ['room#', 'start', 'end', 'edit', 'show'];
   // data source for material table
-  dataSource = new MatTableDataSource<Room>(this.seededRooms);
+  // dataSource = new MatTableDataSource<Room>(this.seededRooms);   Why do we need MatTableDataSource in JS?
+  dataSource = this.seededRooms;
 
   // editRoom =>
   // once called, output targeted room object and change mode to edit targeted room
@@ -62,6 +126,6 @@ export class ComplexDetailsComponent implements OnInit {
 
   ngOnInit() {
     // Links paginator for material table
-    this.dataSource.paginator = this.paginator;
+    // this.dataSource.paginator = this.paginator;    DON'T THINK WE NEED THIS (from previous batch)
   }
 }

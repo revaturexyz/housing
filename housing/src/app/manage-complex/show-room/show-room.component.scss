@@ -1,3 +1,23 @@
+table {
+  border-collapse: collapse;
+}
+
+th,
+td {
+  border: 1px solid #cecfd5;
+  padding: 10px 15px;
+  text-align: left;
+}
+
+.d-flex{
+  margin: 5%;
+}
+
+.main-hr {
+  height: 1px;
+  background-color: black;
+}
+
 .show-room-btn {
   background-color: grey;
   border-radius: 5px;
@@ -8,11 +28,7 @@
   opacity: 0.7;
   justify-self: center;
   height: min-content;
-}
-
-.main-hr {
-  height: 1px;
-  background-color: black;
+  margin: 1%;
 }
 
 mat-chip {
