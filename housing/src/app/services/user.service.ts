@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, from } from 'rxjs';
 import { AccountService } from './account.service';
 import { AuthService } from './auth.service';
+import { OktaAuthService } from '@okta/okta-angular';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -9,7 +10,7 @@ import { environment } from 'src/environments/environment';
 })
 export class UserService {
 
-  constructor(private account: AccountService, private auth: AuthService) {
+  constructor(private account: AccountService, private auth: AuthService, private oktaAuth: OktaAuthService) {
     let decodedToken: string;
     this.UserId$.subscribe(currentUserId => {
       if (currentUserId === '') {
@@ -18,13 +19,27 @@ export class UserService {
         });
       }
 
-      auth.getTokenSilently$().subscribe(res => {
+      // auth.getTokenSilently$().subscribe(res => {
+      //   // atob decodes a Base64-encoded string
+      //   decodedToken = atob(res.split('.')[1]);
+      //   this.roles.next(JSON.parse(decodedToken)[environment.claimsDomain + 'roles']);
+      //   this.email.next(JSON.parse(decodedToken)[environment.claimsDomain + 'email']);
+      // });
+
+
+      this.getAccessToken().subscribe((res) => {
         // atob decodes a Base64-encoded string
+
         decodedToken = atob(res.split('.')[1]);
-        this.roles.next(JSON.parse(decodedToken)[environment.claimsDomain + 'roles']);
-        this.email.next(JSON.parse(decodedToken)[environment.claimsDomain + 'email']);
+        this.roles.next(JSON.parse(decodedToken)['role']);
+        this.email.next(JSON.parse(decodedToken)['sub']);
       });
+
     });
+  }
+
+  public getAccessToken(): Observable<any> {
+    return from(this.oktaAuth.getAccessToken());
   }
 
   private userId: BehaviorSubject<string> = new BehaviorSubject('');
@@ -35,4 +50,6 @@ export class UserService {
 
   private email: BehaviorSubject<string> = new BehaviorSubject('');
   public readonly Email$: Observable<string> = this.email.asObservable();
+
+
 }

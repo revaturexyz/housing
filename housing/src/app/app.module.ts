@@ -42,8 +42,9 @@ import { OKTA_CONFIG, OktaAuthModule } from '@okta/okta-angular';
 const config = {
   clientId: '0oa2d72hlcH7CUgwf357',
   issuer: 'https://dev-837913.okta.com/oauth2/default',
-  redirectUri: 'http://localhost:9000/implicit/callback', // port 9000 for docker compose, port 4200 for running with ng serve
+  redirectUri: 'http://localhost:4200/implicit/callback', // port 9000 for docker compose, port 4200 for running with ng serve
   scopes: ['openid', 'profile', 'email', 'room'],
+  responseType: ['code'],
   pkce: true,
   // testing: {
     //   disableHttpsCheck: `${OKTA_TESTING_DISABLEHTTPSCHECK}`

@@ -35,10 +35,11 @@
       <!-- <li *ngIf="auth.loggedIn"><a (click)="auth.logout()">Logout</a></li> -->
 
       <!-- Okta Login -->
-      <li *ngIf="!isAuthenticated" (click)="oktaAuth.loginRedirect('/profile')"><a> Login/Sign up </a></li>
+      <li *ngIf="!isAuthenticated" (click)="oktaAuth.loginRedirect('/')"><a> Login/Sign up </a></li>
       <li *ngIf="isAuthenticated" (click)="oktaAuth.logout('/')"><a> Logout </a></li>
 
-      <li>{{getAccessToken()}}</li>
+      <!-- <li>{{getAccessToken()}}</li> -->
+      <!-- <li>{{decode()}}</li> -->
 
 
 
@@ -47,4 +48,5 @@
     </ul>
   </div>
 </div>
-<p>{{token}}</p>
+<!-- <p>{{token}}</p> -->
+<!-- <p>{{decodetoken}}</p> -->
