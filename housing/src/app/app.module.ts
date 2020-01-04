@@ -9,10 +9,22 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StickyNavModule } from 'ng2-sticky-nav';
 import {
-  MatChipsModule, MatTableModule, MatDialogModule, MatPaginatorModule, MatFormFieldModule,
-  MatSelectModule, MatSidenavModule, MatIconModule, MatButtonModule, MatDividerModule, MatListModule,
-  MatExpansionModule, MatInputModule
+  MatChipsModule, 
+  MatTableModule,
+  MatDialogModule,
+  MatPaginatorModule, 
+  MatFormFieldModule,
+  MatSelectModule, 
+  MatSidenavModule, 
+  MatIconModule, 
+  MatButtonModule,
+  MatDividerModule, 
+  MatListModule,
+  MatExpansionModule,
+  MatInputModule
 } from '@angular/material';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatStepperModule} from '@angular/material/stepper';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { CdkTableModule } from '@angular/cdk/table';
@@ -95,6 +107,8 @@ import { AddTenantComponent } from './add-tenant/add-tenant.component';
     MatInputModule,
     MatCheckboxModule,
     ScrollingModule,
+    MatStepperModule,
+    MatGridListModule,
     MDBBootstrapModule.forRoot()
   ],
   providers: [

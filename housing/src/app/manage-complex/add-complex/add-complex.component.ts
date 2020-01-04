@@ -1,5 +1,8 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Provider } from 'src/interfaces/account/provider';
+import { FormBuilder} from '@angular/forms';
+import { Validators } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 
 import { Complex } from 'src/interfaces/complex';
 // import { MapsService } from '../services/maps.service';
@@ -7,7 +10,6 @@ import { Complex } from 'src/interfaces/complex';
 import { Amenity } from 'src/interfaces/amenity';
 // import { RedirectService } from '../services/redirect.service';
 // import { TestServiceData } from 'src/app/services/static-test-data';
-
 @Component({
   selector: 'dev-add-complex',
   templateUrl: './add-complex.component.html',
@@ -16,10 +18,15 @@ import { Amenity } from 'src/interfaces/amenity';
 export class AddComplexComponent implements OnInit {
   // the values to the provider object are set on initialization
   currentProvider: Provider;
-
+  isLinear = false;
+  firstFormGroup: FormGroup;
+  secondFormGroup: FormGroup;
+  thirdFormGroup: FormGroup;
+  
   // TODO: POPULATE THIS
   amenityList: Amenity[];
-
+  
+  
   @Output() modeOutput: EventEmitter<string> = new EventEmitter<string>();
 
   // seededAmenityList = TestServiceData.dummyAmenityList1; // seed for simulating all amenities
@@ -39,6 +46,7 @@ export class AddComplexComponent implements OnInit {
     // private mapsService: MapsService,
     // private providerService: ProviderService,
     // private redirect: RedirectService
+    private _formBuilder: FormBuilder
   ) {
     // Populate default form values
     this.formLivingComplex = {
@@ -66,6 +74,15 @@ export class AddComplexComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.firstFormGroup = this._formBuilder.group({
+      firstCtrl: ['', Validators.required]
+    });
+    this.secondFormGroup = this._formBuilder.group({
+      secondCtrl: ['', Validators.required]
+    });
+    this.thirdFormGroup = this._formBuilder.group({
+      thirdCtrl: ['',Validators.required]
+    });
     // This is not how redirects should work if no provider is selected.
     // It is likely a guard will need to be implemented to accomplish this task.
     // this.currentProvider = this.redirect.checkProvider();
@@ -75,6 +92,8 @@ export class AddComplexComponent implements OnInit {
     //   });
     // }
   }
+
+  
 
   // this method is called when the Submit button is clicked
   postLivingComplex(): void {

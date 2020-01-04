@@ -6,6 +6,9 @@ import {
   MatCardModule,
   MatPaginatorModule, MatTableModule
 } from '@angular/material';
+import { FormBuilder} from '@angular/forms';
+import { Validators } from '@angular/forms';
+import { MatStepperModule } from '@angular/material/stepper';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
@@ -35,7 +38,8 @@ describe('ManageComplexComponent', () => {
         MatTableModule, MatPaginatorModule,
         NoopAnimationsModule, MatMomentDateModule,
         MatChipsModule, MatIconModule,
-        MatExpansionModule, MatCheckboxModule
+        MatExpansionModule, MatCheckboxModule,
+        MatStepperModule, 
       ],
       declarations: [
         ManageComplexComponent, AddRoomComponent,
