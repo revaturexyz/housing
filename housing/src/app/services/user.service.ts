@@ -28,18 +28,16 @@ export class UserService {
 
 
       this.getAccessToken().subscribe((res) => {
-        // atob decodes a Base64-encoded string
+        let roleString = 'role';
+        let emailString = 'sub';
 
+        // atob decodes a Base64-encoded string
         decodedToken = atob(res.split('.')[1]);
-        this.roles.next(JSON.parse(decodedToken)['role']);
-        this.email.next(JSON.parse(decodedToken)['sub']);
+        this.roles.next(JSON.parse(decodedToken)[roleString]);
+        this.email.next(JSON.parse(decodedToken)[emailString]);
       });
 
     });
-  }
-
-  public getAccessToken(): Observable<any> {
-    return from(this.oktaAuth.getAccessToken());
   }
 
   private userId: BehaviorSubject<string> = new BehaviorSubject('');
@@ -51,5 +49,8 @@ export class UserService {
   private email: BehaviorSubject<string> = new BehaviorSubject('');
   public readonly Email$: Observable<string> = this.email.asObservable();
 
+  public getAccessToken(): Observable<any> {
+    return from(this.oktaAuth.getAccessToken());
+  }
 
 }
