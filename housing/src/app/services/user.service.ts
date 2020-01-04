@@ -28,8 +28,8 @@ export class UserService {
 
 
       this.getAccessToken().subscribe((res) => {
-        let roleString = 'role';
-        let emailString = 'sub';
+        const roleString = 'role';
+        const emailString = 'sub';
 
         // atob decodes a Base64-encoded string
         decodedToken = atob(res.split('.')[1]);
