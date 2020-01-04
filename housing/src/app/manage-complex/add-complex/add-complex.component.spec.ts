@@ -17,7 +17,7 @@ describe('AddComplexComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        FormsModule, 
+        FormsModule,
         ReactiveFormsModule,
         MatFormFieldModule,
         MatSelectModule,

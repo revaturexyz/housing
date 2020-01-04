@@ -9,16 +9,16 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StickyNavModule } from 'ng2-sticky-nav';
 import {
-  MatChipsModule, 
+  MatChipsModule,
   MatTableModule,
   MatDialogModule,
-  MatPaginatorModule, 
+  MatPaginatorModule,
   MatFormFieldModule,
-  MatSelectModule, 
-  MatSidenavModule, 
-  MatIconModule, 
+  MatSelectModule,
+  MatSidenavModule,
+  MatIconModule,
   MatButtonModule,
-  MatDividerModule, 
+  MatDividerModule,
   MatListModule,
   MatExpansionModule,
   MatInputModule

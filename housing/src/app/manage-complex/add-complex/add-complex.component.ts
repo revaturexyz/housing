@@ -22,11 +22,9 @@ export class AddComplexComponent implements OnInit {
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
   thirdFormGroup: FormGroup;
-  
   // TODO: POPULATE THIS
   amenityList: Amenity[];
-  
-  
+
   @Output() modeOutput: EventEmitter<string> = new EventEmitter<string>();
 
   // seededAmenityList = TestServiceData.dummyAmenityList1; // seed for simulating all amenities
@@ -46,7 +44,7 @@ export class AddComplexComponent implements OnInit {
     // private mapsService: MapsService,
     // private providerService: ProviderService,
     // private redirect: RedirectService
-    private _formBuilder: FormBuilder
+    private formBuilder: FormBuilder
   ) {
     // Populate default form values
     this.formLivingComplex = {
@@ -74,14 +72,14 @@ export class AddComplexComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.firstFormGroup = this._formBuilder.group({
+    this.firstFormGroup = this.formBuilder.group({
       firstCtrl: ['', Validators.required]
     });
-    this.secondFormGroup = this._formBuilder.group({
+    this.secondFormGroup = this.formBuilder.group({
       secondCtrl: ['', Validators.required]
     });
-    this.thirdFormGroup = this._formBuilder.group({
-      thirdCtrl: ['',Validators.required]
+    this.thirdFormGroup = this.formBuilder.group({
+      thirdCtrl: ['', Validators.required]
     });
     // This is not how redirects should work if no provider is selected.
     // It is likely a guard will need to be implemented to accomplish this task.
@@ -93,7 +91,7 @@ export class AddComplexComponent implements OnInit {
     // }
   }
 
-  
+
 
   // this method is called when the Submit button is clicked
   postLivingComplex(): void {

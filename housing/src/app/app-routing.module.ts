@@ -23,7 +23,7 @@ const routes: Routes = [
   { path: 'coordinator-notifications', component: CoordinatorNotificationsComponent, canActivate: [AuthGuard] },
   { path: 'edit-provider', component: EditProviderComponent, canActivate: [AuthGuard] },
   { path: 'provider-status', component: ProviderStatusComponent, canActivate: [AuthGuard] },
-  { path: 'manage-complex', component: ManageComplexComponent, canActivate: [AuthGuard] },
+  { path: 'manage-complex', component: ManageComplexComponent, },
   { path: 'add-tenant', component: AddTenantComponent },
 ];
 

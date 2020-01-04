@@ -6,6 +6,7 @@ import { Complex } from 'src/interfaces/complex';
 import { Gender } from 'src/interfaces/gender';
 import { RoomType } from 'src/interfaces/room-type';
 import { Amenity } from 'src/interfaces/amenity';
+import { FormGroup } from '@angular/forms';
 
 // import { TestServiceData } from 'src/app/services/static-test-data';
 
@@ -20,8 +21,10 @@ export class AddRoomComponent implements OnInit {
   genderTypes: Gender[];
   roomTypes: RoomType[];
   amenityList: Amenity[];
+
   // Init Form
   formRoom: Room;
+
   // For all select form inputs to show invalid on validation checks.
   public selectOptionRoomTypeInvalid = '';
   public selectOptionGenderInvalid = '';

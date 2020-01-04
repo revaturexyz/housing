@@ -39,7 +39,7 @@ describe('ManageComplexComponent', () => {
         NoopAnimationsModule, MatMomentDateModule,
         MatChipsModule, MatIconModule,
         MatExpansionModule, MatCheckboxModule,
-        MatStepperModule, 
+        MatStepperModule,
       ],
       declarations: [
         ManageComplexComponent, AddRoomComponent,
