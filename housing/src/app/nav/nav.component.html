@@ -7,31 +7,31 @@
       </button>
 
       <!-- ride-side justification, added through nav css -->
-      <span class="menu-space"></span>
+      <span class="menu-spacer"></span>
 
       <!-- links from toolbar -->
       <div>
         <a mat-button routerLink="">Home</a>
 
         <!-- if a limited provider is signed in -->
-        <a mat-button *ngIf="auth.loggedIn && role !== 'coordinator'"><a routerLink="provider-status">Status</a></a>
-        <a mat-button *ngIf="auth.loggedIn && role !== 'coordinator'"><a routerLink="edit-provider">Profile</a></a>
+        <a mat-button *ngIf="auth.loggedIn && role !== 'coordinator'" routerLink="provider-status">Status</a>
+        <a mat-button *ngIf="auth.loggedIn && role !== 'coordinator'" routerLink="edit-provider">Profile</a>
 
         <!-- if a full access provider is signed in -->
-        <a mat-button *ngIf="auth.loggedIn && role !== 'coordinator'"><a routerLink="manage-complex">Manage Complexes</a></a>
+        <a mat-button *ngIf="auth.loggedIn && role !== 'coordinator'" routerLink="manage-complex">Manage Complexes</a>
 
         <!-- if a coordinator is signed in -->
-        <a mat-button *ngIf="auth.loggedIn && role === 'coordinator'"><a routerLink="coordinator-notifications">Notifications</a></a>
-        <a mat-button *ngIf="auth.loggedIn && role === 'coordinator'"><a routerLink="add-tenant">Add Tenant</a></a>
-        <a mat-button *ngIf="auth.loggedIn && role === 'coordinator'"><a routerLink="search-tenant">Search Tenants</a></a>
+        <a mat-button *ngIf="auth.loggedIn && role === 'coordinator'" routerLink="coordinator-notifications">Notifications</a>
+        <a mat-button *ngIf="auth.loggedIn && role === 'coordinator'" routerLink="add-tenant">Add Tenant</a>
+        <a mat-button *ngIf="auth.loggedIn && role === 'coordinator'" routerLink="search-tenant">Search Tenants</a>
 
         <!-- everyon can view this -->
 
         <a mat-button href="https://revature.com/our-story/" target="_blank" rel="noopener noreferrer">About Us</a>
 
         <!-- login/logout -->
-        <a mat-flat-button color=orange *ngIf="!auth.loggedIn"><a (click)="auth.login()">Login</a></a>
-        <a mat-flat-button color=orange *ngIf="auth.loggedIn"><a (click)="auth.logout()">Logout</a></a>
+        <a mat-flat-button *ngIf="!auth.loggedIn" (click)="auth.login()" color="primary">Login</a>
+        <a mat-flat-button *ngIf="auth.loggedIn" (click)="auth.logout()" color="primary">Logout</a>
       </div>
     </mat-toolbar>
   </div>
