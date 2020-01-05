@@ -5,6 +5,7 @@ import { Room } from '../../../interfaces/room';
 // import { TestServiceData } from 'src/app/services/static-test-data';
 import * as moment from 'moment';
 import { ManageComplexComponent } from '../manage-complex.component';
+import { MockRooms } from '../mock-rooms';
 
 @Component({
   selector: 'dev-complex-details',
@@ -24,73 +25,12 @@ export class ComplexDetailsComponent implements OnInit {
   @Output() targetRoomOutput: EventEmitter<Room> = new EventEmitter<Room>();
 
   // seededRooms =>
-  testroom: Room = {
-    roomId: 1,
-    apiAddress: {addressId: 1,
-      streetAddress: 'string',
-      city: 'c',
-      state: 'state',
-      zipcode: '12345'
-    },
-    roomNumber: '1221',
-    numberOfBeds: 4,
-    apiRoomType: {typeId: 1,
-      roomType: 'string'
-    },
-    isOccupied: true,
-    apiAmenity: [{
-      amenityId: 2,
-      amenity: "balcony",
-      isSelected: true
-    },
-    { amenityId: 3,
-      amenity: "stove",
-      isSelected: true
-    }],
-    startDate: new Date(),
-    endDate: new Date(),
-    apiComplex: null,
-    gender: {genderId: 1,
-      genderType: 'male'
-    }
-  };
-
-  testroom2: Room = {
-    roomId: 1,
-    apiAddress: {addressId: 1,
-      streetAddress: 'string',
-      city: 'c',
-      state: 'state',
-      zipcode: '12345'
-    },
-    roomNumber: '1221',
-    numberOfBeds: 4,
-    apiRoomType: {typeId: 1,
-      roomType: 'string'
-    },
-    isOccupied: true,
-    apiAmenity: [{
-      amenityId: 2,
-      amenity: "balcony",
-      isSelected: true
-    },
-    { amenityId: 3,
-      amenity: "stove",
-      isSelected: true
-    }],
-    startDate: new Date(),
-    endDate: new Date(),
-    apiComplex: null,
-    gender: {genderId: 1,
-      genderType: 'male'
-    }
-  };
-
+  mockrooms = new MockRooms();
   public seededRooms: Room[] = [
-    // TestServiceData.room,
-    // TestServiceData.room2
-    this.testroom
+    // this.mockrooms.testroom,
+    // this.mockrooms.testroom2
   ];
+
   // id's for columns on material table
   displayedColumns = ['room#', 'start', 'end', 'edit', 'show'];
   // data source for material table
