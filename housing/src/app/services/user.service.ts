@@ -10,7 +10,9 @@ import { environment } from 'src/environments/environment';
 })
 export class UserService {
 
-  constructor(private account: AccountService, private auth: AuthService, private oktaAuth: OktaAuthService) {
+  constructor(private account: AccountService, private auth: AuthService) {
+
+  // , private oktaAuth: OktaAuthService) {
     let decodedToken: string;
     this.UserId$.subscribe(currentUserId => {
       if (currentUserId === '') {
@@ -19,23 +21,22 @@ export class UserService {
         });
       }
 
-      // auth.getTokenSilently$().subscribe(res => {
-      //   // atob decodes a Base64-encoded string
-      //   decodedToken = atob(res.split('.')[1]);
-      //   this.roles.next(JSON.parse(decodedToken)[environment.claimsDomain + 'roles']);
-      //   this.email.next(JSON.parse(decodedToken)[environment.claimsDomain + 'email']);
-      // });
-
-
-      this.getAccessToken().subscribe((res) => {
-        const roleString = 'role';
-        const emailString = 'sub';
-
+      auth.getTokenSilently$().subscribe(res => {
         // atob decodes a Base64-encoded string
         decodedToken = atob(res.split('.')[1]);
-        this.roles.next(JSON.parse(decodedToken)[roleString]);
-        this.email.next(JSON.parse(decodedToken)[emailString]);
+        this.roles.next(JSON.parse(decodedToken)[environment.claimsDomain + 'roles']);
+        this.email.next(JSON.parse(decodedToken)[environment.claimsDomain + 'email']);
       });
+
+      // this.getAccessToken().subscribe((res) => {
+      //   const roleString = 'role';
+      //   const emailString = 'sub';
+
+      //   // atob decodes a Base64-encoded string
+      //   decodedToken = atob(res.split('.')[1]);
+      //   this.roles.next(JSON.parse(decodedToken)[roleString]);
+      //   this.email.next(JSON.parse(decodedToken)[emailString]);
+      // });
 
     });
   }
@@ -49,8 +50,8 @@ export class UserService {
   private email: BehaviorSubject<string> = new BehaviorSubject('');
   public readonly Email$: Observable<string> = this.email.asObservable();
 
-  public getAccessToken(): Observable<any> {
-    return from(this.oktaAuth.getAccessToken());
-  }
+  // public getAccessToken(): Observable<any> {
+  //   return from(this.oktaAuth.getAccessToken());
+  // }
 
 }
