@@ -57,8 +57,8 @@ describe('ManageComplexComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should have directions', () => {
-    const messageSelector = fixture.debugElement.query(By.css('#welcome-directions')).nativeElement;
+  it('should have initial content', () => {
+    const messageSelector = fixture.debugElement.query(By.css('#initial-content')).nativeElement;
     expect(messageSelector).toBeTruthy();
   });
 });
