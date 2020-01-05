@@ -19,10 +19,10 @@ export class ManageComplexComponent implements OnInit {
 
     public dummyAmenity: Amenity = {
         amenityId: 1,
-        amenity: "pool",
+        amenity: 'pool',
         isSelected: true,
       };
-    
+
       public dummyAddress: Address = {
         addressId: 1,
         streetAddress: '123 Sesame St',
@@ -30,11 +30,11 @@ export class ManageComplexComponent implements OnInit {
         state: 'TX',
         zipcode: '12345'
       };
-    
+
       public dummyStatus: Status = {
         statusText: 'approved'
-      }
-    
+      };
+
       public dummyProvider: Provider  = {
         providerId: 1,
         coordinatorId: '1',
@@ -44,7 +44,7 @@ export class ManageComplexComponent implements OnInit {
         accountCreatedAt: new Date(),
         accountExpiresAt: new Date(),
       };
-    
+
       public dummyComplex: Complex = {
         complexId: 1,
         apiAddress: this.dummyAddress,
@@ -98,10 +98,4 @@ export class ManageComplexComponent implements OnInit {
     changeTargetRoom(reqRoom: Room) {
         this.targetRoom = reqRoom;
     }
-
-    // complexControl: Complex;
-    // onSelect(complex:Complex): void {
-    //     this.complexControl = complex;
-    // }  
-
 }
