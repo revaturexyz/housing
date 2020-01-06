@@ -61,4 +61,16 @@ describe('ManageComplexComponent', () => {
     const messageSelector = fixture.debugElement.query(By.css('#initial-content')).nativeElement;
     expect(messageSelector).toBeTruthy();
   });
+
+  it('should have a view complexes button', () => {
+    const buttonSelector = fixture.debugElement.query(By.css('#view-complexes-button')).nativeElement;
+    fixture.detectChanges();
+    expect(buttonSelector).toBeTruthy();
+  });
+
+  it('should have a manage complexes button', () => {
+    const buttonSelector = fixture.debugElement.query(By.css('#manage-complexes-button')).nativeElement;
+    fixture.detectChanges();
+    expect(buttonSelector).toBeTruthy();
+  });
 });

@@ -3,8 +3,8 @@
       <mat-card style="background-color: lightgray;">
           <mat-card-header>
               <mat-card-actions>
-                  <button mat-button (click)="changeMode('init')">VIEW COMPLEXES</button>
-                  <button mat-button (click)="changeMode('add-complex')">ADD COMPLEX</button>
+                  <button mat-button (click)="changeMode('init')" id="view-complexes-button">VIEW COMPLEXES</button>
+                  <button mat-button (click)="changeMode('add-complex')" id="manage-complexes-button">ADD COMPLEX</button>
                   <mat-form-field>
                       <mat-label>Select Complex</mat-label>
                       <mat-select (ngModelChange)="changeMode($event)" class="selector w-100" placeholder="Complex"
@@ -16,7 +16,6 @@
                       </mat-select>
                   </mat-form-field>
               </mat-card-actions>
-            <!-- <mat-card-title>Manage Complexes</mat-card-title> -->
           </mat-card-header>
           <mat-card-content>
             <div class="row">
