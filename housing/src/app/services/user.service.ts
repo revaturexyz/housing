@@ -10,11 +10,7 @@ import { environment } from 'src/environments/environment';
 })
 export class UserService {
 
-  constructor(private account: AccountService
-    // , private auth: AuthService) {
-
-  , private auth: OktaAuthService) {
-
+  constructor(private account: AccountService, private auth: OktaAuthService) {
     let decodedToken: string;
     this.UserId$.subscribe(currentUserId => {
       if (currentUserId === '') {

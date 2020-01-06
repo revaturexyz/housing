@@ -18,7 +18,7 @@ describe('UserService', () => {
     responseType: ['code'],
     pkce: true,
   };
-  
+
 
   beforeEach(async(() => TestBed.configureTestingModule({
     imports: [RouterTestingModule.withRoutes([
@@ -38,7 +38,7 @@ describe('UserService', () => {
     })
   ));
 
-  it('should be created', inject([AccountService,OktaAuthService], (service:UserService) => {
+  it('should be created', inject([AccountService, OktaAuthService], (service: UserService) => {
     // const service: UserService = TestBed.get(UserService);
     expect(service).toBeTruthy();
   }));
