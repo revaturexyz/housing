@@ -37,6 +37,7 @@ import { ShowRoomComponent } from './manage-complex/show-room/show-room.componen
 import { AddComplexComponent } from './manage-complex/add-complex/add-complex.component';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { AddTenantComponent } from './add-tenant/add-tenant.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { AddTenantComponent } from './add-tenant/add-tenant.component';
     ShowRoomComponent,
     AddComplexComponent,
     AddRoomComponent,
-    AddTenantComponent
+    AddTenantComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
