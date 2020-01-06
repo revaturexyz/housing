@@ -57,4 +57,8 @@ describe('AddRoomComponent', () => {
     fixture.detectChanges();
     expect(buttonSelector.valid).toBeFalsy();
   });
+
+  it('should post details', () => {
+    
+  })
 });
