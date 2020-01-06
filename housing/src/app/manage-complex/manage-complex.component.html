@@ -1,32 +1,37 @@
-<div class="row" style="height: fit-content; width: 100%;">
-  <div class="col-12" style="padding: inherit;">
-      <mat-card style="height: 100%; padding: inherit;">
-          <mat-card-actions>
-              <button mat-button (click)="changeMode('init')">MANAGE COMPLEXES</button>
-              <!-- <button mat-button>View Complexes</button> -->
-              <button mat-button (click)="changeMode('add-complex')">ADD COMPLEX</button>
-          </mat-card-actions>
+<div class="row">
+  <div class="col-12">
+      <mat-card style="background-color: lightgray;">
           <mat-card-header>
-            <mat-card-title>Manage Complexes</mat-card-title>
+              <mat-card-actions>
+                  <button mat-button (click)="changeMode('init')">VIEW COMPLEXES</button>
+                  <button mat-button (click)="changeMode('add-complex')">ADD COMPLEX</button>
+                  <mat-form-field>
+                      <mat-label>Select Complex</mat-label>
+                      <mat-select (ngModelChange)="changeMode($event)" class="selector w-100" placeholder="Complex"
+                          [formControl]="complexControl">
+                          <mat-option [value]="'init'">--</mat-option>
+                          <mat-option *ngFor="let complex of seededComplexes" [value]="complex">
+                          {{complex.complexName}}
+                          </mat-option>
+                      </mat-select>
+                  </mat-form-field>
+              </mat-card-actions>
+            <!-- <mat-card-title>Manage Complexes</mat-card-title> -->
           </mat-card-header>
           <mat-card-content>
-
             <div class="row">
-              <div class="col-12 text-center" id="initial-content" *ngIf="mode=='init'">
-                  <h2>SELECT COMPLEX</h2>
-                          <mat-form-field>
-                              <mat-label>Select Complex</mat-label>
-                              <mat-select (ngModelChange)="changeMode($event)" class="selector w-100" placeholder="Complex"
-                                  [formControl]="complexControl" required>
-                                  <mat-option [value]="'init'">--</mat-option>
-                                  <mat-option *ngFor="let complex of seededComplexes" [value]="complex">
-                                  {{complex.complexName}}
-                                  </mat-option>
-                                  <mat-option [value]="'add-complex'">
-                                  Add a Complex
-                                  </mat-option>
-                              </mat-select>
-                          </mat-form-field>
+              <div class="col-12" id="initial-content" *ngIf="mode=='init'">
+                  <!-- <h4>SELECT COMPLEX</h4>
+                    <mat-form-field>
+                        <mat-label>Select Complex</mat-label>
+                        <mat-select (ngModelChange)="changeMode($event)" class="selector w-100" placeholder="Complex"
+                            [formControl]="complexControl" required>
+                            <mat-option [value]="'init'">--</mat-option>
+                            <mat-option *ngFor="let complex of seededComplexes" [value]="complex">
+                            {{complex.complexName}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field> -->
                   <div class="row">
                     <div class="col-3" *ngFor="let complex of seededComplexes" >
                         <mat-card>
@@ -49,7 +54,6 @@
                               </p>
                             </mat-card-content>
                             <mat-card-actions>
-                                <!-- <button mat-flat-button (click)="changeMode('edit-complex')" [value]="complex" [formControl]="complexControl">EDIT COMPLEX</button> -->
                             </mat-card-actions>
                           </mat-card>
                     </div>
@@ -61,11 +65,9 @@
                       <mat-label>Select a Complex</mat-label>
                       <mat-select (ngModelChange)="changeMode($event)" class="selector w-100" placeholder="Complex"
                           [formControl]="complexControl">
+                          <mat-option [value]="'init'">--</mat-option>
                           <mat-option *ngFor="let complex of seededComplexes" [value]="complex">
                           {{complex.complexName}}
-                          </mat-option>
-                          <mat-option [value]="'add-complex'">
-                          Add a Complex
                           </mat-option>
                       </mat-select>
                   </mat-form-field>
@@ -124,7 +126,6 @@
                 <dev-edit-complex *ngIf=""></dev-edit-complex>
 
               </div>
-
               <div class="col-12">
                 <!--If provider chooses to add a complex, replace former div to show form to add a complex-->
                 <dev-add-complex *ngIf="mode=='add-complex'" (modeOutput)="changeMode($event)"></dev-add-complex>
@@ -132,7 +133,7 @@
 
             </div>
           </mat-card-content>
-        </mat-card>
+      </mat-card>
         
   </div>
 </div>
