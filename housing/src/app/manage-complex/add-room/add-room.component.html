@@ -52,13 +52,15 @@
             <mat-chip-list #chipList>
               <mat-chip *ngFor="let amenity of amenityList" [selectable]="selectable" [removable]="removable" (removed)="remove(amenity)">
                 {{amenity.amenity}}
+                <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
               </mat-chip>
+              <!-- <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon> -->
               <input placeholder="New Amenity..." [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="add($event)">
             </mat-chip-list>
           </mat-form-field>
           <div>
             <button mat-button matStepperPrevious>Back</button>
-            <button mat-button id="postAddRoom" (click)="postAddRoom()">Subtmit</button>
+            <button mat-button id="postAddRoom" (click)="postAddRoom()">Submit</button>
           </div>
         </mat-step>
     </mat-horizontal-stepper>
