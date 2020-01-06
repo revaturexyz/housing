@@ -55,13 +55,11 @@
             Please add any amenities
           </div>
           <mat-form-field appearance="legacy">
-            <!--  works but looks funky <button mat-button><i class="fas fa-plus"></i>Add amenity</button> -->
-            <mat-chip-list #chipList name="formRoom.apiAmenity" [(ngModel)]="formRoom.apiAmenity" #amenity="ngModel" id="amenity">
-              <mat-chip *ngFor="let amenity of amenityList" [value]="amenity" [selectable]="selectable" [removable]="removable" (removed)="remove(amenity)">
-                {{ amenity.amenity }}
-                <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+            <mat-chip-list #chipList>
+              <mat-chip *ngFor="let amenity of amenityList" [selectable]="selectable" [removable]="removable" (removed)="remove(amenity)">
+                {{amenity.amenity}}
               </mat-chip>
-              <input placeholder="New Ammenity" [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="add($event)">
+              <input placeholder="New Amenity..." [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="add($event)">
             </mat-chip-list>
           </mat-form-field>
           <div>
