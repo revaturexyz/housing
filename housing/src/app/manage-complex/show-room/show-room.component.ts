@@ -8,7 +8,7 @@ import {trigger, animate, style, group, animateChild, query, stagger, transition
   selector: 'dev-show-room',
   templateUrl: './show-room.component.html',
   styleUrls: ['./show-room.component.scss'],
-  animations:[
+  animations: [
     trigger('show', [
         transition(':enter', [
             style({ opacity: 0 }),

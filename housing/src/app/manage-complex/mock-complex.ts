@@ -9,7 +9,7 @@ export class MockComplex {
 
   public amenity: Amenity = {
     amenityId: 1,
-    amenity: "pool",
+    amenity: 'pool',
     isSelected: true,
   };
   public address: Address = {
@@ -21,7 +21,7 @@ export class MockComplex {
   };
   public status: Status = {
     statusText: 'approved'
-  }
+  };
   public provider: Provider  = {
     providerId: 1,
     coordinatorId: '1',

@@ -18,11 +18,11 @@ export class MockRooms {
     isOccupied: true,
     apiAmenity: [{
       amenityId: 2,
-      amenity: "balcony",
+      amenity: 'balcony',
       isSelected: true
     },
     { amenityId: 3,
-      amenity: "stove",
+      amenity: 'stove',
       isSelected: true
     }],
     startDate: new Date(),
@@ -32,7 +32,7 @@ export class MockRooms {
       genderType: 'male'
     }
   };
-  
+
   public testroom2: Room = {
     roomId: 2,
     apiAddress: {addressId: 1,
@@ -49,11 +49,11 @@ export class MockRooms {
     isOccupied: true,
     apiAmenity: [{
       amenityId: 2,
-      amenity: "balcony",
+      amenity: 'balcony',
       isSelected: true
     },
     { amenityId: 3,
-      amenity: "stove",
+      amenity: 'stove',
       isSelected: true
     }],
     startDate: new Date(),
@@ -63,7 +63,7 @@ export class MockRooms {
       genderType: 'male'
     }
   };
-  
+
   public testrooms: Room[] = [this.testroom, this.testroom2];
 
 }
