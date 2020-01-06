@@ -178,6 +178,11 @@ button {
   overflow: auto;
 }
 
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
 .add-room-btn {
   background-color: grey;
   border-radius: 5px;
@@ -193,7 +198,7 @@ button {
 .sbutton {
   text-align: center;
   display: block;
-  margin-left: 30%;
+  margin-left: 0%;
   padding-right: 0%;
 }
 
@@ -201,7 +206,7 @@ button {
   text-align: center;
   display: block;
   margin: 0 auto;
-  margin-left: 80%;
+  margin-left: 10%;
 }
 
 table th {

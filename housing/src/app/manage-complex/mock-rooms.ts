@@ -10,7 +10,7 @@ export class MockRooms {
       state: 'state',
       zipcode: '12345'
     },
-    roomNumber: '1221A',
+    roomNumber: '1221',
     numberOfBeds: 4,
     apiRoomType: {typeId: 1,
       roomType: 'string'
@@ -41,7 +41,7 @@ export class MockRooms {
       state: 'state',
       zipcode: '12345'
     },
-    roomNumber: '1221B',
+    roomNumber: '1222',
     numberOfBeds: 4,
     apiRoomType: {typeId: 1,
       roomType: 'string'
@@ -61,6 +61,37 @@ export class MockRooms {
     apiComplex: null,
     gender: {genderId: 1,
       genderType: 'male'
+    }
+  };
+
+  public testroom3: Room = {
+    roomId: 3,
+    apiAddress: {addressId: 1,
+      streetAddress: 'string',
+      city: 'c',
+      state: 'state',
+      zipcode: '12345'
+    },
+    roomNumber: '1223',
+    numberOfBeds: 4,
+    apiRoomType: {typeId: 1,
+      roomType: 'string'
+    },
+    isOccupied: true,
+    apiAmenity: [{
+      amenityId: 2,
+      amenity: 'balcony',
+      isSelected: true
+    },
+    { amenityId: 3,
+      amenity: 'stove',
+      isSelected: true
+    }],
+    startDate: new Date(),
+    endDate: new Date(),
+    apiComplex: null,
+    gender: {genderId: 1,
+      genderType: 'female'
     }
   };
 
