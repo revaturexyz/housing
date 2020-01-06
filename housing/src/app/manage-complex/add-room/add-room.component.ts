@@ -22,7 +22,7 @@ export class AddRoomComponent implements OnInit {
   // TODO: POPULATE THESE
   genderTypes: Gender[];
   roomTypes: RoomType[];
-  //amenityList: Amenity[];
+  // amenityList: Amenity[];
   formRoom: Room;
   // Init Form
   // For all select form inputs to show invalid on validation checks.
@@ -42,14 +42,14 @@ export class AddRoomComponent implements OnInit {
 
   amenityList: Amenity[] = [
     {amenity: 'Fridge', amenityId: this.increment, isSelected: true},
-    {amenity: 'Microwave', amenityId: this.increment+1, isSelected: true},
+    {amenity: 'Microwave', amenityId: this.increment + 1, isSelected: true},
   ];
 
   add(event: MatChipInputEvent): void {
     const input = event.input;
     const value = event.value;
     this.increment++;
-    
+
     if ((value || '').trim()) {
       this.amenityList.push({amenity: value.trim(),
       amenityId: this.increment,
