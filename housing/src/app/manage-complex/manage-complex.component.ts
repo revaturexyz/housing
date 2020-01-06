@@ -22,7 +22,7 @@ export class ManageComplexComponent implements OnInit {
     // TestServiceData.dummyComplex2,
     // TestServiceData.dummyComplex,
     // TestServiceData.dummyComplex2
-    // this.mockComplex.complex
+    this.mockComplex.complex
   ];
 
   // mode selection =>

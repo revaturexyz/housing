@@ -2,10 +2,11 @@ import { Component, OnInit, Input, ViewChild, EventEmitter, Output } from '@angu
 import { Complex } from 'src/interfaces/complex';
 import { MatPaginator, MatTableDataSource } from '@angular/material';
 import { Room } from '../../../interfaces/room';
-// import { TestServiceData } from 'src/app/services/static-test-data';
 import * as moment from 'moment';
 import { ManageComplexComponent } from '../manage-complex.component';
 import { MockRooms } from '../mock-rooms';
+// import {trigger, animate, style, group, animateChild, query, stagger, transition, state} from '@angular/animations';
+
 
 @Component({
   selector: 'dev-complex-details',
@@ -27,8 +28,8 @@ export class ComplexDetailsComponent implements OnInit {
   // seededRooms =>
   mockrooms = new MockRooms();
   public seededRooms: Room[] = [
-    // this.mockrooms.testroom,
-    // this.mockrooms.testroom2
+    this.mockrooms.testroom,
+    this.mockrooms.testroom2
   ];
 
   // id's for columns on material table

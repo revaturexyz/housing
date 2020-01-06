@@ -4,7 +4,7 @@
   <h5>Room {{ targetRoom.roomNumber }}</h5>
   <hr class="main-hr" />
   <div class="details">
-      <table class = "left-align">
+      <table>
         <tr>
         <td><strong>Number of beds: </strong></td>
         <td>{{ targetRoom.numberOfBeds }}</td>
@@ -31,13 +31,19 @@
     </div>
   </div>
   <hr />
-  <div>
-    <button class="show-room-btn" (click)="handleBackButton()">
+  <!-- <button (click)="show=!show">Click me to reveal or hide the input area</button>
+  <br><br><br>
+  <div *ngIf="show" @show>
+    <label>User Name</label>
+    <input type="text">
+  </div> -->
+</div>
+<div>
+    <button class="show-room-btn" (click)="handleBackButton()" id = "back-button">
       <strong>
         &lt; Go back
       </strong>
     </button>
-  </div>
 </div>
 <!-- Alternate view if a complex is not selected and this page is
 shown -->

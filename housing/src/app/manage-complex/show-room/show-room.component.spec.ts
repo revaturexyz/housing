@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatChipsModule } from '@angular/material/chips';
 import { ShowRoomComponent } from './show-room.component';
 import { Room } from 'src/interfaces/room';
+import { By } from '@angular/platform-browser';
 
 describe('ShowRoomComponent', () => {
   let component: ShowRoomComponent;
@@ -23,5 +24,11 @@ describe('ShowRoomComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should have back button', () => {
+    const buttonSelector = fixture.debugElement.query(By.css('#back-button')).nativeElement;
+    fixture.detectChanges();
+    expect(buttonSelector).toBeTruthy();
   });
 });
