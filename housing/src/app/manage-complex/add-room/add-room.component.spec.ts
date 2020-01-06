@@ -58,7 +58,7 @@ describe('AddRoomComponent', () => {
     expect(buttonSelector.valid).toBeFalsy();
   });
 
-  it('should post details', () => {
-    
-  })
+  // it('should post details', () => {
+
+  // });
 });
