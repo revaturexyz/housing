@@ -50,9 +50,44 @@
   text-transform: uppercase;
 }
 
-.menubar li:hover {
-  border-bottom: 2px solid darkorange;
+#menubar a:hover {
+  // text-decoration-line: #fb752c;
+  // text-decoration-color: #fb752c;
+  //border-bottom: 2px solid darkorange;
   cursor: pointer;
+}
+
+#menupiece a {
+  text-decoration-line: solid #fb752c 2px;
+  text-decoration-color: #fb752c 2px;
+  //border-bottom: solid #fb752c 2px;
+}
+
+#logout {
+  text-decoration-line: solid #fb752c;
+  text-decoration-color: #fb752c;
+  background-color: #fb752c;
+  color: #ffffff;
+}
+
+#login {
+  text-decoration-line: solid #fb752c;
+  text-decoration-color: #fb752c;
+  background-color: #fb752c;
+  color: #ffffff;
+}
+
+.menu div{
+  width: auto;
+  height: 100%;
+  margin: 10px;
+  border: 1px solid #555;
+  padding: 0 15px;
+}
+
+#menupiece a:hover {
+  background-color: #fb752c;
+  color: white;
 }
 
 .revlogo img {

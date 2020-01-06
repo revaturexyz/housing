@@ -10,7 +10,7 @@
       <span class="menu-spacer"></span>
 
       <!-- links from toolbar -->
-      <div>
+      <div id="menupiece" class="menu">
         <a mat-button routerLink="">Home</a>
 
         <!-- if a limited provider is signed in -->
@@ -30,8 +30,8 @@
         <a mat-button href="https://revature.com/our-story/" target="_blank" rel="noopener noreferrer">About Us</a>
 
         <!-- login/logout -->
-        <a mat-flat-button *ngIf="!auth.loggedIn" (click)="auth.login()" color="primary">Login</a>
-        <a mat-flat-button *ngIf="auth.loggedIn" (click)="auth.logout()" color="primary">Logout</a>
+        <a mat-flat-button id="login" *ngIf="!auth.loggedIn" (click)="auth.login()">Login</a>
+        <a mat-flat-button id="logout" *ngIf="auth.loggedIn" (click)="auth.logout()">Logout</a>
       </div>
     </mat-toolbar>
   </div>
