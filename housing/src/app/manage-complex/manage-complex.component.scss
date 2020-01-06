@@ -76,6 +76,15 @@
   #add-btn:hover {
     background-color: rgb(209, 206, 206);
   }
+
+  mat-card-actions button {
+    border-bottom: solid #fb752c 2px;
+  }
+
+  mat-card-actions button:hover {
+    background-color: #fb752c;
+    color: white;
+  }
   
   
   
