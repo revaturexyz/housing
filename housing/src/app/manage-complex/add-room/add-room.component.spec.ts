@@ -28,11 +28,11 @@ describe('AddRoomComponent', () => {
         FormsModule, ReactiveFormsModule,
         MatDatepickerModule, MatMomentDateModule,
         MatFormFieldModule, MatSelectModule,
-        MatInputModule, NoopAnimationsModule, 
-        MatStepperModule,  
-        MatChipsModule, MatTableModule, MatDialogModule, 
-        MatPaginatorModule, MatSidenavModule, 
-        MatIconModule, MatButtonModule, 
+        MatInputModule, NoopAnimationsModule,
+        MatStepperModule,
+        MatChipsModule, MatTableModule, MatDialogModule,
+        MatPaginatorModule, MatSidenavModule,
+        MatIconModule, MatButtonModule,
         MatDividerModule, MatListModule, MatExpansionModule
       ],
       declarations: [ AddRoomComponent ]
@@ -44,7 +44,7 @@ describe('AddRoomComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(AddRoomComponent);
     component = fixture.componentInstance;
-    //component.complexControl = TestServiceData.dummyComplex2;
+    // component.complexControl = TestServiceData.dummyComplex2;
     fixture.detectChanges();
   });
 

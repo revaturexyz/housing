@@ -23,8 +23,17 @@ export class AddRoomComponent implements OnInit {
   genderTypes: Gender[];
   roomTypes: RoomType[];
   amenityList: Amenity[];
+  formRoom: Room;
+  // Init Form
+  // For all select form inputs to show invalid on validation checks.
+  public selectOptionRoomTypeInvalid = '';
+  public selectOptionGenderInvalid = '';
+  // Makes currently selected complex information available
+  @Input() complexControl: Complex;
+  // Decorator to output the selected mode
+  @Output() modeOutput: EventEmitter<string> = new EventEmitter<string>();
 
-  visible =true;
+  visible = true;
   selectable = true;
   removable = true;
   addOnBlur = true;
@@ -34,14 +43,13 @@ export class AddRoomComponent implements OnInit {
     const input = event.input;
     const value = event.value;
 
-    if ((value || '').trim()){
-      this.amenityList
+    if ((value || '').trim()) {
       this.amenityList.push({amenity: value.trim(),
       amenityId: 1,
       isSelected: true});
     }
 
-    if(input){
+    if (input) {
       input.value = '';
     }
   }
@@ -49,19 +57,11 @@ export class AddRoomComponent implements OnInit {
   remove(amenity: Amenity): void {
     const index = this.amenityList.indexOf(amenity);
 
-    if(index >= 0) {
+    if (index >= 0) {
       this.amenityList.splice(index, 1);
     }
   }
-  // Init Form
-  formRoom: Room;
-  // For all select form inputs to show invalid on validation checks.
-  public selectOptionRoomTypeInvalid = '';
-  public selectOptionGenderInvalid = '';
-  // Makes currently selected complex information available
-  @Input() complexControl: Complex;
-  // Decorator to output the selected mode
-  @Output() modeOutput: EventEmitter<string> = new EventEmitter<string>();
+
 
   constructor() {
   }

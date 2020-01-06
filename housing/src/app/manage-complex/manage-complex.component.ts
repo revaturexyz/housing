@@ -21,7 +21,7 @@ export class ManageComplexComponent implements OnInit {
 
   public dummyAmenity: Amenity = {
     amenityId: 1,
-    amenity: "pool",
+    amenity: 'pool',
     isSelected: true,
   };
 
@@ -35,7 +35,7 @@ export class ManageComplexComponent implements OnInit {
 
   public dummyStatus: Status = {
     statusText: 'approved'
-  }
+  };
 
   public dummyProvider: Provider  = {
     providerId: 1,
