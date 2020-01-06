@@ -51,7 +51,19 @@
           </div>
         </mat-step>
         <mat-step label="Add Amenities">
-          this is where you will check off various amenities in the room
+          <div>
+            Please add any amenities
+          </div>
+          <mat-form-field appearance="legacy">
+            <!--  works but looks funky <button mat-button><i class="fas fa-plus"></i>Add amenity</button> -->
+            <mat-chip-list #chipList name="formRoom.apiAmenity" [(ngModel)]="formRoom.apiAmenity" #amenity="ngModel" id="amenity">
+              <mat-chip *ngFor="let amenity of amenityList" [value]="amenity" [selectable]="selectable" [removable]="removable" (removed)="remove(amenity)">
+                {{ amenity.amenity }}
+                <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+              </mat-chip>
+              <input placeholder="New Ammenity" [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="add($event)">
+            </mat-chip-list>
+          </mat-form-field>
           <div>
             <button mat-button matStepperPrevious>Back</button>
             <button mat-button matStepperNext>Next</button>
@@ -60,26 +72,3 @@
     </mat-horizontal-stepper>
   </div>
 </div>
-
-
-
-
-<!-- <div class="add-room-container" *ngIf="complexControl">
-        <mat-form-field>
-          <mat-label>Room Type</mat-label>
-          <mat-select>
-            <mat-option *ngFor="let roomType of roomTypes" ngValue="roomType">
-              {{ roomType.roomType }}
-            </mat-option>
-          </mat-select>
-          <div *ngIf="apiRoomType.invalid && apiRoomType.dirty" class="alert alert-danger">
-            A Room Type is Required
-          </div>
-        </mat-form-field>
-
-      </div>
-    </div>
-  </div>
-
-</div>
- -->

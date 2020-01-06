@@ -1,11 +1,14 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import * as _moment from 'moment';
 
+import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import { Room } from 'src/interfaces/room';
 import { Complex } from 'src/interfaces/complex';
 import { Gender } from 'src/interfaces/gender';
 import { RoomType } from 'src/interfaces/room-type';
 import { Amenity } from 'src/interfaces/amenity';
+import { MatChipInputEvent } from '@angular/material';
+import { MatStepperModule } from '@angular/material';
 
 // import { TestServiceData } from 'src/app/services/static-test-data';
 
@@ -20,6 +23,36 @@ export class AddRoomComponent implements OnInit {
   genderTypes: Gender[];
   roomTypes: RoomType[];
   amenityList: Amenity[];
+
+  visible =true;
+  selectable = true;
+  removable = true;
+  addOnBlur = true;
+  readonly separatorKeysCodes: number[] = [ENTER, COMMA];
+
+  add(event: MatChipInputEvent): void {
+    const input = event.input;
+    const value = event.value;
+
+    if ((value || '').trim()){
+      this.amenityList
+      this.amenityList.push({amenity: value.trim(),
+      amenityId: 1,
+      isSelected: true});
+    }
+
+    if(input){
+      input.value = '';
+    }
+  }
+
+  remove(amenity: Amenity): void {
+    const index = this.amenityList.indexOf(amenity);
+
+    if(index >= 0) {
+      this.amenityList.splice(index, 1);
+    }
+  }
   // Init Form
   formRoom: Room;
   // For all select form inputs to show invalid on validation checks.
@@ -37,7 +70,7 @@ export class AddRoomComponent implements OnInit {
     // Sets form defaults
     this.formRoom = {
       roomId: null,
-      apiAddress: this.complexControl.apiAddress,
+      apiAddress: null,
       roomNumber: '',
       numberOfBeds: null,
       apiRoomType: null,
