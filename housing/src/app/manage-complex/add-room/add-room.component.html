@@ -1,5 +1,5 @@
-<div class="add-room-container" *ngIf="complexControl">
-  <h3 class="add-room-header">Add a Room to {{complexControl.complexName}}</h3>
+<div class="add-room-container">
+  <h3 class="add-room-header">Add a Room to the Complex</h3>
   <div class="add-room-options">
     <mat-horizontal-stepper>
         <mat-step label="Room Number">
@@ -9,9 +9,6 @@
           <mat-form-field appearance="legacy">
             <mat-label>Room Number</mat-label>
             <input matInput type="text" id="roomNumber" name="roomNumber" #roomNumber="ngModel" [(ngModel)]="formRoom.roomNumber" placeholder="Room Number" required>
-            <div *ngIf="roomNumber.invalid && roomNumber.dirty" class="alert alert-danger">
-              A Room Number is Required
-            </div>
           </mat-form-field>
           <div>
             <button mat-button matStepperNext>Next</button>
@@ -24,9 +21,6 @@
           <mat-form-field appearance="legacy">
             <mat-label>Total Occupancy</mat-label>
             <input matInput type="number" id="numberOfBeds" name="numberOfBeds" #numberOfBeds="ngModel" [(ngModel)]="formRoom.numberOfBeds" class="form-control" required>
-            <div *ngIf="numberOfBeds.invalid && numberOfBeds.dirty" class="alert alert-danger">
-              Total Occupancy is Required
-            </div>
           </mat-form-field>
           <div>
             <button mat-button matStepperPrevious>Back</button>
@@ -64,7 +58,7 @@
           </mat-form-field>
           <div>
             <button mat-button matStepperPrevious>Back</button>
-            <button mat-button matStepperNext>Next</button>
+            <button mat-button id="postAddRoom" (click)="postAddRoom()">Subtmit</button>
           </div>
         </mat-step>
     </mat-horizontal-stepper>

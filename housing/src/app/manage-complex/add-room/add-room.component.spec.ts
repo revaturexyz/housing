@@ -52,9 +52,9 @@ describe('AddRoomComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  // it('should have disabled submit button', () => {
-  //   const buttonSelector = fixture.debugElement.query(By.css('#postAddRoom')).nativeElement;
-  //   fixture.detectChanges();
-  //   expect(buttonSelector.valid).toBeFalsy();
-  // });
+  it('should have disabled submit button', () => {
+    const buttonSelector = fixture.debugElement.query(By.css('#postAddRoom')).nativeElement;
+    fixture.detectChanges();
+    expect(buttonSelector.valid).toBeFalsy();
+  });
 });
