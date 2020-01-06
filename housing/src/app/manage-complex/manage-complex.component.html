@@ -58,7 +58,7 @@
                     </div>
                   </div>
               </div>
-              <div class="col-2 text-center">
+              <!-- <div class="col-2 text-center">
                 <div *ngIf="mode!='init' && mode!='add-complex'">
                   <mat-form-field>
                       <mat-label>Select a Complex</mat-label>
@@ -71,7 +71,7 @@
                       </mat-select>
                   </mat-form-field>
                 </div>
-              </div>
+              </div> -->
               <div class="col-4">
                 <div *ngIf="complexControl.value && mode=='details' || mode=='edit-complex' || mode=='add-room' || mode=='show-room'">
                     <mat-card class="example-card">
@@ -100,7 +100,7 @@
                     
                 </div>
               </div>
-              <div class="col-6">
+              <div class="col-8">
                 <!--Once a complex is selected, replace former div to show complex details-->
                 <dev-complex-details *ngIf="complexControl.value && mode=='details'" [complexControl]="complexControl.value"
                 (targetRoomOutput)="changeTargetRoom($event)" (modeOutput)="changeMode($event)"></dev-complex-details>
