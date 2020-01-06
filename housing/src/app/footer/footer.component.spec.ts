@@ -27,5 +27,5 @@ describe('FooterComponent', () => {
   it('should have footer content', () => {
       const messageSelector = fixture.debugElement.query(By.css('#footer')).nativeElement;
       expect(messageSelector).toBeTruthy();
-  })
+  });
 });
