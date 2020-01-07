@@ -9,17 +9,17 @@ export class TestAmenityData {
     amenityId: 1,
     amenity: 'gym',
     isSelected: true
-  }
+  };
 
   static dummyAmenity2: Amenity = {
     amenityId: 2,
     amenity: 'pool',
     isSelected: true
-  }
+  };
 }
 
 export class TestComplexData {
-  
+
   static dummyAddress: Address = {
     addressId: 1,
     streetAddress: '1001 S Center St',
@@ -50,5 +50,4 @@ export class TestComplexData {
     contactNumber: '1234567890',
     amenity: [TestAmenityData.dummyAmenity1, TestAmenityData.dummyAmenity2],
   };
-  
 }
