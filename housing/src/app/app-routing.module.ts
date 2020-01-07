@@ -11,6 +11,7 @@ import { SearchTenantComponent } from './search-tenant/search-tenant.component';
 import { SelectTenantComponent } from './select-tenant/select-tenant.component';
 import { AddTenantComponent } from './add-tenant/add-tenant.component';
 import { AboutComponent } from './about/about.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   // dev-assign-tenant-to-room
