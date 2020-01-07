@@ -157,11 +157,6 @@ button {
   text-align: center;
 }
 
-.complex-container button {
-  background-color: transparent;
-  text-align: right;
-}
-
 .buttons-right {
   display: flex;
   flex-direction: row;
@@ -184,15 +179,30 @@ button {
 }
 
 .add-room-btn {
-  background-color: grey;
-  border-radius: 5px;
-  padding: 5px;
-  padding-left: 20px;
-  padding-right: 20px;
-  color: black;
-  opacity: 0.7;
-  justify-self: center;
-  height: min-content;
+  text-decoration-line: solid #fb752c;
+  text-decoration-color: #fb752c;
+  background-color: #fb752c;
+  color: #ffffff;
+
+  border-color: #f26925;
+  border-radius: 25px;
+  text-align: center;
+  padding: 15px;
+  font-size: 13px;
+  line-height: 15px;
+  font-weight: 700;
+}
+
+.add-room-btn:hover {
+  text-decoration-line: solid #ffffff;
+  text-decoration-color: #ffffff;
+  background-color: #ffffff;
+  color: #fb752c;
+
+  border-color: #f26925;
+  border-width: 2px;
+  border-style: solid;
+  padding: 13px;
 }
 
 .sbutton {

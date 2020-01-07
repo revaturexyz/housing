@@ -17,20 +17,45 @@ td {
   height: 1px;
   background-color: black;
 }
+// mat-card-actions button {
+//   border-bottom: solid #fb752c 2px;
+// }
 
-.show-room-btn {
-  background-color: grey;
-  border-radius: 5px;
-  padding: 5px;
-  padding-left: 20px;
-  padding-right: 20px;
-  color: black;
-  opacity: 0.7;
-  justify-self: center;
-  height: min-content;
-  margin: 1%;
+// mat-card-actions button:hover {
+//   background-color: #fb752c;
+//   color: white;
+// }
+
+mat-card-actions button {
+  text-decoration-line: solid #fb752c;
+  text-decoration-color: #fb752c;
+  background-color: #fb752c;
+  color: #ffffff;
+
+  border-color: #f26925;
+  border-radius: 25px;
+  text-align: center;
+  padding: 15px;
+  font-size: 13px;
+  line-height: 15px;
+  font-weight: 700;
+}
+
+mat-card-actions button:hover {
+  text-decoration-line: solid #ffffff;
+  text-decoration-color: #ffffff;
+  background-color: #ffffff;
+  color: #fb752c;
+
+  border-color: #f26925;
+  border-width: 2px;
+  border-style: solid;
+  padding: 13px;
 }
 
 mat-chip {
   transition: none !important;
+  // background-color:#fb752c;
+  // color: #ffffff;
+  font-weight: 700;
 }

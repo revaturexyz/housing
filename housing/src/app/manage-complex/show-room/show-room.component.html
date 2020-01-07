@@ -33,13 +33,11 @@
   <hr />
 
 </div>
-<div>
-    <button class="show-room-btn" (click)="handleBackButton()" id = "back-button">
-      <strong>
-        &lt; Go back
-      </strong>
+<mat-card-actions>
+    <button id="back-button" mat-raised-button color="primary" (click)="handleBackButton()"> 
+      &lt; Go Back
     </button>
-</div>
+</mat-card-actions>
 <!-- Alternate view if a complex is not selected and this page is
 shown -->
 <ng-template #errorblock>
