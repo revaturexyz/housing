@@ -12,55 +12,8 @@
   border-bottom: 1px solid gray;
 }
 
-.menubar,
-.revlogo {
-  float: left;
-  height: 100px;
-}
-
-.menubar {
-  width: 60%;
-  background-color: white;
-}
-
-.revlogo {
-  width: 40%;
-  cursor: pointer;
-  background-color: white;
-}
-
-.menubar ul {
-  float: right;
-  padding-top: 53px;
-  margin-right: 10%;
-}
-
-.menubar li {
-  float: left;
-  margin-left: 18px;
-  list-style: none;
-  padding-bottom: 7px;
-}
-
-.menubar li a {
-  text-decoration: none;
-  color: #444;
-  font-family: sans-serif;
-  font-weight: 600;
-  text-transform: uppercase;
-}
-
-#menubar a:hover {
-  // text-decoration-line: #fb752c;
-  // text-decoration-color: #fb752c;
-  //border-bottom: 2px solid darkorange;
-  cursor: pointer;
-}
-
-#menupiece a {
-  text-decoration-line: solid #fb752c 2px;
-  text-decoration-color: #fb752c 2px;
-  //border-bottom: solid #fb752c 2px;
+#revature {
+  margin-left: 20px;
 }
 
 #logout {
@@ -68,6 +21,26 @@
   text-decoration-color: #fb752c;
   background-color: #fb752c;
   color: #ffffff;
+
+  border-color: #f26925;
+  border-radius: 25px;
+  text-align: center;
+  padding: 15px;
+  font-size: 13px;
+  line-height: 15px;
+  font-weight: 700;
+}
+
+#logging a:hover{
+  text-decoration-line: solid #ffffff;
+  text-decoration-color: #ffffff;
+  background-color: #ffffff;
+  color: #fb752c;
+
+  border-color: #f26925;
+  border-width: 2px;
+  border-style: solid;
+  padding: 13px;
 }
 
 #login {
@@ -75,35 +48,38 @@
   text-decoration-color: #fb752c;
   background-color: #fb752c;
   color: #ffffff;
+
+  border-color: #f26925;
+  border-radius: 25px;
+  text-align: center;
+  padding: 15px;
+  font-size: 13px;
+  line-height: 15px;
+  font-weight: 700;
 }
 
-.menu div{
-  width: auto;
-  height: 100%;
-  margin: 10px;
-  border: 1px solid #555;
-  padding: 0 15px;
+#menupiece a {
+  text-decoration-line: none;
+  text-decoration-color: #fb752c 2px;
+
+  margin-right: 10px;
+  border-radius: 25px;
+  padding: 15px;
+  font-size: 13px;
+  font-weight: 700;
 }
 
 #menupiece a:hover {
+  text-decoration-line: solid #fb752c;
+  text-decoration-color: #fb752c;
   background-color: #fb752c;
-  color: white;
-}
+  color: #ffffff;
 
-.revlogo img {
-  float: left;
-  padding-top: 30px !important;
-  margin-left: 15%;
-  outline: 0;
-  border: none;
-}
-
-#btn-login {
-  color: #fb752c;
-  font-size: 11.5px;
-}
-
-#icon-user {
-  color: #fb752c;
-  margin-right: 5px;
+  border-color: #f26925;
+  border-radius: 25px;
+  text-align: center;
+  padding: 15px;
+  font-size: 13px;
+  line-height: 15px;
+  font-weight: 700;
 }

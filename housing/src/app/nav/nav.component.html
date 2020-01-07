@@ -2,7 +2,7 @@
   <div class="nav-bar">
     <mat-toolbar color=#ffffff>
       <!-- revature logo in top left -->
-      <button revature>
+      <button id="revature">
         <img routerLink="" alt="logo" src="/assets/imgs/revature-logo-600x219.png" height="55px">
       </button>
 
@@ -11,6 +11,7 @@
 
       <!-- links from toolbar -->
       <div id="menupiece" class="menu">
+
         <a mat-button routerLink="">Home</a>
 
         <!-- if a limited provider is signed in -->
@@ -30,6 +31,10 @@
         <a mat-button href="https://revature.com/our-story/" target="_blank" rel="noopener noreferrer">About Us</a>
 
         <!-- login/logout -->
+        <!-- <a mat-flat-button id="login" *ngIf="!auth.loggedIn" (click)="auth.login()">Login</a>
+        <a mat-flat-button id="logout" *ngIf="auth.loggedIn" (click)="auth.logout()">Logout</a> -->
+      </div>
+      <div id="logging">
         <a mat-flat-button id="login" *ngIf="!auth.loggedIn" (click)="auth.login()">Login</a>
         <a mat-flat-button id="logout" *ngIf="auth.loggedIn" (click)="auth.logout()">Logout</a>
       </div>
