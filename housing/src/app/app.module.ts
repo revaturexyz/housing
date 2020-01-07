@@ -11,7 +11,7 @@ import { StickyNavModule } from 'ng2-sticky-nav';
 import {
   MatChipsModule, MatTableModule, MatDialogModule, MatPaginatorModule, MatFormFieldModule,
   MatSelectModule, MatSidenavModule, MatIconModule, MatButtonModule, MatDividerModule, MatListModule,
-  MatExpansionModule, MatInputModule, MatToolbar, MatToolbarModule
+  MatExpansionModule, MatInputModule, MatToolbarModule, MatGridListModule
 } from '@angular/material';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { CdkTableModule } from '@angular/cdk/table';
@@ -95,6 +95,7 @@ import { AddTenantComponent } from './add-tenant/add-tenant.component';
     MatInputModule,
     MatCheckboxModule,
     ScrollingModule,
+    MatGridListModule
   ],
   providers: [
     {
