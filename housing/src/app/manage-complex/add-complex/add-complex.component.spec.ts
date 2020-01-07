@@ -5,6 +5,7 @@ import { MatFormFieldModule, MatSelectModule, MatTableModule } from '@angular/ma
 import { MatStepperModule } from '@angular/material/stepper';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatInputModule} from '@angular/material/input';
+import {MatIconModule} from '@angular/material/icon';
 import { AddComplexComponent } from './add-complex.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -25,6 +26,7 @@ describe('AddComplexComponent', () => {
         MatStepperModule,
         MatChipsModule,
         MatInputModule,
+        MatIconModule,
         NoopAnimationsModule],
       declarations: [AddComplexComponent]
     })

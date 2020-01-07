@@ -65,18 +65,31 @@
       <form [formGroup]="secondFormGroup">
         <ng-template matStepLabel>Add Complex Amenties</ng-template>
         <mat-form-field class="col-md-6">
-          <input matInput 
-            placeholder="Amenity Item" 
-            formControlName="secondCtrl" 
-            required
-            name="formLivingComplex.amenity" 
-            [(ngModel)]="formLivingComplex.amenity">
+          <input matInput placeholder="Add New Amenity..." 
+          [matChipInputFor]="chipList" 
+          [matChipInputSeparatorKeyCodes]="separatorKeysCodes" 
+          [matChipInputAddOnBlur]="addOnBlur" 
+          (matChipInputTokenEnd)="add($event)">
         </mat-form-field>
-        <button  mat-button ><i class="fas fa-plus"></i> Add Amenity</button>
-        <mat-chip-list>
-          <mat-chip>Pool</mat-chip>
-        </mat-chip-list>
+        <a (matChipInputTokenEnd)="add($event)" id="btn-addAmenity">
+          <i class="fas fa-plus-circle"></i>
+        </a>
+        <mat-form-field class="col-md-12 amenityInputList" >
+          <input matInput placeholder="Amenity List" disabled>
+          <mat-chip-list #chipList>
+            <mat-chip *ngFor="let amenity of amenityList" 
+              [selectable]="selectable" 
+              [removable]="removable" 
+              (removed)="remove(amenity)"
+              id="rev-chip">
+              {{amenity.amenity}}
+              <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+            </mat-chip>
+          </mat-chip-list>
+        </mat-form-field>
+        <!-- <button  mat-button (click)="add($event)"><i class="fas fa-plus"></i> Add Amenity</button> -->
         <div>
+          <button mat-button matStepperPrevious>Back</button>
           <button mat-button matStepperNext>Next</button>
         </div>
       </form>
