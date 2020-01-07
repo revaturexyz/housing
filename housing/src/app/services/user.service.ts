@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, from } from 'rxjs';
 import { AccountService } from './account.service';
 import { AuthService } from './auth.service';
+import { OktaAuthService } from '@okta/okta-angular';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -9,7 +10,7 @@ import { environment } from 'src/environments/environment';
 })
 export class UserService {
 
-  constructor(private account: AccountService, private auth: AuthService) {
+  constructor(private account: AccountService, private auth: OktaAuthService) {
     let decodedToken: string;
     this.UserId$.subscribe(currentUserId => {
       if (currentUserId === '') {
@@ -18,12 +19,23 @@ export class UserService {
         });
       }
 
-      auth.getTokenSilently$().subscribe(res => {
+      // auth.getTokenSilently$().subscribe(res => {
+      //   // atob decodes a Base64-encoded string
+      //   decodedToken = atob(res.split('.')[1]);
+      //   this.roles.next(JSON.parse(decodedToken)[environment.claimsDomain + 'roles']);
+      //   this.email.next(JSON.parse(decodedToken)[environment.claimsDomain + 'email']);
+      // });
+
+      auth.getAccessToken().then((res) => {
+        const roleString = 'role';
+        const emailString = 'sub';
+
         // atob decodes a Base64-encoded string
         decodedToken = atob(res.split('.')[1]);
-        this.roles.next(JSON.parse(decodedToken)[environment.claimsDomain + 'roles']);
-        this.email.next(JSON.parse(decodedToken)[environment.claimsDomain + 'email']);
+        this.roles.next(JSON.parse(decodedToken)[roleString]);
+        this.email.next(JSON.parse(decodedToken)[emailString]);
       });
+
     });
   }
 
@@ -35,4 +47,9 @@ export class UserService {
 
   private email: BehaviorSubject<string> = new BehaviorSubject('');
   public readonly Email$: Observable<string> = this.email.asObservable();
+
+  // public getAccessToken(): Observable<any> {
+  //   return from(auth.getAccessToken());
+  // }
+
 }

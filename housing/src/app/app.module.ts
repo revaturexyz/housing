@@ -11,8 +11,9 @@ import { StickyNavModule } from 'ng2-sticky-nav';
 import {
   MatChipsModule, MatTableModule, MatDialogModule, MatPaginatorModule, MatFormFieldModule,
   MatSelectModule, MatSidenavModule, MatIconModule, MatButtonModule, MatDividerModule, MatListModule,
-  MatExpansionModule, MatInputModule, MatToolbarModule, MatGridListModule
+  MatExpansionModule, MatInputModule, MatToolbarModule, MatGridListModule,
 } from '@angular/material';
+import { MatTabsModule } from '@angular/material/tabs';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { CdkTableModule } from '@angular/cdk/table';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -38,6 +39,28 @@ import { AddComplexComponent } from './manage-complex/add-complex/add-complex.co
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { AddTenantComponent } from './add-tenant/add-tenant.component';
 
+import { OKTA_CONFIG, OktaAuthModule } from '@okta/okta-angular';
+
+const config = {
+  clientId: '0oa2d72hlcH7CUgwf357',
+  issuer: 'https://dev-837913.okta.com/oauth2/default',
+  redirectUri: 'http://localhost:9000/implicit/callback', // port 9000 for docker compose, port 4200 for running with ng serve
+  scopes: ['openid', 'profile', 'email', 'room'],
+  responseType: ['code'],
+  pkce: true,
+  // testing: {
+    //   disableHttpsCheck: `${OKTA_TESTING_DISABLEHTTPSCHECK}`
+    // }
+  // },
+  // resourceServer: {
+  //   messagesUrl: 'http://localhost:8000/api/messages',
+  // },
+};
+
+import { FooterComponent } from './footer/footer.component';
+import { AboutComponent } from './about/about.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,7 +79,9 @@ import { AddTenantComponent } from './add-tenant/add-tenant.component';
     ShowRoomComponent,
     AddComplexComponent,
     AddRoomComponent,
-    AddTenantComponent
+    AddTenantComponent,
+    FooterComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
@@ -95,14 +120,20 @@ import { AddTenantComponent } from './add-tenant/add-tenant.component';
     MatInputModule,
     MatCheckboxModule,
     ScrollingModule,
-    MatGridListModule
+    OktaAuthModule,
+    MatTabsModule,
+    MatGridListModule,
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: InterceptorService,
       multi: true
-    }
+    },
+    {
+      provide: OKTA_CONFIG,
+      useValue: config
+      }
   ],
   entryComponents: [AmenityDialogueComponent],
   bootstrap: [AppComponent]

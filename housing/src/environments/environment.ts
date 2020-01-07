@@ -10,13 +10,10 @@ export const environment = {
   claimsDomain: 'https://revature.com/', // Trailing slash matters here
   googleMapsKey: 'AIzaSyCxYMcmEjlHQ2r2CywMgyK7YEplxurqW2A',
   endpoints: {
-    account: 'http://localhost:11080/',
-    complex: 'http://localhost:13080/',
-    tenant:  'http://localhost:15080/',
-    // account: 'http://192.168.99.100:11080/',
-    // complex: 'http://192.168.99.100:13080/',
-    // tenant: 'http://192.168.99.100:15080/',
-    provider: 'http://localhost:10080/'
+    account: 'http://localhost:9100/',
+    complex: 'http://localhost:9110/',
+    tenant:  'http://localhost:9140/',
+    provider: 'http://localhost:9000/'
   }
 };
 
