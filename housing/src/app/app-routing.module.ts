@@ -12,6 +12,7 @@ import { SearchTenantComponent } from './search-tenant/search-tenant.component';
 import { SelectTenantComponent } from './select-tenant/select-tenant.component';
 import { AddTenantComponent } from './add-tenant/add-tenant.component';
 import { OktaCallbackComponent, OktaAuthGuard } from '@okta/okta-angular';
+import { AboutComponent } from './about/about.component';
 
 const routes: Routes = [
   // dev-assign-tenant-to-room
@@ -21,12 +22,16 @@ const routes: Routes = [
   { path: 'search-tenant', component: SearchTenantComponent },
   { path: 'select-tenant/:id', component: SelectTenantComponent },
   { path: '', component: HomeComponent },
+
   { path: 'coordinator-notifications', component: CoordinatorNotificationsComponent, canActivate: [OktaAuthGuard] },
   { path: 'edit-provider', component: EditProviderComponent, canActivate: [OktaAuthGuard] },
   { path: 'provider-status', component: ProviderStatusComponent, canActivate: [OktaAuthGuard] },
   { path: 'manage-complex', component: ManageComplexComponent, canActivate: [OktaAuthGuard] },
   { path: 'add-tenant', component: AddTenantComponent },
   { path: 'implicit/callback', component: OktaCallbackComponent }
+ 
+  { path: 'about', component: AboutComponent },
+
 ];
 
 @NgModule({
