@@ -20,3 +20,15 @@ variable "cloudflare_record" {
 variable "resource_group" {
   type = "map"
 }
+
+variable "aks_kubernetes_cluster" {
+  type = "map"
+}
+
+variable "aks_resource_group" {
+  type = "map"
+}
+
+variable "aks_service_principal" {
+  type = "map"
+}

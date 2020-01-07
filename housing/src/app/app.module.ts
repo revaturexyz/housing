@@ -11,8 +11,9 @@ import { StickyNavModule } from 'ng2-sticky-nav';
 import {
   MatChipsModule, MatTableModule, MatDialogModule, MatPaginatorModule, MatFormFieldModule,
   MatSelectModule, MatSidenavModule, MatIconModule, MatButtonModule, MatDividerModule, MatListModule,
-  MatExpansionModule, MatInputModule
+  MatExpansionModule, MatInputModule, MatToolbarModule, MatGridListModule
 } from '@angular/material';
+import { MatTabsModule } from '@angular/material/tabs';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { CdkTableModule } from '@angular/cdk/table';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -37,6 +38,8 @@ import { ShowRoomComponent } from './manage-complex/show-room/show-room.componen
 import { AddComplexComponent } from './manage-complex/add-complex/add-complex.component';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { AddTenantComponent } from './add-tenant/add-tenant.component';
+import { FooterComponent } from './footer/footer.component';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +59,9 @@ import { AddTenantComponent } from './add-tenant/add-tenant.component';
     ShowRoomComponent,
     AddComplexComponent,
     AddRoomComponent,
-    AddTenantComponent
+    AddTenantComponent,
+    FooterComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
@@ -80,6 +85,7 @@ import { AddTenantComponent } from './add-tenant/add-tenant.component';
     CdkTableModule,
     MatCardModule,
     MatDialogModule,
+    MatToolbarModule,
     StickyNavModule,
     BrowserAnimationsModule,
     MatRippleModule,
@@ -94,6 +100,8 @@ import { AddTenantComponent } from './add-tenant/add-tenant.component';
     MatInputModule,
     MatCheckboxModule,
     ScrollingModule,
+    MatTabsModule,
+    MatGridListModule,
   ],
   providers: [
     {
