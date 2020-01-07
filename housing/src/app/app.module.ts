@@ -60,7 +60,7 @@ import { AboutComponent } from './about/about.component';
     AddComplexComponent,
     AddRoomComponent,
     AddTenantComponent,
-    FooterComponent
+    FooterComponent,
     AboutComponent
   ],
   imports: [
