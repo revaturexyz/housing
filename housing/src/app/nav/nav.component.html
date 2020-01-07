@@ -7,40 +7,26 @@
       <li><a routerLink="">Home</a></li>
 
       <!-- ngIf -> a limited provider is logged on -->
-      <!-- <li *ngIf="auth.loggedIn && role !== 'coordinator'"><a routerLink="provider-status">Status</a></li> -->
-      <!-- <li *ngIf="auth.loggedIn && role !== 'coordinator'"><a routerLink="edit-provider">Profile</a></li> -->
 
       <li *ngIf="isAuthenticated && role !== 'coordinator'"><a routerLink="provider-status">Status</a></li>
       <li *ngIf="isAuthenticated && role !== 'coordinator'"><a routerLink="edit-provider">Profile</a></li>
 
       <!-- ngIf -> a full access provider is logged on -->
-      <!-- <li *ngIf="auth.loggedIn && role === 'approved_provider'"><a routerLink="manage-complex">Manage Complexes</a></li> -->
-
       <li *ngIf="isAuthenticated && role === 'approved_provider'"><a routerLink="manage-complex">Manage Complexes</a></li>
 
       <!-- ngIf -> a coordinator is logged on -->
-      <!-- <li *ngIf="auth.loggedIn && role === 'coordinator'"> -->
       <li *ngIf="isAuthenticated && role === 'coordinator'">
         <a routerLink="coordinator-notifications">Notifications</a>
       </li>
-      <!-- <li *ngIf="auth.loggedIn && role === 'coordinator'"><a routerLink="add-tenant">Add Tenant</a></li> -->
-      <!-- <li *ngIf="auth.loggedIn && role === 'coordinator'"><a routerLink="search-tenant">Search Tenants</a></li> -->
       <li *ngIf="isAuthenticated && role === 'coordinator'"><a routerLink="add-tenant">Add Tenant</a></li>
       <li *ngIf="isAuthenticated && role === 'coordinator'"><a routerLink="search-tenant">Search Tenants</a></li>
 
 
       <!-- Login/Logout stuff -->
-      <!-- <li *ngIf="!auth.loggedIn"><a (click)="auth.login()">Login</a></li> -->
-
-      <!-- <li *ngIf="auth.loggedIn"><a (click)="auth.logout()">Logout</a></li> -->
 
       <!-- Okta Login -->
       <li *ngIf="!isAuthenticated" (click)="oktaAuth.loginRedirect('/')"><a> Login/Sign up </a></li>
       <li *ngIf="isAuthenticated" (click)="oktaAuth.logout('/')"><a> Logout </a></li>
-
-      <!-- <li>{{getAccessToken()}}</li> -->
-      <!-- <li>{{decode()}}</li> -->
-
 
 
       <!-- every account sees past here -->
@@ -48,5 +34,3 @@
     </ul>
   </div>
 </div>
-<!-- <p>{{token}}</p> -->
-<!-- <p>{{decodetoken}}</p> -->
