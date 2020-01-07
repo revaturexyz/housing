@@ -1,3 +1,8 @@
+.details {
+  padding-bottom: 20%;
+  padding-top: 20%;
+}
+
 table {
   border-collapse: collapse;
 }
@@ -17,14 +22,7 @@ td {
   height: 1px;
   background-color: black;
 }
-// mat-card-actions button {
-//   border-bottom: solid #fb752c 2px;
-// }
 
-// mat-card-actions button:hover {
-//   background-color: #fb752c;
-//   color: white;
-// }
 
 mat-card-actions button {
   text-decoration-line: solid #fb752c;
@@ -53,9 +51,9 @@ mat-card-actions button:hover {
   padding: 13px;
 }
 
-mat-chip {
+#rev-chip {
   transition: none !important;
-  // background-color:#fb752c;
+  background-color:lightgrey;
   // color: #ffffff;
   font-weight: 700;
 }

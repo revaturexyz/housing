@@ -83,7 +83,7 @@
 
   <h4>Complex Amenities</h4>
   <mat-chip-list>
-    <mat-chip *ngFor="let amenity of complexControl?.amenity" color="primary" selected selectable="false">
+    <mat-chip id = "rev-chip" *ngFor="let amenity of complexControl?.amenity" selected selectable="false">
       <strong>{{ amenity.amenity }}</strong></mat-chip>
   </mat-chip-list>
 </div>

@@ -20,11 +20,11 @@
       </table>
   </div>
   <div class="d-flex flex-column">
-    <div class="center"><strong>Amenities: </strong></div>
+    <div class="center"><strong>Room Amenities: </strong></div>
     <div>
       <hr class="p-0 m-1" />
       <mat-chip-list>
-        <mat-chip *ngFor="let amenity of targetRoom?.apiAmenity" color="primary" selected>
+        <mat-chip id = "rev-chip" *ngFor="let amenity of targetRoom?.apiAmenity" selected>
           <strong>{{ amenity.amenity }}</strong>
         </mat-chip>
       </mat-chip-list>
@@ -38,6 +38,7 @@
       &lt; Go Back
     </button>
 </mat-card-actions>
+
 <!-- Alternate view if a complex is not selected and this page is
 shown -->
 <ng-template #errorblock>

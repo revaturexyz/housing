@@ -1,7 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatChipsModule, MatCardModule } from '@angular/material';
 import { ShowRoomComponent } from './show-room.component';
-import { Room } from 'src/interfaces/room';
 import { By } from '@angular/platform-browser';
 
 describe('ShowRoomComponent', () => {
