@@ -3,6 +3,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import { Component } from '@angular/core';
 import { By } from '@angular/platform-browser';
+import { FooterComponent } from './footer/footer.component';
 
 @Component({
   selector: 'dev-nav',
@@ -17,7 +18,8 @@ describe('AppComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent,
-        MockNavComponent
+        MockNavComponent,
+        FooterComponent
       ],
       imports: [
         RouterTestingModule
