@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: housing
+  name: housing
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: housing
+  template:
+    metadata:
+      labels:
+        app: housing
+    spec:
+      containers:
+      - image: revaturexyz/housing:dev
+        imagePullPolicy: Always
+        name: housing
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: housing
+  name: housing
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: housing
+  type: LoadBalancer
