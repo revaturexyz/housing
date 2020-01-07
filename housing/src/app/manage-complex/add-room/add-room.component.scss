@@ -43,3 +43,21 @@
   border-style: solid;
   padding: 13px;
 }
+
+.btn-addAmenity{
+  font-size: 1em;
+  color: #fb752c;
+  padding: none;
+  border-radius: none;
+  border-color: none;
+  background-color:transparent;
+}
+
+.btn-addAmenity:hover{
+  font-size: 1.5em;
+  background-color: transparent;
+  border-color: none;
+  border-width: none;
+  border-style: none;
+  padding: none;
+  }
