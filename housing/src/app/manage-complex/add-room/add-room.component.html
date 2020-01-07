@@ -51,12 +51,12 @@
           <div>
             <input placeholder="New Amenity..." [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="add($event)">
             <a mat-button (matChipInputTokenEnd)="add($event)" class="btn-addAmenity">
-              <i class="fas fa-plus-circle"></i>
+              <em class="fas fa-plus-circle"></em>
             </a>
           </div>
           <mat-form-field appearance="legacy">
             <mat-chip-list #chipList>
-              <mat-chip *ngFor="let amenity of amenityList" [selectable]="selectable" [removable]="removable" (removed)="remove(amenity)">
+              <mat-chip *ngFor="let amenity of amenityList" id="rev-chip" [selectable]="selectable" [removable]="removable" (removed)="remove(amenity)">
                 {{amenity.amenity}}
                 <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
               </mat-chip>
