@@ -36,7 +36,6 @@
         <a mat-flat-button id="login" *ngIf="!isAuthenticated" (click)="oktaAuth.loginRedirect('/')">Login</a>
         <a mat-flat-button id="logout" *ngIf="isAuthenticated" (click)="oktaAuth.logout('/')">Logout</a>
       </div>
-
     </mat-toolbar>
   </div>
 </div>
