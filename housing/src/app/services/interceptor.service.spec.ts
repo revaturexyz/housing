@@ -66,6 +66,6 @@ describe('InterceptorService', () => {
 
   afterEach(inject([HttpTestingController], (mock: HttpTestingController) => {
     mock.verify();
-  }))
+  }));
 
 });
