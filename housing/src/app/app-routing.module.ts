@@ -28,8 +28,7 @@ const routes: Routes = [
   { path: 'provider-status', component: ProviderStatusComponent, canActivate: [OktaAuthGuard] },
   { path: 'manage-complex', component: ManageComplexComponent, canActivate: [OktaAuthGuard] },
   { path: 'add-tenant', component: AddTenantComponent },
-  { path: 'implicit/callback', component: OktaCallbackComponent }
- 
+  { path: 'implicit/callback', component: OktaCallbackComponent },
   { path: 'about', component: AboutComponent },
 
 ];
