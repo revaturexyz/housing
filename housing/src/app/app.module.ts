@@ -13,6 +13,7 @@ import {
   MatSelectModule, MatSidenavModule, MatIconModule, MatButtonModule, MatDividerModule, MatListModule,
   MatExpansionModule, MatInputModule, MatToolbarModule, MatGridListModule
 } from '@angular/material';
+import { MatTabsModule } from '@angular/material/tabs';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { CdkTableModule } from '@angular/cdk/table';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -37,6 +38,7 @@ import { ShowRoomComponent } from './manage-complex/show-room/show-room.componen
 import { AddComplexComponent } from './manage-complex/add-complex/add-complex.component';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { AddTenantComponent } from './add-tenant/add-tenant.component';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +58,8 @@ import { AddTenantComponent } from './add-tenant/add-tenant.component';
     ShowRoomComponent,
     AddComplexComponent,
     AddRoomComponent,
-    AddTenantComponent
+    AddTenantComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
@@ -95,7 +98,8 @@ import { AddTenantComponent } from './add-tenant/add-tenant.component';
     MatInputModule,
     MatCheckboxModule,
     ScrollingModule,
-    MatGridListModule
+    MatTabsModule,
+    MatGridListModule,
   ],
   providers: [
     {
