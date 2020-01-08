@@ -4,7 +4,7 @@ import { ManageComplexComponent } from './manage-complex.component';
 import {
   MatFormFieldModule, MatSelectModule,
   MatCardModule,
-  MatPaginatorModule, MatTableModule
+  MatPaginatorModule, MatTableModule, MatStepperModule
 } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -35,7 +35,8 @@ describe('ManageComplexComponent', () => {
         MatTableModule, MatPaginatorModule,
         NoopAnimationsModule, MatMomentDateModule,
         MatChipsModule, MatIconModule,
-        MatExpansionModule, MatCheckboxModule
+        MatExpansionModule, MatCheckboxModule,
+        MatStepperModule
       ],
       declarations: [
         ManageComplexComponent, AddRoomComponent,
