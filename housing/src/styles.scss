@@ -1,36 +1,38 @@
 * {
-    padding: 0;
-    margin: 0;
-    border: 0;
-  }
-  
-  body {
-    background-color: white;
-    font-family: "Red Hat Display", sans-serif;
-    min-width: 1150px;
-  }
-  
-  hr {
-    background-color: white;
-  }
-  
-  .btn-buttons {
-    margin-right: 20px;
-    background-color: cadetblue;
-    color: white;
-    padding: 5px 20px 5px 20px;
-    opacity: 0.7;
-    border-radius: 5px;
-  }
-  
-  .btn-buttons:hover {
-    opacity: 1;
-  }
-  
-  .validate {
-    color: hotpink;
-  }
-  
-  html, body { height: 100%; }
-  body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-  
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+body {
+  background-color: white;
+  font-family: "Red Hat Display", sans-serif;
+  min-width: 1150px;
+  height: 100vh;
+  min-height: 100vh;
+  overflow-y: hidden; /* Hide vertical scrollbar */
+  overflow-x: hidden; /* Hide horizontal scrollbar */
+}
+
+hr {
+  background-color: white;
+}
+
+.btn-buttons {
+  margin-right: 20px;
+  background-color: cadetblue;
+  color: white;
+  padding: 5px 20px 5px 20px;
+  opacity: 0.7;
+  border-radius: 5px;
+}
+
+.btn-buttons:hover {
+  opacity: 1;
+}
+
+.validate {
+  color: hotpink;
+}
+
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
