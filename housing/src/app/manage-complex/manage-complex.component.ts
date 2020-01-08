@@ -17,7 +17,6 @@ import { TestComplexData } from '../services/test-complex-static';
 // Component used to handle logic behind selecting and managing a complex
 export class ManageComplexComponent implements OnInit {
 
-
     public seededComplexes: Complex[] = [
         TestComplexData.dummyComplex
     ];
