@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Complex } from 'src/interfaces/complex';
 import { FormControl } from '@angular/forms';
 // import { TestServiceData } from 'src/app/services/static-test-data';
+import {COMMA, ENTER} from '@angular/cdk/keycodes';
+import {MatChipInputEvent} from '@angular/material/chips';
 import { Room } from 'src/interfaces/room';
 import { MockComplex } from './mock-complex';
 
@@ -15,7 +17,6 @@ import { MockComplex } from './mock-complex';
 // Component used to handle logic behind selecting and managing a complex
 export class ManageComplexComponent implements OnInit {
 
-
   mockComplex = new MockComplex();
   public seededComplexes: Complex[] = [
     // TestServiceData.dummyComplex,
@@ -23,6 +24,7 @@ export class ManageComplexComponent implements OnInit {
     // TestServiceData.dummyComplex,
     // TestServiceData.dummyComplex2
     this.mockComplex.complex
+
   ];
 
   // mode selection =>
