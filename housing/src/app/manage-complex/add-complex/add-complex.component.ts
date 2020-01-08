@@ -32,7 +32,15 @@ export class AddComplexComponent implements OnInit {
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
 
   // TODO: POPULATE THIS
-  amenityList: Amenity[] = [];
+  amenityList: Amenity[] = [{
+    amenityId: 2,
+    amenity: 'balcony',
+    isSelected: true
+  },
+  { amenityId: 3,
+    amenity: 'stove',
+    isSelected: true
+  }];
 
   @Output() modeOutput: EventEmitter<string> = new EventEmitter<string>();
   @Output() complexOutput: EventEmitter<Complex> = new EventEmitter<Complex>();
