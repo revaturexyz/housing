@@ -38,10 +38,15 @@ import { ShowRoomComponent } from './manage-complex/show-room/show-room.componen
 import { AddComplexComponent } from './manage-complex/add-complex/add-complex.component';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { AddTenantComponent } from './add-tenant/add-tenant.component';
+
+import { OKTA_CONFIG, OktaAuthModule } from '@okta/okta-angular';
+import { config } from './app.config';
+
 import { FooterComponent } from './footer/footer.component';
 import { AboutComponent } from './about/about.component';
 import { ApplicationInsights } from '@microsoft/applicationinsights-web';
 import { GlobalErrorHandler } from './global-error-handler';
+
 
 @NgModule({
   declarations: [
@@ -102,6 +107,7 @@ import { GlobalErrorHandler } from './global-error-handler';
     MatInputModule,
     MatCheckboxModule,
     ScrollingModule,
+    OktaAuthModule,
     MatStepperModule,
     MDBBootstrapModule.forRoot(),
     MatChipsModule,
@@ -121,7 +127,11 @@ import { GlobalErrorHandler } from './global-error-handler';
       provide: HTTP_INTERCEPTORS,
       useClass: InterceptorService,
       multi: true
-    }
+    },
+    {
+      provide: OKTA_CONFIG,
+      useValue: config.oidc
+      }
   ],
   entryComponents: [AmenityDialogueComponent],
   bootstrap: [AppComponent]

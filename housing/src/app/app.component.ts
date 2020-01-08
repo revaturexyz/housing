@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from './services/auth.service';
 import { ApplicationInsights } from '@microsoft/applicationinsights-web';
 
 @Component({
@@ -10,11 +9,9 @@ import { ApplicationInsights } from '@microsoft/applicationinsights-web';
 export class AppComponent implements OnInit {
   title = 'housing';
 
-  constructor(private auth: AuthService, public appInsights: ApplicationInsights) { }
+  constructor(public appInsights: ApplicationInsights) { }
 
   ngOnInit() {
-    this.auth.localAuthSetup();
-    this.auth.handleAuthCallback();
 
     this.appInsights.loadAppInsights();
 

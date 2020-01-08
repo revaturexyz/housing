@@ -4,19 +4,19 @@
 
 export const environment = {
   production: false,
-  domain: 'dev-fyo32d99.auth0.com', // Absent trailing slash matters here
-  clientID: '4z5nyCX4Jg9L7TDAUvMP0zApLQY3N4dx',
+  // domain: 'dev-fyo32d99.auth0.com', // Absent trailing slash matters here
+  domain: 'https://dev-837913.okta.com/oauth2/default',
+  // clientID: '4z5nyCX4Jg9L7TDAUvMP0zApLQY3N4dx',
+  clientID: '0oa2d72hlcH7CUgwf357',
+  redirectUri: 'http://localhost:9000/implicit/callback',
   audience: '/account',
   claimsDomain: 'https://revature.com/', // Trailing slash matters here
   googleMapsKey: 'AIzaSyCxYMcmEjlHQ2r2CywMgyK7YEplxurqW2A',
   endpoints: {
-    account: 'http://localhost:11080/',
-    complex: 'http://localhost:13080/',
-    tenant:  'http://localhost:15080/',
-    // account: 'http://192.168.99.100:11080/',
-    // complex: 'http://192.168.99.100:13080/',
-    // tenant: 'http://192.168.99.100:15080/',
-    provider: 'http://localhost:10080/'
+    account: 'http://localhost:9100/',
+    complex: 'http://localhost:9110/',
+    tenant:  'http://localhost:9140/',
+    provider: 'http://localhost:9000/'
   }
 };
 

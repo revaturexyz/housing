@@ -15,28 +15,26 @@
         <a mat-button routerLink="">Home</a>
 
         <!-- if a limited provider is signed in -->
-        <a mat-button *ngIf="auth.loggedIn && role !== 'coordinator'" routerLink="provider-status">Status</a>
-        <a mat-button *ngIf="auth.loggedIn && role !== 'coordinator'" routerLink="edit-provider">Profile</a>
+        <a mat-button *ngIf="isAuthenticated && role !== 'coordinator'" routerLink="provider-status">Status</a>
+        <a mat-button *ngIf="isAuthenticated && role !== 'coordinator'" routerLink="edit-provider">Profile</a>
 
         <!-- if a full access provider is signed in -->
-        <a mat-button *ngIf="auth.loggedIn && role !== 'coordinator'" routerLink="manage-complex">Manage Complexes</a>
+        <a mat-button *ngIf="isAuthenticated && role !== 'coordinator'" routerLink="manage-complex">Manage Complexes</a>
 
         <!-- if a coordinator is signed in -->
-        <a mat-button *ngIf="auth.loggedIn && role === 'coordinator'" routerLink="coordinator-notifications">Notifications</a>
-        <a mat-button *ngIf="auth.loggedIn && role === 'coordinator'" routerLink="add-tenant">Add Tenant</a>
-        <a mat-button *ngIf="auth.loggedIn && role === 'coordinator'" routerLink="search-tenant">Search Tenants</a>
+        <a mat-button *ngIf="isAuthenticated && role === 'coordinator'" routerLink="coordinator-notifications">Notifications</a>
+        <a mat-button *ngIf="isAuthenticated && role === 'coordinator'" routerLink="add-tenant">Add Tenant</a>
+        <a mat-button *ngIf="isAuthenticated && role === 'coordinator'" routerLink="search-tenant">Search Tenants</a>
 
         <!-- everyon can view this -->
 
         <a mat-button href="https://revature.com/our-story/" target="_blank" rel="noopener noreferrer">About Us</a>
 
-        <!-- login/logout -->
-        <!-- <a mat-flat-button id="login" *ngIf="!auth.loggedIn" (click)="auth.login()">Login</a>
-        <a mat-flat-button id="logout" *ngIf="auth.loggedIn" (click)="auth.logout()">Logout</a> -->
       </div>
+      
       <div id="logging">
-        <a mat-flat-button id="login" *ngIf="!auth.loggedIn" (click)="auth.login()">Login</a>
-        <a mat-flat-button id="logout" *ngIf="auth.loggedIn" (click)="auth.logout()">Logout</a>
+        <a mat-flat-button id="login" *ngIf="!isAuthenticated" (click)="oktaAuth.loginRedirect('/')">Login</a>
+        <a mat-flat-button id="logout" *ngIf="isAuthenticated" (click)="oktaAuth.logout('/')">Logout</a>
       </div>
     </mat-toolbar>
   </div>
