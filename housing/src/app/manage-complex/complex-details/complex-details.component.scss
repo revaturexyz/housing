@@ -151,14 +151,9 @@ button {
   width: 80%;
 }
 .complex-container {
-  margin-left: 3em;
   display: flex;
   justify-content: space-between;
-}
-
-.complex-container button {
-  background-color: transparent;
-  text-align: right;
+  text-align: center;
 }
 
 .buttons-right {
@@ -177,22 +172,42 @@ button {
   overflow: auto;
 }
 
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
 .add-room-btn {
-  background-color: grey;
-  border-radius: 5px;
-  padding: 5px;
-  padding-left: 20px;
-  padding-right: 20px;
-  color: black;
-  opacity: 0.7;
-  justify-self: center;
-  height: min-content;
+  text-decoration-line: solid #fb752c;
+  text-decoration-color: #fb752c;
+  background-color: #fb752c;
+  color: #ffffff;
+
+  border-color: #f26925;
+  border-radius: 25px;
+  text-align: center;
+  padding: 15px;
+  font-size: 13px;
+  line-height: 15px;
+  font-weight: 700;
+}
+
+.add-room-btn:hover {
+  text-decoration-line: solid #ffffff;
+  text-decoration-color: #ffffff;
+  background-color: #ffffff;
+  color: #fb752c;
+
+  border-color: #f26925;
+  border-width: 2px;
+  border-style: solid;
+  padding: 13px;
 }
 
 .sbutton {
   text-align: center;
   display: block;
-  margin-left: 30%;
+  margin-left: 0%;
   padding-right: 0%;
 }
 
@@ -200,7 +215,7 @@ button {
   text-align: center;
   display: block;
   margin: 0 auto;
-  margin-left: 80%;
+  margin-left: 10%;
 }
 
 table th {
@@ -214,4 +229,9 @@ table td {
 #caption {
   visibility: hidden;
   position: absolute;
+}
+
+#rev-chip{
+  font-weight: 700;
+  background-color: lightgrey;
 }

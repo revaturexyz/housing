@@ -1,30 +1,150 @@
-.login-outer {
-  width: 100%;
+.carousel-inner {
   text-align: center;
-  padding: 100px;
-  background-image: url("/assets/imgs/buildings-shape.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
+  height: 82vh;
+
 }
 
-.login-inner {
-  width: 50%;
-  background-color: white;
-  opacity: 0.9;
-  margin-left: 25%;
-  margin-right: 25%;
-  padding: 50px;
+.slide-caption {
+  position: absolute;
+  width: 70%; 
+  height: 82vh;
+  color: white;
+  text-align: center;
+  font-weight: 700;
+  padding: 40px;
   border-radius: 5px;
+  margin-left: 15%;
+  margin-right: 15%;
+  z-index: 10;
 }
 
-.a-highlight {
-  cursor: pointer;
-  text-decoration-line: underline !important;
-  color: #fb752c !important;
-  font-variant: small-caps;
-}
-
-.account {
+.banner-caption{
   font-size: 20px;
+  text-align: center;
+  color:rgba(255,255,255,.75)
+}
+
+#divider{
+  max-width: 10%;
+  margin: auto;
+  border-width: .2rem;
+  border-color: #f26925;
+  }
+
+h3 {
+  color: #fff;
+  letter-spacing: 2px;
+  font-weight: 700;
+  font-size: 60px !important;
+  text-align: center;
+  text-shadow: 0px 3px 7px
+  rgba(0,0,0,.35);
+  padding: 5px;
+  width: 70%;
+  margin: 0 0 0 16%;
+  line-height: 80px !important;
+  }
+
+button{
+  text-decoration-line: solid #fb752c;
+  text-decoration-color: #fb752c;
+  background-color: #fb752c;
+  color: #ffffff;
+  border-color: #f26925;
+  border-radius: 25px;
+  text-align: center;
+  padding: 15px;
+  font-size: 13px;
+  line-height: 15px;
+  font-weight: 700;
+  margin-left: 10px;
+}
+
+button:hover{
+  cursor: pointer;
+  background-color: #e96b27;
+  color: #ffffff;
+}
+#trnCenter{
+border-right-width:4px;
+border-right-style: solid;
+border-right-color: #fb752c;
+margin-right: 6px;
+padding-right: 6px;
+}
+
+#trnRevature{
+  color:#fb752c;
+}
+
+h5{
+  text-align: right;
+  position: absolute;
+  top: 90%;
+  right: 0;
+}
+//Slide Show 
+#HomeSlide1 {
+  width: 100%;
+  display: block;
+  background: 
+    linear-gradient(
+      rgba(3, 3, 3, 0.45), 
+      rgba(3, 3, 3, 0.45),
+    ), url("/assets/imgs/HomeSlide1.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#HomeSlide2 {
+  width: 100%;
+  display: block;
+  background: 
+    linear-gradient(
+      rgba(3, 3, 3, 0.45), 
+      rgba(3, 3, 3, 0.45),
+    ), url("/assets/imgs/HomeSlide2.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#HomeSlide3 {
+  width: 100%;
+  display: block;
+  background: 
+    linear-gradient(
+      rgba(3, 3, 3, 0.45), 
+      rgba(3, 3, 3, 0.45),
+    ), url("/assets/imgs/HomeSlide3.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#HomeSlide4 {
+  width: 100%;
+  display: block;
+  background: 
+    linear-gradient(
+      rgba(3, 3, 3, 0.45), 
+      rgba(3, 3, 3, 0.45),
+    ), url("/assets/imgs/HomeSlide4.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#HomeSlide5 {
+  width: 100%;
+  display: block;
+  background: 
+    linear-gradient(
+      rgba(3, 3, 3, 0.45), 
+      rgba(3, 3, 3, 0.45),
+    ), url("/assets/imgs/HomeSlide5.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }

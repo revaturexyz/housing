@@ -4,7 +4,7 @@ import { ManageComplexComponent } from './manage-complex.component';
 import {
   MatFormFieldModule, MatSelectModule,
   MatCardModule,
-  MatPaginatorModule, MatTableModule
+  MatPaginatorModule, MatTableModule, MatStepperModule
 } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -35,7 +35,8 @@ describe('ManageComplexComponent', () => {
         MatTableModule, MatPaginatorModule,
         NoopAnimationsModule, MatMomentDateModule,
         MatChipsModule, MatIconModule,
-        MatExpansionModule, MatCheckboxModule
+        MatExpansionModule, MatCheckboxModule,
+        MatStepperModule
       ],
       declarations: [
         ManageComplexComponent, AddRoomComponent,
@@ -53,12 +54,24 @@ describe('ManageComplexComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create manage complex component', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should have directions', () => {
-    const messageSelector = fixture.debugElement.query(By.css('#welcome-directions')).nativeElement;
+  it('should have initial content', () => {
+    const messageSelector = fixture.debugElement.query(By.css('#initial-content')).nativeElement;
     expect(messageSelector).toBeTruthy();
+  });
+
+  it('should have a view complexes button', () => {
+    const buttonSelector = fixture.debugElement.query(By.css('#view-complexes-button')).nativeElement;
+    fixture.detectChanges();
+    expect(buttonSelector).toBeTruthy();
+  });
+
+  it('should have a manage complexes button', () => {
+    const buttonSelector = fixture.debugElement.query(By.css('#manage-complexes-button')).nativeElement;
+    fixture.detectChanges();
+    expect(buttonSelector).toBeTruthy();
   });
 });

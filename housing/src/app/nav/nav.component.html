@@ -1,32 +1,43 @@
-<div class="nav-bar">
-  <div class="revlogo">
-    <img routerLink="/" alt="logo" src="/assets/imgs/revature-logo-600x219.png" height="75px">
-  </div>
-  <div class="menubar">
-    <ul>
-      <li><a routerLink="">Home</a></li>
+<div class="sticky-top">
+  <div class="nav-bar">
+    <mat-toolbar color=#ffffff>
+      <!-- revature logo in top left -->
+      <button id="revature">
+        <img routerLink="" alt="logo" src="/assets/imgs/revature-logo-600x219.png" height="55px">
+      </button>
 
-      <!-- ngIf -> a limited provider is logged on -->
-      <li *ngIf="auth.loggedIn && role !== 'coordinator'"><a routerLink="provider-status">Status</a></li>
-      <li *ngIf="auth.loggedIn && role !== 'coordinator'"><a routerLink="edit-provider">Profile</a></li>
+      <!-- ride-side justification, added through nav css -->
+      <span class="menu-spacer"></span>
 
-      <!-- ngIf -> a full access provider is logged on -->
-      <li *ngIf="auth.loggedIn && role === 'approved_provider'"><a routerLink="manage-complex">Manage Complexes</a></li>
+      <!-- links from toolbar -->
+      <div id="menupiece" class="menu">
 
-      <!-- ngIf -> a coordinator is logged on -->
-      <li *ngIf="auth.loggedIn && role === 'coordinator'">
-        <a routerLink="coordinator-notifications">Notifications</a>
-      </li>
-      <li *ngIf="auth.loggedIn && role === 'coordinator'"><a routerLink="add-tenant">Add Tenant</a></li>
-      <li *ngIf="auth.loggedIn && role === 'coordinator'"><a routerLink="search-tenant">Search Tenants</a></li>
+        <a mat-button routerLink="">Home</a>
 
-      <!-- Login/Logout stuff -->
-      <li *ngIf="!auth.loggedIn"><a (click)="auth.login()">Login</a></li>
+        <!-- if a limited provider is signed in -->
+        <a mat-button *ngIf="auth.loggedIn && role !== 'coordinator'" routerLink="provider-status">Status</a>
+        <a mat-button *ngIf="auth.loggedIn && role !== 'coordinator'" routerLink="edit-provider">Profile</a>
 
-      <li *ngIf="auth.loggedIn"><a (click)="auth.logout()">Logout</a></li>
+        <!-- if a full access provider is signed in -->
+        <a mat-button *ngIf="auth.loggedIn && role !== 'coordinator'" routerLink="manage-complex">Manage Complexes</a>
 
-      <!-- every account sees past here -->
-      <li><a href="https://revature.com/our-story/" target="_blank" rel="noopener noreferrer">About Us</a></li>
-    </ul>
+        <!-- if a coordinator is signed in -->
+        <a mat-button *ngIf="auth.loggedIn && role === 'coordinator'" routerLink="coordinator-notifications">Notifications</a>
+        <a mat-button *ngIf="auth.loggedIn && role === 'coordinator'" routerLink="add-tenant">Add Tenant</a>
+        <a mat-button *ngIf="auth.loggedIn && role === 'coordinator'" routerLink="search-tenant">Search Tenants</a>
+
+        <!-- everyon can view this -->
+
+        <a mat-button href="https://revature.com/our-story/" target="_blank" rel="noopener noreferrer">About Us</a>
+
+        <!-- login/logout -->
+        <!-- <a mat-flat-button id="login" *ngIf="!auth.loggedIn" (click)="auth.login()">Login</a>
+        <a mat-flat-button id="logout" *ngIf="auth.loggedIn" (click)="auth.logout()">Logout</a> -->
+      </div>
+      <div id="logging">
+        <a mat-flat-button id="login" *ngIf="!auth.loggedIn" (click)="auth.login()">Login</a>
+        <a mat-flat-button id="logout" *ngIf="auth.loggedIn" (click)="auth.logout()">Logout</a>
+      </div>
+    </mat-toolbar>
   </div>
 </div>

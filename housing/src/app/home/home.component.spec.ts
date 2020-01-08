@@ -3,6 +3,7 @@ import { HomeComponent } from './home.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -15,6 +16,7 @@ describe('HomeComponent', () => {
         RouterTestingModule,
         FormsModule,
         ReactiveFormsModule,
+        MDBBootstrapModule
       ],
       providers: [
       ]

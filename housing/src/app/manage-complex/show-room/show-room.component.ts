@@ -1,13 +1,25 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Room } from 'src/interfaces/room';
 import { Complex } from 'src/interfaces/complex';
-
+import {trigger, animate, style, group, animateChild, query, stagger, transition, state} from '@angular/animations';
 // import { TestServiceData } from 'src/app/services/static-test-data';
 
 @Component({
   selector: 'dev-show-room',
   templateUrl: './show-room.component.html',
-  styleUrls: ['./show-room.component.scss']
+  styleUrls: ['./show-room.component.scss'],
+  animations: [
+    trigger('show', [
+        transition(':enter', [
+            style({ opacity: 0 }),
+            animate(1200, style({ opacity: 1 }))
+        ]),
+        transition(':leave', [
+            style({ opacity: 1 }),
+            animate(1300, style({ opacity: 0 }))
+        ])
+    ])
+  ]
 })
 export class ShowRoomComponent implements OnInit {
   // Seeded data for view testing
