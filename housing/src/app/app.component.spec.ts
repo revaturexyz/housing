@@ -4,11 +4,14 @@ import { AppComponent } from './app.component';
 import { Component } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { FooterComponent } from './footer/footer.component';
+import { ApplicationInsights } from '@microsoft/applicationinsights-web';
+import { appInsightsFactory } from './app.module';
 
 @Component({
   selector: 'dev-nav',
   template: '<p ngClass="testing">Mock nav Component</p>'
 })
+
 class MockNavComponent { }
 
 describe('AppComponent', () => {
@@ -22,7 +25,13 @@ describe('AppComponent', () => {
         FooterComponent
       ],
       imports: [
-        RouterTestingModule
+        RouterTestingModule,
+      ],
+      providers: [
+        {
+          provide: ApplicationInsights,
+          useFactory: appInsightsFactory
+        }
       ]
     }).compileComponents();
   }));
