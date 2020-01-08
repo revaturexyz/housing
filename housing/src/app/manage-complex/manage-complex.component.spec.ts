@@ -53,7 +53,7 @@ describe('ManageComplexComponent', () => {
     fixture.detectChanges();
   });
 
-  it('manage complex component should create', () => {
+  it('should create manage complex component', () => {
     expect(component).toBeTruthy();
   });
 
