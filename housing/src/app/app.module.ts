@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -40,6 +40,8 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 import { AddTenantComponent } from './add-tenant/add-tenant.component';
 import { FooterComponent } from './footer/footer.component';
 import { AboutComponent } from './about/about.component';
+import { ApplicationInsights } from '@microsoft/applicationinsights-web';
+import { GlobalErrorHandler } from './global-error-handler';
 
 @NgModule({
   declarations: [
@@ -108,6 +110,14 @@ import { AboutComponent } from './about/about.component';
   ],
   providers: [
     {
+      provide: ApplicationInsights,
+      useFactory: appInsightsFactory
+    },
+    {
+      provide: ErrorHandler,
+      useClass: GlobalErrorHandler
+    },
+    {
       provide: HTTP_INTERCEPTORS,
       useClass: InterceptorService,
       multi: true
@@ -117,3 +127,11 @@ import { AboutComponent } from './about/about.component';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+export function appInsightsFactory(): ApplicationInsights {
+  return new ApplicationInsights({
+    config: {
+      instrumentationKey: '(provide instrumentation key)'
+    }
+  });
+}
