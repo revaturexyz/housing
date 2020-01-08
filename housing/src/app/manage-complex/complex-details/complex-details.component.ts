@@ -2,8 +2,12 @@ import { Component, OnInit, Input, ViewChild, EventEmitter, Output } from '@angu
 import { Complex } from 'src/interfaces/complex';
 import { MatPaginator, MatTableDataSource } from '@angular/material';
 import { Room } from '../../../interfaces/room';
-// import { TestServiceData } from 'src/app/services/static-test-data';
 import * as moment from 'moment';
+import { ManageComplexComponent } from '../manage-complex.component';
+import { MockRooms } from '../mock-rooms';
+import { DataSource } from '@angular/cdk/table';
+// import {trigger, animate, style, group, animateChild, query, stagger, transition, state} from '@angular/animations';
+
 
 @Component({
   selector: 'dev-complex-details',
@@ -21,16 +25,26 @@ export class ComplexDetailsComponent implements OnInit {
   @Output() modeOutput: EventEmitter<string> = new EventEmitter<string>();
   // Decorator to output the targeted room
   @Output() targetRoomOutput: EventEmitter<Room> = new EventEmitter<Room>();
+
   // seededRooms =>
-  // import dummy room data
+  mockrooms = new MockRooms();
   public seededRooms: Room[] = [
-    // TestServiceData.room,
-    // TestServiceData.room2
+    this.mockrooms.testroom,
+    this.mockrooms.testroom2,
+    this.mockrooms.testroom3
   ];
+
   // id's for columns on material table
   displayedColumns = ['room#', 'start', 'end', 'edit', 'show'];
+
   // data source for material table
-  dataSource = new MatTableDataSource<Room>(this.seededRooms);
+  dataSource = new MatTableDataSource(this.seededRooms);
+  // dataSource = this.seededRooms;
+
+  // used to filter data from MatTable
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
 
   // editRoom =>
   // once called, output targeted room object and change mode to edit targeted room
@@ -38,25 +52,23 @@ export class ComplexDetailsComponent implements OnInit {
     this.targetRoomOutput.emit(room);
     this.modeOutput.emit('edit-room');
   }
-
   // showRoom =>
   // once called, output targeted room object and change mode to show targeted room's details
   showRoom(room: Room) {
     this.targetRoomOutput.emit(room);
     this.modeOutput.emit('show-room');
   }
-
   // changeMode =>
   // only change the current mode to whatever is specified in the html
   changeMode(reqMode: string) {
     this.modeOutput.emit(reqMode);
   }
-
   // dateFormat =>
   // function to format a Date object to 'MM/YYYY'
   dateFormat(date: Date) {
     return moment(date).format('MM/YYYY');
   }
+
 
   constructor() { }
 

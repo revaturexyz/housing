@@ -7,6 +7,7 @@ import { Complex } from 'src/interfaces/complex';
 import { Gender } from 'src/interfaces/gender';
 import { RoomType } from 'src/interfaces/room-type';
 import { Amenity } from 'src/interfaces/amenity';
+import { FormGroup } from '@angular/forms';
 import { MatChipInputEvent } from '@angular/material';
 import { MatStepperModule } from '@angular/material';
 

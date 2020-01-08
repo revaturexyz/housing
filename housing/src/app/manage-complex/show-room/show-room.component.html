@@ -3,29 +3,42 @@
   <h3 class="show-room-header">{{ complexControl.complexName }}</h3>
   <h5>Room {{ targetRoom.roomNumber }}</h5>
   <hr class="main-hr" />
-  <div><strong>Number of beds : </strong>{{ targetRoom.numberOfBeds }}</div>
-  <div><strong>Gender : </strong>{{ targetRoom.gender.genderType }}</div>
-  <div><strong>Has Occupants : </strong>{{ targetRoom.isOccupied }}</div>
+  <div class="details">
+      <table>
+        <tr>
+        <td><strong>Number of beds: </strong></td>
+        <td>{{ targetRoom.numberOfBeds }}</td>
+        </tr>
+        <tr>
+        <td><div><strong>Gender: </strong></div></td>
+        <td>{{ targetRoom.gender.genderType }}</td>
+        </tr>
+        <tr>
+        <td><div><strong>Has Occupants: </strong></div></td>
+        <td>{{ targetRoom.isOccupied }}</td>
+        </tr>
+      </table>
+  </div>
   <div class="d-flex flex-column">
-    <div class="align-self-start"><strong>Amenities</strong></div>
+    <div class="center"><strong>Room Amenities: </strong></div>
     <div>
       <hr class="p-0 m-1" />
       <mat-chip-list>
-        <mat-chip *ngFor="let amenity of complexControl?.amenity" color="primary" selected>
+        <mat-chip id = "rev-chip" *ngFor="let amenity of targetRoom?.apiAmenity" selected>
           <strong>{{ amenity.amenity }}</strong>
         </mat-chip>
       </mat-chip-list>
     </div>
   </div>
   <hr />
-  <div>
-    <button class="show-room-btn" (click)="handleBackButton()">
-      <strong>
-        &lt; Go back
-      </strong>
-    </button>
-  </div>
+
 </div>
+<mat-card-actions>
+    <button id="back-button" mat-raised-button color="primary" (click)="handleBackButton()"> 
+      &lt; Go Back
+    </button>
+</mat-card-actions>
+
 <!-- Alternate view if a complex is not selected and this page is
 shown -->
 <ng-template #errorblock>

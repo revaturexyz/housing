@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { MatChipsModule } from '@angular/material/chips';
+import { MatChipsModule, MatCardModule } from '@angular/material';
 import { ShowRoomComponent } from './show-room.component';
+import { By } from '@angular/platform-browser';
 
 describe('ShowRoomComponent', () => {
   let component: ShowRoomComponent;
@@ -8,7 +9,7 @@ describe('ShowRoomComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [MatChipsModule],
+      imports: [MatChipsModule, MatCardModule],
       declarations: [ShowRoomComponent]
     })
       .compileComponents();
@@ -22,5 +23,11 @@ describe('ShowRoomComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should have back button', () => {
+    const buttonSelector = fixture.debugElement.query(By.css('#back-button')).nativeElement;
+    fixture.detectChanges();
+    expect(buttonSelector).toBeTruthy();
   });
 });

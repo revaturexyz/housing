@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StickyNavModule } from 'ng2-sticky-nav';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import {
   MatChipsModule, MatTableModule, MatDialogModule, MatPaginatorModule, MatFormFieldModule,
   MatSelectModule, MatSidenavModule, MatIconModule, MatButtonModule, MatDividerModule, MatListModule,
@@ -106,6 +107,7 @@ import { AboutComponent } from './about/about.component';
     ScrollingModule,
     OktaAuthModule,
     MatStepperModule,
+    MDBBootstrapModule.forRoot(),
     MatChipsModule,
     MatTabsModule,
     MatGridListModule,

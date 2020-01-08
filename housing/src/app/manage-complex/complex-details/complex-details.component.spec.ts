@@ -5,7 +5,7 @@ import { ComplexDetailsComponent } from './complex-details.component';
 import {
   MatRippleModule, MatOptionModule, MatSelectModule, MatSidenavModule,
   MatIconModule, MatButtonModule, MatDividerModule, MatListModule, MatChipsModule,
-  MatPaginatorModule, MatTableModule, MatCardModule, MatFormFieldModule
+  MatPaginatorModule, MatTableModule, MatCardModule, MatFormFieldModule, MatInputModule
 } from '@angular/material';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
@@ -33,7 +33,8 @@ describe('ComplexDetailsComponent', () => {
         MatButtonModule,
         MatDividerModule,
         MatListModule,
-        MatExpansionModule
+        MatExpansionModule,
+        MatInputModule
       ],
       declarations: [ComplexDetailsComponent]
     })
