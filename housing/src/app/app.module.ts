@@ -39,22 +39,7 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 import { AddTenantComponent } from './add-tenant/add-tenant.component';
 
 import { OKTA_CONFIG, OktaAuthModule } from '@okta/okta-angular';
-
-const config = {
-  clientId: '0oa2d72hlcH7CUgwf357',
-  issuer: 'https://dev-837913.okta.com/oauth2/default',
-  redirectUri: 'http://localhost:9000/implicit/callback', // port 9000 for docker compose, port 4200 for running with ng serve
-  scopes: ['openid', 'profile', 'email', 'room'],
-  responseType: ['code'],
-  pkce: true,
-  // testing: {
-    //   disableHttpsCheck: `${OKTA_TESTING_DISABLEHTTPSCHECK}`
-    // }
-  // },
-  // resourceServer: {
-  //   messagesUrl: 'http://localhost:8000/api/messages',
-  // },
-};
+import { config } from './app.config';
 
 import { FooterComponent } from './footer/footer.component';
 import { AboutComponent } from './about/about.component';
@@ -133,7 +118,7 @@ import { AboutComponent } from './about/about.component';
     },
     {
       provide: OKTA_CONFIG,
-      useValue: config
+      useValue: config.oidc
       }
   ],
   entryComponents: [AmenityDialogueComponent],

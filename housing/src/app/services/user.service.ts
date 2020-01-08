@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, from } from 'rxjs';
 import { AccountService } from './account.service';
-import { AuthService } from './auth.service';
 import { OktaAuthService } from '@okta/okta-angular';
 import { environment } from 'src/environments/environment';
 
@@ -18,14 +17,6 @@ export class UserService {
           this.userId.next(res);
         });
       }
-
-      // auth.getTokenSilently$().subscribe(res => {
-      //   // atob decodes a Base64-encoded string
-      //   decodedToken = atob(res.split('.')[1]);
-      //   this.roles.next(JSON.parse(decodedToken)[environment.claimsDomain + 'roles']);
-      //   this.email.next(JSON.parse(decodedToken)[environment.claimsDomain + 'email']);
-      // });
-
       auth.getAccessToken().then((res) => {
         const roleString = 'role';
         const emailString = 'sub';
@@ -47,9 +38,5 @@ export class UserService {
 
   private email: BehaviorSubject<string> = new BehaviorSubject('');
   public readonly Email$: Observable<string> = this.email.asObservable();
-
-  // public getAccessToken(): Observable<any> {
-  //   return from(auth.getAccessToken());
-  // }
 
 }

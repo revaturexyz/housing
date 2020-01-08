@@ -1,7 +1,8 @@
 export const environment = {
   production: true,
-  domain: 'dev-fyo32d99.auth0.com', // Absent trailing slash matters here
-  clientID: '4z5nyCX4Jg9L7TDAUvMP0zApLQY3N4dx',
+  domain: 'https://dev-837913.okta.com/oauth2/default', // Absent trailing slash matters here
+  clientID: '0oa2d72hlcH7CUgwf357',
+  redirectUri: 'http://localhost:9000/implicit/callback',
   audience: '/account',
   claimsDomain: 'https://revature.com/', // Trailing slash matters here
   googleMapsKey: 'AIzaSyCxYMcmEjlHQ2r2CywMgyK7YEplxurqW2A',
