@@ -5,10 +5,8 @@ import { FormControl } from '@angular/forms';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {MatChipInputEvent} from '@angular/material/chips';
 import { Room } from 'src/interfaces/room';
-import { Address } from 'src/interfaces/address';
-import { Amenity } from 'src/interfaces/amenity';
-import { Provider} from 'src/interfaces/account/provider';
-import { Status} from 'src/interfaces/account/status';
+import { TestComplexData } from '../services/test-complex-static';
+
 
 @Component({
   selector: 'dev-manage-complex',
@@ -19,79 +17,48 @@ import { Status} from 'src/interfaces/account/status';
 // Component used to handle logic behind selecting and managing a complex
 export class ManageComplexComponent implements OnInit {
 
-  public dummyAmenity: Amenity = {
-    amenityId: 1,
-    amenity: 'pool',
-    isSelected: true,
-  };
 
-  public dummyAddress: Address = {
-    addressId: 1,
-    streetAddress: '123 Sesame St',
-    city: 'Arlington',
-    state: 'TX',
-    zipcode: '12345'
-  };
+    public seededComplexes: Complex[] = [
+        TestComplexData.dummyComplex
+    ];
 
-  public dummyStatus: Status = {
-    statusText: 'approved'
-  };
+    // mode selection =>
+    // 'init' for initial loading,
+    // 'details' for after provider is selected,
+    // 'add-room' for adding room,
+    // 'edit-room' for editing rooms,
+    // 'edit-complex for editing complex
+    mode = 'init';
 
-  public dummyProvider: Provider  = {
-    providerId: 1,
-    coordinatorId: '1',
-    name: 'john',
-    email: 'john@email.com',
-    status: this.dummyStatus,
-    accountCreatedAt: new Date(),
-    accountExpiresAt: new Date(),
-  };
+    // target Room =>
+    // variable that holds room information for editing
+    targetRoom: Room;
 
-  public dummyComplex: Complex = {
-    complexId: 1,
-    apiAddress: this.dummyAddress,
-    apiProvider: this.dummyProvider,
-    complexName: 'liv+',
-    contactNumber: '1234567890',
-    amenity: [this.dummyAmenity],
-  };
+    // complex Control =>
+    // form controller to hold the current selected complex
+    complexControl = new FormControl('');
 
-  public seededComplexes: Complex[] = [
-    this.dummyComplex
-  ];
+    constructor() { }
 
-  // mode selection =>
-  // 'init' for initial loading,
-  // 'details' for after provider is selected,
-  // 'add-room' for adding room,
-  // 'edit-room' for editing rooms,
-  // 'edit-complex for editing complex
-  mode = 'init';
+    ngOnInit() {
 
-  // target Room =>
-  // variable that holds room information for editing
-  targetRoom: Room;
-
-  // complex Control =>
-  // form controller to hold the current selected complex
-  complexControl = new FormControl('');
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
-  changeMode(reqMode: any) {
-    console.log('mode =', reqMode);
-    if ((typeof reqMode) === 'object') {
-      this.mode = 'details';
-    } else {
-      this.mode = reqMode;
     }
-  }
 
-  changeTargetRoom(reqRoom: Room) {
-    this.targetRoom = reqRoom;
-  }
+    changeMode(reqMode: any) {
+        console.log('mode =', reqMode);
+        if ((typeof reqMode) === 'object') {
+        this.mode = 'details';
+        } else {
+        this.mode = reqMode;
+        }
+    }
 
+    changeTargetRoom(reqRoom: Room) {
+        this.targetRoom = reqRoom;
+    }
+
+    addComplex(reqComplex: Complex) {
+      reqComplex.apiProvider = TestComplexData.dummyProvider;
+      this.seededComplexes.push(reqComplex);
+    }
 }
