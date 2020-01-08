@@ -35,6 +35,7 @@ export class AddComplexComponent implements OnInit {
   amenityList: Amenity[] = [];
 
   @Output() modeOutput: EventEmitter<string> = new EventEmitter<string>();
+  @Output() complexOutput: EventEmitter<Complex> = new EventEmitter<Complex>();
 
   // seededAmenityList = TestServiceData.dummyAmenityList1; // seed for simulating all amenities
   // these boolean flags are overwritten by promises returned from
@@ -127,6 +128,7 @@ export class AddComplexComponent implements OnInit {
   postLivingComplex(): void {
     console.log('Add Complex Pressed');
     // Handle adding complex logic here
+    this.complexOutput.emit(this.formLivingComplex);
     this.modeOutput.emit('init'); // Sent to parent to change mode back to details
 
 

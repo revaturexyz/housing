@@ -6,7 +6,7 @@
           <div>
             Please enter the room number
           </div>
-          <mat-form-field appearance="legacy">
+          <mat-form-field class="col-md-12">
             <mat-label>Room Number</mat-label>
             <input matInput type="text" id="roomNumber" name="roomNumber" #roomNumber="ngModel" [(ngModel)]="formRoom.roomNumber" placeholder="Room Number" required>
           </mat-form-field>
@@ -18,7 +18,7 @@
           <div>
             Please enter the occupancy
           </div>
-          <mat-form-field appearance="legacy">
+          <mat-form-field class="col-md-12">
             <mat-label>Total Occupancy</mat-label>
             <input matInput type="number" id="numberOfBeds" name="numberOfBeds" #numberOfBeds="ngModel" [(ngModel)]="formRoom.numberOfBeds" class="form-control" required>
           </mat-form-field>
@@ -31,7 +31,7 @@
           <div>
             Please select the type of room
           </div>
-          <mat-form-field appearance="legacy">
+          <mat-form-field class="col-md-12">
             <mat-label>Room Type</mat-label>
             <mat-select>
               <mat-option *ngFor="let roomType of roomTypes" ngValue="roomType">
@@ -54,7 +54,7 @@
               <em class="fas fa-plus-circle"></em>
             </a>
           </div>
-          <mat-form-field appearance="legacy">
+          <mat-form-field class="col-md-12">
             <mat-chip-list #chipList>
               <mat-chip *ngFor="let amenity of amenityList" id="rev-chip" [selectable]="selectable" [removable]="removable" (removed)="remove(amenity)">
                 {{amenity.amenity}}
@@ -64,6 +64,7 @@
           </mat-form-field>
           <div>
             <button mat-button matStepperPrevious>Back</button>
+            <button mat-button id="cancel" (click)="cancelAddRoom()">Cancel</button>
             <button mat-button id="postAddRoom" (click)="postAddRoom()">Submit</button>
           </div>
         </mat-step>
