@@ -1,13 +1,16 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Provider } from 'src/interfaces/account/provider';
-
+import { FormBuilder} from '@angular/forms';
+import { Validators } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
+import {COMMA, ENTER} from '@angular/cdk/keycodes';
+import { MatChipInputEvent } from '@angular/material';
 import { Complex } from 'src/interfaces/complex';
 // import { MapsService } from '../services/maps.service';
 // import { Router } from '@angular/router';
 import { Amenity } from 'src/interfaces/amenity';
 // import { RedirectService } from '../services/redirect.service';
 // import { TestServiceData } from 'src/app/services/static-test-data';
-
 @Component({
   selector: 'dev-add-complex',
   templateUrl: './add-complex.component.html',
@@ -16,14 +19,24 @@ import { Amenity } from 'src/interfaces/amenity';
 export class AddComplexComponent implements OnInit {
   // the values to the provider object are set on initialization
   currentProvider: Provider;
+  isLinear = false;
+  firstFormGroup: FormGroup;
+  secondFormGroup: FormGroup;
+  thirdFormGroup: FormGroup;
+
+  visible = true;
+  selectable = true;
+  removable = true;
+  addOnBlur = true;
+  increment = 1;
+  readonly separatorKeysCodes: number[] = [ENTER, COMMA];
 
   // TODO: POPULATE THIS
-  amenityList: Amenity[];
+  amenityList: Amenity[] = [];
 
   @Output() modeOutput: EventEmitter<string> = new EventEmitter<string>();
 
   // seededAmenityList = TestServiceData.dummyAmenityList1; // seed for simulating all amenities
-
   // these boolean flags are overwritten by promises returned from
   // the verifyAddress service method that is called by the postLivingComplex method
   // they are then attribute-bound to the template to display an error message to
@@ -39,6 +52,7 @@ export class AddComplexComponent implements OnInit {
     // private mapsService: MapsService,
     // private providerService: ProviderService,
     // private redirect: RedirectService
+    private formBuilder: FormBuilder
   ) {
     // Populate default form values
     this.formLivingComplex = {
@@ -66,6 +80,15 @@ export class AddComplexComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.firstFormGroup = this.formBuilder.group({
+      firstCtrl: ['', Validators.required]
+    });
+    this.secondFormGroup = this.formBuilder.group({
+      secondCtrl: ['', Validators.required]
+    });
+    this.thirdFormGroup = this.formBuilder.group({
+      thirdCtrl: ['', Validators.required]
+    });
     // This is not how redirects should work if no provider is selected.
     // It is likely a guard will need to be implemented to accomplish this task.
     // this.currentProvider = this.redirect.checkProvider();
@@ -74,6 +97,30 @@ export class AddComplexComponent implements OnInit {
     //     this.currentProvider = p;
     //   });
     // }
+  }
+
+  add(event: MatChipInputEvent): void {
+    const input = event.input;
+    const value = event.value;
+    this.increment++;
+
+    if ((value || '').trim()) {
+      this.amenityList.push({amenity: value.trim(),
+      amenityId: this.increment,
+      isSelected: true});
+    }
+
+    if (input) {
+      input.value = '';
+    }
+  }
+
+  remove(amenity: Amenity): void {
+    const index = this.amenityList.indexOf(amenity);
+
+    if (index >= 0) {
+      this.amenityList.splice(index, 1);
+    }
   }
 
   // this method is called when the Submit button is clicked
