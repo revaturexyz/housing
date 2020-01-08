@@ -97,11 +97,6 @@
 
                 <!-- Enter Gender -->
                 <div class="tenFormItem">
-                  <!-- <label class="tenFormLabel">Gender:</label>
-                  <select class="input-border col-md-9 input-border" name="tenant.gender" required
-                    [(ngModel)]="tenant.gender" #tenGender="ngModel">
-                    <option *ngFor="let gender of genders" [ngValue]="type">{{gender}}</option>
-                  </select> -->
                   <div ngbDropdown class="d-inline-block">
                     <button class="btn btn-dark" id="dropdownBasic1" ngbDropdownToggle>{{ genderShowString }}</button>
                     <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
@@ -269,7 +264,6 @@
           -->
           <div id="topbutton">
             <button class="btn btn-secondary" type="submit" (click)="postTenantOnSubmit()">
-              <!-- [disabled]="tenantNum.invalid || tenantT.invalid || verifyDates(tenant.startDate, tenant.endDate)"> -->
               Submit
             </button>
             <button class="btn btn-secondary" type="button"><a id="cancel2" routerLink="">Cancel</a></button>
