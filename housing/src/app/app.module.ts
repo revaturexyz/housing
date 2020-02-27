@@ -49,6 +49,7 @@ import { GlobalErrorHandler } from './global-error-handler';
 import { ViewRoomComponent } from './view-room/view-room.component';
 import { TenantProfileComponent } from './tenant-profile/tenant-profile.component';
 import { TenantMaintenanceComponent } from './tenant-maintenance/tenant-maintenance.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 @NgModule({
@@ -74,7 +75,8 @@ import { TenantMaintenanceComponent } from './tenant-maintenance/tenant-maintena
     AboutComponent,
     ViewRoomComponent,
     TenantProfileComponent,
-    TenantMaintenanceComponent
+    TenantMaintenanceComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
