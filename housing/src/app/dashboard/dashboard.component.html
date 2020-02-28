@@ -1,45 +1,26 @@
-<div id="dashboard-nav-wrapper">  
+<!--div class="row w-100 p-0 m-0" style="height: 88%;"--> 
 
-    <nav id="dashboard-nav">
-        <a class="dashboard-nav-item" routerLink="../edit-provider">Profile</a>    
-        <a class="dashboard-nav-item" routerLink="../provider-status">Status</a>
-        <a class="dashboard-nav-item" routerLink="../manage-complex">Manage Complexes</a>
-        <!---->
-        <a class="dashboard-nav-item" routerLink="../add-complex">Add Complex</a>
-        <a class="dashboard-nav-item" routerLink="../add-room">Add Room</a>
-        <a class="dashboard-nav-item" routerLink="../complex-details">Complex Details</a>
-        <a class="dashboard-nav-item" routerLink="../edit-complex">Edit Complex</a>
-        <a class="dashboard-nav-item" routerLink="../edit-room">Edit Room</a>
-        <a class="dashboard-nav-item" routerLink="../show-room">Show Room</a>
-        <!---->
-        <a class="dashboard-nav-item" routerLink="../coordinator-notifications">Notifications</a>
-        <a class="dashboard-nav-item" routerLink="../add-tenant">Add Tenant</a>
-        <a class="dashboard-nav-item" routerLink="../search-tenant">Search Tenants</a>
-        <a class="dashboard-nav-item" routerLink="../dev-assign-tenant-to-room">Assign Tenants</a>
+    <div id="dashboard-nav-wrapper">  
 
-    </nav>
-    <!--nav id="dashboard-nav">
-        <div class="dashboard-nav-item" (click)="toggleVisible('dev-edit-provider')">Profile</div>    
-        <div class="dashboard-nav-item" (click)="toggleVisible('dev-provider-status')">Status</div>
-        <div class="dashboard-nav-item" (click)="toggleVisible('dev-manage-complex')">Manage Complexes</div>
-        <div class="dashboard-nav-item" (click)="toggleVisible('dev-coordinator-notifications')">Notifications</div>
-        <div class="dashboard-nav-item" (click)="toggleVisible('dev-add-tenant')">Add Tenant</div>
-        <div class="dashboard-nav-item" (click)="toggleVisible('dev-assign-tenant-to-room')">Assign Tenants</div>
-        <div class="dashboard-nav-item" (click)="toggleVisible('dev-amenity-dialogue')">Amenity Dialogue</div>
-        <div class="dashboard-nav-item" (click)="toggleVisible('dev-search-tenant')">Search Tenants</div>
-    </nav-->
-</div>
-<!--div id="dashboard-display">
-    <
-    <dev-edit-provider class="display-item hide"></dev-edit-provider>
-    <dev-provider-status class="display-item hide"></dev-provider-status>
-    <dev-manage-complex class="display-item hide">
-        <dev-add-complex></dev-add-complex>
-        <dev-complex-details></dev-complex-details>
-    </dev-manage-complex>
-    <dev-assign-tenant-to-room class="display-item hide"></dev-assign-tenant-to-room>
-    <dev-coordinator-notifications class="display-item hide"></dev-coordinator-notifications>
-    <dev-amenity-dialogue class="display-item hide"></dev-amenity-dialogue>
-    <dev-add-tenant class="display-item hide"></dev-add-tenant>
-    <dev-search-tenant class="display-item hide"></dev-search-tenant>
-</div-->
+        <nav id="dashboard-nav">
+            <a id="profile-nav" class="dashboard-nav-item main" (click)="toggleActive('#profile-nav')" routerLink="./edit-provider">Profile</a>    
+            <a id="status-nav" class="dashboard-nav-item main" (click)="toggleActive('#status-nav')" routerLink="./provider-status">Status</a>
+            <!--Make this a drop down that contains manage complex and add complex-->
+            <span id="complex-nav" (click)="toggleDropdown()"class="dashboard-nav-item">Complexes</span>
+
+            <div id="dropdown-container" class="hide">
+                <a id="manage-nav" class="dashboard-nav-item" (click)="toggleActive('#manage-nav')"  routerLink="./manage-complex">Manage</a>
+                <a id="add-nav" class="dashboard-nav-item" (click)="toggleActive('#add-nav')"  routerLink="./add-complex">Add</a>
+            </div>
+            <!--
+            <a class="dashboard-nav-item" routerLink="./dashboard/coordinator-notifications">Notifications</a>
+            <a class="dashboard-nav-item" routerLink="./dashboard/add-tenant">Add Tenant</a>
+            <a class="dashboard-nav-item" routerLink="./dashboard/search-tenant">Search Tenants</a>
+            <a class="dashboard-nav-item" routerLink="./dashboard/assign-tenant-to-room">Assign Tenants</a>-->
+
+        </nav> 
+    </div> 
+        
+<router-outlet></router-outlet>
+<!--/div-->
+

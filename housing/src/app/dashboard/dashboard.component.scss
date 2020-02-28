@@ -1,16 +1,41 @@
 
+
 #dashboard-nav-wrapper{
     background: darkslategrey;
     color: white;
     float: left;
     width: 15%;
     min-height: 100vh;
+   
 }
 
+
+#foo{
+   // max-width: 70vw !important
+}
+/*
 #dashboard-nav
 {
-   text-align: center;
+   // text-align: center;
+}*/
+
+#dropdown-container{
+    background: #817e7e;
 }
+
+#dropdown-container a{
+    padding-left: 70px; 
+}
+
+.active{
+    background:#fb752c;
+}
+
+.sub-active{
+    background: black; 
+}
+
+
 
 .dashboard-nav-item{
     padding: 10%;  
