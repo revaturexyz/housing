@@ -1,0 +1,27 @@
+<body>
+
+  <div class="login-outer">
+    <div class="login-inner">
+      <h2>Showing room details by ID</h2>
+
+      <b>Room ID:</b> {{room.roomId}}<br>
+      <!--Room in building:  <div *ngIf= "room.apiAddress" >{{room.apiAddress | json}}</div> -->
+      <b>Room number:</b> {{room.roomNumber}}<br>
+      <b># of beds in room:</b> {{room.numberOfBeds}}<br>
+      <br>
+      <div *ngIf="room.apiRoomType"><b>Room type:</b> {{room.apiRoomType.roomType}}</div>
+      <b>Occupied:</b> {{room.isOccupied}}<br>
+      <div *ngIf="room.gender"><b>Gender:</b> {{room.gender.genderType}}</div><br>
+      <b>The amenities of this room include:</b> <ul class="list-group">
+        <li *ngFor='let aa of room.apiAmenity' class="list-group-item">
+          {{aa.amenity}}
+        </li>
+      </ul>
+      <br>
+      <b>Current lease began:</b> {{room.startDate}}<br>
+      <b>Current lease ends:</b> {{room.endDate}}<br>
+      <br>
+      <div *ngIf="room.apiComplex"> <b>{{room.apiComplex.complexName}}:</b> Located at {{room.apiAddress.streetAddress}}, {{room.apiAddress.city}} {{room.apiAddress.state}}. <br> {{room.apiComplex.complexName}} can be contacted at <b>{{room.apiComplex.contactNumber}}</b></div>
+    </div>
+  </div>
+</body>
