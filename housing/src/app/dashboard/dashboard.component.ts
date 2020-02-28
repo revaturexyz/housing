@@ -7,6 +7,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
+  constructor(
+  ) { }
+  
+  ngOnInit() {
+  }
 
   prefix:string = "/dashboard/";
   routes: Array<string> = ["edit-provider","provider-status","manage-complex","add-complex"];
@@ -63,7 +68,6 @@ export class DashboardComponent implements OnInit {
     else{ 
       this.collapseDropdown();
     }
-  }
 
   //is called by onActivate, and adds styles to dashboard navigation items based on the url
   matchSelectionWithUrl()
@@ -103,5 +107,4 @@ export class DashboardComponent implements OnInit {
         break;
     }
   }
-
 }
