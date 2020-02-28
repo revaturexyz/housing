@@ -17,3 +17,19 @@ export interface Room {
   apiComplex: Complex;
   gender: Gender;
 }
+
+/*Room2 
+* The updated version of Room 
+*Both are here untill finalize changes will be made 
+*/
+export interface Room2 {
+  roomId: number;
+  apiAddress: Address;
+  roomNumber: string;
+  numberOfBeds: number;
+  apiRoomType: RoomType;
+  numberOfOccupants: number; 
+  apiAmenity: Amenity[];
+  apiComplex: Complex;
+  gender: Gender;
+}
