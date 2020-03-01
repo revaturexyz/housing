@@ -4,9 +4,10 @@ import { environment } from 'src/environments/environment';
 export const config = {
   oidc: {
     clientId: environment.clientID,
-    issuer: environment.domain,
+    issuer: environment.issuer,
     redirectUri: environment.redirectUri,
-    scopes: ['openid', 'profile', 'email', 'room'],
+    //scopes: ['openid', 'profile', 'email', 'room'],
+    scopes: ['openid', 'profile', 'email'],
     pkce: true,
     testing: {
       // disableHttpsCheck: `${OKTA_TESTING_DISABLEHTTPSCHECK}`

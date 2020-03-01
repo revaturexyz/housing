@@ -28,8 +28,16 @@ export class NavComponent implements OnInit {
       (isAuthenticated: boolean)  => this.isAuthenticated = isAuthenticated
     );
 
-    user.Roles$.subscribe(res => this.role = res[1]); // index 0 is 'Everyone', index 1 is the actual role.
   }
 
-  ngOnInit() { }
+  async ngOnInit() {
+    if (this.oktaAuth.isAuthenticated()) {
+      
+      const userClaims = await this.oktaAuth.getUser();
+      //this.user.Roles$.subscribe(res => this.role = res[1]); // index 0 is 'Everyone', index 1 is the actual role.
+
+      console.log(userClaims.Roles);
+      this.role = userClaims.Roles[1];
+    }
+   }
 }
