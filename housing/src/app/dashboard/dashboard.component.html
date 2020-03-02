@@ -1,26 +1,29 @@
-<!--div class="row w-100 p-0 m-0" style="height: 88%;"--> 
 
     <div id="dashboard-nav-wrapper">  
+        <nav id="dashboard-nav"> 
 
-        <nav id="dashboard-nav">
-            <a id="profile-nav" class="dashboard-nav-item main" (click)="toggleActive('#profile-nav')" routerLink="./edit-provider">Profile</a>    
-            <a id="status-nav" class="dashboard-nav-item main" (click)="toggleActive('#status-nav')" routerLink="./provider-status">Status</a>
-            <!--Make this a drop down that contains manage complex and add complex-->
-            <span id="complex-nav" (click)="toggleDropdown()"class="dashboard-nav-item">Complexes</span>
+            <a id="profile-nav" class="dashboard-nav-item main" routerLink="./edit-provider">Profile</a>    
+            <a id="status-nav" class="dashboard-nav-item main" routerLink="./provider-status">Status</a>
+            <!--item that triggers dropdown-->
+            <span id="complex-nav" (click)="toggleDropdown()" class="dashboard-nav-item">
+                Complexes
+                <i class="fa fa-caret-down"></i>
+            </span>
 
             <div id="dropdown-container" class="hide">
-                <a id="manage-nav" class="dashboard-nav-item" (click)="toggleActive('#manage-nav')"  routerLink="./manage-complex">Manage</a>
-                <a id="add-nav" class="dashboard-nav-item" (click)="toggleActive('#add-nav')"  routerLink="./add-complex">Add</a>
+                <a id="manage-nav" class="dashboard-nav-item"  routerLink="./manage-complex">Manage</a>
+                <a id="add-nav" class="dashboard-nav-item"  routerLink="./add-complex">Add</a>
             </div>
-            <!--
-            <a class="dashboard-nav-item" routerLink="./dashboard/coordinator-notifications">Notifications</a>
-            <a class="dashboard-nav-item" routerLink="./dashboard/add-tenant">Add Tenant</a>
-            <a class="dashboard-nav-item" routerLink="./dashboard/search-tenant">Search Tenants</a>
-            <a class="dashboard-nav-item" routerLink="./dashboard/assign-tenant-to-room">Assign Tenants</a>-->
 
+            <!--
+            <a id="notifications" class="dashboard-nav-item" (click)="matchSelectionWithUrl()" routerLink="./coordinator-notifications">Notifications</a>
+            <a class="dashboard-nav-item" routerLink="./add-tenant">Add Tenant</a>
+            <a class="dashboard-nav-item" routerLink="./search-tenant">Search Tenants</a>
+            <a class="dashboard-nav-item" routerLink="./assign-tenant-to-room">Assign Tenants</a>
+            -->
         </nav> 
     </div> 
-        
-<router-outlet></router-outlet>
-<!--/div-->
+    <div id="dashboard-display">
+        <router-outlet (activate)='onActivate()'></router-outlet>
+    </div>
 
