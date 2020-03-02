@@ -63,7 +63,8 @@ export class DashboardComponent implements OnInit {
   removeClass(selector:string,selectorClass:string)
   {
     document.querySelector(selector).classList.remove(selectorClass);
-  }
+  } 
+  
 
   //expands dropdown 
   expandDropdown()
@@ -102,4 +103,5 @@ export class DashboardComponent implements OnInit {
       this.expandDropdown(); 
     }
   }
+
 }
