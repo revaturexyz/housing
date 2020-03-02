@@ -27,7 +27,7 @@ export class ViewRoomService {
   }
 
   // Get room by id from api
-  GetRoomById(roomId: string): Observable<any> {
+  GetRoomById(roomId: number): Observable<any> {
     const roomUrl = `${this.apiUrl}` + 'rooms/' + `${roomId}`;
     return this.httpBus.get<Room>(roomUrl, this.httpOptions);
   }

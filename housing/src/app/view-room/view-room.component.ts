@@ -16,6 +16,9 @@ import { Provider } from 'src/interfaces/account/provider';
 import { Status } from 'src/interfaces/account/status';
 import { Gender } from 'src/interfaces/gender';
 import { Pipe, PipeTransform } from '@angular/core';
+import {ViewRoomService} from '../services/view-room.service';
+import 'rxjs/add/operator/toPromise';
+
 
 
 @Component({
@@ -26,7 +29,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class ViewRoomComponent implements OnInit {
 
-  constructor() { }
+  constructor(public viewRoomService: ViewRoomService) { }
 
   xRoom: RoomType =
     {
@@ -34,6 +37,7 @@ export class ViewRoomComponent implements OnInit {
       roomType: "Apartment"
     };
 
+    idSelector: number;
   XAmenity: Amenity = { amenityId: 1, amenity: "Desks", isSelected: true };
   YAmenity: Amenity = { amenityId: 2, amenity: "Shelves", isSelected: true };
   ZAmenity: Amenity = { amenityId: 3, amenity: "Furnishings", isSelected: true };
@@ -81,21 +85,38 @@ export class ViewRoomComponent implements OnInit {
   };
 
   room: Room = {
-    roomId: 1,
-    apiAddress: this.yeet,
-    roomNumber: "2134",
-    numberOfBeds: 4,
-    apiRoomType: this.xRoom,
+    roomId : null,
+    apiAddress : null,
+    roomNumber: '',
+    numberOfBeds: null,
+    apiRoomType: null,
     isOccupied: false,
-    apiAmenity: this.AList,
-    startDate: new Date(),
-    endDate: new Date(),
-    apiComplex: this.comp,
-    gender: this.gen
-  };
+    apiAmenity: null,
+    startDate: null,
+    endDate: null,
+    apiComplex: null,
+    gender: null
+};
 
-  ngOnInit() {
 
-  }
+ngOnInit() {}
+  
+  getById(): void{
+      this.room.roomId = null;
+      this.room.apiAddress = null;
+      this.room.roomNumber = '';
+      this.room.numberOfBeds = null;
+      this.room.apiRoomType = null;
+      this.room.isOccupied = null;
+      this.room.apiAmenity = null;
+      this.room.startDate = null;
+      this.room.endDate = null;
+      this.room.apiComplex = null;
+      this.room.gender = null;
+
+      this.viewRoomService.GetRoomById(this.idSelector)
+        .toPromise().then(response => this.room = response);
+    
+  } 
 
 }
