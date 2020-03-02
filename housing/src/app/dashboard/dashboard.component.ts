@@ -7,8 +7,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  constructor(
-  ) { }
+
+  prefix:string = "/dashboard/";
+  routes: Array<string> = ["edit-provider","provider-status","manage-complex","add-complex"];
+
+  constructor(private router: Router) {}
   
   ngOnInit() {
   }
@@ -107,4 +110,5 @@ export class DashboardComponent implements OnInit {
         break;
     }
   }
+
 }
