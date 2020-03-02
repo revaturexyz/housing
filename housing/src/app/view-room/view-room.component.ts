@@ -17,7 +17,8 @@ import { Status } from 'src/interfaces/account/status';
 import { Gender } from 'src/interfaces/gender';
 import { Pipe, PipeTransform } from '@angular/core';
 import {ViewRoomService} from '../services/view-room.service';
-import 'rxjs/add/operator/toPromise';
+//import 'rxjs/add/operator/toPromise';
+import {HttpClientModule} from '@angular/common/http';
 
 
 
@@ -90,7 +91,7 @@ export class ViewRoomComponent implements OnInit {
     roomNumber: '',
     numberOfBeds: null,
     apiRoomType: null,
-    isOccupied: false,
+    isOccupied: null,
     apiAmenity: null,
     startDate: null,
     endDate: null,

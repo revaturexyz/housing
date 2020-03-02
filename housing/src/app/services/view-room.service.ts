@@ -9,6 +9,7 @@ import { RoomType } from 'src/interfaces/room-type';
 import { Room } from 'src/interfaces/room';
 import { RoomWithTenants } from 'src/interfaces/room-with-tenant';
 
+
 @Injectable({
   providedIn: 'root'
 })
