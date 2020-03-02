@@ -31,10 +31,15 @@ export class LodgingService {
 //#region Complex Methods 
 
   /*getComplexes() 
-  * input: no parameters 
-  * returns: all complexes and their contents  
-  *     so this should retun a and arrayof complex objects 
-  * a
+  * Input: no parameters 
+  * Returns: all complexes and their contents  
+  *     so this should retun a and array of complex objects 
+  * Complex would return complex object defined in complex interface
+  * 
+  * API in entities has two models for complex 
+  * when the controller is created , the exact entity/model will 
+  * be known so if it turns out to be different 
+  * the interface will need to be changed 
   */
   getComplexes(): Promise<Complex[]>{ 
     //complexURL needs to be known then 
@@ -42,9 +47,15 @@ export class LodgingService {
     return this.httpBus.get<Complex[]>(getComplexesURL).toPromise(); 
   }
 
+
   /*getComplexesById(complexId)
   * inputs: complexID of type string , expected GUID primary key of complex 
   * returns: specific complex , stored in a promise 
+  * 
+  * API in entities has two models for complex 
+  * when the controller is created , the exact entity/model will 
+  * be known so if it turns out to be different 
+  * the interface will need to be changed 
   */ 
   getComplexesById(complexID: string): Promise<Complex>{ 
     //complexID 
@@ -55,6 +66,8 @@ export class LodgingService {
 
 /*UpdateComplexById(Complex)
 *inputs: Complex object to be put in place of existing one in API  
+*
+*
 *
 */
   updateComplexById(updatedComplex: Complex): Observable<any>{ 
@@ -81,9 +94,14 @@ export class LodgingService {
     return this.httpBus.post<Complex>(PostURl, newComplex);
   }
 
+  
 //#endregion
 
-//#region  Rooms 
+
+
+
+
+//#region Rooms 
 
 /*getRoomsByComplexId 
 * Input: ComplexId of type string - expecting a GUID 
@@ -94,7 +112,7 @@ getRoomsByComplexId(complexId: string):Promise<Room>{
   // so the route would not be the same as the get rooms by ID 
   //would 
   var getRoomsByComplexIdURL = this.apiUrl + 'Room/ByComplex/' + complexId; 
-  return this.httpBus.get<Room2>(getRoomsByComplexIdURL).toPromise();
+  return this.httpBus.get<Room>(getRoomsByComplexIdURL).toPromise();
 }
 /*getRoomsByComplexIdRoom2
 * Input: ComplexId of type string - expecting a GUID 
@@ -108,7 +126,6 @@ getRoomsByComplexIdRoom2(complexId: string):Promise<Room2>{
   return this.httpBus.get<Room2>(getRoomsByComplexIdURL).toPromise(); 
 }
 
-
 /*GetRoomById
 * Input: RoomId 
 * returns an object of type Room specified in the room interface 
@@ -117,20 +134,30 @@ getRoomById(RoomId: string): Promise<Room>{
   var getRoomByIdURL = this.apiUrl + 'Room/'+ RoomId; 
   return this.httpBus.get<Room>(getRoomByIdURL).toPromise();
 }
+
 /*GetRoomByIdRoom2
 * Input: RoomId 
-* returns an object of type Room2 specified in the room interface 
+* Returns an object of type Room2 specified in the room interface
+* 
 */
 getRoomByIdRoom2(RoomId: string): Promise<Room2>{ 
   var getRoomByIdURL = this.apiUrl + 'Room/' + RoomId; 
   return this.httpBus.get<Room2>(getRoomByIdURL).toPromise();
 }
-
+/*Update Room 
+*HTTP PUT - places room object at URL endpoint 
+*Input: Room Object to replace old room object; 
+*
+*/
 updateRoom(updatedRoom: Room2): Observable<any>{ 
   var updateRoomURL = this.apiUrl + "/"; 
   return this.httpBus.put(updateRoomURL, updatedRoom); 
 }
 
+/*Delete Room By Id 
+* HTTP DELETE at specific ID 
+* Input Room ID , at which 
+*/ 
 deleteRoomById(RoomId: string): Observable<Room2>{
   var deleteRoomByIdURL = this.apiUrl + 'Room/'+ RoomId; 
   return this.httpBus.delete<Room2>(deleteRoomByIdURL);

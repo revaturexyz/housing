@@ -10,3 +10,11 @@ export interface Complex {
   contactNumber: string;
   amenity: Amenity[];
 }
+
+export interface Complex2 { 
+  Id: string; 
+  AddressId: string; 
+  ProviderId: string; 
+  ComplexName: string; 
+  ContactNumber: string;
+}

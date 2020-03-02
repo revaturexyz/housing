@@ -34,8 +34,6 @@ export class AddressService {
     return this.httpBus.get<Address>(addressUrl, this.httpOptions);
   }
 
-
-
   /*Method: Post Address
   * Inputs: Address by the interface PostAddress 
   * API DOES NOT HAVE METHOD FOR POSTING ADDRESS 
