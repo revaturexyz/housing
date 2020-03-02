@@ -129,8 +129,5 @@
       }
     }
   },
-  "defaultProject": "housing",
-  "cli": {
-    "analytics": "78755f85-eb2d-4aad-b698-c03780fcdf75"
-  }
+  "defaultProject": "housing"
 }
