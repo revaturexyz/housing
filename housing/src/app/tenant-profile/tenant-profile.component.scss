@@ -1,0 +1,58 @@
+mat-card
+{
+    width:50vw;
+    padding-top:0;
+}
+
+.horizontal-center
+{
+    justify-content:center;
+}
+
+.vertical-center 
+{
+    //min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+@media screen and (max-width: 1169px)
+{
+    mat-card
+    {
+        min-width: 590px;
+    }
+}
+
+@media screen and (max-width: 590px)
+{
+    
+    mat-card
+    {
+        min-width:90vw;
+    }
+    
+    span
+    {
+        font-size:2vw;
+    }
+}
+
+@media only screen 
+and (min-device-width:320px)
+and (max-device-width:480px)
+{
+    /*mobile width*/
+}
+
+@media only screen 
+and (min-device-width:768px)
+and (max-device-width:1024px)
+{
+    /*iPad width*/
+}
+
+input[type="text"]:focus
+{
+    outline:none;
+}

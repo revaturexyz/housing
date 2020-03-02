@@ -46,6 +46,7 @@ import { FooterComponent } from './footer/footer.component';
 import { AboutComponent } from './about/about.component';
 import { ApplicationInsights } from '@microsoft/applicationinsights-web';
 import { GlobalErrorHandler } from './global-error-handler';
+import { TenantProfileComponent } from './tenant-profile/tenant-profile.component';
 
 
 @NgModule({
@@ -68,7 +69,8 @@ import { GlobalErrorHandler } from './global-error-handler';
     AddRoomComponent,
     AddTenantComponent,
     FooterComponent,
-    AboutComponent
+    AboutComponent,
+    TenantProfileComponent
   ],
   imports: [
     BrowserModule,
