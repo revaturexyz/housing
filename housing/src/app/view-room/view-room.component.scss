@@ -1,0 +1,59 @@
+.login-outer {
+  width: 100%;
+  text-align: center;
+  padding: 100px;
+  background-image: url("https://engineering.stanford.edu/sites/default/files/styles/full_width_banner_tall/public/buildings-shape.jpg?itok=FWLFiW7H");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.login-inner {
+  width: 50%;
+  background-color: white;
+  opacity: 0.9;
+  margin-left: 25%;
+  margin-right: 25%;
+  padding: 50px;
+  border-radius: 5px;
+}
+
+
+
+img {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: 50%;
+  background-image: url("https://lh3.googleusercontent.com/proxy/-IzbiCsOrTtVuxta-8gdFthtmRBr7nq0xlfXz8J6IE0C2gFkcWRkYyP3d60KibV9OIjOvS1jfQhs3XUbdT9JAEG2WZrRR_6yU_tfN3P-D5JTPx80kMd7mnlAas_sdJAksR4H");
+  padding: 5px;
+  width: 150px;
+}
+/*
+    .split {
+      height: 100%;
+      width: 50%;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      overflow-x: hidden;
+      padding-top: 20px;
+    }    
+
+  .left {
+    left: 0;
+  }
+
+
+.right {
+  right: 0;
+}
+
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+*/
