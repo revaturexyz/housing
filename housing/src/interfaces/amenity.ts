@@ -3,3 +3,10 @@ export interface Amenity {
   amenity: string;
   isSelected: boolean;
 }
+
+export interface Amenity2 { 
+  AmenityId: string; 
+  AmenityType: string; 
+  Description: string; 
+}
+
