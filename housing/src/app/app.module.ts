@@ -47,6 +47,7 @@ import { AboutComponent } from './about/about.component';
 import { ApplicationInsights } from '@microsoft/applicationinsights-web';
 import { GlobalErrorHandler } from './global-error-handler';
 import { TenantProfileComponent } from './tenant-profile/tenant-profile.component';
+import { TenantMaintenanceComponent } from './tenant-maintenance/tenant-maintenance.component';
 
 
 @NgModule({
@@ -70,7 +71,8 @@ import { TenantProfileComponent } from './tenant-profile/tenant-profile.componen
     AddTenantComponent,
     FooterComponent,
     AboutComponent,
-    TenantProfileComponent
+    TenantProfileComponent,
+    TenantMaintenanceComponent
   ],
   imports: [
     BrowserModule,
