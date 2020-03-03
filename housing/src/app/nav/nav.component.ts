@@ -31,5 +31,13 @@ export class NavComponent implements OnInit {
     user.Roles$.subscribe(res => this.role = res[1]); // index 0 is 'Everyone', index 1 is the actual role.
   }
 
-  ngOnInit() { }
+  async ngOnInit() {    
+    this.isAuthenticated = await this.oktaAuth.isAuthenticated();
+    if (this.oktaAuth.isAuthenticated()) {
+      
+      const userClaims = await this.oktaAuth.getUser();
+      this.role = userClaims.Roles[1];
+    }
+
+   }
 }
