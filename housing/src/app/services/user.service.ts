@@ -23,13 +23,14 @@ export class UserService {
           this.userId.next(res);
         });
       }
-      auth.getAccessToken().then((res) => {
-        const roleString = 'role';
+
+      auth.getUser().then((claim) => {
+        const roleString = 'Roles';
         const emailString = 'sub';
 
         // atob decodes a Base64-encoded string
-        decodedToken = atob(res.split('.')[1]);
-        this.roles.next(JSON.parse(decodedToken)[roleString]);
+        //decodedToken = atob(claim.split('.')[1]);
+        this.roles.next(claim.Roles);
         this.email.next(JSON.parse(decodedToken)[emailString]);
       });
 

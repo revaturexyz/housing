@@ -5,7 +5,7 @@
       <button id="revature">
         <img routerLink="" alt="logo" src="/assets/imgs/revature-logo-600x219.png" height="55px">
       </button>
-      <span>{{ role }}</span>
+      <span *ngIf="role">{{ role }}</span>
 
 
       <!-- ride-side justification, added through nav css -->
@@ -16,16 +16,18 @@
         <a mat-button routerLink="">Home</a>
 
         <!-- if a limited provider is signed in -->
-        <a mat-button *ngIf="isAuthenticated && role !== 'coordinator'" routerLink="provider-status">Status</a>
-        <a mat-button *ngIf="isAuthenticated && role !== 'coordinator'" routerLink="edit-provider">Profile</a>
+        <a mat-button *ngIf="isAuthenticated && role !== 'Coordinator'" routerLink="provider-status">Status</a>
+        <a mat-button *ngIf="isAuthenticated && role !== 'Coordinator'" routerLink="edit-provider">Profile</a>
 
         <!-- if a full access provider is signed in -->
-        <a mat-button *ngIf="isAuthenticated && role !== 'coordinator'" routerLink="manage-complex">Manage Complexes</a>
+        <a mat-button *ngIf="isAuthenticated && role !== 'Coordinator'" routerLink="manage-complex">Manage Complexes</a>
 
         <!-- if a coordinator is signed in -->
-        <a mat-button *ngIf="isAuthenticated && role === 'coordinator'" routerLink="coordinator-notifications">Notifications</a>
-        <a mat-button *ngIf="isAuthenticated && role === 'coordinator'" routerLink="add-tenant">Add Tenant</a>
-        <a mat-button *ngIf="isAuthenticated && role === 'coordinator'" routerLink="search-tenant">Search Tenants</a>
+        <a mat-button *ngIf="isAuthenticated && role === 'Coordinator'" (click)="test()">Test</a>
+
+        <a mat-button *ngIf="isAuthenticated && role === 'Coordinator'" routerLink="coordinator-notifications">Notifications</a>
+        <a mat-button *ngIf="isAuthenticated && role === 'Coordinator'" routerLink="add-tenant">Add Tenant</a>
+        <a mat-button *ngIf="isAuthenticated && role === 'Coordinator'" rouWerLink="search-tenant">Search Tenants</a>
 
         <!-- everyon can view this -->
 

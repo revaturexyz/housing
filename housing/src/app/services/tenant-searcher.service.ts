@@ -5,10 +5,20 @@ import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import TenantSelected from 'src/interfaces/tenant-selected-info/tenant-selected';
 import { Address } from 'src/interfaces/address';
 
+interface Message {
+
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class TenantSearcherService {
+
+  getTestMessage(): Promise<Message> {
+    const url = `http://localhost:11080/api/messages`;
+    return this.httpClient.get<Message>(url).toPromise();
+  }
+
   // Get all tenants from api
   getTenants(): Promise<TenantSearching[]> {
     const url = `${environment.endpoints.tenant}api/Tenant`;

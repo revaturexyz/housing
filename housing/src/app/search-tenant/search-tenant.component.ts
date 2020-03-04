@@ -46,6 +46,13 @@ export class SearchTenantComponent implements OnInit {
   }
 
   searchAllTenants() {
+    
+    // testing if can access authorized api
+    this.service.getTestMessage().then(res =>
+    {
+      console.log(res);
+    })
+
     this.tenantsLoaded = false;
 
     this.service.getTenants()

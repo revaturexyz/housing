@@ -29,7 +29,7 @@ export class HomeComponent implements OnInit {
       (isAuthenticated: boolean)  => this.isAuthenticated = isAuthenticated
     );
 
-    user.Roles$.subscribe(res => this.role = res[1]); // index 0 is 'Everyone', index 1 is the actual role.
+    //user.Roles$.subscribe(res => this.role = res[1]); // index 0 is 'Everyone', index 1 is the actual role.
   }
   ngOnInit() {
   }
