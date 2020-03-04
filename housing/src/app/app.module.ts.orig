@@ -46,7 +46,10 @@ import { FooterComponent } from './footer/footer.component';
 import { AboutComponent } from './about/about.component';
 import { ApplicationInsights } from '@microsoft/applicationinsights-web';
 import { GlobalErrorHandler } from './global-error-handler';
+<<<<<<< HEAD
 import { ViewRoomComponent } from './view-room/view-room.component';
+=======
+>>>>>>> 2d0122bdd4ec843c4f9cbea2f8538a6bade7ab35
 import { TenantProfileComponent } from './tenant-profile/tenant-profile.component';
 import { TenantMaintenanceComponent } from './tenant-maintenance/tenant-maintenance.component';
 
@@ -73,12 +76,11 @@ import { TenantMaintenanceComponent } from './tenant-maintenance/tenant-maintena
     FooterComponent,
     AboutComponent,
 <<<<<<< HEAD
-    ViewRoomComponent
-    TenantProfileComponent
+    ViewRoomComponent,
 =======
+>>>>>>> 2d0122bdd4ec843c4f9cbea2f8538a6bade7ab35
     TenantProfileComponent,
     TenantMaintenanceComponent
->>>>>>> Added tenant-maintenance component, added image to assets, added appropriate path to app-routing
   ],
   imports: [
     BrowserModule,
