@@ -6,7 +6,7 @@ import { environment } from 'src/environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Tenant } from 'src/interfaces/tenant';
 import { RoomType } from 'src/interfaces/room-type';
-import { Room } from 'src/interfaces/room';
+import { Room2 } from 'src/interfaces/room';
 import { RoomWithTenants } from 'src/interfaces/room-with-tenant';
 import { Address } from 'src/interfaces/address';
 import { state } from '@angular/animations';
@@ -19,7 +19,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 import {ViewRoomService} from '../services/view-room.service';
 //import 'rxjs/add/operator/toPromise';
 import {HttpClientModule} from '@angular/common/http';
-
+import {TenantService} from '../services/tenant.service';
+import {IdentityService} from '../services/identity.service';
+import {Identity} from 'src/interfaces/Identity'
 
 
 @Component({
@@ -30,94 +32,50 @@ import {HttpClientModule} from '@angular/common/http';
 })
 export class ViewRoomComponent implements OnInit {
 
-  constructor(public viewRoomService: ViewRoomService) { }
+  constructor(public viewRoomService: ViewRoomService, public tenantService: TenantService, public identityService: IdentityService) { }
 
-  xRoom: RoomType =
-    {
-      typeId: 1,
-      roomType: "Apartment"
-    };
+  idSelector: string;
+  roomSelector: string;
+  idHolder: string;
 
-    idSelector: number;
-  XAmenity: Amenity = { amenityId: 1, amenity: "Desks", isSelected: true };
-  YAmenity: Amenity = { amenityId: 2, amenity: "Shelves", isSelected: true };
-  ZAmenity: Amenity = { amenityId: 3, amenity: "Furnishings", isSelected: true };
-  AList: Amenity[] = [this.XAmenity, this.YAmenity, this.ZAmenity];
-
-
-  yeet: Address =
-    {
-      addressId: 1,
-      streetAddress: "1001 S Center St",
-      city: "Arlington",
-      state: "Texas",
-      zipcode: "64468"
-    };
-
-  stat: Status = {
-    statusText: "It's aight"
-  };
-
-  prov: Provider = {
-    providerId: 1,
-    coordinatorId: "EOD",
-    name: "Isaac",
-    email: "yoooo@gmail.com",
-    status: this.stat,
-    accountCreatedAt: new Date(),
-    accountExpiresAt: new Date()
-  };
-
-  comp: Complex = {
-
-    complexId: 1,
-    apiAddress: this.yeet,
-    apiProvider: this.prov,
-    complexName: "Liv+",
-    contactNumber: "919-468-8796",
-    amenity: this.AList
-  };
-
-
-
-  gen: Gender = {
-    genderId: 3,
-    genderType: "M"
-  };
-
-  room: Room = {
-    roomId : null,
-    apiAddress : null,
+  room: Room2 = {
+    roomId : '',
     roomNumber: '',
-    numberOfBeds: null,
+    complexId: null,
+    numBeds: null,
+    Amenities: null,
     apiRoomType: null,
-    isOccupied: null,
-    apiAmenity: null,
-    startDate: null,
-    endDate: null,
-    apiComplex: null,
-    gender: null
+    leaseStart: null,
+    leaseEnd: null,
 };
 
+Ten: Identity = {
+Name: null,
+TenantId: null,
+Email: null
+};
 
-ngOnInit() {}
+ngOnInit() {this.getTenantInfo();}
+
+getTenantInfo(): void{
+  this.identityService.GetTenantDetails(this.Ten.Email)
+  .toPromise().then(response => this.Ten = response);
+  this.roomSelector = this.Ten.TenantId
+}
+
+ /* setTenantId(): void{
+    this.tenant.id = this.idSelector;
+    this.tenantService.GetTenantById(this.idSelector)
+      .toPromise().then(response => this.tenant = response);
+
+  }*/
   
   getById(): void{
-      this.room.roomId = null;
-      this.room.apiAddress = null;
-      this.room.roomNumber = '';
-      this.room.numberOfBeds = null;
-      this.room.apiRoomType = null;
-      this.room.isOccupied = null;
-      this.room.apiAmenity = null;
-      this.room.startDate = null;
-      this.room.endDate = null;
-      this.room.apiComplex = null;
-      this.room.gender = null;
+      this.room.roomId = this.roomSelector;
 
-      this.viewRoomService.GetRoomById(this.idSelector)
+      this.viewRoomService.GetRoomById(this.roomSelector)
         .toPromise().then(response => this.room = response);
-    
+        this.idHolder
   } 
 
 }
