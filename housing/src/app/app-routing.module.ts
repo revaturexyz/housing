@@ -11,6 +11,8 @@ import { SearchTenantComponent } from './search-tenant/search-tenant.component';
 import { SelectTenantComponent } from './select-tenant/select-tenant.component';
 import { AddTenantComponent } from './add-tenant/add-tenant.component';
 import { OktaCallbackComponent, OktaAuthGuard } from '@okta/okta-angular';
+import { TenantProfileComponent } from './tenant-profile/tenant-profile.component';
+import { TenantMaintenanceComponent } from './tenant-maintenance/tenant-maintenance.component';
 import { AboutComponent } from './about/about.component';
 import { AuthGuard } from './guards/auth.guard';
 import { ViewRoomComponent } from './view-room/view-room.component';
@@ -30,9 +32,10 @@ const routes: Routes = [
   { path: 'manage-complex', component: ManageComplexComponent, canActivate: [OktaAuthGuard] },
   { path: 'add-tenant', component: AddTenantComponent },
   { path: 'implicit/callback', component: OktaCallbackComponent },
+  { path: 'tenant-profile', component: TenantProfileComponent},
+  { path: 'tenant-maintenance', component: TenantMaintenanceComponent},
   { path: 'about', component: AboutComponent },
-  { path: 'view-room', component: ViewRoomComponent },
-
+  { path: 'view-room', component: ViewRoomComponent }
 ];
 
 @NgModule({

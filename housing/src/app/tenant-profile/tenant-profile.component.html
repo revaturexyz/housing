@@ -1,0 +1,133 @@
+<div class="horizontal-center vertical-center">
+    <div class="jumbotron" style="background-color:rgb(247, 101, 3);">
+        <h2 style="text-align:center;color:white;">My Profile</h2>
+    <mat-card>
+        <mat-card-content>
+            <mat-horizontal-stepper>
+                <mat-step>
+                    <ng-template matStepLabel> 
+                        <span>GENERAL</span> 
+                    </ng-template>
+                    <table>
+                        <thead>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>First Name&emsp;</strong></td>
+                                <td><input type="text" value="{{tenant_info.firstName}}" readonly/></td>
+                            </tr><br/>
+                            <tr>
+                                <td><strong>Last Name&emsp;</strong></td>
+                                <td><input type="text" value="{{tenant_info.lastName}}" readonly/></td>
+                            </tr><br/>
+                            <tr>
+                                <td><strong>Gender&emsp;</strong></td>
+                                <td><input type="text" value="{{tenant_info.gender}}" readonly/></td>
+                            </tr><br/>
+                            <tr>
+                                <td><strong>Email&emsp;</strong></td>
+                                <td><input type="text" value="{{tenant_info.email}}" readonly/></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </mat-step>
+                <mat-step>
+                    <ng-template matStepLabel> 
+                        <span>ADDRESS</span> 
+                    </ng-template>
+                    <table>
+                        <thead>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Country&emsp;</strong></td>
+                                <td><input type="text" value="{{tenant_info.tenantAddress.country}}" readonly/></td>
+                            </tr><br/>
+                            <tr>
+                                <td><strong>Street Address&emsp;</strong></td>
+                                <td><input type="text" value="{{tenant_info.tenantAddress.street}}" readonly/></td>
+                            </tr><br/>
+                            <tr>
+                                <td><strong>City&emsp;</strong></td>
+                                <td><input type="text" value="{{tenant_info.tenantAddress.city}}" readonly/></td>
+                            </tr>
+                            <div *ngIf="tenant_info.tenantAddress.country == 'USA'">
+                                <br/>
+                            </div>
+                            <tr *ngIf="tenant_info.tenantAddress.country == 'USA'">
+                                <td><strong>State&emsp;</strong></td>
+                                <td><input type="text" value="{{tenant_info.tenantAddress.state}}" readonly/></td>
+                            </tr>
+                            <div *ngIf="tenant_info.tenantAddress.country == 'USA'">
+                                <br/>
+                            </div>
+                            <tr *ngIf="tenant_info.tenantAddress.country == 'USA'">
+                                <td><strong>ZIP&emsp;</strong></td>
+                                <td><input type="text" value="{{tenant_info.tenantAddress.zipCode}}" readonly/></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </mat-step>
+                <mat-step>
+                    <ng-template matStepLabel> 
+                        <span>BATCH</span> 
+                    </ng-template>
+                    <table>
+                        <thead>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Curriculum&emsp;</strong></td>
+                                <td><input type="text" value="{{tenant_info.batch.batchCurriculum}}" readonly/></td>
+                            </tr><br/>
+                            <tr>
+                                <td><strong>Started On&emsp;</strong></td>
+                                <td><input type="text" value="{{ getFullDate(true) }}" readonly/></td>
+                            </tr><br/>
+                            <tr>
+                                <td><strong>Ends On&emsp;</strong></td>
+                                <td><input type="text" value="{{ getFullDate(false) }}" readonly/></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </mat-step>
+                <mat-step>
+                    <ng-template matStepLabel> 
+                        <span>CAR</span> 
+                    </ng-template>
+                    <table>
+                        <thead>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Make&emsp;</strong></td>
+                                <td><input type="text" value="{{tenant_info.car.make}}" readonly/></td>
+                            </tr><br/>
+                            <tr>
+                                <td><strong>Model&emsp;</strong></td>
+                                <td><input type="text" value="{{tenant_info.car.model}}" readonly/></td>
+                            </tr><br/>
+                            <tr>
+                                <td><strong>Color&emsp;</strong></td>
+                                <td><input type="text" value="{{tenant_info.car.color}}" readonly/></td>
+                            </tr><br/>
+                            <tr>
+                                <td><strong>Year&emsp;</strong></td>
+                                <td><input type="text" value="{{tenant_info.car.year}}" readonly/></td>
+                            </tr><br/>
+                            <tr>
+                                <td><strong>State&emsp;</strong></td>
+                                <td><input type="text" value="{{tenant_info.car.state}}" readonly/></td>
+                            </tr><br/>
+                            <tr>
+                                <td><strong>License Plate&emsp;</strong></td>
+                                <td><input type="text" value="{{tenant_info.car.licensePlate}}" readonly/></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </mat-step>
+            </mat-horizontal-stepper>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    </div>
