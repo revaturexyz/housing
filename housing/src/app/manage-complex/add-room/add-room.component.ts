@@ -2,11 +2,11 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import * as _moment from 'moment';
 
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
-import { Room } from 'src/interfaces/room';
+import { Room, postRoom } from 'src/interfaces/room';
 import { Complex } from 'src/interfaces/complex';
 import { Gender } from 'src/interfaces/gender';
 import { RoomType } from 'src/interfaces/room-type';
-import { Amenity } from 'src/interfaces/amenity';
+import { Amenity, PostAmenity } from 'src/interfaces/amenity';
 import { FormGroup } from '@angular/forms';
 import { MatChipInputEvent } from '@angular/material';
 import { MatStepperModule } from '@angular/material';
@@ -24,7 +24,7 @@ export class AddRoomComponent implements OnInit {
   genderTypes: Gender[];
   roomTypes: RoomType[];
   // amenityList: Amenity[];
-  formRoom: Room;
+  formRoom: postRoom;
   // Init Form
   // For all select form inputs to show invalid on validation checks.
   public selectOptionRoomTypeInvalid = '';
@@ -41,9 +41,9 @@ export class AddRoomComponent implements OnInit {
   increment = 1;
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
 
-  amenityList: Amenity[] = [
-    {amenity: 'Fridge', amenityId: this.increment, isSelected: true},
-    {amenity: 'Microwave', amenityId: this.increment + 1, isSelected: true},
+  amenityList: PostAmenity[] = [
+    {amenityType: 'Fridge'},
+    {amenityType: 'Microwave'},
   ];
 
   add(event: MatChipInputEvent): void {
@@ -52,9 +52,8 @@ export class AddRoomComponent implements OnInit {
     this.increment++;
 
     if ((value || '').trim()) {
-      this.amenityList.push({amenity: value.trim(),
-      amenityId: this.increment,
-      isSelected: true});
+      this.amenityList.push({amenityType: value.trim(),
+    });
     }
 
     if (input) {
@@ -77,19 +76,16 @@ export class AddRoomComponent implements OnInit {
   ngOnInit() {
     // Sets form defaults
     this.formRoom = {
-      roomId: null,
-      apiAddress: null,
       roomNumber: '',
       numberOfBeds: null,
       apiRoomType: null,
-      isOccupied: false,
-      apiAmenity: null,
-      startDate: new Date(),
-      endDate: new Date(),
-      apiComplex: this.complexControl,
-      gender: null
+      amenities: null,
+      leaseStart: new Date(),
+      leaseEnd: new Date(),
+      complexId: this.complexControl.complexId,
     };
   }
+
 
   // Adds room to complex and switches mode back to details
   postAddRoom() {

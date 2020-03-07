@@ -3,96 +3,63 @@ import { Room } from '../../interfaces/room';
 
 export class MockRooms {
   public testroom: Room = {
-    roomId: 1,
-    apiAddress: {addressId: 1,
-      streetAddress: 'string',
-      city: 'c',
-      state: 'state',
-      zipcode: '12345'
-    },
+    roomId: '1',
     roomNumber: '1221',
     numberOfBeds: 4,
-    apiRoomType: {typeId: 1,
-      roomType: 'string'
+    apiRoomType: 'string',
+    amenities: [{
+      id: '2',
+      amenityType: 'balcony',
+      description: 'none'
     },
-    isOccupied: true,
-    apiAmenity: [{
-      amenityId: 2,
-      amenity: 'balcony',
-      isSelected: true
-    },
-    { amenityId: 3,
-      amenity: 'stove',
-      isSelected: true
+    { id: '3',
+      amenityType: 'stove',
+      description: 'none'
     }],
-    startDate: new Date(),
-    endDate: new Date(),
-    apiComplex: null,
-    gender: {genderId: 1,
-      genderType: 'male'
-    }
+    leaseStart: new Date(),
+    leaseEnd: new Date(),
+    complexId: null,
+    //gender: 
   };
 
   public testroom2: Room = {
-    roomId: 2,
-    apiAddress: {addressId: 1,
-      streetAddress: 'string',
-      city: 'c',
-      state: 'state',
-      zipcode: '12345'
-    },
+    roomId: '2',
     roomNumber: '1222',
     numberOfBeds: 4,
-    apiRoomType: {typeId: 1,
-      roomType: 'string'
+    apiRoomType: 'string',
+    amenities: [{
+      id: '2',
+      amenityType: 'balcony',
+      description: 'none'
     },
-    isOccupied: true,
-    apiAmenity: [{
-      amenityId: 2,
-      amenity: 'balcony',
-      isSelected: true
-    },
-    { amenityId: 3,
-      amenity: 'stove',
-      isSelected: true
+    { id: '3',
+      amenityType: 'stove',
+      description: 'none'
     }],
-    startDate: new Date(),
-    endDate: new Date(),
-    apiComplex: null,
-    gender: {genderId: 1,
-      genderType: 'male'
-    }
+    leaseStart: new Date(),
+    leaseEnd: new Date(),
+    complexId: null,
+    //gender: 
   };
 
   public testroom3: Room = {
-    roomId: 3,
-    apiAddress: {addressId: 1,
-      streetAddress: 'string',
-      city: 'c',
-      state: 'state',
-      zipcode: '12345'
-    },
+    roomId: '3',
     roomNumber: '1223',
     numberOfBeds: 4,
-    apiRoomType: {typeId: 1,
-      roomType: 'string'
+    apiRoomType: 'string',
+    amenities: [{
+      id: '2',
+      amenityType: 'balcony',
+      description: 'none'
     },
-    isOccupied: true,
-    apiAmenity: [{
-      amenityId: 2,
-      amenity: 'balcony',
-      isSelected: true
-    },
-    { amenityId: 3,
-      amenity: 'stove',
-      isSelected: true
+    { id: '3',
+      amenityType: 'stove',
+      description: 'none'
     }],
-    startDate: new Date(),
-    endDate: new Date(),
-    apiComplex: null,
-    gender: {genderId: 1,
-      genderType: 'female'
-    }
+    leaseStart: new Date(),
+    leaseEnd: new Date(),
+    complexId: null,
+    //gender: 
   };
 
   public testrooms: Room[] = [this.testroom, this.testroom2];

@@ -1,20 +1,9 @@
-export interface Address {
-  addressId: number;
-  streetAddress: string;
-  city: string;
-  state: string;
-  zipcode: string;
-}
-
-
-
-
-/* Address2
+/* Address
 *
 * Matching the model in the API called 
 * ApiComplexAddress 
 */ 
-export interface Address2 { 
+export interface Address {
   addressID: string; 
   streetAddress: string; 
   city: string; 
@@ -22,8 +11,6 @@ export interface Address2 {
   country: string; 
   zipcode: string; 
 }
-
-
 
 /* postAddress
 *

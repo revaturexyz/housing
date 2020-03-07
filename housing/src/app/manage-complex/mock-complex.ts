@@ -8,12 +8,14 @@ import { Complex } from '../../interfaces/complex';
 export class MockComplex {
 
   public amenity: Amenity = {
-    amenityId: 1,
-    amenity: 'pool',
-    isSelected: true,
+    id: '1',
+    amenityType: 'pool',
+    description: 'none',
+
   };
   public address: Address = {
-    addressId: 1,
+    addressID: '1',
+    country: 'USA',
     streetAddress: '123 Sesame St',
     city: 'Arlington',
     state: 'TX',
@@ -32,12 +34,12 @@ export class MockComplex {
     accountExpiresAt: new Date(),
   };
   public complex: Complex = {
-    complexId: 1,
-    apiAddress: this.address,
-    apiProvider: this.provider,
+    complexId: '1',
+    address: this.address,
+    providerId: '1',
     complexName: 'liv+',
     contactNumber: '1234567890',
-    amenity: [this.amenity],
+    complexAmenities: [this.amenity],
   };
 
 }

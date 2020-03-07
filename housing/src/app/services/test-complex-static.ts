@@ -6,22 +6,23 @@ import { Complex } from 'src/interfaces/complex';
 
 export class TestAmenityData {
   static dummyAmenity1: Amenity = {
-    amenityId: 1,
-    amenity: 'gym',
-    isSelected: true
+    id: '1',
+    amenityType: 'gym',
+    description: 'none'
   };
 
   static dummyAmenity2: Amenity = {
-    amenityId: 2,
-    amenity: 'pool',
-    isSelected: true
+    id: '2',
+    amenityType: 'pool',
+    description: 'none'
   };
 }
 
 export class TestComplexData {
 
   static dummyAddress: Address = {
-    addressId: 1,
+    addressID: '1',
+    country: 'USA',
     streetAddress: '1001 S Center St',
     city: 'Arlington',
     state: 'TX',
@@ -43,11 +44,11 @@ export class TestComplexData {
   };
 
   static dummyComplex: Complex = {
-    complexId: 1,
-    apiAddress: TestComplexData.dummyAddress,
-    apiProvider: TestComplexData.dummyProvider,
+    complexId: '1',
+    address: TestComplexData.dummyAddress,
+    providerId: '1',
     complexName: 'liv+',
     contactNumber: '1234567890',
-    amenity: [TestAmenityData.dummyAmenity1, TestAmenityData.dummyAmenity2],
+    complexAmenities: [TestAmenityData.dummyAmenity1, TestAmenityData.dummyAmenity2],
   };
 }

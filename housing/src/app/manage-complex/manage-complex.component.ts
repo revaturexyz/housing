@@ -57,7 +57,8 @@ export class ManageComplexComponent implements OnInit {
     }
 
     addComplex(reqComplex: Complex) {
-      reqComplex.apiProvider = TestComplexData.dummyProvider;
+      reqComplex.providerId = '1';
+      //TestComplexData.dummyProvider
       this.seededComplexes.push(reqComplex);
     }
 }

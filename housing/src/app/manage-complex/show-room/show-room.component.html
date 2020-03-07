@@ -9,14 +9,6 @@
         <td><strong>Number of beds: </strong></td>
         <td>{{ targetRoom.numberOfBeds }}</td>
         </tr>
-        <tr>
-        <td><div><strong>Gender: </strong></div></td>
-        <td>{{ targetRoom.gender.genderType }}</td>
-        </tr>
-        <tr>
-        <td><div><strong>Has Occupants: </strong></div></td>
-        <td>{{ targetRoom.isOccupied }}</td>
-        </tr>
       </table>
   </div>
   <div class="d-flex flex-column">
@@ -24,8 +16,8 @@
     <div>
       <hr class="p-0 m-1" />
       <mat-chip-list>
-        <mat-chip id = "rev-chip" *ngFor="let amenity of targetRoom?.apiAmenity" selected>
-          <strong>{{ amenity.amenity }}</strong>
+        <mat-chip id = "rev-chip" *ngFor="let amenity of targetRoom?.amenities" selected>
+          <strong>{{ amenity.amenityType }}</strong>
         </mat-chip>
       </mat-chip-list>
     </div>

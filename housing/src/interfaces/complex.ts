@@ -2,13 +2,18 @@ import { Address } from './address';
 import { Provider } from './account/provider';
 import { Amenity } from './amenity';
 
+/*When retriving information about a complex from the API 
+* All of theese fields are expected 
+* and can be returned by the API 
+*/
+
 export interface Complex {
-  complexId: number;
-  apiAddress: Address;
-  apiProvider: Provider;
+  complexId: string; // GUID 
+  address: Address;
+  providerId: string; // GUID 
   complexName: string;
   contactNumber: string;
-  amenity: Amenity[];
+  complexAmenities: Amenity[];
 }
 
 // ABOVE OLD BUT USED FOR OLD MOCK TEST 
@@ -18,8 +23,6 @@ export interface Complex {
 
 
 import { PostAmenity } from './amenity';
-import { Amenity2 } from './amenity';
-import { Address2 } from './address';
 import { postaddress } from './address';
 
 
@@ -27,14 +30,7 @@ import { postaddress } from './address';
 * All of theese fields are expected 
 * and can be returned by the API 
 */
-export interface Complex2 {
-  complexId: number; // GUID 
-  apiAddress: Address2;
-  ProviderId: string; // GUID 
-  complexName: string;
-  contactNumber: string;
-  amenities: Amenity2[];
-}
+
 
 /* Interface for posting a complex  
 * Not Expected: complexID would be created in te API 
@@ -49,9 +45,9 @@ export interface Complex2 {
 * 
 */ 
 export interface postComplex {
-  Address: postaddress; // Address object post addrees used 
-  ProviderID: string; // GUID - Can access a separate service 
-  ComplexName: string;
-  ContactNumber: string;
-  Amenities: PostAmenity[];
+  address: postaddress; // Address object post addrees used 
+  providerID: string; // GUID - Can access a separate service 
+  complexName: string;
+  contactNumber: string;
+  complexAmenities: PostAmenity[];
 }

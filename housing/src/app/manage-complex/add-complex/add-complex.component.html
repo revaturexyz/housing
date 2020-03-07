@@ -17,7 +17,7 @@
           formControlName="firstCtrl" 
           required
           name="formLivingComplex.apiAddress.streetAddress"
-          [(ngModel)]="formLivingComplex.apiAddress.streetAddress"
+          [(ngModel)]="formLivingComplex.address.streetAddress"
           id="streetAddress">
       </mat-form-field>
       <mat-form-field class="col-md-4">
@@ -26,7 +26,7 @@
           formControlName="firstCtrl" 
           required
           name="formLivingComplex.apiAddress.city"
-          [(ngModel)]="formLivingComplex.apiAddress.city" >
+          [(ngModel)]="formLivingComplex.address.city" >
       </mat-form-field>
       <mat-form-field class="col-md-4">
         <input matInput 
@@ -34,7 +34,7 @@
           formControlName="firstCtrl" 
           required
           name="formLivingComplex.apiAddress.state"
-          [(ngModel)]="formLivingComplex.apiAddress.state">
+          [(ngModel)]="formLivingComplex.address.state">
       </mat-form-field>
       <mat-form-field class="col-md-4">
         <input matInput 
@@ -43,7 +43,7 @@
           required
           name="formLivingComplex.apiAddress.zipCode"
           pattern="[0-9]{5}" 
-          [(ngModel)]="formLivingComplex.apiAddress.zipcode">
+          [(ngModel)]="formLivingComplex.address.zipcode">
       </mat-form-field>
       <mat-form-field class="col-md-6">
         <input matInput 
@@ -79,7 +79,7 @@
               [removable]="removable" 
               (removed)="remove(amenity)"
               id="rev-chip">
-              {{amenity.amenity}}
+              {{amenity.amenityType}}
               <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
             </mat-chip>
           </mat-chip-list>
