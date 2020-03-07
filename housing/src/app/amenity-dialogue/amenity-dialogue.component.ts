@@ -46,7 +46,7 @@ export class AmenityDialogueComponent implements OnInit {
     // if the amenity is already selected, then remove it from the selection list
     // else, add the selected amenity to the list
     if (this.match(amen)) {
-      this.editedAmenities = this.editedAmenities.filter(x => x.amenityId !== amen.amenityId);
+      this.editedAmenities = this.editedAmenities.filter(x => x.id !== amen.id);
     } else {
       this.editedAmenities.push(amen);
     }
@@ -56,7 +56,7 @@ export class AmenityDialogueComponent implements OnInit {
   match(amen: Amenity): boolean {
     let boolCheck = false;
     this.editedAmenities.forEach(x => {
-      if (x.amenityId === amen.amenityId) {
+      if (x.id === amen.id) {
         boolCheck = true;
       }
     });

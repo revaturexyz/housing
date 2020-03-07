@@ -39,15 +39,16 @@ export class ViewRoomComponent implements OnInit {
     };
 
     idSelector: number;
-  XAmenity: Amenity = { amenityId: 1, amenity: "Desks", isSelected: true };
-  YAmenity: Amenity = { amenityId: 2, amenity: "Shelves", isSelected: true };
-  ZAmenity: Amenity = { amenityId: 3, amenity: "Furnishings", isSelected: true };
+  XAmenity: Amenity = { id: '1', amenityType: "Desks", description: 'none' };
+  YAmenity: Amenity = { id: '2', amenityType: "Shelves", description: 'none' };
+  ZAmenity: Amenity = { id: '3', amenityType: "Furnishings", description: 'none' };
   AList: Amenity[] = [this.XAmenity, this.YAmenity, this.ZAmenity];
 
 
   yeet: Address =
     {
-      addressId: 1,
+      addressID: '1',
+      country: 'USA',
       streetAddress: "1001 S Center St",
       city: "Arlington",
       state: "Texas",
@@ -70,12 +71,12 @@ export class ViewRoomComponent implements OnInit {
 
   comp: Complex = {
 
-    complexId: 1,
-    apiAddress: this.yeet,
-    apiProvider: this.prov,
+    complexId: '1',
+    address: this.yeet,
+    providerId: '1',
     complexName: "Liv+",
     contactNumber: "919-468-8796",
-    amenity: this.AList
+    complexAmenities: this.AList
   };
 
 
@@ -87,16 +88,14 @@ export class ViewRoomComponent implements OnInit {
 
   room: Room = {
     roomId : null,
-    apiAddress : null,
     roomNumber: '',
     numberOfBeds: null,
     apiRoomType: null,
-    isOccupied: null,
-    apiAmenity: null,
-    startDate: null,
-    endDate: null,
-    apiComplex: null,
-    gender: null
+    amenities: null,
+    leaseStart: null,
+    leaseEnd: null,
+    complexId: null,
+    //gender: null
 };
 
 
@@ -104,16 +103,16 @@ ngOnInit() {}
   
   getById(): void{
       this.room.roomId = null;
-      this.room.apiAddress = null;
+      //this.room.apiAddress = null;
       this.room.roomNumber = '';
       this.room.numberOfBeds = null;
       this.room.apiRoomType = null;
-      this.room.isOccupied = null;
-      this.room.apiAmenity = null;
-      this.room.startDate = null;
-      this.room.endDate = null;
-      this.room.apiComplex = null;
-      this.room.gender = null;
+      //this.room.isOccupied = null;
+      //this.room.apiAmenity = null;
+      //this.room.startDate = null;
+      //this.room.endDate = null;
+      //this.room.apiComplex = null;
+      //this.room.gender = null;
 
       this.viewRoomService.GetRoomById(this.idSelector)
         .toPromise().then(response => this.room = response);

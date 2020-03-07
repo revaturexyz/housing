@@ -57,7 +57,7 @@
           <mat-form-field class="col-md-12">
             <mat-chip-list #chipList>
               <mat-chip *ngFor="let amenity of amenityList" id="rev-chip" [selectable]="selectable" [removable]="removable" (removed)="remove(amenity)">
-                {{amenity.amenity}}
+                {{amenity.amenityType}}
                 <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
               </mat-chip>
             </mat-chip-list>

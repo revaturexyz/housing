@@ -8,7 +8,7 @@ import { MatChipInputEvent } from '@angular/material';
 import { Complex } from 'src/interfaces/complex';
 // import { MapsService } from '../services/maps.service';
 // import { Router } from '@angular/router';
-import { Amenity } from 'src/interfaces/amenity';
+import { Amenity, PostAmenity } from 'src/interfaces/amenity';
 // import { RedirectService } from '../services/redirect.service';
 // import { TestServiceData } from 'src/app/services/static-test-data';
 @Component({
@@ -32,15 +32,13 @@ export class AddComplexComponent implements OnInit {
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
 
   // TODO: POPULATE THIS
-  amenityList: Amenity[] = [{
-    amenityId: 2,
-    amenity: 'balcony',
-    isSelected: true
+  amenityList: PostAmenity[] = [{
+    amenityType: 'balcony',
   },
-  { amenityId: 3,
-    amenity: 'stove',
-    isSelected: true
+  {
+    amenityType: 'balcony',
   }];
+
 
   @Output() modeOutput: EventEmitter<string> = new EventEmitter<string>();
   @Output() complexOutput: EventEmitter<Complex> = new EventEmitter<Complex>();
@@ -65,18 +63,11 @@ export class AddComplexComponent implements OnInit {
   ) {
     // Populate default form values
     this.formLivingComplex = {
-      complexId: 0,
-      apiProvider: {
-        providerId: null,
-        coordinatorId: null,
-        name: '',
-        email: '',
-        status: null,
-        accountCreatedAt: new Date(),
-        accountExpiresAt: new Date()
-      },
-      apiAddress: {
-        addressId: 0,
+      complexId: '',
+      providerId: '',
+      address: {
+        addressID: '',
+        country: '',
         streetAddress: '',
         city: '',
         state: '',
@@ -84,7 +75,7 @@ export class AddComplexComponent implements OnInit {
       },
       complexName: '',
       contactNumber: '',
-      amenity: null
+      complexAmenities: null
     };
   }
 
@@ -114,9 +105,8 @@ export class AddComplexComponent implements OnInit {
     this.increment++;
 
     if ((value || '').trim()) {
-      this.amenityList.push({amenity: value.trim(),
-      amenityId: this.increment,
-      isSelected: true});
+      this.amenityList.push({amenityType: value.trim(),
+    });
     }
 
     if (input) {

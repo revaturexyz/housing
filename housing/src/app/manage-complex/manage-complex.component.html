@@ -25,19 +25,19 @@
                         <mat-card>
                             <mat-card-header>
                               <mat-card-title>{{complex.complexName | uppercase}}</mat-card-title>
-                              <mat-card-subtitle>{{complex.apiProvider.name | uppercase}}</mat-card-subtitle>
+                              <mat-card-subtitle>{{complex.providerId | uppercase}}</mat-card-subtitle>
                             </mat-card-header>
                             <img mat-card-image src="https://img.freepik.com/free-vector/urban-buildings-with-cityscape-scenery_18591-51831.jpg?size=626&ext=jpg" alt="Photo of a Shiba Inu">
                             <mat-card-content>
                               <p>
                                   <strong>Phone: </strong> {{complex.contactNumber}} <br>
-                                  <strong>Address: </strong> {{complex.apiAddress.streetAddress}}
-                                  {{complex.apiAddress.city}}, {{complex.apiAddress.state}}
-                                  {{complex.apiAddress.zipcode}}
+                                  <strong>Address: </strong> {{complex.address.streetAddress}}
+                                  {{complex.address.city}}, {{complex.address.state}}
+                                  {{complex.address.zipcode}}
                                   <br>
                                   <strong>Amenities: </strong>
-                                      <mat-chip *ngFor="let amenity of complex.amenity" selected selectable="false">
-                                        <strong>{{ amenity.amenity }}</strong>
+                                      <mat-chip *ngFor="let amenity of complex.complexAmenities" selected selectable="false">
+                                        <strong>{{ amenity.amenityType }}</strong>
                                       </mat-chip>
                               </p>
                             </mat-card-content>
@@ -52,19 +52,19 @@
                     <mat-card class="example-card">
                         <mat-card-header>
                           <mat-card-title>{{complexControl.value?.complexName | uppercase}}</mat-card-title>
-                          <mat-card-subtitle>{{complexControl.value?.apiProvider.name | uppercase}}</mat-card-subtitle>
+                          <mat-card-subtitle>{{complexControl.value?.providerId | uppercase}}</mat-card-subtitle>
                         </mat-card-header>
                         <img mat-card-image src="https://img.freepik.com/free-vector/urban-buildings-with-cityscape-scenery_18591-51831.jpg?size=626&ext=jpg" alt="Photo of a Shiba Inu">
                         <mat-card-content>
                           <p>
                               <strong>Phone: </strong> {{complexControl.value?.contactNumber}} <br>
-                              <strong>Address: </strong> {{complexControl.value?.apiAddress.streetAddress}}
-                              {{complexControl.value?.apiAddress.city}}, {{complexControl.value?.apiAddress.state}}
-                              {{complexControl.value?.apiAddress.zipcode}}
+                              <strong>Address: </strong> {{complexControl.value?.address.streetAddress}}
+                              {{complexControl.value?.address.city}}, {{complexControl.value?.address.state}}
+                              {{complexControl.value?.address.zipcode}}
                               <br>
                               <strong>Emenities: </strong>
-                                  <mat-chip *ngFor="let amenity of complexControl.value?.amenity" selected selectable="false">
-                                    {{ amenity.amenity }}</mat-chip>
+                                  <mat-chip *ngFor="let amenity of complexControl.value?.complexAmenities" selected selectable="false">
+                                    {{ amenity.amenityType }}</mat-chip>
                           </p>
                         </mat-card-content>
                         <mat-card-actions>

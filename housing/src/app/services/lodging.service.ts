@@ -3,13 +3,11 @@ import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-//Old Interfaces Imported 
-import { Room } from 'src/interfaces/room'; 
 
 //New Interfaces Imported 
 import { postRoom } from 'src/interfaces/room'; 
-import { Room2 } from 'src/interfaces/room'; 
-import { Complex2 } from 'src/interfaces/complex';
+import { Room } from 'src/interfaces/room'; 
+import { Complex } from 'src/interfaces/complex';
 import { postComplex } from 'src/interfaces/complex';
 //This Floorplan was depricated and is not included anymore in API 
 //import { Floorplan } from 'src/interfaces/floorplan'
@@ -47,10 +45,10 @@ export class LodgingService {
   *  returns ID, Address Object, Provider ID, Complex Name, Contact Number and Array of Amentinties 
   * 
   */
-  getComplexes(): Promise<Complex2[]>{ 
+  getComplexes(): Promise<Complex[]>{ 
     //complexURL needs to be known then 
     var getComplexesURL = this.apiUrl + "complex/" ; 
-    return this.httpBus.get<Complex2[]>(getComplexesURL).toPromise(); 
+    return this.httpBus.get<Complex[]>(getComplexesURL).toPromise(); 
   }
 
   /*getComplexesById(complexId)
@@ -62,9 +60,9 @@ export class LodgingService {
   * be known so if it turns out to be different 
   * the interface will need to be changed 
   */ 
-  getComplexesById(complexID: string): Promise<Complex2>{ 
+  getComplexesById(complexID: string): Promise<Complex>{ 
     const getComplexesByIdURL = `${this.apiUrl}complex/${complexID}`;
-    return this.httpBus.get<Complex2>(getComplexesByIdURL).toPromise(); 
+    return this.httpBus.get<Complex>(getComplexesByIdURL).toPromise(); 
   }
 
   
@@ -77,9 +75,9 @@ export class LodgingService {
   * be known so if it turns out to be different 
   * the interface will need to be changed 
   */ 
- getComplexesByProviderId(providerID: string): Promise<Complex2>{ 
+ getComplexesByProviderId(providerID: string): Promise<Complex>{ 
   const getComplexesByProviderIdURL = `${this.apiUrl}complex/providerId/${providerID}`;
-  return this.httpBus.get<Complex2>(getComplexesByProviderIdURL).toPromise(); 
+  return this.httpBus.get<Complex>(getComplexesByProviderIdURL).toPromise(); 
 }
 //#endregion 
 
@@ -89,7 +87,7 @@ export class LodgingService {
 *returns: sucess code 
 *
 */
-  updateComplexById(updatedComplex: Complex2): Observable<any>{ 
+  updateComplexById(updatedComplex: Complex): Observable<any>{ 
     var getComplexesByIdURL = `${this.apiUrl}complex/${updatedComplex.complexId}`;
     return this.httpBus.put(getComplexesByIdURL, updatedComplex)
   }
@@ -99,9 +97,9 @@ export class LodgingService {
 * inputs: complexId  
 * sends a HTTP Delete Method at the delete method 
 */ 
-  deleteComplexById(complexID: string): Observable<Complex2>{ 
+  deleteComplexById(complexID: string): Observable<Complex>{ 
     var getComplexesByIdURL = `${this.apiUrl}/complex/${complexID}`;
-    return this.httpBus.delete<Complex2>(getComplexesByIdURL); 
+    return this.httpBus.delete<Complex>(getComplexesByIdURL); 
   }
 
 /*Add Complex 
@@ -126,20 +124,20 @@ export class LodgingService {
 * Input: ComplexId of type string - expecting a GUID 
 * returns an array of room2 objects 
 */ 
-getRoomsByComplexId(complexId: string):Promise<Room2[]>{ 
+getRoomsByComplexId(complexId: string):Promise<Room[]>{ 
   //because this method filters rooms and takes an foriegn key it would need a special route 
   // so the route would not be the same as the get rooms by ID 
   var getRoomsByComplexIdURL = this.apiUrl + 'Room/Complex/' + complexId; 
-  return this.httpBus.get<Room2[]>(getRoomsByComplexIdURL).toPromise();
+  return this.httpBus.get<Room[]>(getRoomsByComplexIdURL).toPromise();
 }
 
 /*GetRoomById
 * Input: RoomId 
 * returns an object of type Room specified in the room interface 
 */
-getRoomById(RoomId: string): Promise<Room2>{ 
+getRoomById(RoomId: string): Promise<Room>{ 
   var getRoomByIdURL = this.apiUrl + 'Room/'+ RoomId; 
-  return this.httpBus.get<Room2>(getRoomByIdURL).toPromise();
+  return this.httpBus.get<Room>(getRoomByIdURL).toPromise();
 }
 
 
@@ -160,7 +158,7 @@ addRoom(newRoom: postRoom): Promise<postRoom>{
 *Input: Room Object to replace old room object; 
 *Returns status code 
 */
-updateRoom(updatedRoom: Room2): Observable<any>{ 
+updateRoom(updatedRoom: Room): Observable<any>{ 
   var updateRoomURL = this.apiUrl + "Room/" + updatedRoom.roomId; 
   return this.httpBus.put(updateRoomURL, updatedRoom); 
 }
@@ -170,9 +168,9 @@ updateRoom(updatedRoom: Room2): Observable<any>{
 * Input: RoomID 
 * Returns success 
 */ 
-deleteRoomById(RoomId: string): Observable<Room2>{
+deleteRoomById(RoomId: string): Observable<Room>{
   var deleteRoomByIdURL = this.apiUrl + 'Room/'+ RoomId; 
-  return this.httpBus.delete<Room2>(deleteRoomByIdURL);
+  return this.httpBus.delete<Room>(deleteRoomByIdURL);
 }
 
 

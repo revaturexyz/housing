@@ -36,7 +36,7 @@ export class NavComponent implements OnInit {
     if (this.oktaAuth.isAuthenticated()) {
       
       const userClaims = await this.oktaAuth.getUser();
-      this.role = userClaims.Roles[1];
+      this.role = userClaims.groups[1];
     }
 
    }

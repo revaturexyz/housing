@@ -33,6 +33,7 @@
       <!-- Gender and room type begin-->
       <div class="d-flex flex-row justify-content-center">
         <!-- Start of gender input select -->
+        <!---
         <div class="form-group mx-1">
           <label for="gender">Select Gender</label>
           <select id="gender" name="gender" [(ngModel)]="targetRoom.gender" #gender="ngModel" class="form-control"
@@ -43,10 +44,13 @@
             </option>
           </select>
         </div>
+        -->
         <!-- Dirty is so the error message is not displayed when the page first loads  -->
+        <!---
         <div *ngIf="gender.invalid && gender.dirty" class="alert alert-danger">
           A gender for occupants is required.
         </div>
+        -->
         <!-- End of gender input select -->
         <!-- Start of Room Type input select -->
         <div class="form-group mx-1">
@@ -67,10 +71,12 @@
       </div>
       <!--End of Gender and Room Type holder-->
       <!-- Begin occupied checkbox -->
+      <!---
       <mat-checkbox id="isOccupied" name="isOccupied" [(ngModel)]="targetRoom.isOccupied" #isOccupied="ngModel"
         aria-describedby="isOccupied">
         Occupied
       </mat-checkbox>
+    -->
       <!-- End occupied checkbox -->
       <!-- Lease start and end dates holder begin-->
       <div class="d-flex flex-row justify-content-center">
@@ -78,7 +84,7 @@
         <div class="form-group mx-3">
           <mat-form-field>
             <input matInput id="startDate" name="startDate" [matDatepicker]="startDatePicker"
-              [(ngModel)]="targetRoom.startDate" #startDate="ngModel" class="form-control"
+              [(ngModel)]="targetRoom.leaseStart" #startDate="ngModel" class="form-control"
               placeholder="Lease Start Date" aria-describedby="startDate" required />
             <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
             <mat-datepicker #startDatePicker [startAt]="startDate"></mat-datepicker>
@@ -88,7 +94,7 @@
         <!-- Lease end date begin -->
         <div class="form-group mx-3">
           <mat-form-field>
-            <input matInput id="endDate" name="endDate" [matDatepicker]="endDatePicker" [(ngModel)]="targetRoom.endDate"
+            <input matInput id="endDate" name="endDate" [matDatepicker]="endDatePicker" [(ngModel)]="targetRoom.leaseStart"
               #endDate="ngModel" class="form-control" placeholder="Lease End Date" aria-describedby="endDate"
               required />
             <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
@@ -108,10 +114,10 @@
       <!-- Start of amenity selection-->
       <mat-form-field>
         <mat-label>Amenities</mat-label>
-        <mat-select name="formRoom.apiAmenity" [(ngModel)]="targetRoom.apiAmenity" #amenity="ngModel" id="amenity"
+        <mat-select name="formRoom.apiAmenity" [(ngModel)]="targetRoom.amenities" #amenity="ngModel" id="amenity"
           aria-describedby="amenity" multiple>
           <mat-option *ngFor="let amenity of amenityList" [value]="amenity">
-            {{ amenity.amenity }}
+            {{ amenity.amenityType }}
           </mat-option>
         </mat-select>
       </mat-form-field>
@@ -123,7 +129,6 @@
           <!-- If any of the inputs are invalid, the submit button will be disabled -->
           <button id="postEditRoom" class="add-room-btn" [disabled]="
               apiRoomType.invalid ||
-              gender.invalid ||
               numberOfBeds.invalid ||
               roomNumber.invalid ||
               startDate.invalid ||
