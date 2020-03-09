@@ -3,6 +3,9 @@
   <hr />
   <div class="add-room-options">
     <!-- Start of form editing a room -->
+    <span class="alert alert-warning" *ngIf="editBool == false">Room is Occupied, must notifty Coordinator before Editing/Deleting Room</span>
+    <br>
+    <br>
     <form id="EditRoomForm">
       <!-- Room number and number of beds holder begin-->
       <div class="d-flex flex-row justify-content-center">
@@ -58,7 +61,7 @@
           <select id="apiRoomType" name="apiRoomType" [(ngModel)]="targetRoom.apiRoomType" #apiRoomType="ngModel"
             class="form-control" aria-describedby="apiRoomType" required>
             <option value="" disabled>Select Room Type</option>
-            <option *ngFor="let roomType of roomTypes" [ngValue]="roomType">
+            <option *ngFor="let roomType of roomTypes" [ngValue]="roomType.roomType">
               {{ roomType.roomType }}
             </option>
           </select>
@@ -112,6 +115,7 @@
       </div>
       <!--Lease start and end dates holder end-->
       <!-- Start of amenity selection-->
+      <!--
       <mat-form-field>
         <mat-label>Amenities</mat-label>
         <mat-select name="formRoom.apiAmenity" [(ngModel)]="targetRoom.amenities" #amenity="ngModel" id="amenity"
@@ -121,6 +125,26 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
+      -->
+      
+      <div>
+        Current Amenities
+      </div>
+      <div>
+        <input placeholder="Add Amenity..." [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="add($event)">
+        <a mat-button (matChipInputTokenEnd)="add($event)" class="btn-addAmenity">
+          <em class="fas fa-plus-circle"></em>
+        </a>
+      </div>
+      <mat-form-field class="col-md-12">
+        <mat-chip-list #chipList>
+          <mat-chip *ngFor="let amenity of targetRoom.amenities" id="rev-chip" [selectable]="selectable" [removable]="removable" (removed)="remove(amenity)">
+            {{amenity.amenityType}}
+            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+          </mat-chip>
+        </mat-chip-list>
+      </mat-form-field>
+
       <!--End of amenity selection-->
       <hr />
       <!-- Start of markup for submit and cancel buttons -->
@@ -137,11 +161,34 @@
             <strong>Edit</strong>
           </button>
         </div>
+
+        <div *ngIf="editBool == false">
+          <!-- If any of the inputs are invalid, the submit button will be disabled -->
+          <!--gender.invalid || -->
+          <button id="postEditRoom" class="add-room-btn" mat-raised-button [disabled]="
+              apiRoomType.invalid ||
+              numberOfBeds.invalid ||
+              roomNumber.invalid ||
+              startDate.invalid ||
+              endDate.invalid
+            " (click)="postRequestEditRoom()">
+            <strong>Request Edit</strong>
+          </button>
+        </div>
+
         <div>
           <button class="add-room-btn" (click)="deleteRoom()">
             <strong>Delete</strong>
           </button>
         </div>
+
+        <!--Delete request based on occupied room-->
+        <div *ngIf="editBool == false">
+          <button class="add-room-btn" mat-raised-button (click)="deleteRequestRoom()">
+            <strong>Request Delete</strong>
+          </button>
+        </div>
+        
         <div>
           <button class="add-room-btn" (click)="cancelEditRoom()">
             <strong>Cancel</strong>

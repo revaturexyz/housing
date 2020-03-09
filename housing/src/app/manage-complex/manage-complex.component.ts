@@ -45,19 +45,20 @@ export class ManageComplexComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-      this.role = localStorage.getItem('role');
+      this.role = sessionStorage.getItem('role');
+
       /*
-      this.LodgeService.getComplexesByProviderId(providerID: string)
-      .toPromise()
-      .then((data) => this.seededComplexes = data)
-      .catch((err) => console.log(err));
+      this.userId = provider guid
+      this.LodgeService.getComplexesByProviderId(this.userId).subscribe(data => {
+        this.seededComplexes = data;
+        //console.log(this.list);
+      });
       */
 
       /*
-      this.LodgeService.getComplexes()
-      .toPromise()
-      .then((data) => this.seededComplexes = data)
-      .catch((err) => console.log(err));
+      this.LodgeService.getComplexes().subscribe(data => {
+        this.seededComplexes = data;
+      });
       */
 
     }
@@ -79,5 +80,11 @@ export class ManageComplexComponent implements OnInit {
       reqComplex.providerId = '1';
       //TestComplexData.dummyProvider
       this.seededComplexes.push(reqComplex);
+      
+      /*
+      this.userId = provider guid
+      this.LodgeService.getComplexesByProviderId(reqComplex).subscribe();
+      */
+
     }
 }

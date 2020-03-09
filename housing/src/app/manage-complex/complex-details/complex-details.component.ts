@@ -83,15 +83,16 @@ export class ComplexDetailsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.role = localStorage.getItem('role');
+    this.role = sessionStorage.getItem('role');
     console.log(this.complexControl.complexId);
     
     /*
-    this.LodgeService.getRoomsByComplexId(this.complexControl.complexId)
-    .toPromise()
-    .then((data) => this.seededRooms = data)
-    .catch((err) => console.log(err));
+    this.LodgeService.getFilteredRooms(this.complexControl.complexId,"").subscribe(data => {
+      this.seededRooms = data;
+      //console.log(this.list);
+    });
     */
+    
 
     // Links paginator for material table
     this.dataSource.paginator = this.paginator;

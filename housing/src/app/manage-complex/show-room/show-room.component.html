@@ -4,12 +4,32 @@
   <h5>Room {{ targetRoom.roomNumber }}</h5>
   <hr class="main-hr" />
   <div class="details">
-      <table>
-        <tr>
-        <td><strong>Number of beds: </strong></td>
-        <td>{{ targetRoom.numberOfBeds }}</td>
-        </tr>
-      </table>
+    <table>
+      <tr>
+      <td><strong>Number of beds: </strong></td>
+      <td>{{ targetRoom.numberOfBeds }}</td>
+      </tr>
+      <tr *ngIf="role == 'Coordinator'">
+      <td><div><strong>Gender: </strong></div></td>
+      <td>{{ targetRoom.gender }}</td>
+      </tr>
+      <tr>
+      <td><div><strong>Has Occupants: </strong></div></td>
+      <td>{{ OccupantBool }}</td>
+      </tr>
+      <tr *ngIf="role == 'Coordinator'">
+      <td><div><strong>Number of Occupants: </strong></div></td>
+      <td>{{ targetRoom.numberOfOccupants }}</td>
+      </tr>
+      <tr>
+      <td><div><strong>Start Date: </strong></div></td>
+      <td>{{ targetRoom.leaseStart | date }}</td>
+      </tr>
+      <tr>
+      <td><div><strong>End Date: </strong></div></td>
+      <td>{{ targetRoom.leaseEnd | date }}</td>
+      </tr>
+    </table>
   </div>
   <div class="d-flex flex-column">
     <div class="center"><strong>Room Amenities: </strong></div>

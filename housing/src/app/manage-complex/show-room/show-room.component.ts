@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Room } from 'src/interfaces/room';
 import { Complex } from 'src/interfaces/complex';
 import {trigger, animate, style, group, animateChild, query, stagger, transition, state} from '@angular/animations';
+import { LodgingService } from 'src/app/services/lodging.service';
 // import { TestServiceData } from 'src/app/services/static-test-data';
 
 @Component({
@@ -34,9 +35,22 @@ export class ShowRoomComponent implements OnInit {
   // Decorator to output the selected mode
   @Output() modeOutput: EventEmitter<string> = new EventEmitter<string>();
 
-  constructor() { }
+  OccupantBool: boolean;
+  role: string;
+
+  constructor(
+    private LodgeService: LodgingService
+  ) { }
 
   ngOnInit() {
+    this.role = sessionStorage.getItem('role');
+    if(this.targetRoom.numberOfOccupants == 0)
+    {
+      this.OccupantBool = false;
+    }
+    else{
+      this.OccupantBool = true;
+    }
   }
 
   // Button handler for when user clicks back button

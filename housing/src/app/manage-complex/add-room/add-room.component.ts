@@ -10,7 +10,7 @@ import { Amenity, PostAmenity } from 'src/interfaces/amenity';
 import { FormGroup } from '@angular/forms';
 import { MatChipInputEvent } from '@angular/material';
 import { MatStepperModule } from '@angular/material';
-
+import { LodgingService } from 'src/app/services/lodging.service';
 // import { TestServiceData } from 'src/app/services/static-test-data';
 
 @Component({
@@ -46,6 +46,13 @@ export class AddRoomComponent implements OnInit {
     {amenityType: 'Microwave'},
   ];
 
+  public seededType: RoomType[] = [
+    {roomType: 'Dorm', typeId: 1},
+    {roomType: 'Apartment', typeId: 2},
+    {roomType: 'TownHouse', typeId: 3},
+    {roomType: 'Hotel/Motel', typeId: 4}
+  ]
+
   add(event: MatChipInputEvent): void {
     const input = event.input;
     const value = event.value;
@@ -70,7 +77,9 @@ export class AddRoomComponent implements OnInit {
   }
 
 
-  constructor() {
+  constructor(
+    private LodgeService: LodgingService
+  ) {
   }
 
   ngOnInit() {
@@ -89,6 +98,13 @@ export class AddRoomComponent implements OnInit {
 
   // Adds room to complex and switches mode back to details
   postAddRoom() {
+    this.formRoom.amenities = this.amenityList;
+    console.log(this.formRoom);
+
+    /*
+    this.LodgeService.addRoom(this.formRoom).subscribe();
+    */
+
     // Handle adding room to complex logic here
     this.modeOutput.emit('details'); // Sent to parent to change mode back to details
   }

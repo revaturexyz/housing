@@ -33,8 +33,8 @@
           </div>
           <mat-form-field class="col-md-12">
             <mat-label>Room Type</mat-label>
-            <mat-select>
-              <mat-option *ngFor="let roomType of roomTypes" ngValue="roomType">
+            <mat-select [(ngModel)]="formRoom.apiRoomType">
+              <mat-option *ngFor="let roomType of seededType" [value]="roomType.roomType">
                 {{ roomType.roomType }}
               </mat-option>
             </mat-select>
