@@ -12,7 +12,10 @@ import { SelectTenantComponent } from './select-tenant/select-tenant.component';
 import { AddTenantComponent } from './add-tenant/add-tenant.component';
 import { OktaCallbackComponent, OktaAuthGuard } from '@okta/okta-angular';
 import { TenantProfileComponent } from './tenant-profile/tenant-profile.component';
+<<<<<<< HEAD
 import { TenantMaintenanceComponent } from './tenant-maintenance/tenant-maintenance.component';
+=======
+>>>>>>> Generated tenant-profile component, implemented profile and styling, added path to app-routing module
 import { AboutComponent } from './about/about.component';
 import { AuthGuard } from './guards/auth.guard';
 import { ViewRoomComponent } from './view-room/view-room.component';
@@ -33,9 +36,13 @@ const routes: Routes = [
   { path: 'add-tenant', component: AddTenantComponent },
   { path: 'implicit/callback', component: OktaCallbackComponent },
   { path: 'tenant-profile', component: TenantProfileComponent},
+<<<<<<< HEAD
   { path: 'tenant-maintenance', component: TenantMaintenanceComponent},
   { path: 'about', component: AboutComponent },
   { path: 'view-room', component: ViewRoomComponent }
+=======
+  { path: 'about', component: AboutComponent },
+>>>>>>> Generated tenant-profile component, implemented profile and styling, added path to app-routing module
 ];
 
 @NgModule({
