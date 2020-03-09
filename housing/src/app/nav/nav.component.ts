@@ -37,7 +37,7 @@ export class NavComponent implements OnInit {
       
       const userClaims = await this.oktaAuth.getUser();
       this.role = userClaims.groups[1];
-      localStorage.setItem('role', this.role);
+      sessionStorage.setItem('role', this.role);
 
     }
 
