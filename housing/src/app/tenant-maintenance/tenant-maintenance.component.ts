@@ -68,18 +68,12 @@ export class TenantMaintenanceComponent implements OnInit
 
     return true;
   }
-/*
-  VRoom(evnt)
-  {
-    evnt = (evnt) ? evnt : window.event;
-    var charCode = (evnt.which) ? evnt.which : evnt.keyCode;
-    if(charCode < 48 || charCode > 90)
-      this.roomError = "Room number is invalid.";
-  }
-*/
+
   onSubmit()
   {
     //send to db
+    //send notification to provider
+    //note: notification from provider to coordinator when processing request
   }
 }
 
