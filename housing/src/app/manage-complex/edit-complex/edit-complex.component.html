@@ -70,6 +70,8 @@
       Phone number must be in a 10-digit format.
     </div>
     <!-- Start of amenity selection-->
+
+    <!--
     <mat-form-field>
       <mat-label>Amenities</mat-label>
       <mat-select name="formComplex.complexAmenities" [(ngModel)]="formComplex.complexAmenities" #amenity="ngModel" id="amenity"
@@ -77,6 +79,26 @@
         <mat-option *ngFor="let amenity of amenityList" [value]="amenity"> {{amenity.amenityType}} </mat-option>
       </mat-select>
     </mat-form-field>
+    -->
+
+    <div>
+      Current Amenities
+    </div>
+    <div>
+      <input placeholder="Add Amenity..." [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="add($event)">
+      <a mat-button (matChipInputTokenEnd)="add($event)" class="btn-addAmenity">
+        <em class="fas fa-plus-circle"></em>
+      </a>
+    </div>
+    <mat-form-field class="col-md-12">
+      <mat-chip-list #chipList>
+        <mat-chip *ngFor="let amenity of formComplex.complexAmenities" id="rev-chip" [selectable]="selectable" [removable]="removable" (removed)="remove(amenity)">
+          {{amenity.amenityType}}
+          <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+        </mat-chip>
+      </mat-chip-list>
+    </mat-form-field>
+
     <!--End of amenity selection-->
     <!-- Start of markup for submit and cancel buttons -->
     <div class="form-row">

@@ -1,8 +1,10 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 // import { TestServiceData } from 'src/app/services/static-test-data';
-
+import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import { Complex } from 'src/interfaces/complex';
-import { Amenity } from 'src/interfaces/amenity';
+import { Amenity, PostAmenity } from 'src/interfaces/amenity';
+import { MatChipInputEvent } from '@angular/material';
+import { LodgingService } from 'src/app/services/lodging.service';
 
 @Component({
   selector: 'dev-edit-complex',
@@ -21,7 +23,42 @@ export class EditComplexComponent implements OnInit {
   formComplex: Complex;
   amenityList: Amenity[];
 
-  constructor() {
+  constructor(
+    private LodgeService: LodgingService
+  ) {
+  }
+
+  visible = true;
+  selectable = true;
+  removable = true;
+  addOnBlur = true;
+  increment = 1;
+  readonly separatorKeysCodes: number[] = [ENTER, COMMA];
+
+
+  add(event: MatChipInputEvent): void {
+    const input = event.input;
+    const value = event.value;
+    this.increment++;
+
+    if ((value || '').trim()) {
+      this.formComplex.complexAmenities.push({amenityType: value.trim(),
+      id: 'bb79eb06-6650-4295-a90d-06d0e20b591e',
+      description: ''
+    });
+    }
+
+    if (input) {
+      input.value = '';
+    }
+  }
+
+  remove(amenity: Amenity): void {
+    const index = this.formComplex.complexAmenities.indexOf(amenity);
+
+    if (index >= 0) {
+      this.formComplex.complexAmenities.splice(index, 1);
+    }
   }
 
   ngOnInit() {
@@ -32,6 +69,12 @@ export class EditComplexComponent implements OnInit {
   // to save edits to db and change mode back to details
   putEditComplex() {
     // Handle Submit Here
+    console.log(this.formComplex);
+
+    /*
+    this.LodgeService.updateComplexById(this.formComplex).subscribe();
+    */
+
     this.modeOutput.emit('details'); // Sent to parent to change mode back to details
   }
 
@@ -43,6 +86,12 @@ export class EditComplexComponent implements OnInit {
   // to delete complex from db and change mode back to details
   deleteComplex() {
     // Handle Delete Here
+    console.log(this.formComplex.complexId);
+
+    /*
+    this.LodgeService.updateComplexById(this.formComplex.complexId).subscribe();
+    */
+
     this.modeOutput.emit('details');
   }
 

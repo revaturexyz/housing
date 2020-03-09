@@ -6,6 +6,7 @@ export class MockRooms {
     roomId: '1',
     roomNumber: '1221',
     numberOfBeds: 4,
+    numberOfOccupants: 0,
     apiRoomType: 'string',
     amenities: [{
       id: '2',
@@ -19,13 +20,14 @@ export class MockRooms {
     leaseStart: new Date(),
     leaseEnd: new Date(),
     complexId: null,
-    //gender: 
+    gender: null
   };
 
   public testroom2: Room = {
     roomId: '2',
     roomNumber: '1222',
     numberOfBeds: 4,
+    numberOfOccupants: 0,
     apiRoomType: 'string',
     amenities: [{
       id: '2',
@@ -39,13 +41,14 @@ export class MockRooms {
     leaseStart: new Date(),
     leaseEnd: new Date(),
     complexId: null,
-    //gender: 
+    gender: null
   };
 
   public testroom3: Room = {
     roomId: '3',
     roomNumber: '1223',
     numberOfBeds: 4,
+    numberOfOccupants: 0,
     apiRoomType: 'string',
     amenities: [{
       id: '2',
@@ -59,7 +62,7 @@ export class MockRooms {
     leaseStart: new Date(),
     leaseEnd: new Date(),
     complexId: null,
-    //gender: 
+    gender: null
   };
 
   public testrooms: Room[] = [this.testroom, this.testroom2];

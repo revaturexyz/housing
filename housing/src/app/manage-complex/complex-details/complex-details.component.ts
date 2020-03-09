@@ -6,6 +6,7 @@ import * as moment from 'moment';
 import { ManageComplexComponent } from '../manage-complex.component';
 import { MockRooms } from '../mock-rooms';
 import { DataSource } from '@angular/cdk/table';
+import { LodgingService } from 'src/app/services/lodging.service';
 // import {trigger, animate, style, group, animateChild, query, stagger, transition, state} from '@angular/animations';
 
 
@@ -17,6 +18,8 @@ import { DataSource } from '@angular/cdk/table';
 
 // Component to show the selected complex's details
 export class ComplexDetailsComponent implements OnInit {
+  
+  role: string;
   // This makes the currently selected complex details avalible
   @Input() complexControl: Complex;
   // Needed for angular-material pagination
@@ -28,11 +31,16 @@ export class ComplexDetailsComponent implements OnInit {
 
   // seededRooms =>
   mockrooms = new MockRooms();
+  
+  //used for mock data
   public seededRooms: Room[] = [
     this.mockrooms.testroom,
     this.mockrooms.testroom2,
     this.mockrooms.testroom3
   ];
+  
+  //used for service data
+  //seededRooms: Room[];
 
   // id's for columns on material table
   displayedColumns = ['room#', 'start', 'end', 'edit', 'show'];
@@ -70,9 +78,21 @@ export class ComplexDetailsComponent implements OnInit {
   }
 
 
-  constructor() { }
+  constructor(
+    private LodgeService: LodgingService
+  ) { }
 
   ngOnInit() {
+    this.role = localStorage.getItem('role');
+    console.log(this.complexControl.complexId);
+    
+    /*
+    this.LodgeService.getRoomsByComplexId(this.complexControl.complexId)
+    .toPromise()
+    .then((data) => this.seededRooms = data)
+    .catch((err) => console.log(err));
+    */
+
     // Links paginator for material table
     this.dataSource.paginator = this.paginator;
   }

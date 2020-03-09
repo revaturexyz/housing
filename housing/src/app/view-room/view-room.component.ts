@@ -90,12 +90,13 @@ export class ViewRoomComponent implements OnInit {
     roomId : null,
     roomNumber: '',
     numberOfBeds: null,
+    numberOfOccupants: null,
     apiRoomType: null,
     amenities: null,
     leaseStart: null,
     leaseEnd: null,
     complexId: null,
-    //gender: null
+    gender: null
 };
 
 
