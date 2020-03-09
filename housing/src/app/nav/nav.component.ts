@@ -37,11 +37,6 @@ export class NavComponent implements OnInit {
     //this.isAuthenticated = await this.oktaAuth.isAuthenticated();
     if (this.oktaAuth.isAuthenticated()) 
     {
-      if(localStorage.justOnce == "false")
-      {
-        localStorage.setItem("justOnce", "true");
-        window.location.reload();
-      }
       const userClaims = await this.oktaAuth.getUser();
       this.role = userClaims.groups[1];
       localStorage.setItem('role', this.role);
