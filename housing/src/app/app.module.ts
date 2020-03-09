@@ -46,9 +46,13 @@ import { FooterComponent } from './footer/footer.component';
 import { AboutComponent } from './about/about.component';
 import { ApplicationInsights } from '@microsoft/applicationinsights-web';
 import { GlobalErrorHandler } from './global-error-handler';
+<<<<<<< HEAD
 import { ViewRoomComponent } from './view-room/view-room.component';
 import { TenantProfileComponent } from './tenant-profile/tenant-profile.component';
 import { TenantMaintenanceComponent } from './tenant-maintenance/tenant-maintenance.component';
+=======
+import { TenantProfileComponent } from './tenant-profile/tenant-profile.component';
+>>>>>>> Generated tenant-profile component, implemented profile and styling, added path to app-routing module
 
 
 @NgModule({
@@ -72,9 +76,13 @@ import { TenantMaintenanceComponent } from './tenant-maintenance/tenant-maintena
     AddTenantComponent,
     FooterComponent,
     AboutComponent,
+<<<<<<< HEAD
     ViewRoomComponent,
     TenantProfileComponent,
     TenantMaintenanceComponent
+=======
+    TenantProfileComponent
+>>>>>>> Generated tenant-profile component, implemented profile and styling, added path to app-routing module
   ],
   imports: [
     BrowserModule,
