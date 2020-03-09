@@ -1,16 +1,19 @@
 import {Component, OnInit, NgZone, ViewChild} from '@angular/core';
-import {FormGroup, FormControl, Validators} from '@angular/forms';
+import {FormGroup, FormControl, Validators, FormGroupDirective, NgForm} from '@angular/forms';
 import {CdkTextareaAutosize} from '@angular/cdk/text-field';
 import {ErrorStateMatcher} from '@angular/material/core';
 import {take} from 'rxjs/operators';
+import { regExpEscape } from '@ng-bootstrap/ng-bootstrap/util/util';
 
-@Component({
-  selector: 'dev-tenant-maintenance',
-  templateUrl: './tenant-maintenance.component.html',
-  styleUrls: ['./tenant-maintenance.component.scss']
-})
-export class TenantMaintenanceComponent implements OnInit {
+@Component(
+  {
+    selector: 'dev-tenant-maintenance',
+    templateUrl: './tenant-maintenance.component.html',
+    styleUrls: ['./tenant-maintenance.component.scss']
+  })
 
+export class TenantMaintenanceComponent implements OnInit 
+{
   areas: Array<string>;         //list of areas in 
   area_entrance: Array<string>; //entrance/halls
   area_living: Array<string>;   //living/dining room
@@ -18,20 +21,21 @@ export class TenantMaintenanceComponent implements OnInit {
   area_bed: Array<string>;      //bedroom
   area_bath: Array<string>;     //bathroom
   area_other: Array<string>;    //other equipment
-  
-  maintenanceFG = new FormGroup({
-    unitFC: new FormControl(''),
-    roomFC: new FormControl(''),
-    firstnameFC: new FormControl(''),
-    lastnameFC: new FormControl(''),
-    emailFC: new FormControl(''),
-    areaFC: new FormControl(''),
-    descriptionFC: new FormControl('')
-  });
 
-  constructor(
-    private _ngZone: NgZone
-  ) 
+  matcher = new ESM();
+  
+  maintenanceFG = new FormGroup(
+    {
+      unitFC: new FormControl(''),
+      roomFC: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z0-9]*')]),
+      firstnameFC: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z\'`]*')]),
+      lastnameFC: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z\'`]*')]),
+      emailFC: new FormControl('', [Validators.email]),
+      areaFC: new FormControl(''),
+      descriptionFC: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z0-9,.!@#$%&)(+\'" ]*')])
+    });
+
+  constructor(private _ngZone: NgZone) 
   {
     this.areas =
     [
@@ -44,19 +48,45 @@ export class TenantMaintenanceComponent implements OnInit {
     ];
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
-  @ViewChild('autosize', {static:false}) autosize: CdkTextareaAutosize;
-
-  triggerResize() {
+  @ViewChild('autosize', {static:false}) 
+  
+  autosize: CdkTextareaAutosize;
+  triggerResize() 
+  {
     // Wait for changes to be applied, then trigger textarea resize.
-    this._ngZone.onStable.pipe(take(1))
-        .subscribe(() => this.autosize.resizeToFitContent(true));
+    this._ngZone.onStable.pipe(take(1)).subscribe(() => this.autosize.resizeToFitContent(true));
   }
 
+  VUnit(evnt) 
+  {
+    evnt = (evnt) ? evnt : window.event;
+    var charCode = (evnt.which) ? evnt.which : evnt.keyCode;
+    if (charCode < 48 || charCode > 57)
+      return false;
+
+    return true;
+  }
+/*
+  VRoom(evnt)
+  {
+    evnt = (evnt) ? evnt : window.event;
+    var charCode = (evnt.which) ? evnt.which : evnt.keyCode;
+    if(charCode < 48 || charCode > 90)
+      this.roomError = "Room number is invalid.";
+  }
+*/
   onSubmit()
   {
-    console.log(this.maintenanceFG.value);
+    //send to db
+  }
+}
+
+export class ESM implements ErrorStateMatcher
+{
+  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean 
+  {
+    return !!(control && control.invalid && (control.dirty || control.touched));
   }
 }
