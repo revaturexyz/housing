@@ -6,6 +6,7 @@ import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {MatChipInputEvent} from '@angular/material/chips';
 import { Room } from 'src/interfaces/room';
 import { TestComplexData } from '../services/test-complex-static';
+import { LodgingService } from '../../app/services/lodging.service';
 
 
 @Component({
@@ -20,6 +21,8 @@ export class ManageComplexComponent implements OnInit {
     public seededComplexes: Complex[] = [
         TestComplexData.dummyComplex
     ];
+
+    role: string;
 
     // mode selection =>
     // 'init' for initial loading,
@@ -37,9 +40,25 @@ export class ManageComplexComponent implements OnInit {
     // form controller to hold the current selected complex
     complexControl = new FormControl('');
 
-    constructor() { }
+    constructor(
+      private LodgeService: LodgingService
+    ) { }
 
     ngOnInit() {
+      this.role = localStorage.getItem('role');
+      /*
+      this.LodgeService.getComplexesByProviderId(providerID: string)
+      .toPromise()
+      .then((data) => this.seededComplexes = data)
+      .catch((err) => console.log(err));
+      */
+
+      /*
+      this.LodgeService.getComplexes()
+      .toPromise()
+      .then((data) => this.seededComplexes = data)
+      .catch((err) => console.log(err));
+      */
 
     }
 

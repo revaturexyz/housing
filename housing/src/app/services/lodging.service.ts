@@ -20,7 +20,7 @@ export class LodgingService {
   
   // need lodging api 
   // this would mount to the endpoint of the enviornment. 
-  apiUrl: string = `${environment.endpoints.tenant}` + 'api/';
+  apiUrl: string = `${environment.endpoints.lodging}` + 'api/';
   httpOptions: any;
 
   constructor(
@@ -60,7 +60,7 @@ export class LodgingService {
   * be known so if it turns out to be different 
   * the interface will need to be changed 
   */ 
-  getComplexesById(complexID: string): Promise<Complex>{ 
+  getComplexById(complexID: string): Promise<Complex>{ 
     const getComplexesByIdURL = `${this.apiUrl}complex/${complexID}`;
     return this.httpBus.get<Complex>(getComplexesByIdURL).toPromise(); 
   }
@@ -75,9 +75,9 @@ export class LodgingService {
   * be known so if it turns out to be different 
   * the interface will need to be changed 
   */ 
- getComplexesByProviderId(providerID: string): Promise<Complex>{ 
+ getComplexesByProviderId(providerID: string): Promise<Complex[]>{ 
   const getComplexesByProviderIdURL = `${this.apiUrl}complex/providerId/${providerID}`;
-  return this.httpBus.get<Complex>(getComplexesByProviderIdURL).toPromise(); 
+  return this.httpBus.get<Complex[]>(getComplexesByProviderIdURL).toPromise(); 
 }
 //#endregion 
 
@@ -88,7 +88,7 @@ export class LodgingService {
 *
 */
   updateComplexById(updatedComplex: Complex): Observable<any>{ 
-    var getComplexesByIdURL = `${this.apiUrl}complex/${updatedComplex.complexId}`;
+    var getComplexesByIdURL = `${this.apiUrl}complex/`;
     return this.httpBus.put(getComplexesByIdURL, updatedComplex)
   }
 
@@ -107,7 +107,7 @@ export class LodgingService {
 * Sends a post method to Lodging API to post Complex object 
 */
   addComplex(newComplex: postComplex): Observable<postComplex>{ 
-    var PostURl = this.apiUrl + "/complex";
+    var PostURl = this.apiUrl + `/complex/`;
     return this.httpBus.post<postComplex>(PostURl, newComplex);
   }
 

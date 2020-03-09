@@ -46,7 +46,7 @@ import { postaddress } from './address';
 */ 
 export interface postComplex {
   address: postaddress; // Address object post addrees used 
-  providerID: string; // GUID - Can access a separate service 
+  providerId: string; // GUID - Can access a separate service 
   complexName: string;
   contactNumber: string;
   complexAmenities: PostAmenity[];

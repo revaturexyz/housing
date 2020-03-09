@@ -20,6 +20,7 @@
 
         <!-- if a full access provider is signed in -->
         <a mat-button *ngIf="isAuthenticated && role === 'Provider'" routerLink="manage-complex">Manage Complexes</a>
+        <a mat-button *ngIf="isAuthenticated && role === 'Coordinator'" routerLink="manage-complex">Manage Complexes</a>
 
         <!-- if a coordinator is signed in -->
         <a mat-button *ngIf="isAuthenticated && role === 'Coordinator'" routerLink="coordinator-notifications">Notifications</a>

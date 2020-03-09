@@ -19,11 +19,12 @@ export interface Room {
   roomNumber: string; 
   complexId: string; //GUID
   numberOfBeds: number;
+  numberOfOccupants: number;
   amenities: Amenity[];
   apiRoomType: string; 
   leaseStart: Date;
   leaseEnd: Date;
-  //gender:
+  gender: string;
 }
 
 

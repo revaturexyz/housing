@@ -5,10 +5,11 @@ import { Validators } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import { MatChipInputEvent } from '@angular/material';
-import { Complex } from 'src/interfaces/complex';
+import { Complex, postComplex } from 'src/interfaces/complex';
 // import { MapsService } from '../services/maps.service';
 // import { Router } from '@angular/router';
 import { Amenity, PostAmenity } from 'src/interfaces/amenity';
+import { LodgingService } from 'src/app/services/lodging.service';
 // import { RedirectService } from '../services/redirect.service';
 // import { TestServiceData } from 'src/app/services/static-test-data';
 @Component({
@@ -36,7 +37,7 @@ export class AddComplexComponent implements OnInit {
     amenityType: 'balcony',
   },
   {
-    amenityType: 'balcony',
+    amenityType: 'stove',
   }];
 
 
@@ -52,17 +53,37 @@ export class AddComplexComponent implements OnInit {
   isValidDistanceToTrainingCenter = true;
 
   // the values to the complex object are set in the constructor
-  formLivingComplex: Complex;
+
+  // this is here for testing purposes
+  formTestComplex: Complex;
+
+  // this form is the one being sent to the service
+  formLivingComplex: postComplex;
 
   constructor(
     // private router: Router,
     // private mapsService: MapsService,
     // private providerService: ProviderService,
     // private redirect: RedirectService
+    private LodgeService: LodgingService,
     private formBuilder: FormBuilder
   ) {
     // Populate default form values
     this.formLivingComplex = {
+      providerId: '',
+      address: {
+        country: 'USA', //must add a section to select contries if needed
+        streetAddress: '',
+        city: '',
+        state: '',
+        zipcode: ''
+      },
+      complexName: '',
+      contactNumber: '',
+      complexAmenities: null
+    };
+
+    this.formTestComplex = {
       complexId: '',
       providerId: '',
       address: {
@@ -125,8 +146,15 @@ export class AddComplexComponent implements OnInit {
   // this method is called when the Submit button is clicked
   postLivingComplex(): void {
     console.log('Add Complex Pressed');
+    this.formLivingComplex.complexAmenities = this.amenityList;
+    console.log(this.formLivingComplex);
     // Handle adding complex logic here
-    this.complexOutput.emit(this.formLivingComplex);
+
+    /*
+    this.LodgeService.addComplex(this.formLivingComplex).subscribe();
+    */
+
+    this.complexOutput.emit(this.formTestComplex);
     this.modeOutput.emit('init'); // Sent to parent to change mode back to details
 
 

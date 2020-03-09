@@ -68,7 +68,9 @@
                           </p>
                         </mat-card-content>
                         <mat-card-actions>
+                          <div *ngIf="role == 'Provider'">
                             <button mat-flat-button (click)="changeMode('edit-complex')">EDIT COMPLEX</button>
+                          </div>
                         </mat-card-actions>
                       </mat-card>
                     

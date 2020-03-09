@@ -15,7 +15,7 @@ export const environment = {
   googleMapsKey: 'AIzaSyCxYMcmEjlHQ2r2CywMgyK7YEplxurqW2A',
   endpoints: {
     account: 'http://localhost:9100/',
-    complex: 'http://localhost:9110/',
+    lodging: 'http://localhost:9110/',
     tenant:  'http://localhost:9140/',
     provider: 'http://localhost:9000/'
   }
