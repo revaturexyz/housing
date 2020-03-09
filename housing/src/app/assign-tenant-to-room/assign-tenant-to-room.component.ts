@@ -168,7 +168,7 @@ export class AssignTenantToRoomComponent implements OnInit {
   prioritizeRoomsByBatch(arr: [RoomWithTenants, number][]) {
     arr.forEach(roomTuple => {
       roomTuple[0].tenants.forEach(tenant => {
-        if (tenant.batch.batchId === this.currentTenant.batch.batchId) {
+        if (tenant.batch.id === this.currentTenant.batch.id) {
           roomTuple[1] += this.batchPriorityWeight;
         }
       });

@@ -1,5 +1,5 @@
 export interface Batch {
-  batchId: number;
+  id: number;
   batchCurriculum: string;
   startDate: Date;
   endDate: Date;
