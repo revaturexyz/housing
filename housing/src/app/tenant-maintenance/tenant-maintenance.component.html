@@ -9,40 +9,44 @@
                 <div>
                     <mat-form-field appearance="standard">
                         <mat-label>Unit</mat-label>
-                        <input matInput formControlName="unitFC">
+                        <input matInput type=number formControlName="unitFC" (keypress)="VUnit(event)">
                         <mat-hint>If dorm or hotel resident, skip this field.</mat-hint>
                     </mat-form-field>
                 </div><br/>
-                <!--<p>Display: {{maintenanceFG.get('unitFC').value}}</p>-->
+
                 <div>
                     <mat-form-field appearance="standard" hideRequiredMarker>
                         <mat-label>Room</mat-label>
-                        <input matInput formControlName="roomFC" required>
-                        <mat-error>Room is required.</mat-error>
+                        <input matInput formControlName="roomFC" [errorStateMatcher]="matcher" required>
+                        <mat-error *ngIf="maintenanceFG.get('roomFC').hasError('required')">Room is required.</mat-error>
+                        <mat-error *ngIf="maintenanceFG.get('roomFC').hasError('pattern')">Room is invalid.</mat-error>
                     </mat-form-field>
                 </div><br/>
                 
                 <div>
                     <mat-form-field appearance="standard" hideRequiredMarker>
                         <mat-label>First Name</mat-label>
-                        <input matInput formControlName="firstnameFC" required>
-                        <mat-error>First name is required.</mat-error>
+                        <input matInput formControlName="firstnameFC" [errorStateMatcher]="matcher" required>
+                        <mat-error *ngIf="maintenanceFG.get('firstnameFC').hasError('required')">First name is required.</mat-error>
+                        <mat-error *ngIf="maintenanceFG.get('firstnameFC').hasError('pattern')">First name is invalid.</mat-error>
                     </mat-form-field>
                 </div><br/>
     
                 <div>
                     <mat-form-field appearance="standard" hideRequiredMarker>
                         <mat-label>Last Name</mat-label>
-                        <input matInput formControlName="lastnameFC" required>
-                        <mat-error>Last name is required.</mat-error>
+                        <input matInput formControlName="lastnameFC" [errorStateMatcher]="matcher" required>
+                        <mat-error *ngIf="maintenanceFG.get('lastnameFC').hasError('required')">Last name is required.</mat-error>
+                        <mat-error *ngIf="maintenanceFG.get('lastnameFC').hasError('pattern')">Last name is invalid.</mat-error>
                     </mat-form-field>
                 </div><br/>
     
                 <div>
                     <mat-form-field appearance="standard">
                         <mat-label>Email</mat-label>
-                        <input matInput formControlName="emailFC">
+                        <input matInput formControlName="emailFC" [errorStateMatcher]="matcher" pattern='^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,63}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)'>
                         <mat-hint>For email alerts.</mat-hint>
+                        <mat-error *ngIf="maintenanceFG.get('emailFC').hasError('email')">Email is invalid.</mat-error>
                     </mat-form-field>
                 </div><br/>
     
@@ -64,13 +68,15 @@
                         #autosize="cdkTextareaAutosize"
                         cdkAutosizeMinRows="1"
                         cdkAutosizeMaxRows="5"
-                        formControlName="descriptionFC" 
+                        formControlName="descriptionFC"
+                        [errorStateMatcher]="matcher" 
                         required></textarea>
-                        <mat-error>A description is required.</mat-error>
+                        <mat-error *ngIf="maintenanceFG.get('descriptionFC').hasError('required')">Description is required.</mat-error>
+                        <mat-error *ngIf="maintenanceFG.get('descriptionFC').hasError('pattern')">Description is invalid.</mat-error>
                     </mat-form-field>
                 </div><br/>
     
-                <button mat-raised-button [disabled]="!maintenanceFG.valid">Submit</button>
+                <button mat-raised-button [disabled]="!maintenanceFG.valid" (ngSubmit)="onSubmit()">Submit</button>
             </form>
         </mat-card-content>
     </mat-card>
