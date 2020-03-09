@@ -10,7 +10,7 @@ export interface Tenant {
   lastName: string;
   addressId: string;
   roomId: string;
-  carId: string;
+  carId: number;
   batchId: number;
   tenantAddress: TenantAddress;
   car: Car;

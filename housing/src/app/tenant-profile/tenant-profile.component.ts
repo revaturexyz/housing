@@ -30,7 +30,7 @@ export class TenantProfileComponent implements OnInit {
       lastName: 'Badoo',
       addressId: '1',
       roomId: '1',
-      carId: '1',
+      carId: 1,
       batchId: 1,
       tenantAddress:
       {
@@ -43,7 +43,7 @@ export class TenantProfileComponent implements OnInit {
       },
       car: 
       {
-        carId: 1,
+        id: 1,
         licensePlate: '9S63GB5',
         make: 'Honda',
         model: 'Civic',
@@ -53,7 +53,7 @@ export class TenantProfileComponent implements OnInit {
       },
       batch:
       {
-        batchId: 1,
+        id: 1,
         batchCurriculum: '.NET',
         startDate: new Date(2020, 1, 3),
         endDate: new Date(2120, 2, 3),
