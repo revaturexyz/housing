@@ -14,19 +14,19 @@
                         <tbody>
                             <tr>
                                 <td><strong>First Name&emsp;</strong></td>
-                                <td><input type="text" value="{{tenant_info.firstName}}" readonly/></td>
+                                <td><input type="text" value="{{tenantInfo.firstName}}" readonly/></td>
                             </tr><br/>
                             <tr>
                                 <td><strong>Last Name&emsp;</strong></td>
-                                <td><input type="text" value="{{tenant_info.lastName}}" readonly/></td>
+                                <td><input type="text" value="{{tenantInfo.lastName}}" readonly/></td>
                             </tr><br/>
                             <tr>
                                 <td><strong>Gender&emsp;</strong></td>
-                                <td><input type="text" value="{{tenant_info.gender}}" readonly/></td>
+                                <td><input type="text" value="{{tenantInfo.gender}}" readonly/></td>
                             </tr><br/>
                             <tr>
                                 <td><strong>Email&emsp;</strong></td>
-                                <td><input type="text" value="{{tenant_info.email}}" readonly/></td>
+                                <td><input type="text" value="{{tenantInfo.email}}" readonly/></td>
                             </tr>
                         </tbody>
                     </table>
@@ -41,29 +41,29 @@
                         <tbody>
                             <tr>
                                 <td><strong>Country&emsp;</strong></td>
-                                <td><input type="text" value="{{tenant_info.tenantAddress.country}}" readonly/></td>
+                                <td><input type="text" value="{{tenantInfo.tenantAddress.country}}" readonly/></td>
                             </tr><br/>
                             <tr>
                                 <td><strong>Street Address&emsp;</strong></td>
-                                <td><input type="text" value="{{tenant_info.tenantAddress.street}}" readonly/></td>
+                                <td><input type="text" value="{{tenantInfo.tenantAddress.street}}" readonly/></td>
                             </tr><br/>
                             <tr>
                                 <td><strong>City&emsp;</strong></td>
-                                <td><input type="text" value="{{tenant_info.tenantAddress.city}}" readonly/></td>
+                                <td><input type="text" value="{{tenantInfo.tenantAddress.city}}" readonly/></td>
                             </tr>
-                            <div *ngIf="tenant_info.tenantAddress.country == 'USA'">
+                            <div *ngIf="tenantInfo.tenantAddress.country == 'USA'">
                                 <br/>
                             </div>
-                            <tr *ngIf="tenant_info.tenantAddress.country == 'USA'">
+                            <tr *ngIf="tenantInfo.tenantAddress.country == 'USA'">
                                 <td><strong>State&emsp;</strong></td>
-                                <td><input type="text" value="{{tenant_info.tenantAddress.state}}" readonly/></td>
+                                <td><input type="text" value="{{tenantInfo.tenantAddress.state}}" readonly/></td>
                             </tr>
-                            <div *ngIf="tenant_info.tenantAddress.country == 'USA'">
+                            <div *ngIf="tenantInfo.tenantAddress.country == 'USA'">
                                 <br/>
                             </div>
-                            <tr *ngIf="tenant_info.tenantAddress.country == 'USA'">
+                            <tr *ngIf="tenantInfo.tenantAddress.country == 'USA'">
                                 <td><strong>ZIP&emsp;</strong></td>
-                                <td><input type="text" value="{{tenant_info.tenantAddress.zipCode}}" readonly/></td>
+                                <td><input type="text" value="{{tenantInfo.tenantAddress.zipCode}}" readonly/></td>
                             </tr>
                         </tbody>
                     </table>
@@ -78,7 +78,7 @@
                         <tbody>
                             <tr>
                                 <td><strong>Curriculum&emsp;</strong></td>
-                                <td><input type="text" value="{{tenant_info.batch.batchCurriculum}}" readonly/></td>
+                                <td><input type="text" value="{{tenantInfo.batch.batchCurriculum}}" readonly/></td>
                             </tr><br/>
                             <tr>
                                 <td><strong>Started On&emsp;</strong></td>
@@ -101,27 +101,27 @@
                         <tbody>
                             <tr>
                                 <td><strong>Make&emsp;</strong></td>
-                                <td><input type="text" value="{{tenant_info.car.make}}" readonly/></td>
+                                <td><input type="text" value="{{tenantInfo.car.make}}" readonly/></td>
                             </tr><br/>
                             <tr>
                                 <td><strong>Model&emsp;</strong></td>
-                                <td><input type="text" value="{{tenant_info.car.model}}" readonly/></td>
+                                <td><input type="text" value="{{tenantInfo.car.model}}" readonly/></td>
                             </tr><br/>
                             <tr>
                                 <td><strong>Color&emsp;</strong></td>
-                                <td><input type="text" value="{{tenant_info.car.color}}" readonly/></td>
+                                <td><input type="text" value="{{tenantInfo.car.color}}" readonly/></td>
                             </tr><br/>
                             <tr>
                                 <td><strong>Year&emsp;</strong></td>
-                                <td><input type="text" value="{{tenant_info.car.year}}" readonly/></td>
+                                <td><input type="text" value="{{tenantInfo.car.year}}" readonly/></td>
                             </tr><br/>
                             <tr>
                                 <td><strong>State&emsp;</strong></td>
-                                <td><input type="text" value="{{tenant_info.car.state}}" readonly/></td>
+                                <td><input type="text" value="{{tenantInfo.car.state}}" readonly/></td>
                             </tr><br/>
                             <tr>
                                 <td><strong>License Plate&emsp;</strong></td>
-                                <td><input type="text" value="{{tenant_info.car.licensePlate}}" readonly/></td>
+                                <td><input type="text" value="{{tenantInfo.car.licensePlate}}" readonly/></td>
                             </tr>
                         </tbody>
                     </table>

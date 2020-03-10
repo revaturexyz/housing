@@ -2,8 +2,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule} from '@angular/common/http/testing';
 import { TenantProfileComponent } from './tenant-profile.component';
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
-//import { TenantService } from 'src/app/services/tenant.service';
-import { 
+// import { TenantService } from 'src/app/services/tenant.service';
+import {
   MatCardModule, MatStepperModule
 } from '@angular/material';
 

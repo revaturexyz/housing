@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import * as _moment from 'moment';
 
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
-import { Room, postRoom } from 'src/interfaces/room';
+import { Room, PostRoom } from 'src/interfaces/room';
 import { Complex } from 'src/interfaces/complex';
 import { Gender } from 'src/interfaces/gender';
 import { RoomType } from 'src/interfaces/room-type';
@@ -24,7 +24,7 @@ export class AddRoomComponent implements OnInit {
   genderTypes: Gender[];
   roomTypes: RoomType[];
   // amenityList: Amenity[];
-  formRoom: postRoom;
+  formRoom: PostRoom;
   // Init Form
   // For all select form inputs to show invalid on validation checks.
   public selectOptionRoomTypeInvalid = '';
@@ -51,7 +51,7 @@ export class AddRoomComponent implements OnInit {
     {roomType: 'Apartment', typeId: 2},
     {roomType: 'TownHouse', typeId: 3},
     {roomType: 'Hotel/Motel', typeId: 4}
-  ]
+  ];
 
   add(event: MatChipInputEvent): void {
     const input = event.input;
@@ -101,9 +101,9 @@ export class AddRoomComponent implements OnInit {
     this.formRoom.amenities = this.amenityList;
     console.log(this.formRoom);
 
-    
+
     this.LodgeService.addRoom(this.formRoom).subscribe();
-    
+
 
     // Handle adding room to complex logic here
     this.modeOutput.emit('details'); // Sent to parent to change mode back to details

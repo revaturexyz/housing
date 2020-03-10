@@ -1,15 +1,15 @@
 import { Status } from './account/status';
 
-//To hold info for users that log in as tenant
-export interface identityTenant{
+// To hold info for users that log in as tenant
+export interface IdentityTenant {
     Name: string;
     TenantId: string;
     Email: string;
 }
 
-//To hold info for users that log in as coordinator
+// To hold info for users that log in as coordinator
 
-export interface identityCoordinator{
+export interface IdentityCoordinator {
     CoordinatorId: string;
     Notifications: Notification[];
     Name: string;
@@ -18,9 +18,9 @@ export interface identityCoordinator{
     TrainingCenterAddress: string;
 }
 
-//To hold info for users that log in as provider
+// To hold info for users that log in as provider
 
-export interface identityProvider{
+export interface IdentityProvider {
     ProviderId: string;
     CoordinatorId?: string;
     Name: string;

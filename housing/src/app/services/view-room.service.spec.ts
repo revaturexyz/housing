@@ -4,7 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ViewRoomService } from './view-room.service';
 
 describe('ViewRoomService', () => {
-  let service: ViewRoomService;
+  // let service: ViewRoomService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({

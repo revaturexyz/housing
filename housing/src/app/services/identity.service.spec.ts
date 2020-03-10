@@ -4,9 +4,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { IdentityService } from './identity.service';
 
 describe('IdentityService', () => {
-  let service: IdentityService;
+  // let service: IdentityService;
   beforeEach(() => TestBed.configureTestingModule({
-    imports: [HttpClientTestingModule], 
+    imports: [HttpClientTestingModule],
     providers: [IdentityService]
   }));
 

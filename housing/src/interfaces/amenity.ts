@@ -1,19 +1,19 @@
-/* Amenity2 
-*  Amenity object expected to be recieved from the API 
-* 
-*/ 
+/* Amenity2
+*  Amenity object expected to be recieved from the API
+*
+*/
 export interface Amenity {
-  id: string; //GUID 
+  id: string; // GUID
   amenityType: string;
   description: string;
 }
 
-/* PostAmenity 
-* Sends only the Amenity Type 
-* Description and AmenityID are null and created 
-* 
+/* PostAmenity
+* Sends only the Amenity Type
+* Description and AmenityID are null and created
+*
 */
-export interface PostAmenity { 
-  amenityType: string; 
-   
+export interface PostAmenity {
+  amenityType: string;
+
 }

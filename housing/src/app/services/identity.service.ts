@@ -4,7 +4,7 @@ import { AccountService } from './account.service';
 import { OktaAuthService } from '@okta/okta-angular';
 import { environment } from 'src/environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import {identityTenant, identityCoordinator, identityProvider} from 'src/interfaces/Identity';
+import {IdentityTenant, IdentityCoordinator, IdentityProvider} from 'src/interfaces/Identity';
 
 @Injectable({
   providedIn: 'root'
@@ -17,26 +17,26 @@ export class IdentityService {
   constructor(private httpBus: HttpClient) {
     this.httpOptions = {
       headers: new HttpHeaders({})
-   }
+   };
   }
 
   // Fetch tenant details
-  GetTenantDetails(Email: string) : Observable<any> {
+  GetTenantDetails(Email: string): Observable<any> {
     const tenantUrl = `${this.apiUrl}` + '/tenant-account/' + `${Email}`;
-    return this.httpBus.get<identityProvider>(tenantUrl, this.httpOptions);
+    return this.httpBus.get<IdentityProvider>(tenantUrl, this.httpOptions);
   }
 
    // Fetch coordinator details
-   
+
    GetCoordinatorDetails(Email: string) {
     const coordinatorUrl = `${this.apiUrl}` + '/coordinator-account/' + `${Email}`;
-    return this.httpBus.get<identityCoordinator>(coordinatorUrl, this.httpOptions);
+    return this.httpBus.get<IdentityCoordinator>(coordinatorUrl, this.httpOptions);
   }
 
    // Fetch provider details
-   
+
    GetProviderDetails(Email: string): Observable<any> {
     const providerUrl = `${this.apiUrl}` + '/provider-account/' + `${Email}`;
-    return this.httpBus.get<identityProvider>(providerUrl, this.httpOptions);
+    return this.httpBus.get<IdentityProvider>(providerUrl, this.httpOptions);
   }
 }

@@ -5,7 +5,7 @@ import { Validators } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import { MatChipInputEvent } from '@angular/material';
-import { Complex, postComplex } from 'src/interfaces/complex';
+import { Complex, PostComplex } from 'src/interfaces/complex';
 // import { MapsService } from '../services/maps.service';
 // import { Router } from '@angular/router';
 import { Amenity, PostAmenity } from 'src/interfaces/amenity';
@@ -58,7 +58,7 @@ export class AddComplexComponent implements OnInit {
   formTestComplex: Complex;
 
   // this form is the one being sent to the service
-  formLivingComplex: postComplex;
+  formLivingComplex: PostComplex;
 
   constructor(
     // private router: Router,
@@ -72,7 +72,7 @@ export class AddComplexComponent implements OnInit {
     this.formLivingComplex = {
       providerId: '51b7eadd-30ce-49a7-9b8c-bae1d47f46a6',
       address: {
-        country: 'USA', //must add a section to select contries if needed
+        country: 'USA', // must add a section to select contries if needed
         street: '',
         city: '',
         state: '',
@@ -150,9 +150,9 @@ export class AddComplexComponent implements OnInit {
     console.log(this.formLivingComplex);
     // Handle adding complex logic here
 
-    
+
     this.LodgeService.addComplex(this.formLivingComplex).subscribe();
-    
+
 
     this.complexOutput.emit(this.formTestComplex);
     this.modeOutput.emit('init'); // Sent to parent to change mode back to details

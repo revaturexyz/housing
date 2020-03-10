@@ -18,7 +18,7 @@ import { LodgingService } from 'src/app/services/lodging.service';
 
 // Component to show the selected complex's details
 export class ComplexDetailsComponent implements OnInit {
-  
+
   role: string;
   // This makes the currently selected complex details avalible
   @Input() complexControl: Complex;
@@ -31,9 +31,9 @@ export class ComplexDetailsComponent implements OnInit {
 
   // seededRooms =>
   mockrooms = new MockRooms();
-  
-  //used for mock data
-  
+
+  // used for mock data
+
   /*
   public seededRooms: Room[] = [
     this.mockrooms.testroom,
@@ -41,9 +41,9 @@ export class ComplexDetailsComponent implements OnInit {
     this.mockrooms.testroom3
   ];
   */
-  
-  
-  //used for service data
+
+
+  // used for service data
   seededRooms: Room[];
 
   // id's for columns on material table
@@ -89,17 +89,17 @@ export class ComplexDetailsComponent implements OnInit {
   ngOnInit() {
     this.role = sessionStorage.getItem('role');
     console.log(this.complexControl.complexId);
-    
-    
-    this.LodgeService.getFilteredRooms(this.complexControl.complexId,"").subscribe(data => {
+
+
+    this.LodgeService.getFilteredRooms(this.complexControl.complexId, '').subscribe(data => {
       this.seededRooms = data;
       this.dataSource = new MatTableDataSource(this.seededRooms);
     });
-    
 
-   //this.dataSource = new MatTableDataSource(this.seededRooms);
-    
-    
+
+   // this.dataSource = new MatTableDataSource(this.seededRooms);
+
+
 
     // Links paginator for material table
     this.dataSource.paginator = this.paginator;

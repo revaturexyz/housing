@@ -29,14 +29,13 @@ export class NavComponent implements OnInit {
     this.oktaAuth.$authenticationState.subscribe(
       (isAuthenticated: boolean)  => this.isAuthenticated = isAuthenticated
     );
-
-    user.Roles$.subscribe(res => this.role = res[1]); // index 0 is 'Everyone', index 1 is the actual role.
   }
 
-  async ngOnInit() {    
+  /*
+  async ngOnInit() {
     this.isAuthenticated = await this.oktaAuth.isAuthenticated();
     if (this.oktaAuth.isAuthenticated()) {
-      
+
       const userClaims = await this.oktaAuth.getUser();
       this.role = userClaims.groups[1];
       sessionStorage.setItem('role', this.role);
@@ -48,5 +47,30 @@ export class NavComponent implements OnInit {
 
     }
 
+   }
+   */
+
+   ngOnInit() {    
+    this.handleOkta();
+   }
+
+   async handleOkta() {
+    this.isAuthenticated = await this.oktaAuth.isAuthenticated();
+    if (this.oktaAuth.isAuthenticated()) {
+
+      setTimeout( () => {
+        const userClaims = this.oktaAuth.getUser();
+        userClaims.then(val => {
+          console.log('doggie', val.groups[1])
+          this.role = val.groups[1]
+          sessionStorage.setItem('role', this.role);
+
+          this.AccService.getId$().subscribe(val => {
+            this.guid = val;
+            sessionStorage.setItem('guid', this.guid);
+          });
+        })
+      }, 1000)
+    }
    }
 }

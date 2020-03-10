@@ -17,7 +17,7 @@ import { Status } from 'src/interfaces/account/status';
 import { Gender } from 'src/interfaces/gender';
 import { Pipe, PipeTransform } from '@angular/core';
 import {ViewRoomService} from '../services/view-room.service';
-//import 'rxjs/add/operator/toPromise';
+// import 'rxjs/add/operator/toPromise';
 import {HttpClientModule} from '@angular/common/http';
 import { LodgingService } from '../services/lodging.service';
 import { TenantService } from '../services/tenant.service';
@@ -37,24 +37,24 @@ export class ViewRoomComponent implements OnInit {
   xRoom: RoomType =
     {
       typeId: 1,
-      roomType: "Apartment"
+      roomType: 'Apartment'
     };
 
-    tenantid: string = null; 
-    //Tennant id should be available at runtime. Okta should have this value 
-    //stored in local, cookies, or session storage
+    tenantid: string = null;
+    // Tennant id should be available at runtime. Okta should have this value
+    // stored in local, cookies, or session storage
 
     currentTenant: Tenant = null;
-    //Information for currently logged in tenant
+    // Information for currently logged in tenant
     // this page primarily needs roomid attached to the tenant
 
     currentRoom: Room = null;
     // Contains the room information to be displayed on the page.
 
     idSelector: number;
-  XAmenity: Amenity = { id: '1', amenityType: "Desks", description: 'none' };
-  YAmenity: Amenity = { id: '2', amenityType: "Shelves", description: 'none' };
-  ZAmenity: Amenity = { id: '3', amenityType: "Furnishings", description: 'none' };
+  XAmenity: Amenity = { id: '1', amenityType: 'Desks', description: 'none' };
+  YAmenity: Amenity = { id: '2', amenityType: 'Shelves', description: 'none' };
+  ZAmenity: Amenity = { id: '3', amenityType: 'Furnishings', description: 'none' };
   AList: Amenity[] = [this.XAmenity, this.YAmenity, this.ZAmenity];
 
 
@@ -62,21 +62,21 @@ export class ViewRoomComponent implements OnInit {
     {
       addressID: '1',
       country: 'USA',
-      street: "1001 S Center St",
-      city: "Arlington",
-      state: "Texas",
-      zipCode: "64468"
+      street: '1001 S Center St',
+      city: 'Arlington',
+      state: 'Texas',
+      zipCode: '64468'
     };
 
   stat: Status = {
-    statusText: "It's aight"
+    statusText: 'It\'s aight'
   };
 
   prov: Provider = {
     providerId: 1,
-    coordinatorId: "EOD",
-    name: "Isaac",
-    email: "yoooo@gmail.com",
+    coordinatorId: 'EOD',
+    name: 'Isaac',
+    email: 'yoooo@gmail.com',
     status: this.stat,
     accountCreatedAt: new Date(),
     accountExpiresAt: new Date()
@@ -87,8 +87,8 @@ export class ViewRoomComponent implements OnInit {
     complexId: '1',
     address: this.yeet,
     providerId: '1',
-    complexName: "Liv+",
-    contactNumber: "919-468-8796",
+    complexName: 'Liv+',
+    contactNumber: '919-468-8796',
     complexAmenities: this.AList
   };
 
@@ -96,7 +96,7 @@ export class ViewRoomComponent implements OnInit {
 
   gen: Gender = {
     genderId: 3,
-    genderType: "M"
+    genderType: 'M'
   };
 
   room: Room = {
@@ -113,38 +113,38 @@ export class ViewRoomComponent implements OnInit {
 };
 
 
-ngOnInit(): void{ 
-  
+ngOnInit(): void {
+
   this.getTenantInfo(sessionStorage.getItem('guid'));
   this.getTenantRoom(this.currentTenant.roomId);
 }
-  //grabs tennant information from tennant API so we now have toom information 
-  getTenantInfo(tID: string){
-    return this.tenantService.GetTenantById(tID).toPromise().then(response=> this.currentTenant = response);
-    
-  }
-  
-  //grabs room information based on the current Tennant 
-  getTenantRoom(rID: string){
-    return this.lodgingService.getRoomById(rID).toPromise().then(response=>this.currentRoom = response);
+  // grabs tennant information from tennant API so we now have toom information
+  getTenantInfo(tID: string) {
+    return this.tenantService.GetTenantById(tID).toPromise().then(response => this.currentTenant = response);
+
   }
 
-  getById(): void{
+  // grabs room information based on the current Tennant
+  getTenantRoom(rID: string) {
+    return this.lodgingService.getRoomById(rID).toPromise().then(response => this.currentRoom = response);
+  }
+
+  getById(): void {
       this.room.roomId = null;
-      //this.room.apiAddress = null;
+      // this.room.apiAddress = null;
       this.room.roomNumber = '';
       this.room.numberOfBeds = null;
       this.room.apiRoomType = null;
-      //this.room.isOccupied = null;
-      //this.room.apiAmenity = null;
-      //this.room.startDate = null;
-      //this.room.endDate = null;
-      //this.room.apiComplex = null;
-      //this.room.gender = null;
+      // this.room.isOccupied = null;
+      // this.room.apiAmenity = null;
+      // this.room.startDate = null;
+      // this.room.endDate = null;
+      // this.room.apiComplex = null;
+      // this.room.gender = null;
 
       this.viewRoomService.GetRoomById(this.idSelector)
         .toPromise().then(response => this.room = response);
-    
-  } 
+
+  }
 
 }

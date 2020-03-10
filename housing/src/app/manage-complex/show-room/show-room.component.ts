@@ -44,11 +44,9 @@ export class ShowRoomComponent implements OnInit {
 
   ngOnInit() {
     this.role = sessionStorage.getItem('role');
-    if(this.targetRoom.numberOfOccupants == 0)
-    {
+    if (this.targetRoom.numberOfOccupants === 0) {
       this.OccupantBool = false;
-    }
-    else{
+    } else {
       this.OccupantBool = true;
     }
   }

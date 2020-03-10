@@ -21,14 +21,14 @@ import { LodgingService } from 'src/app/services/lodging.service';
 export class EditRoomComponent implements OnInit {
   // TODO: POPULATE THESE
   genderTypes: Gender[];
-  //amenityList: Amenity[];
+  // amenityList: Amenity[];
 
   public roomTypes: RoomType[] = [
     {roomType: 'Dorm', typeId: 1},
     {roomType: 'Apartment', typeId: 2},
     {roomType: 'TownHouse', typeId: 3},
     {roomType: 'Hotel/Motel', typeId: 4}
-  ]
+  ];
 
   // For all select form inputs to show invalid on validation checks.
   public selectOptionRoomTypeInvalid = '';
@@ -40,7 +40,7 @@ export class EditRoomComponent implements OnInit {
   @Output() modeOutput: EventEmitter<string> = new EventEmitter<string>();
   // Init for form
   formRoom: Room;
-  editBool: Boolean;
+  editBool: boolean;
 
 
   visible = true;
@@ -82,12 +82,9 @@ export class EditRoomComponent implements OnInit {
   }
 
   ngOnInit() {
-    if(this.targetRoom.numberOfOccupants == 0)
-    {
+    if (this.targetRoom.numberOfOccupants === 0) {
       this.editBool = true;
-    }
-    else
-    {
+    } else {
       this.editBool = false;
     }
     // Populate default form values
@@ -99,9 +96,9 @@ export class EditRoomComponent implements OnInit {
     this.formRoom.complexId = this.complexControl.complexId;
     console.log(this.formRoom);
 
-     
+
     this.LodgeService.updateRoom(this.formRoom).subscribe();
-    
+
 
     // Handle editing room to complex logic here
     this.modeOutput.emit('details'); // Sent to parent to change mode back to details
@@ -116,9 +113,9 @@ export class EditRoomComponent implements OnInit {
   deleteRoom() {
     // Handle delete room logic here
 
-    
+
     this.LodgeService.deleteRoomById(this.targetRoom.roomId).subscribe();
-    
+
 
     this.modeOutput.emit('details'); // Sent to parent to change mode back to details
   }
