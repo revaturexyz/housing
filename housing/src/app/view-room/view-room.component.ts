@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject, Observable, from } from 'rxjs';
-import { AccountService } from '../Services/account.service';
 import { OktaAuthService } from '@okta/okta-angular';
 import { environment } from 'src/environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
