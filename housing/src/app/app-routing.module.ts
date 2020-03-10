@@ -35,7 +35,7 @@ const routes: Routes = [
     { path: 'tenant-profile', component: TenantProfileComponent, canActivate: [OktaAuthGuard] },
     { path: 'tenant-maintenance', component: TenantMaintenanceComponent, canActivate: [OktaAuthGuard] },
     { path: 'view-room', component: ViewRoomComponent, canActivate: [OktaAuthGuard]},
-  ],canActivate: [OktaAuthGuard]},
+  ], canActivate: [OktaAuthGuard]},
 
   { path: 'implicit/callback', component: OktaCallbackComponent },
   { path: 'about', component: AboutComponent },
