@@ -19,6 +19,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 import {ViewRoomService} from '../services/view-room.service';
 //import 'rxjs/add/operator/toPromise';
 import {HttpClientModule} from '@angular/common/http';
+import { LodgingService } from '../services/lodging.service';
+import { TenantService } from '../services/tenant.service';
 
 
 
@@ -30,13 +32,24 @@ import {HttpClientModule} from '@angular/common/http';
 })
 export class ViewRoomComponent implements OnInit {
 
-  constructor(public viewRoomService: ViewRoomService) { }
+  constructor(public viewRoomService: ViewRoomService, public lodgingService: LodgingService, public tenantService: TenantService) { }
 
   xRoom: RoomType =
     {
       typeId: 1,
       roomType: "Apartment"
     };
+
+    tenantid: string = null; 
+    //Tennant id should be available at runtime. Okta should have this value 
+    //stored in local, cookies, or session storage
+
+    currentTenant: Tenant = null;
+    //Information for currently logged in tenant
+    // this page primarily needs roomid attached to the tenant
+
+    currentRoom: Room = null;
+    // Contains the room information to be displayed on the page.
 
     idSelector: number;
   XAmenity: Amenity = { id: '1', amenityType: "Desks", description: 'none' };
@@ -100,8 +113,22 @@ export class ViewRoomComponent implements OnInit {
 };
 
 
-ngOnInit() {}
+ngOnInit(): void{ 
   
+  this.getTenantInfo(sessionStorage.getItem('guid'));
+  this.getTenantRoom(this.currentTenant.roomId);
+}
+  //grabs tennant information from tennant API so we now have toom information 
+  getTenantInfo(tID: string){
+    return this.tenantService.GetTenantById(tID).toPromise().then(response=> this.currentTenant = response);
+    
+  }
+  
+  //grabs room information based on the current Tennant 
+  getTenantRoom(rID: string){
+    return this.lodgingService.getRoomById(rID).toPromise().then(response=>this.currentRoom = response);
+  }
+
   getById(): void{
       this.room.roomId = null;
       //this.room.apiAddress = null;
