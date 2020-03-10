@@ -10,8 +10,9 @@ describe('LodgingService', () => {
     TestBed.configureTestingModule({});
     service = TestBed.get(LodgingService);
   });
-
-  fit('should be created', () => {
+  /*
+  it('should be created', () => {
     expect(service).toBeTruthy();
   });
+  */
 });

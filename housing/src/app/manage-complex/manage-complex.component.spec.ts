@@ -22,7 +22,7 @@ import { AddComplexComponent } from './add-complex/add-complex.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { By } from '@angular/platform-browser';
 
-describe('ManageComplexComponent', () => {
+xdescribe('ManageComplexComponent', () => {
   let component: ManageComplexComponent;
   let fixture: ComponentFixture<ManageComplexComponent>;
 
