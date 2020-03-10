@@ -1,7 +1,7 @@
 export const environment = {
   production: true,
-  issuer: 'https://dev-837913.okta.com/oauth2/default', // Absent trailing slash matters here
-  domain: 'https://dev-837913.okta.com',
+  issuer: 'https://dev-808810.okta.com/oauth2/default', // Absent trailing slash matters here
+  domain: 'https://dev-808810.okta.com',
   clientID: '0oa2d72hlcH7CUgwf357',
   redirectUri: 'https://housing-angular-dev.azurewebsites.net/implicit/callback',
   audience: '/account',
