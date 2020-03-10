@@ -5,7 +5,7 @@
 */ 
 export interface Address {
   addressID: string; 
-  streetAddress: string; 
+  street: string; 
   city: string; 
   state: string; 
   country: string; 
@@ -16,7 +16,7 @@ export interface Address {
 *
 */ 
 export interface postaddress {  
-  streetAddress: string; 
+  street: string; 
   city: string; 
   state: string; 
   country: string; 

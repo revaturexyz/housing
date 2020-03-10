@@ -16,7 +16,7 @@ export class MockComplex {
   public address: Address = {
     addressID: '1',
     country: 'USA',
-    streetAddress: '123 Sesame St',
+    street: '123 Sesame St',
     city: 'Arlington',
     state: 'TX',
     zipcode: '12345'

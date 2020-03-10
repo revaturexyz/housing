@@ -23,7 +23,7 @@ export class TestComplexData {
   static dummyAddress: Address = {
     addressID: '1',
     country: 'USA',
-    streetAddress: '1001 S Center St',
+    street: '1001 S Center St',
     city: 'Arlington',
     state: 'TX',
     zipcode: '76010'

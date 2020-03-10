@@ -49,7 +49,7 @@ export class ViewRoomComponent implements OnInit {
     {
       addressID: '1',
       country: 'USA',
-      streetAddress: "1001 S Center St",
+      street: "1001 S Center St",
       city: "Arlington",
       state: "Texas",
       zipcode: "64468"

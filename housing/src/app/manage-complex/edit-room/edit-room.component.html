@@ -97,7 +97,7 @@
         <!-- Lease end date begin -->
         <div class="form-group mx-3">
           <mat-form-field>
-            <input matInput id="endDate" name="endDate" [matDatepicker]="endDatePicker" [(ngModel)]="targetRoom.leaseStart"
+            <input matInput id="endDate" name="endDate" [matDatepicker]="endDatePicker" [(ngModel)]="targetRoom.leaseEnd"
               #endDate="ngModel" class="form-control" placeholder="Lease End Date" aria-describedby="endDate"
               required />
             <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
@@ -149,7 +149,7 @@
       <hr />
       <!-- Start of markup for submit and cancel buttons -->
       <div class="form-row d-flex justify-content-around">
-        <div>
+        <div *ngIf="editBool == true">
           <!-- If any of the inputs are invalid, the submit button will be disabled -->
           <button id="postEditRoom" class="add-room-btn" [disabled]="
               apiRoomType.invalid ||
@@ -176,7 +176,7 @@
           </button>
         </div>
 
-        <div>
+        <div *ngIf="editBool == true">
           <button class="add-room-btn" (click)="deleteRoom()">
             <strong>Delete</strong>
           </button>

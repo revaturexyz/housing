@@ -98,7 +98,7 @@ export class LodgingService {
 * sends a HTTP Delete Method at the delete method 
 */ 
   deleteComplexById(complexID: string): Observable<Complex>{ 
-    var getComplexesByIdURL = `${this.apiUrl}/complex/${complexID}`;
+    var getComplexesByIdURL = `${this.apiUrl}complex/${complexID}`;
     return this.httpBus.delete<Complex>(getComplexesByIdURL); 
   }
 
@@ -107,7 +107,7 @@ export class LodgingService {
 * Sends a post method to Lodging API to post Complex object 
 */
   addComplex(newComplex: postComplex): Observable<postComplex>{ 
-    var PostURl = `${this.apiUrl}/complex/`;
+    var PostURl = `${this.apiUrl}complex/`;
     return this.httpBus.post<postComplex>(PostURl, newComplex);
   }
 

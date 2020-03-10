@@ -71,9 +71,9 @@ export class EditComplexComponent implements OnInit {
     // Handle Submit Here
     console.log(this.formComplex);
 
-    /*
+    
     this.LodgeService.updateComplexById(this.formComplex).subscribe();
-    */
+    
 
     this.modeOutput.emit('details'); // Sent to parent to change mode back to details
   }
@@ -88,11 +88,11 @@ export class EditComplexComponent implements OnInit {
     // Handle Delete Here
     console.log(this.formComplex.complexId);
 
-    /*
-    this.LodgeService.updateComplexById(this.formComplex.complexId).subscribe();
-    */
+    
+    this.LodgeService.deleteComplexById(this.formComplex.complexId).subscribe();
+    
 
-    this.modeOutput.emit('details');
+    this.modeOutput.emit('init');
   }
 
   // This will be used to select defaults for amenity selection list

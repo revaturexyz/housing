@@ -89,7 +89,7 @@ export class AddRoomComponent implements OnInit {
       numberOfBeds: null,
       apiRoomType: null,
       amenities: null,
-      leaseStart: new Date(),
+      leaseStart: new Date('03/09/2020'),
       leaseEnd: new Date(),
       complexId: this.complexControl.complexId,
     };
@@ -101,9 +101,9 @@ export class AddRoomComponent implements OnInit {
     this.formRoom.amenities = this.amenityList;
     console.log(this.formRoom);
 
-    /*
+    
     this.LodgeService.addRoom(this.formRoom).subscribe();
-    */
+    
 
     // Handle adding room to complex logic here
     this.modeOutput.emit('details'); // Sent to parent to change mode back to details
