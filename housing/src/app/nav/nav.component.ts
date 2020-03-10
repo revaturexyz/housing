@@ -64,7 +64,6 @@ export class NavComponent implements OnInit {
           console.log('doggie', val.groups[1]);
           this.role = val.groups[1];
           sessionStorage.setItem('role', this.role);
-
           this.AccService.getId$().subscribe(value => {
             this.guid = value;
             sessionStorage.setItem('guid', this.guid);
