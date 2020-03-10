@@ -59,9 +59,7 @@ export class DashboardComponent implements OnInit {
   // takes in a css selector as a string and the class that you want to remove from that element
   removeClass(selector: string, selectorClass: string) {
     document.querySelector(selector).classList.remove(selectorClass);
-  } 
-  
-
+  }
   // expands dropdown
   expandDropdown() {
     // remove the hide class from dropdown container, which will display the container
