@@ -1,4 +1,4 @@
-<div class="sticky-top">
+<div>
   <div class="nav-bar">
     <mat-toolbar color=#ffffff>
       <!-- revature logo in top left -->
@@ -13,21 +13,7 @@
       <div id="menupiece" class="menu">
 
         <a mat-button routerLink="">Home</a>
-
-        <!-- if a limited provider is signed in -->
-        <a mat-button *ngIf="isAuthenticated && role === 'Provider'" routerLink="provider-status">Status</a>
-        <a mat-button *ngIf="isAuthenticated && role === 'Provider'" routerLink="edit-provider">Profile</a>
-
-        <!-- if a full access provider is signed in -->
-        <a mat-button *ngIf="isAuthenticated && role === 'Provider'" routerLink="manage-complex">Manage Complexes</a>
-        <a mat-button *ngIf="isAuthenticated && role === 'Coordinator'" routerLink="manage-complex">Manage Complexes</a>
-
-        <!-- if a coordinator is signed in -->
-        <a mat-button *ngIf="isAuthenticated && role === 'Coordinator'" routerLink="coordinator-notifications">Notifications</a>
-        <a mat-button *ngIf="isAuthenticated && role === 'Coordinator'" routerLink="add-tenant">Add Tenant</a>
-        <a mat-button *ngIf="isAuthenticated && role === 'Coordinator'" routerLink="search-tenant">Search Tenants</a>
-
-        <!-- everyon can view this -->
+        <a mat-button *ngIf="isAuthenticated" routerLink="dashboard">Dashboard</a>
 
         <a mat-button href="https://revature.com/our-story/" target="_blank" rel="noopener noreferrer">About Us</a>
 

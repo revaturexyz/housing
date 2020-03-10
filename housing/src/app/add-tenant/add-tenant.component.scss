@@ -1,10 +1,5 @@
-#parent {
-  overflow: hidden;
-}
 .child {
   margin-top: 5%;
-  max-height: 80%;
-  overflow-y: scroll;
 }
 #formContainer {
   margin-top: 10%;
@@ -16,9 +11,6 @@
 }
 #header {
   text-align: center;
-}
-#addTenantTitle {
-  position: absolute;
 }
 
 .input-border {
@@ -43,7 +35,7 @@
 }
 
 #topbutton {
-  padding-bottom: 10px;
+  padding-bottom: 10%;
 }
 
 #cancel2 {
@@ -53,7 +45,7 @@
 
 @media (min-width: 768px) {
   .h-md-100 {
-    height: 100vh;
+    min-height: 100vh;
   }
 }
 
