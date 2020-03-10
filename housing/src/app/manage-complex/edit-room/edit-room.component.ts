@@ -99,9 +99,9 @@ export class EditRoomComponent implements OnInit {
     this.formRoom.complexId = this.complexControl.complexId;
     console.log(this.formRoom);
 
-     /*
+     
     this.LodgeService.updateRoom(this.formRoom).subscribe();
-    */
+    
 
     // Handle editing room to complex logic here
     this.modeOutput.emit('details'); // Sent to parent to change mode back to details
@@ -116,9 +116,9 @@ export class EditRoomComponent implements OnInit {
   deleteRoom() {
     // Handle delete room logic here
 
-    /*
+    
     this.LodgeService.deleteRoomById(this.targetRoom.roomId).subscribe();
-    */
+    
 
     this.modeOutput.emit('details'); // Sent to parent to change mode back to details
   }

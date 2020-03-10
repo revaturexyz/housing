@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { UserService } from '../services/user.service';
 import { OktaAuthService } from '@okta/okta-angular';
+import { AccountService } from '../../app/services/account.service';
 
 @Component({
   selector: 'dev-nav',
@@ -16,8 +17,9 @@ export class NavComponent implements OnInit {
   public token: string;
   public decodetoken: string;
   public isProvider: boolean;
+  public guid: string;
 
-  constructor(private router: Router, public user: UserService, public oktaAuth: OktaAuthService) {
+  constructor(private router: Router, public user: UserService, public oktaAuth: OktaAuthService, public AccService: AccountService) {
     // get authentication state for immediate use
     this.oktaAuth.isAuthenticated().then(result => {
       this.isAuthenticated = result;
@@ -38,6 +40,11 @@ export class NavComponent implements OnInit {
       const userClaims = await this.oktaAuth.getUser();
       this.role = userClaims.groups[1];
       sessionStorage.setItem('role', this.role);
+
+      this.AccService.getId$().subscribe(val => {
+        this.guid = val;
+        sessionStorage.setItem('guid', this.guid);
+      });
 
     }
 

@@ -18,11 +18,15 @@ import { LodgingService } from '../../app/services/lodging.service';
 // Component used to handle logic behind selecting and managing a complex
 export class ManageComplexComponent implements OnInit {
 
+  /*
     public seededComplexes: Complex[] = [
         TestComplexData.dummyComplex
     ];
+    */
+   public seededComplexes: Complex[];
 
     role: string;
+    guid: string;
 
     // mode selection =>
     // 'init' for initial loading,
@@ -47,6 +51,8 @@ export class ManageComplexComponent implements OnInit {
     ngOnInit() {
       this.role = sessionStorage.getItem('role');
 
+      this.guid = sessionStorage.getItem('guid');
+
       /*
       this.userId = provider guid
       this.LodgeService.getComplexesByProviderId(this.userId).subscribe(data => {
@@ -55,11 +61,11 @@ export class ManageComplexComponent implements OnInit {
       });
       */
 
-      /*
+      
       this.LodgeService.getComplexes().subscribe(data => {
         this.seededComplexes = data;
       });
-      */
+      
 
     }
 
@@ -77,14 +83,16 @@ export class ManageComplexComponent implements OnInit {
     }
 
     addComplex(reqComplex: Complex) {
+      /*
       reqComplex.providerId = '1';
       //TestComplexData.dummyProvider
       this.seededComplexes.push(reqComplex);
-      
-      /*
-      this.userId = provider guid
-      this.LodgeService.getComplexesByProviderId(reqComplex).subscribe();
       */
+      
+      
+      //this.userId = provider guid
+      //this.LodgeService.addComplex(reqComplex).subscribe();
+      
 
     }
 }

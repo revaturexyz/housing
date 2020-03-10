@@ -16,9 +16,9 @@
           placeholder="Street Address" 
           formControlName="firstCtrl" 
           required
-          name="formLivingComplex.apiAddress.streetAddress"
-          [(ngModel)]="formLivingComplex.address.streetAddress"
-          id="streetAddress">
+          name="formLivingComplex.apiAddress.street"
+          [(ngModel)]="formLivingComplex.address.street"
+          id="street">
       </mat-form-field>
       <mat-form-field class="col-md-4">
         <input matInput 
@@ -43,7 +43,7 @@
           required
           name="formLivingComplex.apiAddress.zipCode"
           pattern="[0-9]{5}" 
-          [(ngModel)]="formLivingComplex.address.zipcode">
+          [(ngModel)]="formLivingComplex.address.zipCode">
       </mat-form-field>
       <mat-form-field class="col-md-6">
         <input matInput 

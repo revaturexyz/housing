@@ -70,13 +70,13 @@ export class AddComplexComponent implements OnInit {
   ) {
     // Populate default form values
     this.formLivingComplex = {
-      providerId: '',
+      providerId: '51b7eadd-30ce-49a7-9b8c-bae1d47f46a6',
       address: {
         country: 'USA', //must add a section to select contries if needed
-        streetAddress: '',
+        street: '',
         city: '',
         state: '',
-        zipcode: ''
+        zipCode: ''
       },
       complexName: '',
       contactNumber: '',
@@ -89,10 +89,10 @@ export class AddComplexComponent implements OnInit {
       address: {
         addressID: '',
         country: '',
-        streetAddress: '',
+        street: '',
         city: '',
         state: '',
-        zipcode: ''
+        zipCode: ''
       },
       complexName: '',
       contactNumber: '',
@@ -150,9 +150,9 @@ export class AddComplexComponent implements OnInit {
     console.log(this.formLivingComplex);
     // Handle adding complex logic here
 
-    /*
+    
     this.LodgeService.addComplex(this.formLivingComplex).subscribe();
-    */
+    
 
     this.complexOutput.emit(this.formTestComplex);
     this.modeOutput.emit('init'); // Sent to parent to change mode back to details

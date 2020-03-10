@@ -33,14 +33,18 @@ export class ComplexDetailsComponent implements OnInit {
   mockrooms = new MockRooms();
   
   //used for mock data
+  
+  /*
   public seededRooms: Room[] = [
     this.mockrooms.testroom,
     this.mockrooms.testroom2,
     this.mockrooms.testroom3
   ];
+  */
+  
   
   //used for service data
-  //seededRooms: Room[];
+  seededRooms: Room[];
 
   // id's for columns on material table
   displayedColumns = ['room#', 'start', 'end', 'edit', 'show'];
@@ -86,12 +90,15 @@ export class ComplexDetailsComponent implements OnInit {
     this.role = sessionStorage.getItem('role');
     console.log(this.complexControl.complexId);
     
-    /*
+    
     this.LodgeService.getFilteredRooms(this.complexControl.complexId,"").subscribe(data => {
       this.seededRooms = data;
-      //console.log(this.list);
+      this.dataSource = new MatTableDataSource(this.seededRooms);
     });
-    */
+    
+
+   //this.dataSource = new MatTableDataSource(this.seededRooms);
+    
     
 
     // Links paginator for material table

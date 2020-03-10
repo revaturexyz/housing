@@ -43,6 +43,7 @@ export class AddTenantComponent implements OnInit {
   displayEnd;
 
   async postTenantOnSubmit() {
+    console.log(this.tenant);
     try {
       this.tenant.id = null;
       this.tenant.trainingCenter = this.trainCen[0];

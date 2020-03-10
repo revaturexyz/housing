@@ -25,7 +25,7 @@
                         <mat-card>
                             <mat-card-header>
                               <mat-card-title>{{complex.complexName | uppercase}}</mat-card-title>
-                              <mat-card-subtitle>{{complex.providerId | uppercase}}</mat-card-subtitle>
+                              <!--<mat-card-subtitle>{{complex.providerId | uppercase}}</mat-card-subtitle>-->
                             </mat-card-header>
                             <img mat-card-image src="https://img.freepik.com/free-vector/urban-buildings-with-cityscape-scenery_18591-51831.jpg?size=626&ext=jpg" alt="Photo of a Shiba Inu">
                             <mat-card-content>
@@ -37,7 +37,7 @@
                                   <br>
                                   <strong>Amenities: </strong>
                                       <mat-chip *ngFor="let amenity of complex.complexAmenities" selected selectable="false">
-                                        <strong>{{ amenity.amenityType }}</strong>
+                                        | {{ amenity.amenityType }} |
                                       </mat-chip>
                               </p>
                             </mat-card-content>
@@ -52,7 +52,7 @@
                     <mat-card class="example-card">
                         <mat-card-header>
                           <mat-card-title>{{complexControl.value?.complexName | uppercase}}</mat-card-title>
-                          <mat-card-subtitle>{{complexControl.value?.providerId | uppercase}}</mat-card-subtitle>
+                          <!--<mat-card-subtitle>{{complexControl.value?.providerId | uppercase}}</mat-card-subtitle>-->
                         </mat-card-header>
                         <img mat-card-image src="https://img.freepik.com/free-vector/urban-buildings-with-cityscape-scenery_18591-51831.jpg?size=626&ext=jpg" alt="Photo of a Shiba Inu">
                         <mat-card-content>
@@ -62,7 +62,7 @@
                               {{complexControl.value?.address.city}}, {{complexControl.value?.address.state}}
                               {{complexControl.value?.address.zipcode}}
                               <br>
-                              <strong>Emenities: </strong>
+                              <strong>Amenities: </strong>
                                   <mat-chip *ngFor="let amenity of complexControl.value?.complexAmenities" selected selectable="false">
                                     {{ amenity.amenityType }}</mat-chip>
                           </p>

@@ -15,10 +15,10 @@ export class MapsService {
 
   async verifyAddress(address: Address): Promise<boolean> {
     const query = this.geocodeUrl +
-      address.streetAddress + '+' +
+      address.street + '+' +
       address.city + '+' +
       address.state + '+' +
-      address.zipcode +
+      address.zipCode +
       '&key=' + environment.googleMapsKey;
 
     return await this.httpClient.get<Maps>(query).toPromise()
@@ -34,10 +34,10 @@ export class MapsService {
   // get geo coordinates of an address using Google API
   async getCoordinates(address: Address): Promise<MapsGeoLocation> {
     const query = this.geocodeUrl +
-      address.streetAddress + '+' +
+      address.street + '+' +
       address.city + '+' +
       address.state + '+' +
-      address.zipcode +
+      address.zipCode +
       '&key=' + environment.googleMapsKey;
 
     return await this.httpClient.get<Maps>(query).toPromise()

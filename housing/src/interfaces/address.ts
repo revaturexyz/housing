@@ -5,20 +5,20 @@
 */ 
 export interface Address {
   addressID: string; 
-  streetAddress: string; 
+  street: string; 
   city: string; 
   state: string; 
   country: string; 
-  zipcode: string; 
+  zipCode: string; 
 }
 
 /* postAddress
 *
 */ 
 export interface postaddress {  
-  streetAddress: string; 
+  street: string; 
   city: string; 
   state: string; 
   country: string; 
-  zipcode: string; 
+  zipCode: string; 
 }
