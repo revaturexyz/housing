@@ -76,7 +76,7 @@ export class AddComplexComponent implements OnInit {
         street: '',
         city: '',
         state: '',
-        zipcode: ''
+        zipCode: ''
       },
       complexName: '',
       contactNumber: '',
@@ -92,7 +92,7 @@ export class AddComplexComponent implements OnInit {
         street: '',
         city: '',
         state: '',
-        zipcode: ''
+        zipCode: ''
       },
       complexName: '',
       contactNumber: '',

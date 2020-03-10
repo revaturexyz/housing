@@ -26,7 +26,7 @@ export class TestComplexData {
     street: '1001 S Center St',
     city: 'Arlington',
     state: 'TX',
-    zipcode: '76010'
+    zipCode: '76010'
   };
 
   static dummyStatus: Status = {

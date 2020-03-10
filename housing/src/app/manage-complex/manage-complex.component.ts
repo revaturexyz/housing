@@ -26,6 +26,7 @@ export class ManageComplexComponent implements OnInit {
    public seededComplexes: Complex[];
 
     role: string;
+    guid: string;
 
     // mode selection =>
     // 'init' for initial loading,
@@ -49,6 +50,8 @@ export class ManageComplexComponent implements OnInit {
 
     ngOnInit() {
       this.role = sessionStorage.getItem('role');
+
+      this.guid = sessionStorage.getItem('guid');
 
       /*
       this.userId = provider guid

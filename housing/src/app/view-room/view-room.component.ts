@@ -52,7 +52,7 @@ export class ViewRoomComponent implements OnInit {
       street: "1001 S Center St",
       city: "Arlington",
       state: "Texas",
-      zipcode: "64468"
+      zipCode: "64468"
     };
 
   stat: Status = {

@@ -9,7 +9,7 @@ export interface Address {
   city: string; 
   state: string; 
   country: string; 
-  zipcode: string; 
+  zipCode: string; 
 }
 
 /* postAddress
@@ -20,5 +20,5 @@ export interface postaddress {
   city: string; 
   state: string; 
   country: string; 
-  zipcode: string; 
+  zipCode: string; 
 }

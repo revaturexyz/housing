@@ -19,7 +19,7 @@ export class MockComplex {
     street: '123 Sesame St',
     city: 'Arlington',
     state: 'TX',
-    zipcode: '12345'
+    zipCode: '12345'
   };
   public status: Status = {
     statusText: 'approved'
