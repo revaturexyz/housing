@@ -54,25 +54,6 @@ resource "azurerm_resource_group" "housingxyz" {
   }
 }
 
-resource "azurerm_kubernetes_cluster" "aks" {
-  dns_prefix = var.aks_kubernetes_cluster["dns"]
-  location = azurerm_resource_group.aks.location
-  name = var.aks_kubernetes_cluster["name"]
-  resource_group_name = azurerm_resource_group.aks.name
-
-  agent_pool_profile {
-    name = "default"
-    count = 1
-    vm_size = "Standard_B2ms"
-    os_type = "Linux"
-  }
-
-  service_principal {
-    client_id = var.aks_service_principal["id"]
-    client_secret = var.aks_service_principal["secret"]
-  }
-}
-
 resource "azurerm_resource_group" "aks" {
   location = var.aks_resource_group["location"]
   name = var.aks_resource_group["name"]
