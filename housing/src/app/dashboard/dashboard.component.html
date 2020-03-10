@@ -1,29 +1,39 @@
-
-    <div id="dashboard-nav-wrapper">  
-        <nav id="dashboard-nav"> 
-
-            <a id="profile-nav" class="dashboard-nav-item main" routerLink="./edit-provider">Profile</a>    
-            <a id="status-nav" class="dashboard-nav-item main" routerLink="./provider-status">Status</a>
-            <!--item that triggers dropdown-->
-            <span id="complex-nav" (click)="toggleDropdown()" class="dashboard-nav-item">
-                Complexes
-                <i class="fa fa-caret-down"></i>
-            </span>
-
-            <div id="dropdown-container" class="hide">
-                <a id="manage-nav" class="dashboard-nav-item"  routerLink="./manage-complex">Manage</a>
-                <a id="add-nav" class="dashboard-nav-item"  routerLink="./add-complex">Add</a>
+<div id="dashboard-nav-wrapper">
+    <nav  *ngIf="role === 'Provider'">
+        <a class="dashboard-nav-item" (click)="collapseDropdown()" routerLink="./edit-provider" routerLinkActive="active">Profile</a>    
+        <a class="dashboard-nav-item" (click)="collapseDropdown()"  routerLink="./provider-status" routerLinkActive="active">Status</a>
+        <!--button that triggers dropdown-->
+        <span (click)="toggleDropdown()" class="dash-dropbutton" routerLinkActive="da" [routerLinkActiveOptions]="{exact: true}">
+            <span>Complexes <i class="fa fa-caret-down"></i></span>
+            <div class="dropdown-container hide">
+                <a class="dashboard-nav-item drop-item"  routerLink="./manage-complex" routerLinkActive="active">Manage</a>
+                <a class="dashboard-nav-item drop-item"  routerLink="./add-complex" routerLinkActive="active">Add</a>
             </div>
+        </span>
+    </nav>
 
-            <!--
-            <a id="notifications" class="dashboard-nav-item" (click)="matchSelectionWithUrl()" routerLink="./coordinator-notifications">Notifications</a>
-            <a class="dashboard-nav-item" routerLink="./add-tenant">Add Tenant</a>
-            <a class="dashboard-nav-item" routerLink="./search-tenant">Search Tenants</a>
-            <a class="dashboard-nav-item" routerLink="./assign-tenant-to-room">Assign Tenants</a>
-            -->
-        </nav> 
-    </div> 
-    <div id="dashboard-display">
-        <router-outlet (activate)='onActivate()'></router-outlet>
-    </div>
+    <nav *ngIf="role === 'Coordinator'">
+        <a class="dashboard-nav-item" (click)="collapseDropdown()" routerLink="./coordinator-notifications" routerLinkActive="active">Notifications</a>
+        <a class="dashboard-nav-item" (click)="collapseDropdown()" routerLink="./manage-complex" routerLinkActive="active">View Complexes</a>
+        <!-- //item that triggers dropdown-->
+        <span (click)="toggleDropdown()" class="dash-dropbutton" routerLinkActive="da" [routerLinkActiveOptions]="{exact: true}">
+            <span>Manage Tenants<i class="fa fa-caret-down"></i></span>
+           
+            <div class="dropdown-container hide">
+                <a class="dashboard-nav-item drop-item" routerLink="./add-tenant"  routerLinkActive="active">Add Tenant</a>
+                <a class="dashboard-nav-item drop-item" routerLink="./search-tenant" routerLinkActive="active">Search</a>
+                <a class="dashboard-nav-item drop-item" routerLink="./assign-tenant-to-room" routerLinkActive="active">Assign Tenant</a>
+            </div>
+        </span>
+    </nav>
 
+    <nav *ngIf="role === 'Tenant'">
+        <a class="dashboard-nav-item" routerLink="./tenant-profile" routerLinkActive="active">Profile</a>
+        <a class="dashboard-nav-item" routerLink="./tenant-maintenance" routerLinkActive="active">Maintenance</a>
+        <a class="dashboard-nav-item" routerLink="./view-room" routerLinkActive="active">Room</a>
+    </nav>
+</div>
+
+<div id="dashboard-display"> 
+    <router-outlet></router-outlet>
+</div> 

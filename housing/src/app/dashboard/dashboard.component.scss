@@ -1,30 +1,6 @@
 .hide
 {
     display: none;
-} 
-
-#dashboard-nav-wrapper
-{
-    position: fixed;
-    float:right;
-    z-index: 1;
-    top: 9vh;
-    left: 0;
-    background: rgb(38, 58, 58);
-    color: white;
-    width: 15.5%;
-    min-height: 100vh;
-    z-index: -1;
-} 
-
-#dropdown-container
-{
-   background: rgb(92, 91, 91);
-}
-
-#dropdown-container a
-{
-    padding-left: 70px; 
 }
 
 .active
@@ -32,9 +8,15 @@
     background:#fb752c;
 }
 
-.drop-active{
+.drop-active, .da
+{
    background: rgb(24, 37, 37);
-} 
+}
+
+.dropdown-container
+{
+   background: rgb(92, 91, 91);
+}
 
 .fa-caret-down
 {
@@ -42,26 +24,44 @@
     padding-right: 15px;
 }
 
-.dashboard-nav-item
+.dash-dropbutton
+{
+    display: block;
+    color: white;
+}
+ 
+.dashboard-nav-item, .dash-dropbutton span
 {
     padding: 10%;  
     display: block;
     color: white;
 }
 
-.dashboard-nav-item:hover
+.dashboard-nav-item:hover, .dash-dropbutton span:hover
 {
    text-decoration: none;
    background: rgb(24, 37, 37);
    cursor: pointer;
 }
- 
+
+#dashboard-nav-wrapper
+{
+    position: fixed;
+    float:left;
+    z-index: 1;
+    top: 64px;
+    background: rgb(38, 58, 58);
+    color: white;
+    width: 15.5%;
+    min-height: 100vh;
+    z-index: -1;
+} 
+
 #dashboard-display
 {
     position: relative;
-    top: 9vh;
+    top: 64px;
     float:right;
-    min-height: 90vh;
     width: 85%;
     max-width: 85%;
     z-index: -2;

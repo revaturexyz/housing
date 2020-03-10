@@ -76,7 +76,6 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     ViewRoomComponent,
     TenantProfileComponent,
     TenantMaintenanceComponent,
-    ViewRoomComponent
     DashboardComponent
   ],
   imports: [

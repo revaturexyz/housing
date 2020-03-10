@@ -1,114 +1,105 @@
-import { Component, OnInit } from '@angular/core'; 
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserService } from '../services/user.service';
+import { OktaAuthService } from '@okta/okta-angular';
 
 @Component({
   selector: 'dev-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
+
 export class DashboardComponent implements OnInit {
-
-  prefix:string = "/dashboard/";
-  routes: Array<string> = ["edit-provider","provider-status","manage-complex","add-complex"];
-
-  constructor(private router: Router) {}
-  
+  baseUrl:string = "/dashboard";
+  providerDefaultPage: string = "edit-provider";
+  coordinatorDefaultPage: string = "coordinator-notifications";
+  tenantDefaultPage: string = "tenant-profile";
+  isDropdownOpen: boolean = false;
+  public role: string;
+ 
+  constructor(private router: Router,public user: UserService, public oktaAuth: OktaAuthService) { 
+  }
+ 
   ngOnInit() {
-  }
+    this.role = sessionStorage.getItem("role");
 
-  prefix:string = "/dashboard/";
-  routes: Array<string> = ["edit-provider","provider-status","manage-complex","add-complex"];
+    //check if route is just '/dashboard'
+    if(this.router.url == this.baseUrl){
 
-  constructor(private router: Router) {}
-  
-  ngOnInit() {
-  }
+      //based on user role, navigate to their respective default page
+      //if no role, navigate back to home page
+      switch(this.role)
+      {
+        case "Provider":
+          this.goToDefaultPage(this.providerDefaultPage);
+          break;
+        case "Coordinator":
+          this.goToDefaultPage(this.coordinatorDefaultPage);
+          break;
+        case "Tenant":
+          this.goToDefaultPage(this.tenantDefaultPage);
+          break;
+        default:
+          //redirect to home
+          this.router.navigate(["./"]);
+          break;
+      } 
+    }
+  } 
 
-  //is called whenever a component is loaded into the dashboard's router outlet
-  onActivate()
+  //goes to the dashboard default page based on  the default page passed
+  goToDefaultPage(defaultPage:string)
   {
-    this.matchSelectionWithUrl();
+    this.router.navigate([this.baseUrl+"/"+defaultPage]);
   }
 
-  //goes to the dashboard default page, which is profile for provider
-  goToDefaultPage()
-  {
-    this.router.navigate([this.prefix]);
-  }
   //takes in a css selector as a string and the class that you want to add to that element
-  addClass(selector:string,selectorClass:string)
+  addClass(selector:string, selectorClass:string)
   {
     document.querySelector(selector).classList.add(selectorClass);
   }
+
   //takes in a css selector as a string and the class that you want to remove from that element
   removeClass(selector:string,selectorClass:string)
   {
     document.querySelector(selector).classList.remove(selectorClass);
-  } 
+  }
+
   //expands dropdown 
   expandDropdown()
   {
-    this.removeClass("#dropdown-container","hide");
-    this.addClass("#complex-nav","drop-active");
+    //remove the hide class from dropdown container, which will display the container
+    this.removeClass(".dropdown-container","hide");  
+    
+    //add the active styling on the dropdown button
+    this.addClass(".dash-dropbutton","drop-active");
+
+    this.isDropdownOpen = true;
   }
-  //collapse dropdown 
+
+  //collapses dropdown 
   collapseDropdown()
   {
-    this.addClass("#dropdown-container","hide");
-    //this.removeClass("#complex-nav","drop-active");
+    //hide the dropdown container
+    this.addClass(".dropdown-container","hide"); 
+    
+    //remove the active styling on the dropdown button
+    this.removeClass(".dash-dropbutton","drop-active");
+
+    this.isDropdownOpen = false;
   }
 
-  //calls open or collapse dropdown methods based on a condition
+  //if dropdown is open collapse the dropdown
+  //if dropdown is closed open the dropdown
   toggleDropdown()
-  {
-    //add drop-active class to the complexes dropdown
-    this.addClass("#complex-nav","drop-active");
-
-    if(document.querySelector("#dropdown-container").classList.contains("hide"))
+  { 
+    if(this.isDropdownOpen)
     {
-      this.expandDropdown();
-    }
-    else{ 
       this.collapseDropdown();
     }
-
-  //is called by onActivate, and adds styles to dashboard navigation items based on the url
-  matchSelectionWithUrl()
-  {
-    //remove all active styling in dashboard
-    document.querySelectorAll(".dashboard-nav-item").forEach(function(e){
-      e.classList.remove("active");
-    });
-
-    //add active styling based on url
-    switch(this.router.url)
-    {
-      case this.prefix+this.routes[0]: //if url is /dashboard/edit-provider
-        //collapse the dropdown, make profile link active, and remove styling from dropdown in case active
-        this.collapseDropdown();
-        this.addClass("#profile-nav","active");
-        this.removeClass("#complex-nav","drop-active");
-        break;
-      case this.prefix+this.routes[1]: //if url is /dashboard/provider-status
-        //collapse the dropdown, make edit-provider link active, and remove styling from dropdown in case active
-        this.collapseDropdown();
-        this.addClass("#status-nav","active");
-        this.removeClass("#complex-nav","drop-active");
-        break;
-      case this.prefix+this.routes[2]: //if url is /dashboard/manage-complex
-        //expand the dropdown, make manage complexes link active
-        this.expandDropdown();
-        this.addClass("#manage-nav","active");
-        break;
-      case this.prefix+this.routes[3]: //if url is /dashboard/add-complex
-        //expand the dropdown, make add complexes link active
-        this.expandDropdown();
-        this.addClass("#add-nav","active");
-        break;
-      default: //if somehow fails go to the default dashboard page
-        this.goToDefaultPage();
-        break;
+    else
+    { 
+      this.expandDropdown(); 
     }
   }
-
 }
