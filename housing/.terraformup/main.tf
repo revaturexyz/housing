@@ -14,10 +14,6 @@ provider "azurerm" {
   version = "~>1.30.0"
 }
 
-provider "cloudflare" {
-  version = "~>1.16.0"
-}
-
 ## RESOURCES
 resource "azurerm_app_service" "housingxyz" {
   app_service_plan_id = "${azurerm_app_service_plan.housingxyz.id}"
@@ -63,7 +59,7 @@ resource "azurerm_kubernetes_cluster" "aks" {
   location = azurerm_resource_group.aks.location
   name = var.aks_kubernetes_cluster["name"]
   resource_group_name = azurerm_resource_group.aks.name
-  
+
   agent_pool_profile {
     name = "default"
     count = 1
