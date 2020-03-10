@@ -11,7 +11,7 @@ provider "azuread" {
 }
 
 provider "azurerm" {
-  version = "~>1.30.0"
+  version = "~>1.44.0"
 }
 
 ## RESOURCES
