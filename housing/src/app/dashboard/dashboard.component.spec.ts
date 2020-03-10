@@ -15,10 +15,7 @@ xdescribe('DashboardComponent', () => {
         RouterTestingModule,
         OktaAuthService
       ],
-      declarations: [ DashboardComponent ],
-      providers:[
-        OktaAuthService
-      ]
+      declarations: [ DashboardComponent ]
     })
     .compileComponents();
   }));
