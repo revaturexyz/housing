@@ -11,28 +11,9 @@ import {take} from 'rxjs/operators';
 })
 export class TenantMaintenanceComponent implements OnInit {
 
-  areas: Array<string>;         //list of areas in 
-  area_entrance: Array<string>; //entrance/halls
-  area_living: Array<string>;   //living/dining room
-  area_kitchen: Array<string>;  //kitchen
-  area_bed: Array<string>;      //bedroom
-  area_bath: Array<string>;     //bathroom
-  area_other: Array<string>;    //other equipment
-  
-  maintenanceFG = new FormGroup({
-    unitFC: new FormControl(''),
-    roomFC: new FormControl(''),
-    firstnameFC: new FormControl(''),
-    lastnameFC: new FormControl(''),
-    emailFC: new FormControl(''),
-    areaFC: new FormControl(''),
-    descriptionFC: new FormControl('')
-  });
-
   constructor(
-    private _ngZone: NgZone
-  ) 
-  {
+    private ngZone: NgZone
+  ) {
     this.areas =
     [
       'Entrance/Halls',
@@ -44,19 +25,36 @@ export class TenantMaintenanceComponent implements OnInit {
     ];
   }
 
+  areas: Array<string>;         // list of areas in
+  areaEntrance: Array<string>; // entrance/halls
+  areaLiving: Array<string>;   // living/dining room
+  areaKitchen: Array<string>;  // kitchen
+  areaBed: Array<string>;      // bedroom
+  areaBath: Array<string>;     // bathroom
+  areaOther: Array<string>;    // other equipment
+
+  maintenanceFG = new FormGroup({
+    unitFC: new FormControl(''),
+    roomFC: new FormControl(''),
+    firstnameFC: new FormControl(''),
+    lastnameFC: new FormControl(''),
+    emailFC: new FormControl(''),
+    areaFC: new FormControl(''),
+    descriptionFC: new FormControl('')
+  });
+
+  @ViewChild('autosize', {static: false}) autosize: CdkTextareaAutosize;
+
   ngOnInit() {
   }
 
-  @ViewChild('autosize', {static:false}) autosize: CdkTextareaAutosize;
-
   triggerResize() {
     // Wait for changes to be applied, then trigger textarea resize.
-    this._ngZone.onStable.pipe(take(1))
+    this.ngZone.onStable.pipe(take(1))
         .subscribe(() => this.autosize.resizeToFitContent(true));
   }
 
-  onSubmit()
-  {
+  onSubmit() {
     console.log(this.maintenanceFG.value);
   }
 }

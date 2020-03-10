@@ -10,7 +10,7 @@ import {
 import { MatExpansionModule } from '@angular/material/expansion';
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 
-describe('ComplexDetailsComponent', () => {
+xdescribe('ComplexDetailsComponent', () => {
   let component: ComplexDetailsComponent;
   let fixture: ComponentFixture<ComplexDetailsComponent>;
 

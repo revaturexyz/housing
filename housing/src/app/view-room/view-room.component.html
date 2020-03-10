@@ -8,12 +8,12 @@
       <!--Room in building:  <div *ngIf= "room.apiAddress" >{{room.apiAddress | json}}</div> -->
       <b>Room number:</b> {{currentRoom.roomNumber}}<br>
       <b># of beds in room:</b> {{currentRoom.numberOfBeds}}<br>
-      <div *ngIf="room.apiRoomType"><b>Room type:</b> {{currentRoom.apiRoomType.roomType}}</div>
+      <div *ngIf="room.apiRoomType"><b>Room type:</b> {{currentRoom.apiRoomType}}</div>
       <b>Number of occupants:</b> {{room.numberOfOccupants}}<br>
-      <div *ngIf="room.gender"><b>Gender:</b> {{room.gender.genderType}}</div><br>
+      <div *ngIf="room.gender"><b>Gender:</b> {{room.gender}}</div><br>
       <b>The amenities of this room include:</b> <ul class="list-group">
         <li *ngFor='let aa of room.amenities' class="list-group-item">
-          {{aa.amenity}}
+          {{aa.amenityType}}
         </li>
       </ul>
       <br>

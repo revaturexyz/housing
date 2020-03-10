@@ -18,7 +18,7 @@ import { AddRoomComponent } from './add-room.component';
 import { By } from '@angular/platform-browser';
 import { Complex } from 'src/interfaces/complex';
 
-describe('AddRoomComponent', () => {
+xdescribe('AddRoomComponent', () => {
   let component: AddRoomComponent;
   let fixture: ComponentFixture<AddRoomComponent>;
 

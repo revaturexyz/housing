@@ -1,24 +1,24 @@
 /* Address
 *
-* Matching the model in the API called 
-* ApiComplexAddress 
-*/ 
+* Matching the model in the API called
+* ApiComplexAddress
+*/
 export interface Address {
-  addressID: string; 
-  street: string; 
-  city: string; 
-  state: string; 
-  country: string; 
-  zipCode: string; 
+  addressID: string;
+  street: string;
+  city: string;
+  state: string;
+  country: string;
+  zipCode: string;
 }
 
 /* postAddress
 *
-*/ 
-export interface postaddress {  
-  street: string; 
-  city: string; 
-  state: string; 
-  country: string; 
-  zipCode: string; 
+*/
+export interface PostAddress {
+  street: string;
+  city: string;
+  state: string;
+  country: string;
+  zipCode: string;
 }

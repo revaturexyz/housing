@@ -61,11 +61,11 @@ export class ManageComplexComponent implements OnInit {
       });
       */
 
-      
+
       this.LodgeService.getComplexes().subscribe(data => {
         this.seededComplexes = data;
       });
-      
+
 
     }
 
@@ -88,11 +88,11 @@ export class ManageComplexComponent implements OnInit {
       //TestComplexData.dummyProvider
       this.seededComplexes.push(reqComplex);
       */
-      
-      
-      //this.userId = provider guid
-      //this.LodgeService.addComplex(reqComplex).subscribe();
-      
+
+
+      // this.userId = provider guid
+      // this.LodgeService.addComplex(reqComplex).subscribe();
+
 
     }
 }
