@@ -7,7 +7,3 @@ provider "azuread" {
 provider "azurerm" {
   version = "~> 1.38.0"
 }
-
-provider "cloudflare" {
-  version = "~> 2.2.0"
-}
