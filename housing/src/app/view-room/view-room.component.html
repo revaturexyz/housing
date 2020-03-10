@@ -8,17 +8,18 @@
       <!--Room in building:  <div *ngIf= "room.apiAddress" >{{room.apiAddress | json}}</div> -->
       <b>Room number:</b> {{currentRoom.roomNumber}}<br>
       <b># of beds in room:</b> {{currentRoom.numberOfBeds}}<br>
-      <div *ngIf="room.apiRoomType"><b>Room type:</b> {{currentRoom.apiRoomType}}</div>
-      <b>Number of occupants:</b> {{room.numberOfOccupants}}<br>
-      <div *ngIf="room.gender"><b>Gender:</b> {{room.gender}}</div><br>
+      <b>Room Type:</b> {{currentRoom.apiRoomType}}<br>
+      <!--<div *ngIf="room.apiRoomType"><b>Room type:</b> {{currentRoom.apiRoomType}}</div>-->
+      <b>Number of occupants:</b> {{currentRoom.numberOfOccupants}}<br>
+      <!--<div *ngIf="room.gender"><b>Gender:</b> {{room.gender}}</div><br>-->
       <b>The amenities of this room include:</b> <ul class="list-group">
-        <li *ngFor='let aa of room.amenities' class="list-group-item">
+        <li *ngFor='let aa of currentRoom.amenities' class="list-group-item">
           {{aa.amenityType}}
         </li>
       </ul>
       <br>
-      <b>Current lease began:</b> {{room.leaseStart}}<br>
-      <b>Current lease ends:</b> {{room.leaseEnd}}<br>
+      <b>Current lease began:</b> {{currentRoom.leaseStart | date}}<br>
+      <b>Current lease ends:</b> {{currentRoom.leaseEnd | date}}<br>
       <br>
     </div>
   </div>

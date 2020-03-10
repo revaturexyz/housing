@@ -15,7 +15,8 @@ import {Room} from 'src/interfaces/room';
 
 export class TenantProfileComponent implements OnInit {
 
-  tenantInfo: Tenant;
+  tenantInfo: Tenant = null;
+  testTenant: Tenant;
 
   constructor(
     public tenantService: TenantService,
@@ -23,7 +24,7 @@ export class TenantProfileComponent implements OnInit {
     // private user: UserService
   ) {
     // empty these when user account prepared and userservice working
-    this.tenantInfo = {
+    this.testTenant = {
       id: 'g28a-2917-1983-298f-98c1-a19a',
       email: 'test@email.com',
       gender: 'Alien',
@@ -68,28 +69,23 @@ export class TenantProfileComponent implements OnInit {
   // Tennant id should be available at runtime. Okta should have this value
   // stored in local, cookies, or session storage
 
-  currentTenant: Tenant = null;
-  // Information for currently logged in tenant
-  // this page primarily needs roomid attached to the tenant
-
   currentRoom: Room = null;
   // Contains the room information to be displayed on the page.
 
-  ngOnInit(): void {
-    this.getTenantInfo(this.tenantid);
-    this.getTenantRoom(this.currentTenant.roomId);
+  ngOnInit() {
+  this.tenantid = sessionStorage.getItem('guid');
+  console.log('hello', this.tenantid);
+  //this.getTenantRoom(this.currentTenant.roomId);
+  
+
+  this.tenantService.GetTenantById(this.tenantid).subscribe(data => {
+    this.tenantInfo = data;
+    console.log(this.tenantInfo);
+    console.log('making sure');
+  });
+  
   }
 
-    // grabs tennant information from tennant API so we now have toom information
-    getTenantInfo(tID: string) {
-      return this.tenantService.GetTenantById(tID).toPromise().then(response => this.currentTenant = response);
-
-    }
-
-    // grabs room information based on the current Tennant
-    getTenantRoom(rID: string) {
-      return this.lodgingService.getRoomById(rID).toPromise().then(response => this.currentRoom = response);
-    }
   /*
   getTenantProfile()
   {

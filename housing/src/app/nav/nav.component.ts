@@ -67,6 +67,7 @@ export class NavComponent implements OnInit {
           this.AccService.getId$().subscribe(value => {
             this.guid = value;
             sessionStorage.setItem('guid', this.guid);
+            console.log(this.guid);
           });
         });
       }, 1000);
