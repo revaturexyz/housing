@@ -1,5 +1,5 @@
 export interface TenantAddress {
-  addressId: string;
+  Id: string;
   street: string;
   city: string;
   state: string;

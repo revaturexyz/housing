@@ -12,8 +12,8 @@ export interface Tenant {
   roomId: string;
   carId: number;
   batchId: number;
-  tenantAddress: TenantAddress;
+  apiAddress: TenantAddress;
   car: Car;
-  batch: Batch;
+  apiBatch: Batch;
   trainingCenter: string;
 }

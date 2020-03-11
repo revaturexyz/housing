@@ -34,9 +34,9 @@ export class TenantProfileComponent implements OnInit {
       roomId: '1',
       carId: 1,
       batchId: 1,
-      tenantAddress:
+      apiAddress:
       {
-        addressId: '1',
+        Id: '1',
         street: '123 Street Name',
         city: 'City Name',
         state: 'ST',
@@ -53,7 +53,7 @@ export class TenantProfileComponent implements OnInit {
         year: '3030',
         state: 'ST'
       },
-      batch:
+      apiBatch:
       {
         id: 1,
         batchCurriculum: '.NET',
@@ -100,16 +100,16 @@ export class TenantProfileComponent implements OnInit {
 
     // start date
     if (flag) {
-      day = weekdays[this.tenantInfo.batch.startDate.getDay()];
-      month = months[this.tenantInfo.batch.startDate.getMonth()];
-      date = this.tenantInfo.batch.startDate.getDate();
-      year = this.tenantInfo.batch.startDate.getFullYear();
+      day = weekdays[this.tenantInfo.apiBatch.startDate.getDay()];
+      month = months[this.tenantInfo.apiBatch.startDate.getMonth()];
+      date = this.tenantInfo.apiBatch.startDate.getDate();
+      year = this.tenantInfo.apiBatch.startDate.getFullYear();
       fulldate = day + ' ' + month + ' ' + date + ', ' + year;
     } else {
-      day = weekdays[this.tenantInfo.batch.endDate.getDay()];
-      month = months[this.tenantInfo.batch.endDate.getMonth()];
-      date = this.tenantInfo.batch.endDate.getDate();
-      year = this.tenantInfo.batch.endDate.getFullYear();
+      day = weekdays[this.tenantInfo.apiBatch.endDate.getDay()];
+      month = months[this.tenantInfo.apiBatch.endDate.getMonth()];
+      date = this.tenantInfo.apiBatch.endDate.getDate();
+      year = this.tenantInfo.apiBatch.endDate.getFullYear();
       fulldate = day + ' ' + month + ' ' + date + ', ' + year;
     }
 
