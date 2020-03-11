@@ -1,9 +1,11 @@
+//INCOMPLETE - PS: REFACTORING TEMPORARILY IN ADD.COMPONENT.HTML/CSS
 import { Component, OnInit } from '@angular/core';
 import { TenantService } from '../../app/services/tenant.service';
 import * as moment from 'moment';
 import { Router } from '@angular/router';
 import { PostTenant } from '../../interfaces/post-tenant';
 import { Batch } from '../../interfaces/batch';
+import {FormGroup, FormControl, Validators, FormGroupDirective, NgForm} from '@angular/forms';
 
 @Component({
   selector: 'dev-add-tenant',
@@ -118,6 +120,9 @@ export class AddTenantComponent implements OnInit {
   }
 
   ngOnInit() {
+    //currently there is no way to obtain the training center id
+    // -- we will need to implement a service for it in the backend
+    //we will also need to implement a coordName for the template call (feel free to alter the way it is called)
     this.trainCenId = '837c3248-1685-4d08-934a-0f17a6d1836a';
     this.getBatchesOnInit();
   }
