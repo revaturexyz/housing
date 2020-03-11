@@ -15,7 +15,8 @@ import {Room} from 'src/interfaces/room';
 
 export class TenantProfileComponent implements OnInit {
 
-  tenantInfo: Tenant;
+  tenantInfo: Tenant = null;
+  testTenant: Tenant;
 
   constructor(
     public tenantService: TenantService,
@@ -23,7 +24,7 @@ export class TenantProfileComponent implements OnInit {
     // private user: UserService
   ) {
     // empty these when user account prepared and userservice working
-    this.tenantInfo = {
+    this.testTenant = {
       id: 'g28a-2917-1983-298f-98c1-a19a',
       email: 'test@email.com',
       gender: 'Alien',
@@ -33,9 +34,9 @@ export class TenantProfileComponent implements OnInit {
       roomId: '1',
       carId: 1,
       batchId: 1,
-      tenantAddress:
+      apiAddress:
       {
-        addressId: '1',
+        Id: '1',
         street: '123 Street Name',
         city: 'City Name',
         state: 'ST',
@@ -52,7 +53,7 @@ export class TenantProfileComponent implements OnInit {
         year: '3030',
         state: 'ST'
       },
-      batch:
+      apiBatch:
       {
         id: 1,
         batchCurriculum: '.NET',
@@ -68,39 +69,25 @@ export class TenantProfileComponent implements OnInit {
   // Tennant id should be available at runtime. Okta should have this value
   // stored in local, cookies, or session storage
 
-  currentTenant: Tenant = null;
-  // Information for currently logged in tenant
-  // this page primarily needs roomid attached to the tenant
+
 
   currentRoom: Room = null;
   // Contains the room information to be displayed on the page.
 
-  ngOnInit(): void {
-    this.getTenantInfo(this.tenantid);
-    this.getTenantRoom(this.currentTenant.roomId);
-  }
+  ngOnInit() {
 
-    // grabs tennant information from tennant API so we now have toom information
-    getTenantInfo(tID: string) {
-      return this.tenantService.GetTenantById(tID).toPromise().then(response => this.currentTenant = response);
+    this.tenantid = sessionStorage.getItem('guid');
+    console.log('hello', this.tenantid);
+    // this.getTenantRoom(this.currentTenant.roomId);
 
-    }
 
-    // grabs room information based on the current Tennant
-    getTenantRoom(rID: string) {
-      return this.lodgingService.getRoomById(rID).toPromise().then(response => this.currentRoom = response);
-    }
-  /*
-  getTenantProfile()
-  {
-    this.user.UserId$.subscribe(id => {
-      this.tenantService.GetTenantById(id)
-      .toPromise()
-      .then((data) => this.tenant_info = data)
-      .catch((err) => console.log(err));
-    });
-  }
-  */
+    this.tenantService.GetTenantById(this.tenantid).subscribe(data => {
+    this.tenantInfo = data;
+    console.log(this.tenantInfo);
+    console.log('making sure');
+  });
+}
+
 
   getFullDate(flag: boolean) {
     const weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
@@ -113,16 +100,16 @@ export class TenantProfileComponent implements OnInit {
 
     // start date
     if (flag) {
-      day = weekdays[this.tenantInfo.batch.startDate.getDay()];
-      month = months[this.tenantInfo.batch.startDate.getMonth()];
-      date = this.tenantInfo.batch.startDate.getDate();
-      year = this.tenantInfo.batch.startDate.getFullYear();
+      day = weekdays[this.tenantInfo.apiBatch.startDate.getDay()];
+      month = months[this.tenantInfo.apiBatch.startDate.getMonth()];
+      date = this.tenantInfo.apiBatch.startDate.getDate();
+      year = this.tenantInfo.apiBatch.startDate.getFullYear();
       fulldate = day + ' ' + month + ' ' + date + ', ' + year;
     } else {
-      day = weekdays[this.tenantInfo.batch.endDate.getDay()];
-      month = months[this.tenantInfo.batch.endDate.getMonth()];
-      date = this.tenantInfo.batch.endDate.getDate();
-      year = this.tenantInfo.batch.endDate.getFullYear();
+      day = weekdays[this.tenantInfo.apiBatch.endDate.getDay()];
+      month = months[this.tenantInfo.apiBatch.endDate.getMonth()];
+      date = this.tenantInfo.apiBatch.endDate.getDate();
+      year = this.tenantInfo.apiBatch.endDate.getFullYear();
       fulldate = day + ' ' + month + ' ' + date + ', ' + year;
     }
 

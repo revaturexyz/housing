@@ -24,7 +24,7 @@ export class EditRoomComponent implements OnInit {
   // amenityList: Amenity[];
 
   public roomTypes: RoomType[] = [
-    {roomType: 'Dorm', typeId: 1},
+    {roomType: 'Dormitory', typeId: 1},
     {roomType: 'Apartment', typeId: 2},
     {roomType: 'TownHouse', typeId: 3},
     {roomType: 'Hotel/Motel', typeId: 4}
@@ -97,11 +97,13 @@ export class EditRoomComponent implements OnInit {
     console.log(this.formRoom);
 
 
-    this.LodgeService.updateRoom(this.formRoom).subscribe();
+    this.LodgeService.updateRoom(this.formRoom).subscribe(
+      () => this.modeOutput.emit('details')
+    );
 
 
     // Handle editing room to complex logic here
-    this.modeOutput.emit('details'); // Sent to parent to change mode back to details
+    // this.modeOutput.emit('details'); // Sent to parent to change mode back to details
   }
 
   postRequestEditRoom() {
@@ -114,10 +116,12 @@ export class EditRoomComponent implements OnInit {
     // Handle delete room logic here
 
 
-    this.LodgeService.deleteRoomById(this.targetRoom.roomId).subscribe();
+    this.LodgeService.deleteRoomById(this.targetRoom.roomId).subscribe(
+      () => this.modeOutput.emit('details')
+    );
 
 
-    this.modeOutput.emit('details'); // Sent to parent to change mode back to details
+    // this.modeOutput.emit('details'); // Sent to parent to change mode back to details
   }
 
   deleteRequestRoom() {

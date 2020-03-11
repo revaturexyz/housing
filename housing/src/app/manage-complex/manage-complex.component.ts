@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { Complex } from 'src/interfaces/complex';
 import { FormControl } from '@angular/forms';
 // import { TestServiceData } from 'src/app/services/static-test-data';
@@ -16,7 +16,7 @@ import { LodgingService } from '../../app/services/lodging.service';
 })
 
 // Component used to handle logic behind selecting and managing a complex
-export class ManageComplexComponent implements OnInit {
+export class ManageComplexComponent implements OnInit, OnChanges {
 
   /*
     public seededComplexes: Complex[] = [
@@ -53,19 +53,38 @@ export class ManageComplexComponent implements OnInit {
 
       this.guid = sessionStorage.getItem('guid');
 
+
+      if (this.role === 'Provider') {
+        this.LodgeService.getComplexesByProviderId(this.guid).subscribe(data => {
+          this.seededComplexes = data;
+        });
+      } else {
+        this.LodgeService.getComplexes().subscribe(data => {
+          this.seededComplexes = data;
+        });
+      }
+
+
+
+
+    }
+
+    ngOnChanges() {
+
       /*
-      this.userId = provider guid
-      this.LodgeService.getComplexesByProviderId(this.userId).subscribe(data => {
-        this.seededComplexes = data;
-        //console.log(this.list);
-      });
+      if(this.role == 'Provider')
+      {
+        this.LodgeService.getComplexesByProviderId(this.guid).subscribe(data => {
+          this.seededComplexes = data;
+        });
+      }
+      else
+      {
+        this.LodgeService.getComplexes().subscribe(data => {
+          this.seededComplexes = data;
+        });
+      }
       */
-
-
-      this.LodgeService.getComplexes().subscribe(data => {
-        this.seededComplexes = data;
-      });
-
 
     }
 
@@ -76,6 +95,18 @@ export class ManageComplexComponent implements OnInit {
         } else {
         this.mode = reqMode;
         }
+
+
+        if (this.role === 'Provider') {
+        this.LodgeService.getComplexesByProviderId(this.guid).subscribe(data => {
+          this.seededComplexes = data;
+        });
+      } else {
+        this.LodgeService.getComplexes().subscribe(data => {
+          this.seededComplexes = data;
+        });
+      }
+
     }
 
     changeTargetRoom(reqRoom: Room) {

@@ -30,7 +30,7 @@ import { TenantService } from '../services/tenant.service';
 })
 export class ViewRoomComponent implements OnInit {
 
-  constructor(public lodgingService: LodgingService, public tenantService: TenantService) { }
+  constructor(private lodgingService: LodgingService, private tenantService: TenantService) { }
 
   xRoom: RoomType =
     {
@@ -111,20 +111,22 @@ export class ViewRoomComponent implements OnInit {
 };
 
 
-ngOnInit(): void {
+ngOnInit() {
 
-  this.getTenantInfo(sessionStorage.getItem('guid'));
-  this.getTenantRoom(this.currentTenant.roomId);
+  this.tenantid = sessionStorage.getItem('guid');
+  console.log('hello', this.tenantid);
+  // this.getTenantRoom(this.currentTenant.roomId);
+
+  this.tenantService.GetTenantById(this.tenantid).subscribe(data => {
+    this.currentTenant = data;
+    console.log(this.currentTenant);
+    console.log('roomId', this.currentTenant.roomId);
+
+
+    this.lodgingService.getRoomById(this.currentTenant.roomId).subscribe(dataT => {
+      this.currentRoom = dataT;
+      console.log(this.currentRoom);
+    });
+  });
 }
-  // grabs tennant information from tennant API so we now have toom information
-  getTenantInfo(tID: string) {
-    return this.tenantService.GetTenantById(tID).toPromise().then(response => this.currentTenant = response);
-
-  }
-
-  // grabs room information based on the current Tennant
-  getTenantRoom(rID: string) {
-    return this.lodgingService.getRoomById(rID).toPromise().then(response => this.currentRoom = response);
-  }
-
 }

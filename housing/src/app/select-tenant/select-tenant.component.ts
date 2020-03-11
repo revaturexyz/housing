@@ -29,12 +29,12 @@ export class SelectTenantComponent implements OnInit {
     this.service.deleteTenant(this.tenant.id)
       .then(value => {
         console.log(value);
-        this.router.navigate(['search-tenant']);
+        this.router.navigate(['dashboard/search-tenant']);
       });
   }
 
   routeToSearchTenant() {
-    this.router.navigate(['search-tenant']);
+    this.router.navigate(['dashboard/search-tenant']);
   }
 
   constructor(

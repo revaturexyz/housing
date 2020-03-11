@@ -138,6 +138,10 @@
 
 </div>
 
+<button class="add-room-btn" mat-raised-button (click)="changeMode('init')">
+  <strong>Return to Complexes</strong>
+</button>
+
 <div *ngIf="role == 'Provider'">
   <!--Button to add a new room to the complex-->
   <button class="add-room-btn" mat-raised-button (click)="changeMode('add-room')">

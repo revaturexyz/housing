@@ -48,7 +48,7 @@ export class AddTenantComponent implements OnInit {
       this.tenant.id = null;
       this.tenant.trainingCenter = this.trainCen[0];
       await this.coordService.PostTenant(this.tenant)
-        .then(result => this.router.navigate(['select-tenant/' + result.id]));
+        .then(result => this.router.navigate(['dashboard/select-tenant/' + result.id]));
     } catch (err) {
       console.log(err);
     }

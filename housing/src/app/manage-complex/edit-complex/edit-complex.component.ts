@@ -5,6 +5,7 @@ import { Complex } from 'src/interfaces/complex';
 import { Amenity, PostAmenity } from 'src/interfaces/amenity';
 import { MatChipInputEvent } from '@angular/material';
 import { LodgingService } from 'src/app/services/lodging.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'dev-edit-complex',
@@ -24,7 +25,8 @@ export class EditComplexComponent implements OnInit {
   amenityList: Amenity[];
 
   constructor(
-    private LodgeService: LodgingService
+    private LodgeService: LodgingService,
+    private router: Router
   ) {
   }
 
@@ -72,10 +74,12 @@ export class EditComplexComponent implements OnInit {
     console.log(this.formComplex);
 
 
-    this.LodgeService.updateComplexById(this.formComplex).subscribe();
+    this.LodgeService.updateComplexById(this.formComplex).subscribe(
+      () => this.modeOutput.emit('details')
+    );
 
 
-    this.modeOutput.emit('details'); // Sent to parent to change mode back to details
+    // this.modeOutput.emit('details'); // Sent to parent to change mode back to details
   }
 
   // to cancel all changes and change mode back to details
@@ -89,10 +93,12 @@ export class EditComplexComponent implements OnInit {
     console.log(this.formComplex.complexId);
 
 
-    this.LodgeService.deleteComplexById(this.formComplex.complexId).subscribe();
+    this.LodgeService.deleteComplexById(this.formComplex.complexId).subscribe(
+      () => this.modeOutput.emit('init')
+    );
 
 
-    this.modeOutput.emit('init');
+    // this.modeOutput.emit('init');
   }
 
   // This will be used to select defaults for amenity selection list
