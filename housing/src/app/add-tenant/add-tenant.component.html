@@ -1,450 +1,245 @@
 <!--INCOMPLETE - PS: REFACTORING TEMPORARILY IN ADD.COMPONENT.HTML/CSS-->
 <div class="d-flex justify-content-center" style="background-color:grey; display:inline-block;">
-  <form #addTenantForm="ngForm" (ngSubmit)="postTenantOnSubmit()">
+    <form #addTenantForm="ngForm" (ngSubmit)="postTenantOnSubmit()">
 
-      <!-- BATCH INFO CARD -->
-      <mat-card style="background-color:white; float:left; margin-right:1em;">
-          <h1>BATCH INFO</h1>
-          <mat-card-content>
-                  <!-- Show Coordinator -->
-                  <div>
-                      <mat-form-field appearance="fill">
-                          <mat-label>Show Coordinator</mat-label>
-                          <mat-select>
-                              <mat-option value="{{coord}}" *ngFor="let coord of trainCen" (click)="coordChoose(coord)">{{coord}}</mat-option>
-                          </mat-select>
-                      </mat-form-field>
-                  </div>
-                  
-                  <!-- Start Date -->
-                  <div>
-                      <mat-form-field>
-                          <mat-label>Start Date:</mat-label>
-                          <input matInput [matDatepicker]="StartDate" [min]="displayStart" [max]="displayMid" name="tenant.apiBatch.startDate" [(ngModel)]="tenant.apiBatch.startDate" [value]="tenant.apiBatch.startDate" #sd="ngModel" required/>
-                          <mat-datepicker-toggle matSuffix [for]="StartDate"></mat-datepicker-toggle>
-                          <mat-datepicker #StartDate></mat-datepicker>
-                      </mat-form-field>
-                      <p class="error-message" *ngIf="verifyDates(tenant.apiBatch.startDate, tenant.apiBatch.endDate) && sd.dirty && ed.dirty">
-                          Must be before end date.
-                      </p>
-                  </div>
+        <!-- BATCH INFO CARD -->
+        <mat-card style="background-color:white; float:left; margin-right:1em;">
+            <h1>BATCH INFO</h1>
+            <mat-card-content>
+                <!-- Show Coordinator -->
+                <div>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Show Coordinator</mat-label>
+                        <mat-select>
+                            <mat-option value="{{coord}}" *ngFor="let coord of trainCen" (click)="coordChoose(coord)">{{coord}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                
+                <!-- Start Date -->
+                <div>
+                    <mat-form-field>
+                        <mat-label>Start Date:</mat-label>
+                        <input matInput [matDatepicker]="StartDate" [min]="displayStart" [max]="displayMid" name="tenant.apiBatch.startDate" [(ngModel)]="tenant.apiBatch.startDate" [value]="tenant.apiBatch.startDate" #sd="ngModel" required/>
+                        <mat-datepicker-toggle matSuffix [for]="StartDate"></mat-datepicker-toggle>
+                        <mat-datepicker #StartDate></mat-datepicker>
+                    </mat-form-field>
+                    <p class="error-message" *ngIf="verifyDates(tenant.apiBatch.startDate, tenant.apiBatch.endDate) && sd.dirty && ed.dirty">
+                        Must be before end date.
+                    </p>
+                </div>
 
-                  <!-- End Date -->
-                  <div>
-                      <mat-form-field>
-                          <mat-label>End Date:</mat-label>
-                          <input matInput [matDatepicker]="EndDate" [min]="displayStart" [max]="displayEnd" name="tenant.apiBatch.endDate" [(ngModel)]="tenant.apiBatch.endDate" [value]="tenant.apiBatch.endDate" #ed="ngModel" required/>
-                          <mat-datepicker-toggle matSuffix [for]="EndDate"></mat-datepicker-toggle>
-                          <mat-datepicker #EndDate></mat-datepicker>
-                      </mat-form-field>
-                  </div>
+                <!-- End Date -->
+                <div>
+                    <mat-form-field>
+                        <mat-label>End Date:</mat-label>
+                        <input matInput [matDatepicker]="EndDate" [min]="displayStart" [max]="displayEnd" name="tenant.apiBatch.endDate" [(ngModel)]="tenant.apiBatch.endDate" [value]="tenant.apiBatch.endDate" #ed="ngModel" required/>
+                        <mat-datepicker-toggle matSuffix [for]="EndDate"></mat-datepicker-toggle>
+                        <mat-datepicker #EndDate></mat-datepicker>
+                    </mat-form-field>
+                </div>
 
-                  <!-- Choose Batch -->
-                  <div>
-                      <mat-form-field appearance="fill">
-                          <mat-label>Choose Batch</mat-label>
-                          <mat-select>
-                              <mat-option value="{{batch.batchCurriculum}}" *ngFor="let batch of batchList" (click)="batchChoose(batch)">{{batch.batchCurriculum}}</mat-option>
-                          </mat-select>
-                      </mat-form-field>
-                  </div>
-          </mat-card-content>
-      </mat-card>
+                <!-- Choose Batch -->
+                <div>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Choose Batch</mat-label>
+                        <mat-select>
+                            <mat-option value="{{batch.batchCurriculum}}" *ngFor="let batch of batchList" (click)="batchChoose(batch)">{{batch.batchCurriculum}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </mat-card-content>
+        </mat-card>
 
-      <!-- ADD TENANT CARD-->
-      <mat-card style="background-color:white; float:left; margin-right:1em;">
-          <h1>ADD TENANT</h1>
-          <mat-card-content>
-              <!-- Email -->
-              <div>
-                  <mat-form-field appearance="outline">
-                      <mat-label>Email</mat-label>
-                      <input matInput name="tenant.email" [(ngModel)]="tenant.email" #tenEmail="ngModel" pattern='^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,63}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)' required/>
-                      <mat-error *ngIf="tenEmail.invalid && !tenant.email.length">Email is required.</mat-error>
-                      <mat-error *ngIf="tenEmail.invalid && tenEmail.dirty && tenant.email.length">Email is invalid.</mat-error>
-                  </mat-form-field>
-              </div>
+        <!-- ADD TENANT CARD-->
+        <mat-card style="background-color:white; float:left; margin-right:1em;">
+            <h1>ADD TENANT</h1>
+            <mat-card-content>
+                <!-- Email -->
+                <div>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Email</mat-label>
+                        <input matInput name="tenant.email" [(ngModel)]="tenant.email" #tenEmail="ngModel" pattern='^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,63}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)' required/>
+                        <mat-error *ngIf="tenEmail.invalid && !tenant.email.length">Email is required.</mat-error>
+                        <mat-error *ngIf="tenEmail.invalid && tenEmail.dirty && tenant.email.length">Email is invalid.</mat-error>
+                    </mat-form-field>
+                </div>
 
-              <!-- First Name -->
-              <div>
-                  <mat-form-field appearance="outline">
-                      <mat-label>First Name</mat-label>
-                      <input matInput name="tenant.firstName" [(ngModel)]="tenant.firstName" #tenFName="ngModel" pattern='[a-zA-Z ]*' required/>
-                      <mat-error *ngIf="tenFName.invalid && !tenant.firstName.length">First name is required.</mat-error>
-                      <mat-error *ngIf="tenFName.invalid && tenFName.dirty && tenant.firstName.length">First name is invalid.</mat-error>
-                  </mat-form-field>
-              </div>
+                <!-- First Name -->
+                <div>
+                    <mat-form-field appearance="outline">
+                        <mat-label>First Name</mat-label>
+                        <input matInput name="tenant.firstName" [(ngModel)]="tenant.firstName" #tenFName="ngModel" pattern='[a-zA-Z ]*' required/>
+                        <mat-error *ngIf="tenFName.invalid && !tenant.firstName.length">First name is required.</mat-error>
+                        <mat-error *ngIf="tenFName.invalid && tenFName.dirty && tenant.firstName.length">First name is invalid.</mat-error>
+                    </mat-form-field>
+                </div>
 
-              <!-- Last Name -->
-              <div>
-                  <mat-form-field appearance="outline">
-                      <mat-label>Last Name</mat-label>
-                      <input matInput name="tenant.lastName" [(ngModel)]="tenant.lastName" #tenLName="ngModel" pattern='[a-zA-Z ]*' required/>
-                      <mat-error *ngIf="tenLName.invalid && !tenant.lastName.length">Last name is required.</mat-error>
-                      <mat-error *ngIf="tenLName.invalid && tenLName.dirty && tenant.lastName.length">Last name is invalid.</mat-error>
-                  </mat-form-field>
-              </div>
+                <!-- Last Name -->
+                <div>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Last Name</mat-label>
+                        <input matInput name="tenant.lastName" [(ngModel)]="tenant.lastName" #tenLName="ngModel" pattern='[a-zA-Z ]*' required/>
+                        <mat-error *ngIf="tenLName.invalid && !tenant.lastName.length">Last name is required.</mat-error>
+                        <mat-error *ngIf="tenLName.invalid && tenLName.dirty && tenant.lastName.length">Last name is invalid.</mat-error>
+                    </mat-form-field>
+                </div>
 
-              <!-- Choose Gender -->
-              <div>
-                  <mat-form-field appearance="fill">
-                      <mat-label>Gender</mat-label>
-                      <mat-select required>
-                          <mat-option value="{{gender}}" *ngFor="let gender of genders" (click)="genderChoose(batch)">{{gender}}</mat-option>
-                      </mat-select>
-                  </mat-form-field>
-              </div>
-              
-              <!-- Training Center -->
-              <div>
-                  <mat-form-field appearance="fill">
-                      <mat-label>Training Center</mat-label>
-                      <mat-select name="tenant.trainingCenter" [(ngModel)]="tenant.trainingCenter" #tenTrainCen="ngModel" required>
-                          <mat-option value="{{trainCenId}}" *ngFor="let trainCenter of trainCen">{{trainCenId}}</mat-option>
-                      </mat-select>
-                  </mat-form-field>
-              </div>
+                <!-- Choose Gender -->
+                <div>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Gender</mat-label>
+                        <mat-select required>
+                            <mat-option value="{{gender}}" *ngFor="let gender of genders" (click)="genderChoose(batch)">{{gender}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                
+                <!-- Training Center -->
+                <div>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Training Center</mat-label>
+                        <mat-select name="tenant.trainingCenter" [(ngModel)]="tenant.trainingCenter" #tenTrainCen="ngModel" required>
+                            <mat-option value="{{trainCenId}}" *ngFor="let trainCenter of trainCen">{{trainCenId}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
 
-              <button class="btn btn-secondary margin-right" *ngIf="!showCarForm" (click)="addCarForm()">Add Car</button>
-              <button class="btn btn-secondary" *ngIf="!showAddressForm" (click)="addAddressForm()">Next</button>
-          </mat-card-content>
-      </mat-card>
+                <button class="btn btn-secondary margin-right" *ngIf="!showCarForm" (click)="addCarForm()">Add Car</button>
+                <button class="btn btn-secondary" *ngIf="!showAddressForm" (click)="addAddressForm()">Next</button>
+            </mat-card-content>
+        </mat-card>
 
-      <!-- -- NESTED FORMS BEGIN -- -->
-      <!-- ADD CAR CARD -->
-      <mat-card style="background-color:white; float:left; margin-right:1em;" *ngIf="showCarForm">
-          <h1>ADD CAR</h1>
-          <mat-card-content>
-                  <!-- License Plate -->
-                  <div>
-                      <mat-form-field appearance="outline">
-                          <mat-label>License Plate</mat-label>
-                          <input matInput name="tenant.apiCar.licensePlate" [(ngModel)]="tenant.apiCar.licensePlate" #licensePlate="ngModel" pattern='[a-zA-Z0-9]*'/>
-                          <mat-error *ngIf="licensePlate.invalid && licensePlate.dirty && tenant.apiCar.licensePlate.length">License plate is invalid.</mat-error>
-                      </mat-form-field>
-                  </div>
+        <!-- -- NESTED FORMS BEGIN -- -->
+        <!-- ADD CAR CARD -->
+        <mat-card style="background-color:white; float:left; margin-right:1em;" *ngIf="showCarForm">
+            <h1>ADD CAR</h1>
+            <mat-card-content>
+                <!-- License Plate -->
+                <div>
+                    <mat-form-field appearance="outline">
+                        <mat-label>License Plate</mat-label>
+                        <input matInput name="tenant.apiCar.licensePlate" [(ngModel)]="tenant.apiCar.licensePlate" #licensePlate="ngModel" pattern='[a-zA-Z0-9]*'/>
+                        <mat-error *ngIf="licensePlate.invalid && licensePlate.dirty && tenant.apiCar.licensePlate.length">License plate is invalid.</mat-error>
+                    </mat-form-field>
+                </div>
 
-                  <!-- Make -->
-                  <div>
-                      <mat-form-field appearance="outline">
-                          <mat-label>Make</mat-label>
-                          <input matInput name="tenant.apiCar.make" [(ngModel)]="tenant.apiCar.make" #make="ngModel" minlength="1" maxlength="50" pattern='[a-zA-Z ]*'/>
-                          <mat-error *ngIf="make.invalid && make.dirty && tenant.apiCar.make.length">Make is invalid.</mat-error>
-                      </mat-form-field>
-                  </div>
+                <!-- Make -->
+                <div>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Make</mat-label>
+                        <input matInput name="tenant.apiCar.make" [(ngModel)]="tenant.apiCar.make" #make="ngModel" minlength="1" maxlength="50" pattern='[a-zA-Z ]*'/>
+                        <mat-error *ngIf="make.invalid && make.dirty && tenant.apiCar.make.length">Make is invalid.</mat-error>
+                    </mat-form-field>
+                </div>
 
-                  <!-- Model -->
-                  <div>
-                      <mat-form-field appearance="outline">
-                          <mat-label>Model</mat-label>
-                          <input matInput name="tenant.apiCar.model" [(ngModel)]="tenant.apiCar.model" #model="ngModel" minlength="2" maxlength="50" pattern='[a-zA-Z ]*'/>
-                          <mat-error *ngIf="model.invalid && model.dirty && tenant.apiCar.model.length">Model is invalid.</mat-error>
-                      </mat-form-field>
-                  </div>
+                <!-- Model -->
+                <div>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Model</mat-label>
+                        <input matInput name="tenant.apiCar.model" [(ngModel)]="tenant.apiCar.model" #model="ngModel" minlength="2" maxlength="50" pattern='[a-zA-Z ]*'/>
+                        <mat-error *ngIf="model.invalid && model.dirty && tenant.apiCar.model.length">Model is invalid.</mat-error>
+                    </mat-form-field>
+                </div>
 
-                  <!-- Color -->
-                  <div>
-                      <mat-form-field appearance="outline">
-                          <mat-label>Color</mat-label>
-                          <input matInput name="tenant.apiCar.color" [(ngModel)]="tenant.apiCar.color" #color="ngModel" minlength="1" maxlength="30" pattern='[a-zA-Z ]*'/>
-                          <mat-error *ngIf="color.invalid && color.dirty && tenant.apiCar.color.length">Color is invalid.</mat-error>
-                      </mat-form-field>
-                  </div>
+                <!-- Color -->
+                <div>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Color</mat-label>
+                        <input matInput name="tenant.apiCar.color" [(ngModel)]="tenant.apiCar.color" #color="ngModel" minlength="1" maxlength="30" pattern='[a-zA-Z ]*'/>
+                        <mat-error *ngIf="color.invalid && color.dirty && tenant.apiCar.color.length">Color is invalid.</mat-error>
+                    </mat-form-field>
+                </div>
 
-                  <!-- Year -->
-                  <div>
-                      <mat-form-field appearance="outline">
-                          <mat-label>Year</mat-label>
-                          <input matInput name="tenant.apiCar.year" [(ngModel)]="tenant.apiCar.year" #year="ngModel" pattern='[0-9]{4}'/>
-                          <mat-error *ngIf="year.invalid && year.dirty && tenant.apiCar.year.length">Year is invalid.</mat-error>
-                      </mat-form-field>
-                  </div>
+                <!-- Year -->
+                <div>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Year</mat-label>
+                        <input matInput name="tenant.apiCar.year" [(ngModel)]="tenant.apiCar.year" #year="ngModel" pattern='[0-9]{4}'/>
+                        <mat-error *ngIf="year.invalid && year.dirty && tenant.apiCar.year.length">Year is invalid.</mat-error>
+                    </mat-form-field>
+                </div>
 
-                  <!-- State -->
-                  <div>
-                      <mat-form-field appearance="outline">
-                          <mat-label>State</mat-label>
-                          <input matInput name="tenant.apiCar.state" [(ngModel)]="tenant.apiCar.state" #state="ngModel" minlength="2" maxlength="50" pattern='[a-zA-Z ]*'/>
-                          <mat-error *ngIf="state.invalid && state.dirty && tenant.apiCar.state.length">State is invalid.</mat-error>
-                      </mat-form-field>
-                  </div>
+                <!-- State -->
+                <div>
+                    <mat-form-field appearance="outline">
+                        <mat-label>State</mat-label>
+                        <input matInput name="tenant.apiCar.state" [(ngModel)]="tenant.apiCar.state" #state="ngModel" minlength="2" maxlength="50" pattern='[a-zA-Z ]*'/>
+                        <mat-error *ngIf="state.invalid && state.dirty && tenant.apiCar.state.length">State is invalid.</mat-error>
+                    </mat-form-field>
+                </div>
 
-                  <br/>
+                <br/>
 
-                  <!-- Cancel Car Form -->
-                  <button class="btn btn-secondary margin-right" (click)="closeCarForm()">Cancel</button>
-                  <!-- Go To Address Form -->
-                  <button class="btn btn-secondary" *ngIf="!showAddressForm" (click)="addAddressForm()">Next</button>
-          </mat-card-content>
-      </mat-card>
+                <!-- Cancel Car Form -->
+                <button class="btn btn-secondary margin-right" (click)="closeCarForm()">Cancel</button>
+                <!-- Go To Address Form -->
+                <button class="btn btn-secondary" *ngIf="!showAddressForm" (click)="addAddressForm()">Next</button>
+            </mat-card-content>
+        </mat-card>
 
-      <!-- ADD ADDRESS CARD -->
-      <mat-card style="background-color:white; float:left; margin-right:1em;" *ngIf="showAddressForm">
-          <h1>ADD ADDRESS</h1>
-          <mat-card-content>
-              <!-- Street -->
-              <div>
-                  <mat-form-field appearance="outline">
-                      <mat-label>Street</mat-label>
-                      <input matInput name="tenant.apiAddress.street" [(ngModel)]="tenant.apiAddress.street" #street="ngModel" minlength="5" maxlength="200" pattern='[a-zA-Z0-9 ]*' required/>
-                      <mat-error *ngIf="street.invalid && !tenant.apiAddress.street.length">Street is required.</mat-error>
-                      <mat-error *ngIf="street.invalid && street.dirty && tenant.apiAddress.street.length">Street is invalid.</mat-error>
-                  </mat-form-field>
-              </div>
+        <!-- ADD ADDRESS CARD -->
+        <mat-card style="background-color:white; float:left; margin-right:1em;" *ngIf="showAddressForm">
+            <h1>ADD ADDRESS</h1>
+            <mat-card-content>
+                <!-- Street -->
+                <div>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Street</mat-label>
+                        <input matInput name="tenant.apiAddress.street" [(ngModel)]="tenant.apiAddress.street" #street="ngModel" minlength="5" maxlength="200" pattern='[a-zA-Z0-9 ]*' required/>
+                        <mat-error *ngIf="street.invalid && !tenant.apiAddress.street.length">Street is required.</mat-error>
+                        <mat-error *ngIf="street.invalid && street.dirty && tenant.apiAddress.street.length">Street is invalid.</mat-error>
+                    </mat-form-field>
+                </div>
 
-              <!-- City -->
-              <div>
-                  <mat-form-field appearance="outline">
-                      <mat-label>City</mat-label>
-                      <input matInput name="tenant.apiAddress.city" [(ngModel)]="tenant.apiAddress.city" #city="ngModel" minlength="1" maxlength="50" pattern='[a-zA-Z0-9 ]*' required/>
-                      <mat-error *ngIf="city.invalid && !tenant.apiAddress.city.length">City is required.</mat-error>
-                      <mat-error *ngIf="city.invalid && city.dirty && tenant.apiAddress.city.length">City is invalid.</mat-error>
-                  </mat-form-field>
-              </div>
+                <!-- City -->
+                <div>
+                    <mat-form-field appearance="outline">
+                        <mat-label>City</mat-label>
+                        <input matInput name="tenant.apiAddress.city" [(ngModel)]="tenant.apiAddress.city" #city="ngModel" minlength="1" maxlength="50" pattern='[a-zA-Z0-9 ]*' required/>
+                        <mat-error *ngIf="city.invalid && !tenant.apiAddress.city.length">City is required.</mat-error>
+                        <mat-error *ngIf="city.invalid && city.dirty && tenant.apiAddress.city.length">City is invalid.</mat-error>
+                    </mat-form-field>
+                </div>
 
-              <!-- State -->
-              <div>
-                  <mat-form-field appearance="outline">
-                      <mat-label>State</mat-label>
-                      <input matInput name="tenant.apiAddress.state" [(ngModel)]="tenant.apiAddress.state" #state="ngModel" minlength="2" maxlength="50" pattern='[a-zA-Z ]*' required/>
-                      <mat-error *ngIf="state.invalid && !tenant.apiAddress.state.length">State is required.</mat-error>
-                      <mat-error *ngIf="state.invalid && state.dirty && tenant.apiAddress.state.length">Please enter a valid state or abbrev.</mat-error>
-                  </mat-form-field>
-              </div>
+                <!-- State -->
+                <div>
+                    <mat-form-field appearance="outline">
+                        <mat-label>State</mat-label>
+                        <input matInput name="tenant.apiAddress.state" [(ngModel)]="tenant.apiAddress.state" #state="ngModel" minlength="2" maxlength="50" pattern='[a-zA-Z ]*' required/>
+                        <mat-error *ngIf="state.invalid && !tenant.apiAddress.state.length">State is required.</mat-error>
+                        <mat-error *ngIf="state.invalid && state.dirty && tenant.apiAddress.state.length">Please enter a valid state or abbrev.</mat-error>
+                    </mat-form-field>
+                </div>
 
-              <!-- Country -->
-              <div>
-                  <mat-form-field appearance="outline">
-                      <mat-label>Country</mat-label>
-                      <input matInput name="tenant.apiAddress.country" [(ngModel)]="tenant.apiAddress.country" #country="ngModel" minlength="1" maxlength="50" pattern='[a-zA-Z ]*' required/>
-                      <mat-error *ngIf="country.invalid && !tenant.apiAddress.country.length">Country is required.</mat-error>
-                      <mat-error *ngIf="country.invalid && country.dirty && tenant.apiAddress.country.length">Please enter a valid country or abbrev.</mat-error>
-                  </mat-form-field>
-              </div>
+                <!-- Country -->
+                <div>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Country</mat-label>
+                        <input matInput name="tenant.apiAddress.country" [(ngModel)]="tenant.apiAddress.country" #country="ngModel" minlength="1" maxlength="50" pattern='[a-zA-Z ]*' required/>
+                        <mat-error *ngIf="country.invalid && !tenant.apiAddress.country.length">Country is required.</mat-error>
+                        <mat-error *ngIf="country.invalid && country.dirty && tenant.apiAddress.country.length">Please enter a valid country or abbrev.</mat-error>
+                    </mat-form-field>
+                </div>
 
-              <!-- Zip -->
-              <div>
-                  <mat-form-field appearance="outline">
-                      <mat-label>Zip Code</mat-label>
-                      <input matInput name="tenant.apiAddress.zipCode" [(ngModel)]="tenant.apiAddress.zipCode" #zip="ngModel" pattern='[0-9]{5}' required/> <!--should consider extended zips (4 extra digits)-->
-                      <mat-error *ngIf="zip.invalid && !tenant.apiAddress.zipCode.length">Zip is required.</mat-error>
-                      <mat-error *ngIf="zip.invalid && zip.dirty && tenant.apiAddress.zipCode.length">Please enter a valid zip code.</mat-error>
-                  </mat-form-field>
-              </div>
+                <!-- Zip -->
+                <div>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Zip Code</mat-label>
+                        <input matInput name="tenant.apiAddress.zipCode" [(ngModel)]="tenant.apiAddress.zipCode" #zip="ngModel" pattern='[0-9]{5}' required/> <!--should consider extended zips (4 extra digits)-->
+                        <mat-error *ngIf="zip.invalid && !tenant.apiAddress.zipCode.length">Zip is required.</mat-error>
+                        <mat-error *ngIf="zip.invalid && zip.dirty && tenant.apiAddress.zipCode.length">Please enter a valid zip code.</mat-error>
+                    </mat-form-field>
+                </div>
 
-              <br/>
+                <br/>
 
-                  <!-- End Date -->
-                  <div>
-                      <mat-form-field>
-                          <mat-label>End Date:</mat-label>
-                          <input matInput [matDatepicker]="EndDate" [min]="displayStart" [max]="displayEnd" name="tenant.apiBatch.endDate" [(ngModel)]="tenant.apiBatch.endDate" [value]="tenant.apiBatch.endDate" #ed="ngModel" required/>
-                          <mat-datepicker-toggle matSuffix [for]="EndDate"></mat-datepicker-toggle>
-                          <mat-datepicker #EndDate></mat-datepicker>
-                      </mat-form-field>
-                  </div>
-
-                  <!-- Choose Batch -->
-                  <div>
-                      <mat-form-field appearance="fill">
-                          <mat-label>Choose Batch</mat-label>
-                          <mat-select>
-                              <mat-option value="{{batch.batchCurriculum}}" *ngFor="let batch of batchList" (click)="batchChoose(batch)">{{batch.batchCurriculum}}</mat-option>
-                          </mat-select>
-                      </mat-form-field>
-                  </div>
-          </mat-card-content>
-      </mat-card>
-
-      <!-- ADD TENANT CARD-->
-      <mat-card style="background-color:white; float:left; margin-right:1em;">
-          <h1>ADD TENANT</h1>
-          <mat-card-content>
-              <!-- Email -->
-              <div>
-                  <mat-form-field appearance="outline">
-                      <mat-label>Email</mat-label>
-                      <input matInput name="tenant.email" [(ngModel)]="tenant.email" #tenEmail="ngModel" pattern='^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,63}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)' required/>
-                      <mat-error *ngIf="tenEmail.invalid && !tenant.email.length">Email is required.</mat-error>
-                      <mat-error *ngIf="tenEmail.invalid && tenEmail.dirty && tenant.email.length">Email is invalid.</mat-error>
-                  </mat-form-field>
-              </div>
-
-              <!-- First Name -->
-              <div>
-                  <mat-form-field appearance="outline">
-                      <mat-label>First Name</mat-label>
-                      <input matInput name="tenant.firstName" [(ngModel)]="tenant.firstName" #tenFName="ngModel" pattern='[a-zA-Z ]*' required/>
-                      <mat-error *ngIf="tenFName.invalid && !tenant.firstName.length">First name is required.</mat-error>
-                      <mat-error *ngIf="tenFName.invalid && tenFName.dirty && tenant.firstName.length">First name is invalid.</mat-error>
-                  </mat-form-field>
-              </div>
-
-              <!-- Last Name -->
-              <div>
-                  <mat-form-field appearance="outline">
-                      <mat-label>Last Name</mat-label>
-                      <input matInput name="tenant.lastName" [(ngModel)]="tenant.lastName" #tenLName="ngModel" pattern='[a-zA-Z ]*' required/>
-                      <mat-error *ngIf="tenLName.invalid && !tenant.lastName.length">Last name is required.</mat-error>
-                      <mat-error *ngIf="tenLName.invalid && tenLName.dirty && tenant.lastName.length">Last name is invalid.</mat-error>
-                  </mat-form-field>
-              </div>
-
-              <!-- Choose Gender -->
-              <div>
-                  <mat-form-field appearance="fill">
-                      <mat-label>Gender</mat-label>
-                      <mat-select required>
-                          <mat-option value="{{gender}}" *ngFor="let gender of genders" (click)="genderChoose(batch)">{{gender}}</mat-option>
-                      </mat-select>
-                  </mat-form-field>
-              </div>
-              
-              <!-- Training Center -->
-              <div>
-                  <mat-form-field appearance="fill">
-                      <mat-label>Training Center</mat-label>
-                      <mat-select name="tenant.trainingCenter" [(ngModel)]="tenant.trainingCenter" #tenTrainCen="ngModel" required>
-                          <mat-option value="{{trainCenId}}" *ngFor="let trainCenter of trainCen">{{trainCenId}}</mat-option>
-                      </mat-select>
-                  </mat-form-field>
-              </div>
-
-              <button class="btn btn-secondary margin-right" *ngIf="!showCarForm" (click)="addCarForm()">Add Car</button>
-              <button class="btn btn-secondary" *ngIf="!showAddressForm" (click)="addAddressForm()">Next</button>
-          </mat-card-content>
-      </mat-card>
-
-      <!-- -- NESTED FORMS BEGIN -- -->
-      <!-- ADD CAR CARD -->
-      <mat-card style="background-color:white; float:left; margin-right:1em;" *ngIf="showCarForm">
-          <h1>ADD CAR</h1>
-          <mat-card-content>
-                  <!-- License Plate -->
-                  <div>
-                      <mat-form-field appearance="outline">
-                          <mat-label>License Plate</mat-label>
-                          <input matInput name="tenant.apiCar.licensePlate" [(ngModel)]="tenant.apiCar.licensePlate" #licensePlate="ngModel" pattern='[a-zA-Z0-9]*'/>
-                          <mat-error *ngIf="licensePlate.invalid && licensePlate.dirty && tenant.apiCar.licensePlate.length">License plate is invalid.</mat-error>
-                      </mat-form-field>
-                  </div>
-
-                  <!-- Make -->
-                  <div>
-                      <mat-form-field appearance="outline">
-                          <mat-label>Make</mat-label>
-                          <input matInput name="tenant.apiCar.make" [(ngModel)]="tenant.apiCar.make" #make="ngModel" minlength="1" maxlength="50" pattern='[a-zA-Z ]*'/>
-                          <mat-error *ngIf="make.invalid && make.dirty && tenant.apiCar.make.length">Make is invalid.</mat-error>
-                      </mat-form-field>
-                  </div>
-
-                  <!-- Model -->
-                  <div>
-                      <mat-form-field appearance="outline">
-                          <mat-label>Model</mat-label>
-                          <input matInput name="tenant.apiCar.model" [(ngModel)]="tenant.apiCar.model" #model="ngModel" minlength="2" maxlength="50" pattern='[a-zA-Z ]*'/>
-                          <mat-error *ngIf="model.invalid && model.dirty && tenant.apiCar.model.length">Model is invalid.</mat-error>
-                      </mat-form-field>
-                  </div>
-
-                  <!-- Color -->
-                  <div>
-                      <mat-form-field appearance="outline">
-                          <mat-label>Color</mat-label>
-                          <input matInput name="tenant.apiCar.color" [(ngModel)]="tenant.apiCar.color" #color="ngModel" minlength="1" maxlength="30" pattern='[a-zA-Z ]*'/>
-                          <mat-error *ngIf="color.invalid && color.dirty && tenant.apiCar.color.length">Color is invalid.</mat-error>
-                      </mat-form-field>
-                  </div>
-
-                  <!-- Year -->
-                  <div>
-                      <mat-form-field appearance="outline">
-                          <mat-label>Year</mat-label>
-                          <input matInput name="tenant.apiCar.year" [(ngModel)]="tenant.apiCar.year" #year="ngModel" pattern='[0-9]{4}'/>
-                          <mat-error *ngIf="year.invalid && year.dirty && tenant.apiCar.year.length">Year is invalid.</mat-error>
-                      </mat-form-field>
-                  </div>
-
-                  <!-- State -->
-                  <div>
-                      <mat-form-field appearance="outline">
-                          <mat-label>State</mat-label>
-                          <input matInput name="tenant.apiCar.state" [(ngModel)]="tenant.apiCar.state" #state="ngModel" minlength="2" maxlength="50" pattern='[a-zA-Z ]*'/>
-                          <mat-error *ngIf="state.invalid && state.dirty && tenant.apiCar.state.length">State is invalid.</mat-error>
-                      </mat-form-field>
-                  </div>
-
-                  <br/>
-
-                  <!-- Cancel Car Form -->
-                  <button class="btn btn-secondary margin-right" (click)="closeCarForm()">Cancel</button>
-                  <!-- Go To Address Form -->
-                  <button class="btn btn-secondary" *ngIf="!showAddressForm" (click)="addAddressForm()">Next</button>
-          </mat-card-content>
-      </mat-card>
-
-      <!-- ADD ADDRESS CARD -->
-      <mat-card style="background-color:white; float:left; margin-right:1em;" *ngIf="showAddressForm">
-          <h1>ADD ADDRESS</h1>
-          <mat-card-content>
-              <!-- Street -->
-              <div>
-                  <mat-form-field appearance="outline">
-                      <mat-label>Street</mat-label>
-                      <input matInput name="tenant.apiAddress.street" [(ngModel)]="tenant.apiAddress.street" #street="ngModel" minlength="5" maxlength="200" pattern='[a-zA-Z0-9 ]*' required/>
-                      <mat-error *ngIf="street.invalid && !tenant.apiAddress.street.length">Street is required.</mat-error>
-                      <mat-error *ngIf="street.invalid && street.dirty && tenant.apiAddress.street.length">Street is invalid.</mat-error>
-                  </mat-form-field>
-              </div>
-
-              <!-- City -->
-              <div>
-                  <mat-form-field appearance="outline">
-                      <mat-label>City</mat-label>
-                      <input matInput name="tenant.apiAddress.city" [(ngModel)]="tenant.apiAddress.city" #city="ngModel" minlength="1" maxlength="50" pattern='[a-zA-Z0-9 ]*' required/>
-                      <mat-error *ngIf="city.invalid && !tenant.apiAddress.city.length">City is required.</mat-error>
-                      <mat-error *ngIf="city.invalid && city.dirty && tenant.apiAddress.city.length">City is invalid.</mat-error>
-                  </mat-form-field>
-              </div>
-
-              <!-- State -->
-              <div>
-                  <mat-form-field appearance="outline">
-                      <mat-label>State</mat-label>
-                      <input matInput name="tenant.apiAddress.state" [(ngModel)]="tenant.apiAddress.state" #state="ngModel" minlength="2" maxlength="50" pattern='[a-zA-Z ]*' required/>
-                      <mat-error *ngIf="state.invalid && !tenant.apiAddress.state.length">State is required.</mat-error>
-                      <mat-error *ngIf="state.invalid && state.dirty && tenant.apiAddress.state.length">Please enter a valid state or abbrev.</mat-error>
-                  </mat-form-field>
-              </div>
-
-              <!-- Country -->
-              <div>
-                  <mat-form-field appearance="outline">
-                      <mat-label>Country</mat-label>
-                      <input matInput name="tenant.apiAddress.country" [(ngModel)]="tenant.apiAddress.country" #country="ngModel" minlength="1" maxlength="50" pattern='[a-zA-Z ]*' required/>
-                      <mat-error *ngIf="country.invalid && !tenant.apiAddress.country.length">Country is required.</mat-error>
-                      <mat-error *ngIf="country.invalid && country.dirty && tenant.apiAddress.country.length">Please enter a valid country or abbrev.</mat-error>
-                  </mat-form-field>
-              </div>
-
-              <!-- Zip -->
-              <div>
-                  <mat-form-field appearance="outline">
-                      <mat-label>Zip Code</mat-label>
-                      <input matInput name="tenant.apiAddress.zipCode" [(ngModel)]="tenant.apiAddress.zipCode" #zip="ngModel" pattern='[0-9]{5}' required/> <!--should consider extended zips (4 extra digits)-->
-                      <mat-error *ngIf="zip.invalid && !tenant.apiAddress.zipCode.length">Zip is required.</mat-error>
-                      <mat-error *ngIf="zip.invalid && zip.dirty && tenant.apiAddress.zipCode.length">Please enter a valid zip code.</mat-error>
-                  </mat-form-field>
-              </div>
-
-              <br/>
-
-              <!-- Navigate From Address Form -->
-              <button class="btn btn-secondary margin-right" (click)="closeAddressForm()">Back</button>
-              <!-- Submit Completed Form -->
-              <button class="btn btn-secondary" [disabled]="addTenantForm.invalid" (ngSubmit)="postTenantOnSubmit()">Submit</button>
-          </mat-card-content>
-      </mat-card>
-      <!-- -- NESTED FORMS END -- -->
-  </form>
+                <!-- Navigate From Address Form -->
+                <button class="btn btn-secondary margin-right" (click)="closeAddressForm()">Back</button>
+                <!-- Submit Completed Form -->
+                <button class="btn btn-secondary" [disabled]="addTenantForm.invalid" (ngSubmit)="postTenantOnSubmit()">Submit</button>
+            </mat-card-content>
+        </mat-card>
+        <!-- -- NESTED FORMS END -- -->
+    </form>
 </div>
