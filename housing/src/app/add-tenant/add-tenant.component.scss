@@ -21,3 +21,22 @@
 {
     margin-right:4px;
 }
+}
+
+.vertical-center 
+{
+    //min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.error-message
+{
+    font-size:0.8em;
+    color:red;
+}
+
+.margin-right
+{
+    margin-right:4px;
+}
