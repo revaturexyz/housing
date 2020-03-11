@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, EventEmitter, Output, OnChanges } from '@angular/core';
 import { Complex } from 'src/interfaces/complex';
 import { MatPaginator, MatTableDataSource } from '@angular/material';
 import { Room } from '../../../interfaces/room';
@@ -17,7 +17,7 @@ import { LodgingService } from 'src/app/services/lodging.service';
 })
 
 // Component to show the selected complex's details
-export class ComplexDetailsComponent implements OnInit {
+export class ComplexDetailsComponent implements OnInit, OnChanges {
 
   role: string;
   // This makes the currently selected complex details avalible
@@ -90,11 +90,12 @@ export class ComplexDetailsComponent implements OnInit {
     this.role = sessionStorage.getItem('role');
     console.log(this.complexControl.complexId);
 
-
+    /*
     this.LodgeService.getFilteredRooms(this.complexControl.complexId, '').subscribe(data => {
       this.seededRooms = data;
       this.dataSource = new MatTableDataSource(this.seededRooms);
     });
+    */
 
 
    // this.dataSource = new MatTableDataSource(this.seededRooms);
@@ -103,5 +104,12 @@ export class ComplexDetailsComponent implements OnInit {
 
     // Links paginator for material table
     this.dataSource.paginator = this.paginator;
+  }
+
+  ngOnChanges() {
+    this.LodgeService.getFilteredRooms(this.complexControl.complexId, '').subscribe(data => {
+      this.seededRooms = data;
+      this.dataSource = new MatTableDataSource(this.seededRooms);
+    });
   }
 }

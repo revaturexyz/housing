@@ -10,6 +10,7 @@ import { Complex, PostComplex } from 'src/interfaces/complex';
 // import { Router } from '@angular/router';
 import { Amenity, PostAmenity } from 'src/interfaces/amenity';
 import { LodgingService } from 'src/app/services/lodging.service';
+import { Router } from '@angular/router';
 // import { RedirectService } from '../services/redirect.service';
 // import { TestServiceData } from 'src/app/services/static-test-data';
 @Component({
@@ -34,10 +35,10 @@ export class AddComplexComponent implements OnInit {
 
   // TODO: POPULATE THIS
   amenityList: PostAmenity[] = [{
-    amenityType: 'balcony',
+    amenityType: 'pool',
   },
   {
-    amenityType: 'stove',
+    amenityType: 'clubhouse',
   }];
 
 
@@ -66,11 +67,12 @@ export class AddComplexComponent implements OnInit {
     // private providerService: ProviderService,
     // private redirect: RedirectService
     private LodgeService: LodgingService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private router: Router
   ) {
     // Populate default form values
     this.formLivingComplex = {
-      providerId: '51b7eadd-30ce-49a7-9b8c-bae1d47f46a6',
+      providerId: '',
       address: {
         country: 'USA', // must add a section to select contries if needed
         street: '',
@@ -147,15 +149,20 @@ export class AddComplexComponent implements OnInit {
   postLivingComplex(): void {
     console.log('Add Complex Pressed');
     this.formLivingComplex.complexAmenities = this.amenityList;
+    this.formLivingComplex.providerId = sessionStorage.getItem('guid');
     console.log(this.formLivingComplex);
     // Handle adding complex logic here
 
 
-    this.LodgeService.addComplex(this.formLivingComplex).subscribe();
+    this.LodgeService.addComplex(this.formLivingComplex).subscribe(
+      () => this.router.navigate(['dashboard/manage-complex/'])
+    );
 
 
-    this.complexOutput.emit(this.formTestComplex);
+    // this.complexOutput.emit(this.formTestComplex);
     this.modeOutput.emit('init'); // Sent to parent to change mode back to details
+    // this.router.navigate(['dashboard/manage-complex/']);
+
 
 
     // verify the complex address

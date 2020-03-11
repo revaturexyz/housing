@@ -56,7 +56,8 @@ export class SearchTenantComponent implements OnInit {
   }
 
   routeToSelectTenant(tenantId: string) {
-    this.router.navigate(['select-tenant/' + tenantId]);
+    console.log(tenantId);
+    this.router.navigate(['dashboard/select-tenant/' + tenantId]);
   }
 
   constructor(

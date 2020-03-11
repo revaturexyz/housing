@@ -47,7 +47,7 @@ export class AddRoomComponent implements OnInit {
   ];
 
   public seededType: RoomType[] = [
-    {roomType: 'Dorm', typeId: 1},
+    {roomType: 'Dormitory', typeId: 1},
     {roomType: 'Apartment', typeId: 2},
     {roomType: 'TownHouse', typeId: 3},
     {roomType: 'Hotel/Motel', typeId: 4}
@@ -102,11 +102,14 @@ export class AddRoomComponent implements OnInit {
     console.log(this.formRoom);
 
 
-    this.LodgeService.addRoom(this.formRoom).subscribe();
+    this.LodgeService.addRoom(this.formRoom).subscribe(
+      () => this.modeOutput.emit('details')
+    );
+    // window.location.reload()
 
 
     // Handle adding room to complex logic here
-    this.modeOutput.emit('details'); // Sent to parent to change mode back to details
+    // this.modeOutput.emit('details'); // Sent to parent to change mode back to details
   }
 
   // Changes mode back to details

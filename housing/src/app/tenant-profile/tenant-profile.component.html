@@ -1,4 +1,4 @@
-<div class="horizontal-center vertical-center" style="position: relative; top: 64px">
+<div class="horizontal-center vertical-center">
     <div class="jumbotron" style="background-color:rgb(247, 101, 3);">
         <h2 style="text-align:center;color:white;">My Profile</h2>
     <mat-card>
@@ -41,17 +41,21 @@
                         <tbody>
                             <tr>
                                 <td><strong>Country&emsp;</strong></td>
-                                <td><input type="text" value="{{tenantInfo.tenantAddress.country}}" readonly/></td>
+                                <td><input type="text" value="{{tenantInfo.apiAddress.country}}" readonly/></td>
                             </tr><br/>
                             <tr>
                                 <td><strong>Street Address&emsp;</strong></td>
-                                <td><input type="text" value="{{tenantInfo.tenantAddress.street}}" readonly/></td>
+                                <td><input type="text" value="{{tenantInfo.apiAddress.street}}" readonly/></td>
                             </tr><br/>
                             <tr>
                                 <td><strong>City&emsp;</strong></td>
-                                <td><input type="text" value="{{tenantInfo.tenantAddress.city}}" readonly/></td>
+                                <td><input type="text" value="{{tenantInfo.apiAddress.city}}" readonly/></td>
                             </tr>
-                            <div *ngIf="tenantInfo.tenantAddress.country == 'USA'">
+                            <tr>
+                                <td><strong>ZipCode&emsp;</strong></td>
+                                <td><input type="text" value="{{tenantInfo.apiAddress.zipCode}}" readonly/></td>
+                            </tr>
+                            <!--<div *ngIf="tenantInfo.tenantAddress.country == 'USA'">
                                 <br/>
                             </div>
                             <tr *ngIf="tenantInfo.tenantAddress.country == 'USA'">
@@ -64,7 +68,7 @@
                             <tr *ngIf="tenantInfo.tenantAddress.country == 'USA'">
                                 <td><strong>ZIP&emsp;</strong></td>
                                 <td><input type="text" value="{{tenantInfo.tenantAddress.zipCode}}" readonly/></td>
-                            </tr>
+                            </tr>-->
                         </tbody>
                     </table>
                 </mat-step>
@@ -78,15 +82,15 @@
                         <tbody>
                             <tr>
                                 <td><strong>Curriculum&emsp;</strong></td>
-                                <td><input type="text" value="{{tenantInfo.batch.batchCurriculum}}" readonly/></td>
+                                <td><input type="text" value="{{tenantInfo.apiBatch.batchCurriculum}}" readonly/></td>
                             </tr><br/>
                             <tr>
                                 <td><strong>Started On&emsp;</strong></td>
-                                <td><input type="text" value="{{ getFullDate(true) }}" readonly/></td>
+                                <td><input type="text" value="{{ tenantInfo.apiBatch.startDate | date}}" readonly/></td>
                             </tr><br/>
                             <tr>
                                 <td><strong>Ends On&emsp;</strong></td>
-                                <td><input type="text" value="{{ getFullDate(false) }}" readonly/></td>
+                                <td><input type="text" value="{{ tenantInfo.apiBatch.endDate | date}}" readonly/></td>
                             </tr>
                         </tbody>
                     </table>
@@ -101,27 +105,27 @@
                         <tbody>
                             <tr>
                                 <td><strong>Make&emsp;</strong></td>
-                                <td><input type="text" value="{{tenantInfo.car.make}}" readonly/></td>
+                                <td><input type="text" value="{{testTenant.car.make}}" readonly/></td>
                             </tr><br/>
                             <tr>
                                 <td><strong>Model&emsp;</strong></td>
-                                <td><input type="text" value="{{tenantInfo.car.model}}" readonly/></td>
+                                <td><input type="text" value="{{testTenant.car.model}}" readonly/></td>
                             </tr><br/>
                             <tr>
                                 <td><strong>Color&emsp;</strong></td>
-                                <td><input type="text" value="{{tenantInfo.car.color}}" readonly/></td>
+                                <td><input type="text" value="{{testTenant.car.color}}" readonly/></td>
                             </tr><br/>
                             <tr>
                                 <td><strong>Year&emsp;</strong></td>
-                                <td><input type="text" value="{{tenantInfo.car.year}}" readonly/></td>
+                                <td><input type="text" value="{{testTenant.car.year}}" readonly/></td>
                             </tr><br/>
                             <tr>
                                 <td><strong>State&emsp;</strong></td>
-                                <td><input type="text" value="{{tenantInfo.car.state}}" readonly/></td>
+                                <td><input type="text" value="{{testTenant.car.state}}" readonly/></td>
                             </tr><br/>
                             <tr>
                                 <td><strong>License Plate&emsp;</strong></td>
-                                <td><input type="text" value="{{tenantInfo.car.licensePlate}}" readonly/></td>
+                                <td><input type="text" value="{{testTenant.car.licensePlate}}" readonly/></td>
                             </tr>
                         </tbody>
                     </table>
