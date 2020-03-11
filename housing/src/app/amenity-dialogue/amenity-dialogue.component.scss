@@ -16,3 +16,26 @@
 .overlay {
   background-color: rgb(30, 0, 165, 0.3);
 }
+
+//IN PREP FOR RESPONSIVE DESIGN
+@media screen and (max-width: 1169px)
+{
+}
+
+@media screen and (max-width: 590px)
+{
+}
+
+@media only screen 
+and (min-device-width:320px)
+and (max-device-width:480px)
+{
+    //mobile width
+}
+
+@media only screen 
+and (min-device-width:768px)
+and (max-device-width:1024px)
+{
+    //iPad width
+}
