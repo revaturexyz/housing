@@ -50,6 +50,11 @@ export class NavComponent implements OnInit {
    }
    */
 
+   logoutHandler() {
+     sessionStorage.removeItem('guid');
+     this.oktaAuth.logout('/');
+   }
+
    ngOnInit() {
     this.handleOkta();
    }

@@ -34,7 +34,7 @@ export class AddTenantComponent implements OnInit {
   startDate = moment();
   midDate = this.startDate.clone().add(6, 'months');
   endDate = this.startDate.clone().add(2, 'y');
-  freshDate;
+  freshDate: moment.Moment;
 
   // These variables are used so that when we convert the moments into strings
   // they are stored in the proper format to use in the HTML.

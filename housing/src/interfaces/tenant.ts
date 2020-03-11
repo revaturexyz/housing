@@ -13,7 +13,7 @@ export interface Tenant {
   carId: number;
   batchId: number;
   apiAddress: TenantAddress;
-  car: Car;
+  apiCar: Car;
   apiBatch: Batch;
   trainingCenter: string;
 }
