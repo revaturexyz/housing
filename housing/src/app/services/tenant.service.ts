@@ -39,14 +39,14 @@ export class TenantService {
   }
 
   // Post a new tenant through api
-  PostTenant(postTenant: PostTenant): Promise<PostTenant> {
+  PostTenant(postTenant: PostTenant): Promise<Tenant> {
     const postTenantUrl = `${this.apiUrl}` + 'Tenant/Register';
-    return this.httpBus.post<PostTenant>(postTenantUrl, postTenant).toPromise();
+    return this.httpBus.post<Tenant>(postTenantUrl, postTenant).toPromise();
   }
 
   // Update an existing tenant through the api
-  PutTenant(tenantId: string) {
-    const putTenantUrl = `${this.apiUrl}` + 'UpdateTenant/' + `${tenantId}`;
-    return this.httpBus.put<Tenant>(putTenantUrl, this.httpOptions);
+  PutTenant(tenant: Tenant) {
+    const putTenantUrl = `${this.apiUrl}` + 'Tenant/Update/';
+    return this.httpBus.put<Tenant>(putTenantUrl, tenant).toPromise();
   }
 }

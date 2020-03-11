@@ -30,8 +30,9 @@ const routes: Routes = [
     { path: 'assign-tenant-to-room', component: AssignTenantToRoomComponent, canActivate: [OktaAuthGuard] },
     { path: 'search-tenant', component: SearchTenantComponent , canActivate: [OktaAuthGuard]},
     { path: 'coordinator-notifications', component: CoordinatorNotificationsComponent, canActivate: [OktaAuthGuard] },
-    { path: 'add-tenant', component: AddTenantComponent , canActivate: [OktaAuthGuard] },
-    { path: 'select-tenant/:id', component: SelectTenantComponent, canActivate: [OktaAuthGuard]},
+    { path: 'add-tenant', component: TenantProfileComponent , canActivate: [OktaAuthGuard] },
+    { path: 'edit-tenant/:id', component: TenantProfileComponent , canActivate: [OktaAuthGuard] },
+    { path: 'select-tenant/:id', component: TenantProfileComponent, canActivate: [OktaAuthGuard]},
     /*tenant routes*/
     { path: 'tenant-profile', component: TenantProfileComponent, canActivate: [OktaAuthGuard] },
     { path: 'tenant-maintenance', component: TenantMaintenanceComponent, canActivate: [OktaAuthGuard] },

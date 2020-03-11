@@ -6,6 +6,14 @@ import { MatChipInputEvent } from '@angular/material';
 import { MatStepperModule } from '@angular/material';
 import {LodgingService} from '../services/lodging.service';
 import {Room} from 'src/interfaces/room';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { TenantAddress } from 'src/interfaces/tenant-address';
+import { Car } from 'src/interfaces/car';
+import { Batch } from 'src/interfaces/batch';
+import { Location } from '@angular/common';
+import { PostTenant } from 'src/interfaces/post-tenant';
+import { TenantSearcherService } from '../services/tenant-searcher.service';
 
 @Component({
   selector: 'dev-tenant-profile',
@@ -18,74 +26,64 @@ export class TenantProfileComponent implements OnInit {
   tenantInfo: Tenant = null;
   testTenant: Tenant;
 
+  batchShowString = 'Choose Batch';
+  batchList: Batch[] = [];
+
+  genderShowString = 'Choose Gender';
+  genders: string[] = ['Male', 'Female'];
+  trainCenId = '837c3248-1685-4d08-934a-0f17a6d1836a';
+
   constructor(
     public tenantService: TenantService,
-    public lodgingService: LodgingService
+    public tenantSearcher: TenantSearcherService,
+    public lodgingService: LodgingService,
+    private route: ActivatedRoute,
+    private router: Router,
+    private location: Location
     // private user: UserService
   ) {
-    // empty these when user account prepared and userservice working
-    this.testTenant = {
-      id: 'g28a-2917-1983-298f-98c1-a19a',
-      email: 'test@email.com',
-      gender: 'Alien',
-      firstName: 'Bob',
-      lastName: 'Badoo',
-      addressId: '1',
-      roomId: '1',
-      carId: 1,
-      batchId: 1,
-      apiAddress:
-      {
-        Id: '1',
-        street: '123 Street Name',
-        city: 'City Name',
-        state: 'ST',
-        zipCode: '12345',
-        country: 'USA'
-      },
-      car:
-      {
-        id: 1,
-        licensePlate: '9S63GB5',
-        make: 'Honda',
-        model: 'Civic',
-        color: 'Black',
-        year: '3030',
-        state: 'ST'
-      },
-      apiBatch:
-      {
-        id: 1,
-        batchCurriculum: '.NET',
-        startDate: new Date(2020, 1, 3),
-        endDate: new Date(2120, 2, 3),
-        trainingCenter: 'f55db185-205e-4669-baf3-1872e87b9bcc'
-      },
-      trainingCenter: 'f55db185-205e-4669-baf3-1872e87b9bcc'
-    };
   }
 
   tenantid: string = null;
   // Tennant id should be available at runtime. Okta should have this value
   // stored in local, cookies, or session storage
 
+  viewMode = 'tenant';
+  // This will be true if a coordinator is viewing the room
 
+  routeSub: Subscription;
 
   currentRoom: Room = null;
   // Contains the room information to be displayed on the page.
 
   ngOnInit() {
-
-    this.tenantid = sessionStorage.getItem('guid');
-    console.log('hello', this.tenantid);
-    // this.getTenantRoom(this.currentTenant.roomId);
-
-
-    this.tenantService.GetTenantById(this.tenantid).subscribe(data => {
-    this.tenantInfo = data;
-    console.log(this.tenantInfo);
-    console.log('making sure');
-  });
+    this.routeSub = this.route.url.subscribe(url => {
+      if (url[0].path === 'tenant-profile') {
+        this.tenantid = sessionStorage.getItem('guid');
+        this.viewMode = 'tenant';
+      } else if (url[0].path === 'add-tenant') { // Coordinator Add
+        this.viewMode = 'cAdd';
+        this.tenantid = null;
+      } else if (url[0].path === 'select-tenant') { // Coordinator View
+        this.tenantid = url[1].path;
+        this.viewMode = 'cView';
+      } else if (url[0].path === 'edit-tenant') { // Coordinator Edit
+        this.tenantid = url[1].path;
+        this.viewMode = 'cEdit';
+      }
+      if (this.tenantid != null) {
+      this.tenantService.GetTenantById(this.tenantid).subscribe(data => {
+        this.tenantInfo = data;
+      }); } else {
+        this.tenantInfo = {
+          apiAddress: {} as TenantAddress,
+          apiBatch: {} as Batch
+        } as Tenant;
+      }
+      if (this.editMode()) {
+        this.getBatchesForEdit();
+      }
+    });
 }
 
 
@@ -114,5 +112,71 @@ export class TenantProfileComponent implements OnInit {
     }
 
     return fulldate;
+  }
+
+  editMode() {
+    return (this.viewMode === 'cAdd' || this.viewMode === 'cEdit');
+  }
+
+  getBatchesForEdit() {
+    this.tenantService.GetBatchByTrainingCenterId(this.trainCenId)
+      .toPromise()
+      .then((data) => this.batchList = data)
+      .catch((err) => console.log(err));
+  }
+
+  addCar() {
+    if (this.tenantInfo && !this.tenantInfo.apiCar) {
+      this.tenantInfo.apiCar = {} as Car;
+    }
+  }
+
+  removeCar() {
+    if (this.tenantInfo && this.tenantInfo.apiCar) {
+      this.tenantInfo.carId = 0;
+      this.tenantInfo.apiCar = null;
+    }
+  }
+
+  cancel() {
+    this.location.back();
+  }
+
+  edit() {
+    this.router.navigate(['dashboard/edit-tenant/' + this.tenantid]);
+  }
+
+  delete() {
+    this.tenantSearcher.deleteTenant(this.tenantid)
+    .then(() => this.router.navigate(['dashboard/search-tenant/']));
+  }
+
+  async postTenantOnSubmit() {
+    console.log(this.tenantInfo);
+    try {
+      this.tenantInfo.id = null;
+      this.tenantInfo.trainingCenter = this.trainCenId;
+      this.tenantInfo.apiBatch.trainingCenter = this.trainCenId;
+      await this.tenantService.PostTenant({
+        id: null,
+        email: this.tenantInfo.email,
+        gender: this.tenantInfo.gender,
+        firstName: this.tenantInfo.firstName,
+        lastName: this.tenantInfo.lastName,
+        apiCar: this.tenantInfo.apiCar,
+        apiAddress: this.tenantInfo.apiAddress,
+        trainingCenter: this.tenantInfo.trainingCenter,
+        apiBatch: this.tenantInfo.apiBatch
+      } as PostTenant)
+        .then(result => this.router.navigate(['dashboard/select-tenant/' + result.id]));
+    } catch (err) {
+      console.log(err);
+    }
+    // this.router.navigate(['show-tenant']);
+  }
+  async putTenantOnSubmit() {
+    console.log(this.tenantInfo);
+    await this.tenantService.PutTenant(this.tenantInfo)
+    .then(result => this.router.navigate(['dashboard/select-tenant/' + this.tenantid]));
   }
 }
