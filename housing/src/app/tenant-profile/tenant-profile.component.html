@@ -6,7 +6,7 @@
     <mat-card>
         <mat-card-content>
             <mat-horizontal-stepper>
-                <mat-step>
+                 <mat-step *ngIf="!editMode()"> <!-- GENERAL -->
                     <ng-template matStepLabel> 
                         <span>GENERAL</span> 
                     </ng-template>
@@ -16,39 +16,66 @@
                         <tbody>
                             <tr>
                                 <td><strong>First Name&emsp;</strong></td>
-                                <td><input type="text" [(ngModel)]="tenantInfo.firstName" [readonly]="!editMode()" [class.tenantReadOnly]="!editMode()"/></td>
+                                <td><span>{{tenantInfo.firstName}}</span></td>
                             </tr><br/>
                             <tr>
                                 <td><strong>Last Name&emsp;</strong></td>
-                                <td><input type="text" [(ngModel)]="tenantInfo.lastName" [readonly]="!editMode()" [class.tenantReadOnly]="!editMode()"/></td>
+                                <td><span>{{tenantInfo.lastName}}</span></td>
                             </tr><br/>
-                            <tr *ngIf="editMode()">
+                            <tr>
                                 <td><strong>Gender&emsp;</strong></td>
-                                <td><mat-form-field class="col-md-12">
-                                    <mat-label>{{genderShowString}}</mat-label>
-                                    <mat-select [(ngModel)]="tenantInfo.gender">
-                                      <mat-option *ngFor="let gender of genders" [value]="gender">
-                                        {{ gender }}
-                                      </mat-option>
-                                    </mat-select>
-                                  </mat-form-field></td>
-                            </tr><br/>
-                            <tr *ngIf="!editMode()">
-                                <td><strong>Gender&emsp;</strong></td>
-                                <td><input type="text" value="{{tenantInfo.gender}}" readonly/></td>
+                                <td><span>{{tenantInfo.gender}}</span></td>
                             </tr><br/>
                             <tr>
                                 <td><strong>Email&emsp;</strong></td>
-                                <td><input type="text" [(ngModel)]="tenantInfo.email" [readonly]="!editMode()" [class.tenantReadOnly]="!editMode()"/></td>
+                                <td><span>{{tenantInfo.email}}</span></td>
                             </tr>
                         </tbody>
                     </table>
-                    <div *ngIf="editMode()">
+                    
+                </mat-step>
+                <mat-step *ngIf="editMode()"> <!-- GENERAL -->
+                    <ng-template matStepLabel>
+                        <span>GENERAL</span>
+                    </ng-template>
+                    <mat-form-field class="col-md-6">
+                        <input matInput 
+                          placeholder="First Name"
+                          required 
+                          name="tenantInfo.firstName" 
+                          [(ngModel)]="tenantInfo.firstName"
+                        >
+                      </mat-form-field>
+                      <mat-form-field class="col-md-6">
+                        <input matInput 
+                          placeholder="Last Name"
+                          required 
+                          name="tenantInfo.lastName" 
+                          [(ngModel)]="tenantInfo.lastName"
+                        >
+                      </mat-form-field>
+                    <mat-form-field class="col-md-4">
+                        <mat-label>{{genderShowString}}</mat-label>
+                        <mat-select [(ngModel)]="tenantInfo.gender">
+                            <mat-option *ngFor="let gender of genders" [value]="gender">
+                                {{ gender }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field class="col-md-8">
+                        <input matInput 
+                          placeholder="Email"
+                          required 
+                          name="tenantInfo.email" 
+                          [(ngModel)]="tenantInfo.email"
+                        >
+                      </mat-form-field>
+                    <div>
                         <button mat-button (click)="cancel()">Cancel</button>
                         <button mat-button matStepperNext>Next</button>
-                      </div>
+                    </div>
                 </mat-step>
-                <mat-step>
+                <mat-step *ngIf="!editMode()"> <!-- ADDRESS -->
                     <ng-template matStepLabel> 
                         <span>ADDRESS</span> 
                     </ng-template>
@@ -58,47 +85,92 @@
                         <tbody>
                             <tr>
                                 <td><strong>Street Address&emsp;</strong></td>
-                                <td><input type="text" [(ngModel)]="tenantInfo.apiAddress.street" [readonly]="!editMode()" [class.tenantReadOnly]="!editMode()"/></td>
+                                <td><span>{{tenantInfo.apiAddress.street}}</span></td>
                             </tr><br/>
                             <tr>
                                 <td><strong>City&emsp;</strong></td>
-                                <td><input type="text" [(ngModel)]="tenantInfo.apiAddress.city" [readonly]="!editMode()" [class.tenantReadOnly]="!editMode()"/></td>
+                                <td><span>{{tenantInfo.apiAddress.city}}</span></td>
                             </tr><br/>
                             <tr>
                                 <td><strong>State&emsp;</strong></td>
-                                <td><input type="text" [(ngModel)]="tenantInfo.apiAddress.state" [readonly]="!editMode()" [class.tenantReadOnly]="!editMode()"/></td>
+                                <td><span>{{tenantInfo.apiAddress.state}}</span></td>
                             </tr><br/>
                             <tr>
                                 <td><strong>ZipCode&emsp;</strong></td>
-                                <td><input type="text" [(ngModel)]="tenantInfo.apiAddress.zipCode" [readonly]="!editMode()" [class.tenantReadOnly]="!editMode()"/></td>
+                                <td><span>{{tenantInfo.apiAddress.zipCode}}</span></td>
                             </tr><br/>
                             <tr>
                                 <td><strong>Country&emsp;</strong></td>
-                                <td><input type="text" [(ngModel)]="tenantInfo.apiAddress.country" [readonly]="!editMode()" [class.tenantReadOnly]="!editMode()"/></td>
+                                <td><span>{{tenantInfo.apiAddress.country}}</span></td>
                             </tr>
                             <!--<div *ngIf="tenantInfo.tenantAddress.country == 'USA'">
                                 <br/>
                             </div>
                             <tr *ngIf="tenantInfo.tenantAddress.country == 'USA'">
                                 <td><strong>State&emsp;</strong></td>
-                                <td><input type="text" [(ngModel)]="tenantInfo.tenantAddress.state" [readonly]="!editMode()" [class.tenantReadOnly]="!editMode()"/></td>
+                                <td><span>{{tenantInfo.tenantAddress.state}}</span></td>
                             </tr>
                             <div *ngIf="tenantInfo.tenantAddress.country == 'USA'">
                                 <br/>
                             </div>
                             <tr *ngIf="tenantInfo.tenantAddress.country == 'USA'">
                                 <td><strong>ZIP&emsp;</strong></td>
-                                <td><input type="text" [(ngModel)]="tenantInfo.tenantAddress.zipCode" [readonly]="!editMode()" [class.tenantReadOnly]="!editMode()"/></td>
+                                <td><span>{{tenantInfo.tenantAddress.zipCode}}</span></td>
                             </tr>-->
                         </tbody>
                     </table>
-                    <div *ngIf="editMode()">
+                </mat-step>
+                <mat-step *ngIf="editMode()"> <!-- ADDRESS -->
+                    <ng-template matStepLabel>
+                        <span>ADDRESS</span>
+                    </ng-template>
+                    <mat-form-field class="col-md-12">
+                        <input matInput 
+                          placeholder="Street Address"
+                          required 
+                          name="tenantInfo.apiAddress.street" 
+                          [(ngModel)]="tenantInfo.apiAddress.street"
+                        >
+                      </mat-form-field>
+                      <mat-form-field class="col-md-4">
+                        <input matInput 
+                          placeholder="City"
+                          required 
+                          name="tenantInfo.apiAddress.city" 
+                          [(ngModel)]="tenantInfo.apiAddress.city"
+                        >
+                      </mat-form-field>
+                      <mat-form-field class="col-md-3">
+                        <input matInput 
+                          placeholder="State"
+                          required 
+                          name="tenantInfo.apiAddress.state" 
+                          [(ngModel)]="tenantInfo.apiAddress.state"
+                        >
+                      </mat-form-field>
+                      <mat-form-field class="col-md-2">
+                        <input matInput 
+                          placeholder="ZipCode"
+                          required 
+                          name="tenantInfo.apiAddress.zipCode" 
+                          [(ngModel)]="tenantInfo.apiAddress.zipCode"
+                        >
+                      </mat-form-field>
+                      <mat-form-field class="col-md-3">
+                        <input matInput 
+                          placeholder="Country"
+                          required 
+                          name="tenantInfo.apiAddress.country" 
+                          [(ngModel)]="tenantInfo.apiAddress.country"
+                        >
+                      </mat-form-field>
+                      <div>
                         <button mat-button (click)="cancel()">Cancel</button>
                         <button mat-button matStepperPrevious>Back</button>
                         <button mat-button matStepperNext>Next</button>
                     </div>
                 </mat-step>
-                <mat-step *ngIf="tenantInfo.apiBatch">
+                <mat-step *ngIf="tenantInfo.apiBatch && !editMode()"> <!-- BATCH -->
                     <ng-template matStepLabel> 
                         <span>BATCH</span> 
                     </ng-template>
@@ -106,58 +178,54 @@
                         <thead>
                         </thead>
                         <tbody>
-                            <tr *ngIf="editMode()">
+                            <tr>
                                 <td><strong>Curriculum&emsp;</strong></td>
-                                <td><mat-form-field class="col-md-12">
-                                    <mat-label>{{batchShowString}}</mat-label>
-                                    <mat-select [(ngModel)]="tenantInfo.apiBatch.batchCurriculum">
-                                      <mat-option *ngFor="let batch of batchList" [value]="batch.batchCurriculum">
-                                        {{ batch.batchCurriculum }}
-                                      </mat-option>
-                                    </mat-select>
-                                  </mat-form-field></td>
+                                <td><span>{{tenantInfo.apiBatch.batchCurriculum}}</span></td>
                             </tr><br/>
-                            <tr *ngIf="!editMode()">
-                                <td><strong>Curriculum&emsp;</strong></td>
-                                <td><input type="text" value="{{tenantInfo.apiBatch.batchCurriculum}}" readonly/></td>
-                            </tr><br/>
-                            <tr *ngIf="editMode()">
+                            <tr>
                                 <td><strong>Started On&emsp;</strong></td>
-                                <td><mat-form-field>
-                                    <input matInput id="startDate" name="startDate" [matDatepicker]="startDatePicker"
-                                      [(ngModel)]="tenantInfo.apiBatch.startDate" #startDate="ngModel" class="form-control"
-                                      placeholder="Batch Start Date" aria-describedby="startDate" required />
-                                    <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
-                                    <mat-datepicker #startDatePicker [startAt]="startDate"></mat-datepicker>
-                                  </mat-form-field></td>
+                                <td><span>{{ tenantInfo.apiBatch.startDate | date}}</span></td>
                             </tr><br/>
-                            <tr *ngIf="!editMode()">
-                                <td><strong>Started On&emsp;</strong></td>
-                                <td><input type="text" value="{{ tenantInfo.apiBatch.startDate | date}}" readonly/></td>
-                            </tr><br/>
-                            <tr *ngIf="editMode()">
-                                <td><strong>Started On&emsp;</strong></td>
-                                <td><mat-form-field>
-                                    <input matInput id="endDate" name="endDate" [matDatepicker]="endDatePicker"
-                                      [(ngModel)]="tenantInfo.apiBatch.endDate" #endDate="ngModel" class="form-control"
-                                      placeholder="Batch end Date" aria-describedby="endDate" required />
-                                    <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
-                                    <mat-datepicker #endDatePicker [startAt]="tenantInfo.apiBatch.startDate"></mat-datepicker>
-                                  </mat-form-field></td>
-                            </tr><br/>
-                            <tr *ngIf="!editMode()">
+                            <tr>
                                 <td><strong>Ends On&emsp;</strong></td>
-                                <td><input type="text" value="{{ tenantInfo.apiBatch.endDate | date}}" readonly/></td>
+                                <td><span>{{ tenantInfo.apiBatch.endDate | date}}</span></td>
                             </tr>
                         </tbody>
                     </table>
-                    <div *ngIf="editMode()">
+                </mat-step>
+                <mat-step *ngIf="tenantInfo.apiBatch && editMode()"> <!-- BATCH -->
+                    <ng-template matStepLabel> 
+                        <span>BATCH</span> 
+                    </ng-template>
+                    <mat-form-field class="col-md-4">
+                        <mat-label>{{batchShowString}}</mat-label>
+                        <mat-select [(ngModel)]="tenantInfo.apiBatch.batchCurriculum">
+                          <mat-option *ngFor="let batch of batchList" [value]="batch.batchCurriculum">
+                            {{ batch.batchCurriculum }}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                      <mat-form-field class="col-md-4">
+                        <input matInput id="startDate" name="startDate" [matDatepicker]="startDatePicker"
+                          [(ngModel)]="tenantInfo.apiBatch.startDate" #startDate="ngModel" class="form-control"
+                          placeholder="Batch Start Date" aria-describedby="startDate" required />
+                        <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+                        <mat-datepicker #startDatePicker [startAt]="startDate"></mat-datepicker>
+                      </mat-form-field>
+                      <mat-form-field class="col-md-4">
+                        <input matInput id="endDate" name="endDate" [matDatepicker]="endDatePicker"
+                          [(ngModel)]="tenantInfo.apiBatch.endDate" #endDate="ngModel" class="form-control"
+                          placeholder="Batch end Date" aria-describedby="endDate" required />
+                        <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+                        <mat-datepicker #endDatePicker [startAt]="tenantInfo.apiBatch.startDate"></mat-datepicker>
+                      </mat-form-field>
+                      <div>
                         <button mat-button (click)="cancel()">Cancel</button>
                         <button mat-button matStepperPrevious>Back</button>
                         <button mat-button matStepperNext>Next</button>
                     </div>
                 </mat-step>
-                <mat-step *ngIf="tenantInfo.apiCar || editMode()">
+                <mat-step *ngIf="tenantInfo.apiCar && !editMode()"> <!-- CAR -->
                     <ng-template matStepLabel> 
                         <span>CAR</span> 
                     </ng-template>
@@ -167,33 +235,86 @@
                         <tbody>
                             <tr>
                                 <td><strong>Make&emsp;</strong></td>
-                                <td><input type="text" [(ngModel)]="tenantInfo.apiCar.make" [readonly]="!editMode()" [class.tenantReadOnly]="!editMode()"/></td>
+                                <td><span>{{tenantInfo.apiCar.make}}</span></td>
                             </tr><br/>
                             <tr>
                                 <td><strong>Model&emsp;</strong></td>
-                                <td><input type="text" [(ngModel)]="tenantInfo.apiCar.model" [readonly]="!editMode()" [class.tenantReadOnly]="!editMode()"/></td>
+                                <td><span>{{tenantInfo.apiCar.model}}</span></td>
                             </tr><br/>
                             <tr>
                                 <td><strong>Color&emsp;</strong></td>
-                                <td><input type="text" [(ngModel)]="tenantInfo.apiCar.color" [readonly]="!editMode()" [class.tenantReadOnly]="!editMode()"/></td>
+                                <td><span>{{tenantInfo.apiCar.color}}</span></td>
                             </tr><br/>
                             <tr>
                                 <td><strong>Year&emsp;</strong></td>
-                                <td><input type="text" [(ngModel)]="tenantInfo.apiCar.year" [readonly]="!editMode()" [class.tenantReadOnly]="!editMode()"/></td>
+                                <td><span>{{tenantInfo.apiCar.year}}</span></td>
                             </tr><br/>
                             <tr>
                                 <td><strong>State&emsp;</strong></td>
-                                <td><input type="text" [(ngModel)]="tenantInfo.apiCar.state" [readonly]="!editMode()" [class.tenantReadOnly]="!editMode()"/></td>
+                                <td><span>{{tenantInfo.apiCar.state}}</span></td>
                             </tr><br/>
                             <tr>
                                 <td><strong>License Plate&emsp;</strong></td>
-                                <td><input type="text" [(ngModel)]="tenantInfo.apiCar.licensePlate" [readonly]="!editMode()" [class.tenantReadOnly]="!editMode()"/></td>
+                                <td><span>{{tenantInfo.apiCar.licensePlate}}</span></td>
                             </tr>
                         </tbody>
                     </table>
+                </mat-step>
+                <mat-step *ngIf="editMode()"> <!-- CAR -->
+                    <ng-template matStepLabel> 
+                        <span>CAR</span> 
+                    </ng-template>
+                    <mat-form-field *ngIf="tenantInfo.apiCar" class="col-md-6">
+                        <input matInput 
+                          placeholder="Make"
+                          required 
+                          name="tenantInfo.apiCar.make" 
+                          [(ngModel)]="tenantInfo.apiCar.make"
+                        >
+                    </mat-form-field>
+                    <mat-form-field *ngIf="tenantInfo.apiCar" class="col-md-6">
+                        <input matInput 
+                          placeholder="Model"
+                          required 
+                          name="tenantInfo.apiCar.model" 
+                          [(ngModel)]="tenantInfo.apiCar.model"
+                        >
+                    </mat-form-field>
+                    <mat-form-field *ngIf="tenantInfo.apiCar" class="col-md-6">
+                        <input matInput 
+                          placeholder="Color"
+                          required 
+                          name="tenantInfo.apiCar.color" 
+                          [(ngModel)]="tenantInfo.apiCar.color"
+                        >
+                    </mat-form-field>
+                    <mat-form-field *ngIf="tenantInfo.apiCar" class="col-md-6">
+                        <input matInput 
+                          placeholder="Year"
+                          required 
+                          name="tenantInfo.apiCar.year" 
+                          [(ngModel)]="tenantInfo.apiCar.year"
+                        >
+                    </mat-form-field>
+                    <mat-form-field *ngIf="tenantInfo.apiCar" class="col-md-6">
+                        <input matInput 
+                          placeholder="State"
+                          required 
+                          name="tenantInfo.apiCar.state" 
+                          [(ngModel)]="tenantInfo.apiCar.state"
+                        >
+                    </mat-form-field>
+                    <mat-form-field *ngIf="tenantInfo.apiCar" class="col-md-6">
+                        <input matInput 
+                          placeholder="License Plate"
+                          required 
+                          name="tenantInfo.apiCar.licensePlate" 
+                          [(ngModel)]="tenantInfo.apiCar.licensePlate"
+                        >
+                    </mat-form-field>
                     <button mat-button *ngIf="!tenantInfo.apiCar" (click)="addCar()">Add Car</button>
                     <button mat-button *ngIf="tenantInfo.apiCar" (click)="removeCar()">Remove Car</button>
-                    <div *ngIf="editMode()">
+                    <div>
                         <button mat-button (click)="cancel()">Cancel</button>
                         <button mat-button matStepperPrevious>Back</button>
                         <button *ngIf="viewMode == 'cEdit'" mat-button id="putAddTenant" (click)="putTenantOnSubmit()">Submit</button>
@@ -201,6 +322,7 @@
                     </div>
                 </mat-step>
             </mat-horizontal-stepper>
+            <button mat-button *ngIf="viewMode == 'cView'" (click)="search()">Back to Search</button>
             <button mat-button *ngIf="viewMode == 'cView'" (click)="edit()">Edit</button>
             <button mat-button *ngIf="viewMode == 'cView'" (click)="delete()">Delete</button>
         </mat-card-content>

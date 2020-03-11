@@ -146,6 +146,10 @@ export class TenantProfileComponent implements OnInit {
     this.router.navigate(['dashboard/edit-tenant/' + this.tenantid]);
   }
 
+  search() {
+    this.router.navigate(['dashboard/search-tenant/']);
+  }
+
   delete() {
     this.tenantSearcher.deleteTenant(this.tenantid)
     .then(() => this.router.navigate(['dashboard/search-tenant/']));
