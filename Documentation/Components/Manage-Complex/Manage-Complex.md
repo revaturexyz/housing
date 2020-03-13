@@ -8,4 +8,4 @@ A provider will pass their guid id to a lodging get method in order to view all 
 Instead of a select drop down, button click on each complex card is an enhancement
 
 
-[Lodging-Service]: Services/Lodging/Lodging.md
+[Lodging-Service]: ../../Services/Lodging/Lodging.md

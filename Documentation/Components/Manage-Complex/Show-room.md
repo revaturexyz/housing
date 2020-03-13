@@ -8,4 +8,4 @@ Provider will be able to view base room details while Coordinator will be able t
 
 
 
-[Lodging-Service]: Services/Lodging/Lodging.md
+[Lodging-Service]: ../../Services/Lodging/Lodging.md

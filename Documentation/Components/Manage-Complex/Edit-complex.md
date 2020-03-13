@@ -8,4 +8,4 @@ A get method for that picked complex will diplsay the inital form inputs. The us
 
 
 
-[Lodging-Service]: Services/Lodging/Lodging.md
+[Lodging-Service]: ../../Services/Lodging/Lodging.md

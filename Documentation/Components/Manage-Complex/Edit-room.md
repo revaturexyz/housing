@@ -8,4 +8,4 @@ A get method for that picked room will diplsay the inital form inputs. The user 
 
 
 
-[Lodging-Service]: Services/Lodging/Lodging.md
+[Lodging-Service]: ../../Services/Lodging/Lodging.md
