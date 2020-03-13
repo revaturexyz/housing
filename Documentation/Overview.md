@@ -35,7 +35,7 @@ Other Components Currently Not in full function:
 - Assign Tenant: [Assign-Tenant]
 
 ### Provider:
-Currently Has the ability to manage complexes, which consists of observing current complexes that they manage. The ability to view the rooms within the complex that they manage. Has full CRUD operations on both the Complexes and Rooms mapped to each Provider
+Currently has the ability to manage complexes, which consists of observing current complexes that they manage. The ability to view the rooms within the complex that they manage. Has full CRUD operations on both the Complexes and Rooms mapped to each Provider
 
 - Create Complex: [Add-Complex]
 - View/Select Complexes: [Manage-Complex]
@@ -80,3 +80,11 @@ Currently Can view their profile information, view room information, as well as 
 
 [View-Room]: Components/View-room.md
 [Tenant-Maintenance]: Components/Tenant-maintenance.md
+
+## Okta
+The application is dependant on Okta services in order to access the website. The environment.ts file provides the domain, issuer, and clientID, which are all dependant on the Okta account. If a new Okta account is created, make sure to change the environment varibles.
+
+In order to access the website without Okta, comment out each [OktaAuthGuard] in the app-routing.module, as well as any structural directives in the Dashboard
+
+## Services
+The end points of each service are also found in the Environment.ts file. This file will contain all four current working APIs. If any changes are made to the enpoints, refer to that file for any changes.
