@@ -1,0 +1,1 @@
+This service is not found in the services folder, but in a gaurds folder in the app directory. This service is meant to prevent unauthenticated users from accessing a page, but is deprecated because it was a service that was only necessary for usage with Auth0, which the current iteration of this project doesn't use.  
