@@ -1,0 +1,1 @@
+The current iteration of this project uses Okta for authentication and authorization, so this front end service should be deprecated because it uses Auth0 instead of Okta
