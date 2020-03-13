@@ -9,4 +9,4 @@ Can be cleaned up, especialy what displayed for the room, number, edit room butt
 
 
 
-[Lodging-Service]: Services/Lodging/Lodging.md
+[Lodging-Service]: ../../Services/Lodging/Lodging.md

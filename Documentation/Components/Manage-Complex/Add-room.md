@@ -9,4 +9,4 @@ Cannot set lease start and end date when adding room. only in edit room
 
 
 
-[Lodging-Service]: Services/Lodging/Lodging.md
+[Lodging-Service]: ../../Services/Lodging/Lodging.md

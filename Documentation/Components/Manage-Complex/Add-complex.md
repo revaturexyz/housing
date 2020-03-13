@@ -9,4 +9,4 @@ Currently doesnt allow the user to specify what country the complex is created. 
 
 
 
-[Lodging-Service]: .../Services/Lodging/Lodging.md
+[Lodging-Service]: ../../Services/Lodging/Lodging.md
