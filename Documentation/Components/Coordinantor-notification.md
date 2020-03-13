@@ -3,7 +3,7 @@ The purpose of this component is to send notifications to the coordinator in ord
 The service connected to this component is the notification, however, it is currently in production
 
 ## Services
-Notification-Service: [Notification-Service]
+- Notification-Service: [Notification-Service]
 
 ## Issues
 

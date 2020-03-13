@@ -4,13 +4,13 @@ This lodging service contains all of the services associated with the lodging AP
 
 
 ## Componets
-Manage-Complex: [Manage-Complex]
-Add-Complex: [Add-Complex]
-Add-Room: [Add-Room]
-Complex-Details: [Complex-Details]
-Edit-Complex: [Edit-Complex]
-Edit-Room: [Edit-Room]
-Show-Room: [Show-Room]
+- Manage-Complex: [Manage-Complex]
+- Add-Complex: [Add-Complex]
+- Add-Room: [Add-Room]
+- Complex-Details: [Complex-Details]
+- Edit-Complex: [Edit-Complex]
+- Edit-Room: [Edit-Room]
+- Show-Room: [Show-Room]
 
 ## Issues
 

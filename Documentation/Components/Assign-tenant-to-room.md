@@ -5,8 +5,8 @@ However, this component is currenlty not working and could possibly be depricate
 ## Services
 Uses the tenant-assign room but, could possibly use the get rooms by filter action on the lodging service to assign a room. tenant-assign room might be depreicated as well.
 
-[Lodging-Service]
-[Tenant-Assign-Service]
+- [Lodging-Service]
+- [Tenant-Assign-Service]
 
 ## Issues
 
