@@ -1,1 +1,1 @@
-should be deprecated because accesses the non-existing provider service in the backend
+This service is deprecated because it accesses the non-existing provider service in the backend.

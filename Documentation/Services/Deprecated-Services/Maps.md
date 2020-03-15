@@ -1,1 +1,1 @@
-is deprecated because in the current iteration of this project the google maps api will be accessed through the address service in backend
+This service is deprecated because in the current iteration of this project the google maps api will be accessed through the address service in backend.
