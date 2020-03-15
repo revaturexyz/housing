@@ -1,19 +1,19 @@
-# Angular Application (Front End) <br/>
+# Angular Application (Front End)
 ## Setting Up
 
-Open up Git Bash and clone the front end application into your desired folder: <br/>
+Open up Git Bash and clone the front end application into your desired folder: \
 `git clone https://github.com/revaturexyz/housing.git`
 
-Make sure you are in the housing folder and make sure you are on your feature branch: <br/>
+Make sure you are in the housing folder and make sure you are on your feature branch: \
 `cd housing/housing`
 
 This will install all necessary dependencies specified in the package.json.
-You will need these in order to sufficiently run the application: <br/>
+You will need these in order to sufficiently run the application: \
 `npm install`
 
-Go into your source folder and you should now be able to run the application <br/>
-```
-cd housing/housing/src
+Go into your source folder and you should now be able to run the application \
+```bash
+cd housing/housing/src # This is from where you git cloned. If you are following along, it will just be "cd src"
 ng serve --open
 ```
 

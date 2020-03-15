@@ -1,3 +1,4 @@
+# Dashboard
 ## Summary 
 The Dashboard is a tool to allow logged in users to traverse from component to component dependant on role. Based on what is provided by the okta service, the dashboard will display role based componets. Dependant on session storage role
 

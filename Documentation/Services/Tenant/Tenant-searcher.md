@@ -1,3 +1,4 @@
+# Tenant Searcher
 ## Summary
 This Tenant-searcher services is used to get all tenants, search for tenants via first and last name, and delete tenants. Uses the Tenant API
 

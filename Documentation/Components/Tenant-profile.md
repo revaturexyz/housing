@@ -1,3 +1,4 @@
+# Tenant Profile
 ## Summary
 This is the main component used for coordinators to do CRUD operations on tenants.
 It is also the component used for a tenant to view their information.

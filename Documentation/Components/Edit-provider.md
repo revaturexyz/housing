@@ -1,3 +1,4 @@
+# Edit Provider
 ## Summary 
 This component is here to allow the provider to edit their information
 

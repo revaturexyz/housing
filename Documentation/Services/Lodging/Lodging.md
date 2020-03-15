@@ -1,3 +1,4 @@
+# Lodging
 ## Summary
 This lodging service contains all of the services associated with the lodging API, which allows the provider to perform CRUD operations on their Complexes and Rooms. as well as a method that filter through Rooms based on gender, number of occupants, etc.
 

@@ -1,3 +1,4 @@
+# Manage Complex
 ## Summary
 A provider will pass their guid id to a lodging get method in order to view all complexes associated to that provider ID. A coordinator will recieve all complexes to view from the lodging service. The user will have the ability to select any complex.
 

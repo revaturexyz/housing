@@ -1,3 +1,4 @@
+# Nav
 ## Summary
 The Nav component is what ties it all together - from here, the Okta service passes in the authentication token, and the generated guid
 is placed in session storage, where it persists for the life of our application or 30 minutes time, whichever is shorter. This guid is
@@ -6,7 +7,6 @@ Uses the AccountService (Identity service in the backend) to explain a user's pr
 Uses the UserService to tie role-specific privileges to the generated Okta guid
 
 ## Services
-- Okta Service: [Okta-Service]
 - User Service: [User-Service]
 - Account Service: [Account-Service]
 

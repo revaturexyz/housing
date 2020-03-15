@@ -1,3 +1,4 @@
+# Provider Status
 ## Summary
 Does not currently see any use in the live product, but may not always be that way. 
 Originally it was intended that providers would have to be approved by coordinator accounts, and until that moment they would exist in the system as

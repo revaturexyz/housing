@@ -1,3 +1,4 @@
+# Tenant
 ## Summary
 This Tenant service is used to get tenants by guid id, add new tenants, as well as edit existing tenants. These methods are from the tenant API
 

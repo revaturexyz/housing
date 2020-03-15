@@ -1,3 +1,4 @@
+# View Room
 ## Summary
 The view-room component allows a tenant user to view the details of the room in any complex that is linked to their account. It uses the tenant service to communicate backend objects, as well as the lodging service to gather room information
 

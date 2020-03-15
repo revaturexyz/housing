@@ -1,3 +1,4 @@
+# User
 ## Summary
 With the help of OktaAuth and Account(Identity on the backend) services, gets attributes such as role and email from the generated Okta guid and stores them for use. 
 
