@@ -7,4 +7,4 @@ This component is here to allow the provider to edit their information
 ## Issues
 (currently no vaild documentation)
 
-[Edit-Provider]: ../Service/Identity/Account.md
+[Edit-Provider]: ../Services/Identity/Account.md
